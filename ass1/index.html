@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Assessment Webpage For the Wedunnit Collective</title>
+<title> Webpage For the Wedunnit Collective</title>
 </head>
 
 <body>
@@ -10,12 +10,26 @@
 			height:100%;
 			width:100%;
 			position:relative;
+			padding:0;
+			margin:0;
+		}
+		body{
+		margin:0;
+		}
+		
+		#header{
+			width:100%;
+			background-color:rgba(255,255,255,0.6);
+			position:fixed;
+			padding:30px;
+			height:150px;
+			top:0;
 		}
 		h1{
 			font-family:'Tahoma', sans-serif;
 			text-align:center;
 			font-size:50px;
-			margin-top:40px;
+			margin-top:0px;
 		}
 		h2{
 			font-family:'Tahoma', sans-serif;
@@ -30,12 +44,17 @@
 			max-width:800px;
 			padding:10px 10px 10px 10px;
 		}
+		
+		#content-wrapper{
+			margin-top:250px;
+		}
+		
 		table{
 			border:1px solid black;
 			width:400px;
 			width:400px;
 			display:block;
-			margin: 30px auto;
+			margin: 20px auto 20px auto;
 			background: rgba(255,255,255,0.5);
 		}
 		
@@ -52,43 +71,50 @@
 			color:white;
 		}
 	</style>
+	<div id="header">
+		<h1>Assessment 1 Webpage</h1>
+		<h2>for the Wedunnit Collaboration</h2>
+		
+		<div id="navigation">
+		<!--TODO-->
+		</div>
+	</div>
 	
-	<h1>Assessment 1 Webpage</h1>
-	<h2>for the Wedunnit Collaboration</h2>
-	
-	<table>
-		<tr>
-			<td>Requirements</td>
-			<td><a href="files/">Req1.pdf</a></td>
-		</a></tr>
-		<tr>
-			<td>Architecture</td>
-			<td><a href="http://www.example.com">Arch1.pdf</a></td>
-		</tr>
-		<tr>
-			<td>Method Selection & Planning</td>
-			<td><a href="http://www.example.com">Plan1.pdf</a></td>
-		</tr>
-		<tr>
-			<td>Risk Assessment & Mitigation</td>
-			<td><a href="http://github.com">Risk1.pdf</a></td>
-		</tr></a>
-	</table>
+	<div id="content-wrapper">
+		<table>
+			<tr>
+				<td>Requirements</td>
+				<td><a href="files/">Req1.pdf</a></td>
+			</a></tr>
+			<tr>
+				<td>Architecture</td>
+				<td><a href="http://www.example.com">Arch1.pdf</a></td>
+			</tr>
+			<tr>
+				<td>Method Selection & Planning</td>
+				<td><a href="http://www.example.com">Plan1.pdf</a></td>
+			</tr>
+			<tr>
+				<td>Risk Assessment & Mitigation</td>
+				<td><a href="http://github.com">Risk1.pdf</a></td>
+			</tr></a>
+		</table>
 
-	<table>
-		<tr>
-			<td>SEPR Assessment Breif</td>
-			<td><a href="https://github.com/HenryCadogan/Clued-up/raw/master/ass1/webfiles/SEPR-Team-Assessments-1.pdf">SEPR-Team-Assessments-1.pdf</a></td>
-		</tr>
-		<td>
-			<td>SEPR Scenario Breif</td>
-			<td><a href="https://github.com/HenryCadogan/Clued-up/raw/master/ass1/webfiles/SEPR2016-17Scenario2.pdf">SEPR2016-17Scenario2.pdf.pdf</a></td>
-		</tr>
+		<table>
+			<tr>
+				<td>SEPR Assessment Breif</td>
+				<td><a href="https://github.com/HenryCadogan/Clued-up/raw/master/ass1/webfiles/SEPR-Team-Assessments-1.pdf">SEPR-Team-Assessments-1.pdf</a></td>
+			</tr>
+			<tr>
+				<td>SEPR Scenario Breif</td>
+				<td><a href="https://github.com/HenryCadogan/Clued-up/raw/master/ass1/webfiles/SEPR2016-17Scenario2.pdf">SEPR2016-17Scenario2.pdf.pdf</a></td>
+			</tr>
+		</table>
+		
+		<p id="about">The Wedunnit Conglomerate is Toby Fox, Henry Cadogan, Aimee Pearcy, Connor Hughes, Simon Davison &amp; Will Hodkinson.</p>
+		
+		<p id="copyright">I solemnly swear not to steal this awesome game.</p>
 	</table>
-	
-	<p id="about">The Wedunnit Conglomerate is Toby Fox, Henry Cadogan, Aimee Pearcy, Connor Hughes, Simon Davison &amp; Will Hodkinson.</p>
-	
-	<p id="copyright">I solemnly swear not to steal this awesome game.</p>
 	
 	
 </body>
