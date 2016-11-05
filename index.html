@@ -1,128 +1,137 @@
+<!doctype html>
 <html>
 <head>
-<title> The Wedunnit Collective</title>
-</head>
-
-<body>
+	<title>Wedunnit!</title>
+	<meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 	<style>
 		html{
-			height:100%;
-			width:100%;
-			position:relative;
-			padding:0;
-			margin:0;
-		}
+			height:100%;}
 		body{
-		margin:0;
+			height:100%;
+			margin:0;
+			padding:0;
+			vertical-align:top;
+			}
+			
+		.quarter{
+			height:100%;
+			display:inline-block;
+			vertical-align:top;
+				
+			-webkit-transition: all 0.5s ease;
+			-moz-transition: all 0.5s ease;
+			-o-transition: all 0.5s ease;
+			transition: all 0.5s ease;
 		}
 		
 		#header{
-			width:100%;
-			background-color:#ccc;
-			position:relative;
-			display:block;
-			height:100px;
+			background-color:rgba(255,255,255,0.6);
+			position:fixed;
 			top:0;
+			width:100%;
+			height:130px;
+			padding:0 10px;
 		}
+		
 		h1{
-			font-family:'Tahoma', sans-serif;
-			text-align:center;
-			font-size:50px;
-			margin-top:0px;
-			padding:10px;
+			font-size:60px;
+			font-family:"Calibri", sans-serif;
 		}
+		
 		h2{
-			font-family:'Tahoma', sans-serif;
-			text-align:center;
-			font-size:25px;
-			margin:0;
-			padding:20px;
+			font-size:40px;
+			font-family:"Calibri", sans-serif;
 		}
-		a{
-		color:white;}
 		
-		#quarters{
-			list-style:none;
-			padding:0;
-			display:block;
-		}
-		.quarter{
+		
+		#ass1{background-color:rgba(255,198,199,1.00);}
+		#ass2{background-color:rgba(195,255,211,1.00);}
+		#ass3{background-color:#B8F8FF;}
+		#ass4{background-color:rgba(243,255,180,1.00);}
+		#ass1:hover{background-color:rgba(255,145,146,1.00);}
+		#ass2:hover{background-color:rgba(146,242,168,1.00);}
+		#ass3:hover{background-color:rgba(123,255,253,1.00);}
+		#ass4:hover{background-color:rgba(255,220,95,1.00);}
+		
+		.content{
+			margin-top:130px;
+			padding: 0 15px;
 			display:inline-block;
-			width:25%;
-			height: calc(100% - 120px);
-			margin-top:-16px;
-			
-		}
-		#quarters div{
-			height:100%;
 		}
 		
-		
-		#ass1{
-		background-color:blue;
-		}
-		#ass2{
-		background-color:red;
-		}
-		#ass3{
-		background-color:green;
-		}
-		#ass4{
-		background-color:purple;
+		.active{
+			width:55%;
 		}
 		
-		
-	</style>
-	<div id="header">
-		<p>Wedunnit</p>
-	</div>
-	<ul id="quarters">
-		<a href="https://henrycadogan.github.io/Clued-up/ass1/"><li class="quarter" id="ass1">
-			<div>
-				<h2>Assessment 1</h2>
-				<ol>
-					<li>Requirements</li>
-					<li>Architecture</li>
-					<li>Risk Management</li>
-					<li>Plan</li>
-				</ol>
+		.minimised{
+			width:15%;
+		}
+	
+	</style>	
+				
 
-			</div>
-		</li></a><li class="quarter" id="ass2">
-			<div>
-				<h2>Assessment 2</h2>
-				<ol>
-					<li>Requirements</li>
-					<li>Architecture</li>
-					<li>Risk Management</li>
-					<li>Plan</li>
-				</ol>
-			</div>
-		</li><li class="quarter" id="ass3">
-			<div>
-				<h2>Assessment 3</h2>
-				<ol>
-					<li>Requirements</li>
-					<li>Architecture</li>
-					<li>Risk Management</li>
-					<li>Plan</li>
-				</ol>
-			</div>
-		</li><li class="quarter" id="ass4">
-			<div>
-				<h2>Assessment 4</h2>
-				<ol>
-					<li>Requirements</li>
-					<li>Architecture</li>
-					<li>Risk Management</li>
-					<li>Plan</li>
-				</ol>
-			</div>
-		</li>
-	</ul>
-	
 
-	
-	
+</head>
+
+<body>
+
+	<div class="quarter minimised" id="ass1">
+    	<div class="content">
+            <h2>Assessment 1</h2>
+            <ol>
+            	<li>Requirements</li>
+                <li>Architecture</li>
+                <li>Risk Management</li>
+                <li>Plan</li>
+            </ol>
+        </div>
+        
+        
+    </div><div class="quarter minimised" id="ass2">
+    	<div class="content">
+        <h2>Assessment 2</h2>
+        <p>TBC.</p>
+        </div>
+        
+        
+    </div><div class="quarter minimised" id="ass3">
+    	<div class="content">
+        <h2>Assessment 3</h2>
+        <ol>
+            	<li>Requirements</li>
+                <li>Architecture</li>
+                <li>Risk Management</li>
+                <li>Plan</li>
+            </ol>
+        </div>
+        
+        
+    </div><div class="quarter minimised" id="ass4">
+    	<div class="content">
+        <h2>Assessment 4</h2>
+        </div>
+    </div>
+    
+    <div id="header">
+    	<h1>Wedunnit! SEPR Project</h1>
+    </div>
+    
+
+	<script type="text/javascript">
+		$(document).ready(function(e) {
+           	$("#ass1").addClass("active");
+			$("#ass1").removeClass("minimised"); 
+        });
+		
+    	$(".quarter.minimised").click(function(){  
+		
+			$(".quarter").removeClass("active");
+			$(".quarter").addClass("minimised");
+			$(this).addClass("active");
+			$(this).removeClass("minimised");
+		});
+	</script>
 </body>
 </html>
