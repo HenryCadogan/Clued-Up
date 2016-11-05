@@ -1,128 +1,204 @@
+<!doctype html>
 <html>
 <head>
-<title> The Wedunnit Collective</title>
-</head>
-
-<body>
+	<title>Wedunnit!</title>
+	<meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 	<style>
 		html{
-			height:100%;
-			width:100%;
-			position:relative;
-			padding:0;
-			margin:0;
-		}
+			height:100%;}
 		body{
-		margin:0;
+			height:100%;
+			margin:0;
+			padding:0;
+			vertical-align:top;
+			}
+		
+		#dark{
+			width:100%;
+			height:100%;
+			background-color:rgba(0,0,0,0.8);
+			position:absolute;
+			top:0;
+			left:0;
+			z-index:100;
+			display:none;
 		}
 		
 		#header{
-			width:100%;
-			background-color:#ccc;
-			position:relative;
-			display:block;
-			height:100px;
+			background-color:rgba(255,255,255,0.6);
+			position:fixed;
 			top:0;
+			width:100%;
+			height:130px;
+			padding:30px 10px 0 0;
 		}
-		h1{
-			font-family:'Tahoma', sans-serif;
-			text-align:center;
-			font-size:50px;
-			margin-top:0px;
-			padding:10px;
-		}
-		h2{
-			font-family:'Tahoma', sans-serif;
-			text-align:center;
-			font-size:25px;
-			margin:0;
-			padding:20px;
-		}
-		a{
-		color:white;}
-		
-		#quarters{
-			list-style:none;
-			padding:0;
-			display:block;
-		}
-		.quarter{
+		#header h1{
+			font-size:60px;
+			font-family:"Calibri", sans-serif;
+			margin:0 0 0 20px;
 			display:inline-block;
-			width:25%;
-			height: calc(100% - 120px);
-			margin-top:-16px;
-			
 		}
-		#quarters div{
+		#header h3{
+			font-size:20px;
+			font-family:Baskerville, "Palatino Linotype", Palatino, "Century Schoolbook L", "Times New Roman", serif;
+			margin:0 0 0 50px;
+			color:#222;
+		}
+		#header ul{
+			list-style:none; 
+			display:inline-block;
+			float:right;
+			margin-right:200px;
+			}
+		#header li{
+			display:inline-block;
+			margin:0 30px 0 30px;
+			font-family:"Calibri", Helvetica, Arial, sans-serif;
+			font-size:24px;
+			padding:20px;
+			}
+		#header li:hover{
+			background-color:#838383;
+			cursor: -webkit-zoom-in; 
+			cursor: -moz-zoom-in;
+		}
+		
+		.quarter{
 			height:100%;
+			display:inline-block;
+			vertical-align:top;
+			overflow:hidden;
+				
+			-webkit-transition: all 0.5s ease;
+			-moz-transition: all 0.5s ease;
+			-o-transition: all 0.5s ease;
+			transition: all 0.5s ease;
+		}
+		
+		h2{
+			font-size:40px;
+			font-family:"Calibri", sans-serif;
 		}
 		
 		
-		#ass1{
-		background-color:blue;
-		}
-		#ass2{
-		background-color:red;
-		}
-		#ass3{
-		background-color:green;
-		}
-		#ass4{
-		background-color:purple;
+		#ass1{background-color:#848484;}
+		#ass2{background-color:#5D5D5D;}
+		#ass3{background-color:#484848;}
+		#ass4{background-color:#222222;}
+		#ass1:hover{background-color:#827878;}
+		#ass2:hover{background-color:#55606E;}
+		#ass3:hover{background-color:#53465A;}
+		#ass4:hover{background-color:#271706}
+		
+		.content{
+			margin-top:130px;
+			padding: 0 35px;
+			display:inline-block;
 		}
 		
+		.active{width:55%;}
+		.active div div{display:inline-block;}
 		
-	</style>
-	<div id="header">
-		<p>Wedunnit</p>
-	</div>
-	<ul id="quarters">
-		<a href="https://henrycadogan.github.io/Clued-up/ass1/"><li class="quarter" id="ass1">
-			<div>
-				<h2>Assessment 1</h2>
-				<ol>
-					<li>Requirements</li>
-					<li>Architecture</li>
-					<li>Risk Management</li>
-					<li>Plan</li>
-				</ol>
+		.minimised{width:15%;}
+		.minimised div div{display:none;}
+		.minimised h2{
+			margin:60px 0 0 5px;
+			writing-mode:tb-rl;
+			display:block;
+			bottom:0;
+			width:60px;
+			height:350px;
+			font-size:60px;
+			}
+	</style>	
+				
 
-			</div>
-		</li></a><li class="quarter" id="ass2">
-			<div>
-				<h2>Assessment 2</h2>
-				<ol>
-					<li>Requirements</li>
-					<li>Architecture</li>
-					<li>Risk Management</li>
-					<li>Plan</li>
-				</ol>
-			</div>
-		</li><li class="quarter" id="ass3">
-			<div>
-				<h2>Assessment 3</h2>
-				<ol>
-					<li>Requirements</li>
-					<li>Architecture</li>
-					<li>Risk Management</li>
-					<li>Plan</li>
-				</ol>
-			</div>
-		</li><li class="quarter" id="ass4">
-			<div>
-				<h2>Assessment 4</h2>
-				<ol>
-					<li>Requirements</li>
-					<li>Architecture</li>
-					<li>Risk Management</li>
-					<li>Plan</li>
-				</ol>
-			</div>
-		</li>
-	</ul>
-	
 
-	
-	
+</head>
+
+<body>
+
+    
+	<div class="quarter minimised" id="ass1">
+    	<div class="content">
+            <h2>Assessment 1</h2>
+            <div>
+            	<h2><a href="https://henrycadogan.github.io/CluedUp">Go to Assessment 1 webpage</a></h2>
+                <img height="500px" src="webfiles/mag-glass.png" alt="Magnifying glass" style="margin:0 0 0 200px;;"/>
+           	</div>
+        </div>
+        
+        
+    </div><div class="quarter minimised" id="ass2">
+    	<div class="content">
+        	<h2>Assessment 2</h2>
+        	<div>
+	        	<p>TBC.</p>
+            </div>
+        </div>
+        
+        
+    </div><div class="quarter minimised" id="ass3">
+    	<div class="content">
+        <h2>Assessment 3</h2>
+        	<div>
+                <ol>
+                    <li>Requirements</li>
+                    <li>Architecture</li>
+                    <li>Risk Management</li>
+                    <li>Plan</li>
+                </ol>
+          	</div>
+        </div>
+        
+        
+    </div><div class="quarter minimised" id="ass4">
+    	<div class="content">
+        	<h2>Assessment 4</h2>
+            <div>
+            
+            </div>
+        </div>
+    </div>
+    
+    <div id="header">
+    	<h1>The Wedunnit Collective.</h1>
+        <ul>
+        	<li id="teamLi">The Team</li><a href="https://github.com/henrycadogan/Clued-up"><li>GitHub</li></a>
+        </ul>
+        <h3><em>"The original and still the best."</em></h3>
+    </div>
+    
+    	<div id="dark">
+    </div>
+    
+    
+
+	<script type="text/javascript">
+		$(document).ready(function(e) {
+           	$("#ass1").addClass("active");
+			$("#ass1").removeClass("minimised"); 
+        });
+		
+    	$(".quarter.minimised").click(function(){  
+		
+			$(".quarter").removeClass("active");
+			$(".quarter").addClass("minimised");
+			$(this).addClass("active");
+			$(this).removeClass("minimised");
+		});
+		
+		$("#teamLi").click(function() {
+			$("#dark").fadeToggle(200);
+            
+        });
+		
+		$("#dark").click(function() {
+			$("#dark").fadeToggle(200);
+            
+        });
+	</script>
 </body>
 </html>
