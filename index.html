@@ -14,6 +14,11 @@
 			padding:0;
 			vertical-align:top;
 			}
+		p, td{
+			font-family:"Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+			font-size:20px;
+			color:black;
+		}
 		
 		#dark{
 			width:100%;
@@ -22,12 +27,51 @@
 			position:absolute;
 			top:0;
 			left:0;
-			z-index:100;
+			z-index:0;
 			display:none;
 		}
 		
+		#teamDiv{
+			min-width:650px;
+			position:absolute;
+			top:100px;
+			left:50%;
+			display:none;
+		}
+		#teamDivInner{
+			position: relative; 
+			left: -50%; 
+			background-color:rgba(188,188,188,1.00);
+			padding:30px;;
+		}
+		#teamDivClose{
+			position:absolute;
+			right:20px;
+			top:0px;
+			cursor:pointer;
+		}
+		#teamDiv table{
+			width:100%;
+		}
+		#teamDiv tr{
+			padding:10px;
+		}
+		#teamDiv td{
+			width:50px;
+			text-align:center;
+		}
+		#teamDiv img{
+			width:100px;
+			height:100px;
+		}
+		#rolesTr td{
+			color:rgba(89,89,89,1.00);
+			font-size:18px;
+			font-style:italic;
+		}
+		
 		#header{
-			background-color:rgba(255,255,255,0.6);
+			background-color:rgba(0,0,0,0.6);
 			position:fixed;
 			top:0;
 			width:100%;
@@ -39,12 +83,13 @@
 			font-family:"Calibri", sans-serif;
 			margin:0 0 0 20px;
 			display:inline-block;
+			color:#FFF;
 		}
 		#header h3{
 			font-size:20px;
 			font-family:Baskerville, "Palatino Linotype", Palatino, "Century Schoolbook L", "Times New Roman", serif;
 			margin:0 0 0 50px;
-			color:#222;
+			color:#949494;
 		}
 		#header ul{
 			list-style:none; 
@@ -58,6 +103,7 @@
 			font-family:"Calibri", Helvetica, Arial, sans-serif;
 			font-size:24px;
 			padding:20px;
+			background-color:rgba(221,221,221,1.00);
 			}
 		#header li:hover{
 			background-color:#838383;
@@ -70,6 +116,7 @@
 			display:inline-block;
 			vertical-align:top;
 			overflow:hidden;
+			padding-top:50px;
 				
 			-webkit-transition: all 0.5s ease;
 			-moz-transition: all 0.5s ease;
@@ -80,17 +127,19 @@
 		h2{
 			font-size:40px;
 			font-family:"Calibri", sans-serif;
+			margin:0;
 		}
+		
 		
 		
 		#ass1{background-color:#848484;}
 		#ass2{background-color:#5D5D5D;}
 		#ass3{background-color:#484848;}
-		#ass4{background-color:#222222;}
+		#ass4{background-color:#414141;}
 		#ass1:hover{background-color:#827878;}
 		#ass2:hover{background-color:#55606E;}
 		#ass3:hover{background-color:#53465A;}
-		#ass4:hover{background-color:#271706}
+		#ass4:hover{background-color:#38563F}
 		
 		.content{
 			margin-top:130px;
@@ -125,7 +174,8 @@
     	<div class="content">
             <h2>Assessment 1</h2>
             <div>
-            	<h2><a href="https://henrycadogan.github.io/CluedUp">Go to Assessment 1 webpage</a></h2>
+            	<h2><a href="https://henrycadogan.github.io/Clued-up/ass1/">Go to Assessment 1 webpage</a></h2>
+                <p>Assessment due 9 November 2016</p>
                 <img height="500px" src="webfiles/mag-glass.png" alt="Magnifying glass" style="margin:0 0 0 200px;;"/>
            	</div>
         </div>
@@ -135,7 +185,8 @@
     	<div class="content">
         	<h2>Assessment 2</h2>
         	<div>
-	        	<p>TBC.</p>
+	        	<p>Content TBA.</p>
+                <p>Assessment due 24 January 2017</p>
             </div>
         </div>
         
@@ -144,12 +195,8 @@
     	<div class="content">
         <h2>Assessment 3</h2>
         	<div>
-                <ol>
-                    <li>Requirements</li>
-                    <li>Architecture</li>
-                    <li>Risk Management</li>
-                    <li>Plan</li>
-                </ol>
+                <p>Content TBA.</p>
+                <p>Assessment due 21 February 2017</p>
           	</div>
         </div>
         
@@ -158,7 +205,8 @@
     	<div class="content">
         	<h2>Assessment 4</h2>
             <div>
-            
+                <p>Content TBA.</p>
+                <p>Assessment due 3 May 2017</p>
             </div>
         </div>
     </div>
@@ -171,7 +219,41 @@
         <h3><em>"The original and still the best."</em></h3>
     </div>
     
-    	<div id="dark">
+    <div id="dark">
+    </div>
+    
+    <div id="teamDiv">
+    <div id="teamDivInner">
+    	<h2>About the Wedunnit Collective</h2>
+        <table>
+        	<tr>
+            	<td><img src="webfiles/photo1.jpg" alt="Miguel" /></td>
+                <td><img src="webfiles/photo2.jpg" alt="Simon" /></td>
+                <td><img src="webfiles/photo3.jpg" alt="Toby" /></td>
+                <td><img src="webfiles/photo4.jpg" alt="Will" /></td>
+                <td><img src="webfiles/photo5.jpg" alt="Connor" /></td>
+                <td><img src="webfiles/photo6.jpg" alt="Aimee" /></td>
+           	</tr>
+            <tr>
+         		<td>Miguel Cadogan</td>
+                <td>Simon Davison</td>
+                <td>Toby Fox</td>
+                <td>Will Hodkinson</td>
+                <td>Connor Hughes</td>
+                <td>Aimee Pearcy</td>
+            </tr>
+            <tr id="rolesTr">
+         		<td>Completer Finisher</td>
+                <td>Plant</td>
+                <td>Implementer</td>
+                <td>Monitor Evaluator</td>
+                <td>Co-ordinator</td>
+                <td>Shaper</td>
+            </tr>
+      	</table>
+        <p>Formed in late 2016, the Weddunnit Collaboration aims to make murder a little bit more fun by deliver the world's best dynamic Murder Mystery game for the SEPR module at the University Of York.</p>
+       	<p id="teamDivClose">X</p>   	
+    </div>
     </div>
     
     
@@ -192,12 +274,17 @@
 		
 		$("#teamLi").click(function() {
 			$("#dark").fadeToggle(200);
+			$("#teamDiv").fadeToggle(200);
             
         });
 		
 		$("#dark").click(function() {
 			$("#dark").fadeToggle(200);
-            
+            $("#teamDiv").fadeToggle(200);
+        });
+		$("#teamDivClose").click(function() {
+			$("#dark").fadeToggle(200);
+            $("#teamDiv").fadeToggle(200);
         });
 	</script>
 </body>
