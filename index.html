@@ -5,13 +5,16 @@
 	<meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 	<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <script src="webfiles/smoke.js"></script>
 	<link rel="stylesheet" href="webfiles/default.css">
 
 </head>
 
 <body>
 
-    
+    <img class="light-bulb" src="webfiles/lightbulb.png" alt="" />
+	<img class="light-bulb-shadow" src="webfiles/lightbulb-shadow.png" alt="" />
+    <canvas id="smokeBox"></canvas>
 	<div class="quarter minimised" id="ass1">
     	<div class="content">
             <h2>Assessment 1</h2>
@@ -130,5 +133,26 @@
             $("#teamDiv").fadeToggle(200);
         });
 	</script>
+    
+<script>
+    var canvas = document.getElementById('smokeBox')
+    var ctx = canvas.getContext('2d')
+    canvas.width = 800
+    canvas.height = 800
+    var party = smokemachine(ctx, [100, 100, 100])
+    party.start() // start animating
+    party.addsmoke(500,500,10) // wow we made smoke
+    
+	//TODO
+	// for every 100 or so pixels genetate plume
+	//generate plume every second
+	
+        party.addsmoke(600,500,100)
+        party.addsmoke(500,600,200)
+	
+       
+  
+</script>
+    
 </body>
 </html>
