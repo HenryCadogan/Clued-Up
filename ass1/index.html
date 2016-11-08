@@ -1,61 +1,68 @@
 <html>
 <head>
-<title> Webpage For the Wedunnit Collective</title>
+<title>Assessment 1 - Wedunnit</title>
+<link rel="stylesheet" href="../webfiles/default.css">
 </head>
 
-<body>
+<body class="assBody">
 	<style>
 		html{
-			background-image: url("http://images.adsttc.com/media/images/52e5/6526/e8e4/4e99/0600/0168/large_jpg/Ron_Cooke_Hub_BDP_Martine_Hamilton_Knight_(7).jpg");
 			height:100%;
 			width:100%;
 			position:relative;
 			padding:0;
 			margin:0;
 		}
+		
 		body{
-		margin:0;
+			background-image: url("webfiles/ass1bg.jpg");
 		}
 		
-		#header{
+		.assBody .assHeader a{
+			text-decoration:none;
+		}
+		
+		.assHeader h2{
+			font-size:30px;
+		}
+		.assBody .assHeader a:visited{
+			color:#000;
+		}
+		
+		.assHeader{
 			width:100%;
-			background-color:rgba(255,255,255,0.6);
+			background-color:rgba(35,15,15,0.6);
 			position:fixed;
 			padding:30px;
 			height:150px;
 			top:0;
 		}
-		h1{
-			font-family:'Tahoma', sans-serif;
-			text-align:center;
-			font-size:50px;
-			margin-top:0px;
-		}
-		h2{
-			font-family:'Tahoma', sans-serif;
-			text-align:center;
-			font-size:25px;
-			margin-top:-20px;
+		
+		td{padding:5px;}
+		
+		.childTd{
+			color:rgba(66,53,53,1.00);
+			padding-left:30px;
+			font-size:18px;
 		}
 		
-		table td{
-			font-size:20px;
-			font-family:'Tahoma', sans-serif;
-			max-width:800px;
-			padding:10px 10px 10px 10px;
+		.content-wrapper{
+			height:100%;
+			padding:0;
+			margin:0;
 		}
 		
-		#content-wrapper{
-			margin-top:250px;
+		.assContent{
+			padding-top:220px;
 		}
 		
 		table{
 			border:1px solid black;
-			width:400px;
-			width:400px;
+			width:450px;
 			display:block;
-			margin: 20px auto 20px auto;
+			margin: 0 auto 20px auto;
 			background: rgba(255,255,255,0.5);
+			padding:10px;
 		}
 		
 		#about, #copyright{
@@ -71,51 +78,57 @@
 			color:white;
 		}
 	</style>
-	<div id="header">
+	
+	<div class="content-wrapper">
+    	<div class="assContent">
+            <table>
+            	<tr class="titleRow"><td colspan="2"><h2>Core documents</h2></td></tr>
+                <tr>
+                    <td>Requirements</td>
+                    <td><a href="webfiles/Req1.pdf">Req1.pdf</a></td>
+                </tr>
+                <tr>
+                    <td class="childTd">Use Cases</td>
+                    <td><a href="webfiles/UseCases.pdf">UseCases.pdf</a></td>
+                </tr>
+                <tr>
+                    <td>Architecture</td>
+                    <td><a href="webfiles/Arch1.pdf">Arch1.pdf</a></td>
+                </tr>
+                <tr>
+                    <td>Method Selection & Planning</td>
+                    <td><a href="webfiles/Plan1.pdf">Plan1.pdf</a></td>
+                </tr>
+                <tr>
+                    <td>Risk Assessment & Mitigation</td>
+                    <td><a href="webfiles/Risk1.pdf">Risk1.pdf</a></td>
+                </tr></a>
+            </table>
+    
+            <table>
+            	<tr class="titleRow"><td colspan="2"><h2>Associated files</h2></td></tr>
+                <tr>
+                    <td>SEPR Assessment Breif</td>
+                    <td><a href="https://github.com/HenryCadogan/Clued-up/raw/master/ass1/webfiles/SEPR-Team-Assessments-1.pdf">SEPR-Team-Assessments-1.pdf</a></td>
+                </tr>
+                <tr>
+                    <td>SEPR Scenario Breif</td>
+                    <td><a href="https://github.com/HenryCadogan/Clued-up/raw/master/ass1/webfiles/SEPR2016-17Scenario2.pdf">SEPR2016-17Scenario2.pdf.pdf</a></td>
+                </tr>
+            </table>
+		
+	
+		</div>
+    </div>
+	
+    <div class="assHeader">
+    	<a href="../index.html"><h2>Back to Wedunnit Homepage</h2></a>
 		<h1>Assessment 1 Webpage</h1>
-		<h2>for the Wedunnit Collaboration</h2>
 		
 		<div id="navigation">
 		<!--TODO-->
 		</div>
 	</div>
-	
-	<div id="content-wrapper">
-		<table>
-			<tr>
-				<td>Requirements</td>
-				<td><a href="files/">Req1.pdf</a></td>
-			</a></tr>
-			<tr>
-				<td>Architecture</td>
-				<td><a href="http://www.example.com">Arch1.pdf</a></td>
-			</tr>
-			<tr>
-				<td>Method Selection & Planning</td>
-				<td><a href="http://www.example.com">Plan1.pdf</a></td>
-			</tr>
-			<tr>
-				<td>Risk Assessment & Mitigation</td>
-				<td><a href="http://github.com">Risk1.pdf</a></td>
-			</tr></a>
-		</table>
-
-		<table>
-			<tr>
-				<td>SEPR Assessment Breif</td>
-				<td><a href="https://github.com/HenryCadogan/Clued-up/raw/master/ass1/webfiles/SEPR-Team-Assessments-1.pdf">SEPR-Team-Assessments-1.pdf</a></td>
-			</tr>
-			<tr>
-				<td>SEPR Scenario Breif</td>
-				<td><a href="https://github.com/HenryCadogan/Clued-up/raw/master/ass1/webfiles/SEPR2016-17Scenario2.pdf">SEPR2016-17Scenario2.pdf.pdf</a></td>
-			</tr>
-		</table>
-		
-		<p id="about">The Wedunnit Conglomerate is Toby Fox, Henry Cadogan, Aimee Pearcy, Connor Hughes, Simon Davison &amp; Will Hodkinson.</p>
-		
-		<p id="copyright">I solemnly swear not to steal this awesome game.</p>
-	</table>
-	
 	
 </body>
 </html>

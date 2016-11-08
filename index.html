@@ -5,168 +5,7 @@
 	<meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 	<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-	<style>
-		html{
-			height:100%;}
-		body{
-			height:100%;
-			margin:0;
-			padding:0;
-			vertical-align:top;
-			}
-		p, td{
-			font-family:"Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
-			font-size:20px;
-			color:black;
-		}
-		
-		#dark{
-			width:100%;
-			height:100%;
-			background-color:rgba(0,0,0,0.8);
-			position:absolute;
-			top:0;
-			left:0;
-			z-index:0;
-			display:none;
-		}
-		
-		#teamDiv{
-			min-width:650px;
-			position:absolute;
-			top:100px;
-			left:50%;
-			display:none;
-		}
-		#teamDivInner{
-			position: relative; 
-			left: -50%; 
-			background-color:rgba(188,188,188,1.00);
-			padding:30px;;
-		}
-		#teamDivClose{
-			position:absolute;
-			right:20px;
-			top:0px;
-			cursor:pointer;
-		}
-		#teamDiv table{
-			width:100%;
-		}
-		#teamDiv tr{
-			padding:10px;
-		}
-		#teamDiv td{
-			width:50px;
-			text-align:center;
-		}
-		#teamDiv img{
-			width:100px;
-			height:100px;
-		}
-		#rolesTr td{
-			color:rgba(89,89,89,1.00);
-			font-size:18px;
-			font-style:italic;
-		}
-		
-		#header{
-			background-color:rgba(0,0,0,0.6);
-			position:fixed;
-			top:0;
-			width:100%;
-			height:130px;
-			padding:30px 10px 0 0;
-		}
-		#header h1{
-			font-size:60px;
-			font-family:"Calibri", sans-serif;
-			margin:0 0 0 20px;
-			display:inline-block;
-			color:#FFF;
-		}
-		#header h3{
-			font-size:20px;
-			font-family:Baskerville, "Palatino Linotype", Palatino, "Century Schoolbook L", "Times New Roman", serif;
-			margin:0 0 0 50px;
-			color:#949494;
-		}
-		#header ul{
-			list-style:none; 
-			display:inline-block;
-			float:right;
-			margin-right:200px;
-			}
-		#header li{
-			display:inline-block;
-			margin:0 30px 0 30px;
-			font-family:"Calibri", Helvetica, Arial, sans-serif;
-			font-size:24px;
-			padding:20px;
-			background-color:rgba(221,221,221,1.00);
-			}
-		#header li:hover{
-			background-color:#838383;
-			cursor: -webkit-zoom-in; 
-			cursor: -moz-zoom-in;
-		}
-		
-		.quarter{
-			height:100%;
-			display:inline-block;
-			vertical-align:top;
-			overflow:hidden;
-			
-				
-			-webkit-transition: all 0.5s ease;
-			-moz-transition: all 0.5s ease;
-			-o-transition: all 0.5s ease;
-			transition: all 0.5s ease;
-		}
-		.quarter h2{
-			margin-top:50px;
-		}
-		
-		h2{
-			font-size:40px;
-			font-family:"Calibri", sans-serif;
-			margin:0;
-		}
-		
-		
-		
-		#ass1{background-color:#848484;}
-		#ass2{background-color:#5D5D5D;}
-		#ass3{background-color:#484848;}
-		#ass4{background-color:#414141;}
-		#ass1:hover{background-color:#827878;}
-		#ass2:hover{background-color:#55606E;}
-		#ass3:hover{background-color:#53465A;}
-		#ass4:hover{background-color:#38563F}
-		
-		.content{
-			margin-top:130px;
-			padding: 0 35px;
-			display:inline-block;
-		}
-		
-		.active{width:55%;}
-		.active div div{display:inline-block;}
-		
-		.minimised{width:15%;}
-		.minimised div div{display:none;}
-		.minimised h2{
-			margin:60px 0 0 5px;
-			writing-mode:tb-rl;
-			display:block;
-			bottom:0;
-			width:60px;
-			height:350px;
-			font-size:60px;
-			}
-	</style>	
-				
-
+	<link rel="stylesheet" href="webfiles/default.css">
 
 </head>
 
@@ -177,7 +16,7 @@
     	<div class="content">
             <h2>Assessment 1</h2>
             <div>
-            	<h2><a href="https://henrycadogan.github.io/Clued-up/ass1/">Go to Assessment 1 webpage</a></h2>
+            	<h3><a href="ass1/index.html">Go to Assessment 1 webpage</a></h3>
                 <p>Assessment due 9 November 2016</p>
                 <img height="500px" src="webfiles/mag-glass.png" alt="Magnifying glass" style="margin:0 0 0 200px;;"/>
            	</div>
@@ -215,11 +54,12 @@
     </div>
     
     <div id="header">
+    	<img id="logo" src="webfiles/logo.png" alt="Wedunnit Logo" />
     	<h1>The Wedunnit Collective.</h1>
         <ul>
         	<li id="teamLi">The Team</li><a href="https://github.com/henrycadogan/Clued-up"><li>GitHub</li></a>
         </ul>
-        <h3><em>"The original and still the best."</em></h3>
+        <h4><em>"The original and still the best."</em></h4>
     </div>
     
     <div id="dark">
