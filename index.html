@@ -11,11 +11,10 @@
 </head>
 
 <body>
-
-    <img class="light-bulb" id="lightBulbOn" src="webfiles/lightbulb.png" alt="" />
-    <img class="light-bulb" id="lightBulbOff" src="webfiles/lightbulb-off.png" alt="" />
+	<img class="light-bulb" id="lightBulbOff" src="webfiles/lightbulb-off.png" alt="" />
+    <img class="light-bulb" id="lightBulbOn" src="webfiles/lightbulb.png" alt="" style="opacity:1" />
 	<img class="light-bulb-shadow" src="webfiles/lightbulb-shadow.png" alt="" />
-    <canvas id="smokeBox"></canvas>
+    <!--<canvas id="smokeBox"></canvas>-->
 	<div class="quarter minimised" id="ass1">
     	<div class="content">
             <h2>Assessment 1</h2>
@@ -151,23 +150,22 @@
 		party.addsmoke(600,500,100)
 		party.addsmoke(500,600,200)
  	</script>
-    
+   
+   
+   
     <script> /* -- FLICKERING LIGHTBULB -- */
-		function flicker(){
-			$(".lightbulb").toggle(10);
-			console.log("TOGGLE FLICKER");
-			$(".lightbulb").toggle(10);
-		};
+		function neonSign(){
+			var randSeconds = Math.ceil(Math.random()*6)+0.5; // max 6 sec, min 0.5 sec
+			var randDelay = randSeconds*1000;
+			console.log("interval = " + randSeconds +" sec<br>");
 		
-		function generateFlicker(){
-			console.log("CALL GENERATE");
-			var rn = Math.ceil(Math.random()*100)
-			if(rn < 30){flicker()};
-
-			setTimeout(generateFlicker(),300)
-		};
+			//TODO - MAKE IT FLICKER A RANDOM NUMBER OF TIMES FROM 1 TO 3
+			$("#lightBulbOn").delay(randDelay).animate({'opacity':0.1},100,function(){
+				$("#lightBulbOn").animate({'opacity':1},100,neonSign() );
 		
-		//$(document).ready(generateFlicker());
+			});
+		}
+		neonSign();
 	</script>
     
 </body>

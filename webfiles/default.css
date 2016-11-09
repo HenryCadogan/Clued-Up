@@ -85,10 +85,6 @@ html{background-color:#414141;}
   -webkit-animation: shadowSwing 3s infinite ease-in-out;
 } 
 
-#lightBulbOff{
-	display:none;
-}
-
 @-moz-keyframes shadowSwing {
   0%{-moz-transform: rotate(-14deg)}
   50%{-moz-transform: rotate(10deg)}
