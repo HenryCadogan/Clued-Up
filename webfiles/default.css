@@ -42,13 +42,22 @@ html{background-color:#414141;}
 /*- - - - - - - - LIGHT BULB - - - - - - - - */
 
 .light-bulb,
-.light-bulb-shadow {
+.light-bulb-shadow{
   position: absolute;
   top: 0;
-  right: 10%;
+  right: 20%;
+  min
   -moz-transform-origin: center top;
   -webkit-transform-origin: top;
   pointer-events:none;
+}
+
+@media all and (max-width: 1100px) {
+    .light-bulb,
+	.light-bulb-shadow {
+        margin-right: 0px;
+        right: 300px;
+    }
 }
 
 .light-bulb {
@@ -75,6 +84,10 @@ html{background-color:#414141;}
   -moz-animation: 3s ease 0s normal none infinite shadowSwing;
   -webkit-animation: shadowSwing 3s infinite ease-in-out;
 } 
+
+#lightBulbOff{
+	display:none;
+}
 
 @-moz-keyframes shadowSwing {
   0%{-moz-transform: rotate(-14deg)}

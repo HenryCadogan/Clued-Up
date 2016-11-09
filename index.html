@@ -12,7 +12,8 @@
 
 <body>
 
-    <img class="light-bulb" src="webfiles/lightbulb.png" alt="" />
+    <img class="light-bulb" id="lightBulbOn" src="webfiles/lightbulb.png" alt="" />
+    <img class="light-bulb" id="lightBulbOff" src="webfiles/lightbulb-off.png" alt="" />
 	<img class="light-bulb-shadow" src="webfiles/lightbulb-shadow.png" alt="" />
     <canvas id="smokeBox"></canvas>
 	<div class="quarter minimised" id="ass1">
@@ -104,7 +105,7 @@
     
     
 
-	<script type="text/javascript">
+	<script type="text/javascript">	/* -- SLIDING ASSESSMENT DIVS -- */
 		$(document).ready(function(e) {
            	$("#ass1").addClass("active");
 			$("#ass1").removeClass("minimised"); 
@@ -134,25 +135,40 @@
         });
 	</script>
     
-<script>
-    var canvas = document.getElementById('smokeBox')
-    var ctx = canvas.getContext('2d')
-    canvas.width = 800
-    canvas.height = 800
-    var party = smokemachine(ctx, [100, 100, 100])
-    party.start() // start animating
-    party.addsmoke(500,500,10) // wow we made smoke
+	<script>	/* -- SMOKE GENERATION -- */
+		var canvas = document.getElementById('smokeBox')
+		var ctx = canvas.getContext('2d')
+		canvas.width = 800
+		canvas.height = 800
+		var party = smokemachine(ctx, [100, 100, 100])
+		party.start() // start animating
+		party.addsmoke(500,500,10) // wow we made smoke
+		
+		//TODO
+		// for every 100 or so pixels genetate plume
+		//generate plume every second
+		
+		party.addsmoke(600,500,100)
+		party.addsmoke(500,600,200)
+ 	</script>
     
-	//TODO
-	// for every 100 or so pixels genetate plume
-	//generate plume every second
-	
-        party.addsmoke(600,500,100)
-        party.addsmoke(500,600,200)
-	
-       
-  
-</script>
+    <script> /* -- FLICKERING LIGHTBULB -- */
+		function flicker(){
+			$(".lightbulb").toggle(10);
+			console.log("TOGGLE FLICKER");
+			$(".lightbulb").toggle(10);
+		};
+		
+		function generateFlicker(){
+			console.log("CALL GENERATE");
+			var rn = Math.ceil(Math.random()*100)
+			if(rn < 30){flicker()};
+
+			setTimeout(generateFlicker(),300)
+		};
+		
+		//$(document).ready(generateFlicker());
+	</script>
     
 </body>
 </html>
