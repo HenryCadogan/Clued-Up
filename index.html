@@ -11,10 +11,10 @@
 </head>
 
 <body>
+	<canvas id="smokeBox"></canvas>
 	<img class="light-bulb" id="lightBulbOff" src="webfiles/lightbulb-off.png" alt="" />
     <img class="light-bulb" id="lightBulbOn" src="webfiles/lightbulb.png" alt="" style="opacity:1" />
 	<img class="light-bulb-shadow" src="webfiles/lightbulb-shadow.png" alt="" />
-    <!--<canvas id="smokeBox"></canvas>-->
 	<div class="quarter minimised" id="ass1">
     	<div class="content">
             <h2>Assessment 1</h2>
@@ -139,16 +139,14 @@
 		var ctx = canvas.getContext('2d')
 		canvas.width = 800
 		canvas.height = 800
-		var party = smokemachine(ctx, [100, 100, 100])
-		party.start() // start animating
-		party.addsmoke(500,500,10) // wow we made smoke
+		var smoke = smokemachine(ctx, [200, 200, 200])
+		smoke.start() // start animating
 		
-		//TODO
-		// for every 100 or so pixels genetate plume
-		//generate plume every second
-		
-		party.addsmoke(600,500,100)
-		party.addsmoke(500,600,200)
+		setInterval(function(){
+			for(i = 100; $(window).width()>i;i+=200){
+				smoke.addsmoke(i,$(window).height()+300,100)
+			}
+		}, 800)	
  	</script>
    
    
