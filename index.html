@@ -6,6 +6,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 	<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
     <script src="webfiles/smoke.js"></script>
+    <link rel="icon" href="webfiles/favicon.png" type="image/png" sizes="16x16">
 	<link rel="stylesheet" href="webfiles/default.css">
 
 </head>
@@ -17,18 +18,67 @@
     <img class="light-bulb" id="lightBulbOn" src="webfiles/lightbulb.png" alt="" style="opacity:1" />
 	<img class="light-bulb-shadow" src="webfiles/lightbulb-shadow.png" alt="" />
 	<div class="quarter minimised" id="ass1">
-    	<div class="content">
-            <h2>Assessment 1</h2>
-            <div>
-            	<h3><a href="ass1/index.html">Go to Assessment 1 webpage</a></h3>
-                <p>Assessment due 9 November 2016</p>
-                <img height="500px" src="webfiles/mag-glass.png" alt="Magnifying glass" style="margin:0 0 0 200px;;"/>
-           	</div>
+      <div class="ass-content">
+          <h2>Assessment 1</h2>
+              <div class="ass-wrapper">
+              	<p>Assessment due 9 November 2016</p>
+                <table>
+                    <tr class="titleRow"><td colspan="2"><h2>Core documents</h2></td></tr>
+                    <tr>
+                        <td width="300px">2. Requirements</td>
+                        <td><a href="ass1/webfiles/Req1.pdf">Req1.pdf</a></td>
+                    </tr>
+                    <tr>
+                        <td class="childTd">Use Case</td>
+                        <td><a href="ass1/webfiles/UseCase.pdf">UseCase.pdf</a></td>
+                    </tr>
+                    <tr>
+                        <td class="childTd">Client interview</td>
+                        <td><a href="ass1/webfiles/Interview.pdf">Interview.pdf</a></td>
+                    </tr>
+                    <tr>
+                        <td>3. Architecture</td>
+                        <td><a href="ass1/webfiles/Arch11.pdf">Arch1.pdf</a></td>
+                    </tr>
+                    <tr>
+                        <td class="childTd">Class (UML) Diagram</td>
+                        <td><a href="ass1/webfiles/ClassDiagram.pdf">ClassDiagram.pdf</a></td>
+                    </tr>
+                    <tr>
+                        <td class="childTd">Flowchart</td>
+                        <td><a href="ass1/webfiles/Flowchart.pdf">Flowchart.pdf</a></td>
+                    </tr>
+                    <tr>
+                        <td>4. Method Selection & Planning</td>
+                        <td><a href="ass1/webfiles/Plan1.pdf">Plan1.pdf</a></td>
+                    </tr>
+                    <tr>
+                        <td class="childTd">Project Plan</td>
+                        <td><a href="ass1/webfiles/ProjectPlan.pdf">ProjectPlan.pdf</a></td>
+                    </tr>
+                    <tr>
+                        <td>5. Risk Assessment & Mitigation</td>
+                        <td><a href="ass1/webfiles/Risk1.pdf">Risk1.pdf</a></td>
+                    </tr></a>
+                </table>
+        
+                <table>
+                    <tr class="titleRow"><td colspan="2"><h2>Associated files</h2></td></tr>
+                    <tr>
+                        <td width="300px">SEPR Assessment Breif</td>
+                        <td><a href="ass1/webfiles/SEPR-Team-Assessments-1.pdf">SEPR-Team-Assessments-1.pdf</a></td>
+                    </tr>
+                    <tr>
+                        <td>SEPR Scenario Breif</td>
+                        <td><a href="ass1/webfiles/SEPR2016-17Scenario2.pdf">SEPR2016-17Scenario2.pdf.pdf</a></td>
+                    </tr>
+                </table>
+          	</div>
         </div>
         
         
     </div><div class="quarter minimised" id="ass2">
-    	<div class="content">
+    	<div class="ass-content">
         	<h2>Assessment 2</h2>
         	<div>
 	        	<p>Content TBA.</p>
@@ -38,7 +88,7 @@
         
         
     </div><div class="quarter minimised" id="ass3">
-    	<div class="content">
+    	<div class="ass-content">
         <h2>Assessment 3</h2>
         	<div>
                 <p>Content TBA.</p>
@@ -48,7 +98,7 @@
         
         
     </div><div class="quarter minimised" id="ass4">
-    	<div class="content">
+    	<div class="ass-content">
         	<h2>Assessment 4</h2>
             <div>
                 <p>Content TBA.</p>
@@ -74,12 +124,12 @@
     	<h2>About the Wedunnit Collective</h2>
         <table>
         	<tr>
-            	<td><img src="webfiles/photo1.jpg" alt="Miguel" /></td>
-                <td><img src="webfiles/photo2.jpg" alt="Simon" /></td>
-                <td><img src="webfiles/photo3.jpg" alt="Toby" /></td>
-                <td><img src="webfiles/photo4.jpg" alt="Will" /></td>
-                <td><img src="webfiles/photo5.jpg" alt="Connor" /></td>
-                <td><img src="webfiles/photo6.jpg" alt="Aimee" /></td>
+            	<td><img src="webfiles/photo1s.png" alt="Miguel" onmouseover="this.src='webfiles/photo1.png'" onmouseout="this.src='webfiles/photo1s.png'"/></td>
+                <td><img src="webfiles/photo2s.png" alt="Simon" onmouseover="this.src='webfiles/photo2.png'" onmouseout="this.src='webfiles/photo2s.png'"/></td>
+                <td><img src="webfiles/photo3s.png" alt="Toby" onmouseover="this.src='webfiles/photo3.png'" onmouseout="this.src='webfiles/photo3s.png'"/></td>
+                <td><img src="webfiles/photo4s.png" alt="Will" onmouseover="this.src='webfiles/photo4.png'" onmouseout="this.src='webfiles/photo4s.png'"/></td>
+                <td><img src="webfiles/photo5s.png" alt="Connor" onmouseover="this.src='webfiles/photo5.png'" onmouseout="this.src='webfiles/photo5s.png'"/></td>
+                <td><img src="webfiles/photo6s.png" alt="Aimee" onmouseover="this.src='webfiles/photo6.png'" onmouseout="this.src='webfiles/photo6s.png'"/></td>
            	</tr>
             <tr>
          		<td>Miguel Cadogan</td>
@@ -135,7 +185,7 @@
         });
 	</script>
     
-	<script>	/* -- SMOKE GENERATION -- */
+	<!--<script>	/* -- SMOKE GENERATION ATTEMPT 1 WITH JQUERY (TOO INTENSIVE) -- */
 		var canvas = document.getElementById('smokeBox')
 		var ctx = canvas.getContext('2d')
 		canvas.width = 800
@@ -148,8 +198,15 @@
 				smoke.addsmoke(i,$(window).height()+300,100)
 			}
 		}, 800)	
- 	</script>
-   
+ 	</script>-->
+	
+    
+    <!-- SMOKE GENERATION ATTEMPT 2 WITH CSS3 and SVG MASKS (COULDNT GET MASK TO WORK)--
+    <div class="smokeDiv">
+        <div class="clouds_one"></div>
+        <div class="clouds_two"></div>
+        <div class="clouds_three"></div>
+  	</div>-->
    
    
     <script> /* -- FLICKERING LIGHTBULB -- */

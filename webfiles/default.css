@@ -13,6 +13,7 @@ p, td{
   font-family:"Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
   font-size:20px;
   color:black;
+  margin:0;
 }
 h1{
   font-size:60px;
@@ -221,16 +222,12 @@ html{background-color:#414141;}
   height:100%;
   display:inline-block;
   vertical-align:top;
-  overflow:hidden;
-  
+  overflow:scroll;
 	  
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
-}
-.quarter h2{
-  margin-top:50px;
 }
 
 h2{
@@ -250,8 +247,8 @@ h2{
 #ass3:hover{background-color:#53465A;}
 #ass4:hover{background-color:#38563F}
 
-.content{
-  margin-top:130px;
+.ass-content{
+  margin-top:170px;
   padding: 0 35px;
   display:inline-block;
 }
@@ -270,3 +267,172 @@ h2{
   height:350px;
   font-size:60px;
   }
+
+ /*-- - - - - - - - - - ASSESSMENT QUARTERS - - - - - - - - - - - - --*/
+.ass-wrapper{
+	z-index:2;
+}
+
+table{
+	border:1px solid black;
+	display:block;
+	margin: 0 auto 20px auto;
+	background: rgba(255,255,255,0.2);
+	padding:10px;
+	z-index:2;
+}
+
+ td{padding:5px;}
+		
+.childTd{
+	color:rgba(66,53,53,1.00);
+	padding-left:40px;
+	font-size:18px;
+}
+
+
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+/* SMOKE AND SCROLLING/ SVG MASKS (COULDNT GET IT TO WORK)*/
+.smokeDiv {
+  height: 50%;
+  pointer-events:none;
+  position:absolute;
+  bottom:0;
+  width:100%;
+  overflow: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  
+}
+.clouds_one {
+  background: url("http://montanaflynn.me/lab/css-clouds/images/cloud_one.png");
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 300%;
+  width: 100%;
+  -webkit-animation: cloud_one 50s linear infinite;
+  -moz-animation: cloud_one 50s linear infinite;
+  -o-animation: cloud_one 50s linear infinite;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0)
+}
+
+.clouds_two {
+  background: url("http://montanaflynn.me/lab/css-clouds/images/cloud_two.png");
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 300%;
+  width: 100%;
+  -webkit-animation: cloud_two 75s linear infinite;
+  -moz-animation: cloud_two 75s linear infinite;
+  -o-animation: cloud_two 75s linear infinite;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0)
+}
+
+.clouds_three {
+  background: url("http://montanaflynn.me/lab/css-clouds/images/cloud_three.png");
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 300%;
+  width: 100%;
+  -webkit-animation: cloud_three 100s linear infinite;
+  -moz-animation: cloud_three 100s linear infinite;
+  -o-animation: cloud_three 100s linear infinite;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0)
+}
+
+
+@-webkit-keyframes cloud_one {
+  0% {
+    top: 0
+  }
+  100% {
+    top: -200%
+  }
+}
+
+@-webkit-keyframes cloud_two {
+  0% {
+    top: 0
+  }
+  100% {
+    top: -200%
+  }
+}
+
+@-webkit-keyframes cloud_three {
+  0% {
+    top: 0
+  }
+  100% {
+    top: -200%
+  }
+}
+
+@-moz-keyframes sky_background {
+  0% {
+    background: #007fd5;
+    color: #007fd5
+  }
+  50% {
+    background: #000;
+    color: #a3d9ff
+  }
+  100% {
+    background: #007fd5;
+    color: #007fd5
+  }
+}
+
+
+@-moz-keyframes cloud_one {
+  0% {
+    top: 0
+  }
+  100% {
+    top: -200%
+  }
+}
+
+@-moz-keyframes cloud_two {
+  0% {
+    top: 0
+  }
+  100% {
+    top: -200%
+  }
+}
+
+@-moz-keyframes cloud_three {
+  0% {
+    top: 0
+  }
+  100% {
+    top: -200%
+  }
+}
