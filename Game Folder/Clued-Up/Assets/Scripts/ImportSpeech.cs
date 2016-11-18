@@ -10,6 +10,7 @@ public class ImportSpeech : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		Pos = 0;
 		SpeechList = new ArrayList ();	// Make sure speeck starts as an empty list
 		AssetText = asset.text; 		// Read the file
 		AssetText = asset.text.Replace ("\n", "");	// Purge all newline chars
@@ -31,12 +32,33 @@ public class ImportSpeech : MonoBehaviour {
 	}
 
 	string Ping () {
-		Pos += 1; // TODO: HANDLE POS > LEN
-		return SpeechList[Pos - 1].ToString();
+		if (0 <= Pos && Pos < SpeechList.Count) {
+			string ReturnString = SpeechList [Pos].ToString ();
+			Pos += 1;
+			return ReturnString;
+		} else if (Pos >= SpeechList.Count) {
+			Pos = 0;
+			string NullString = null;
+			return NullString;
+		} else {
+			throw new UnityException ("ERROR: Ping Position is underneath SpeechList?");
+		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	void TestScript(){
+		string InString = Ping ();
+		GUIText btnText = gameObject.GetComponentInChildren (typeof(GUIText)) as GUIText;
+		if (InString == null) {
+			transform.position = new Vector3 (0, 0, 0);
+			btnText.text = "~~END OF MESSAGE~~";
+		} else if (InString [0].ToString() == "£") {
+			transform.position = new Vector3 (-50, 0, 0);
+			btnText.text = InString.Substring (1, InString.Length - 1);
+		} else if (InString [0].ToString() == "$") {
+			transform.position = new Vector3 (50, 0, 0);
+			btnText.text = InString.Substring (1, InString.Length - 1);
+		} else {
+			throw new UnityException ("ERROR: What in the fuck is " + InString);
+		}
 	}
 }
