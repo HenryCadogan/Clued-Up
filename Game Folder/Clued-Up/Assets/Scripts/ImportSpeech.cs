@@ -7,18 +7,24 @@ public class ImportSpeech : MonoBehaviour {
 	private string AssetText;
 	private ArrayList SpeechList;
 	private int Pos;
+	private int Index;
 
 	// Use this for initialization
 	void Start () {
 		Pos = 0;
+		Debug.Log("WE GOT TO HERE");
 		SpeechList = new ArrayList ();	// Make sure speeck starts as an empty list
+		Debug.Log("GOT THIS SWEET ARRAYLIST");
 		AssetText = asset.text; 		// Read the file
+		Debug.Log("GOT THIS SWEET ASSETTEXT");
 		AssetText = asset.text.Replace ("\n", "");	// Purge all newline chars
+		Debug.Log("FUCK THE FUCK OFF NEWLINES");
 		while (AssetText.Length > 0) {
-			int Index = -1;
+			Index = -1;
 			string TestString = AssetText.Substring (1, AssetText.Length - 1); // Ignore the first symbol
-			int PIndex = TestString.IndexOf ("£");
-			int DIndex = TestString.IndexOf ("$");	//Figure out whether a £ or $ is closest
+			Debug.Log(TestString);
+			int PIndex = TestString.IndexOf ("+");
+			int DIndex = TestString.IndexOf ("=");	//Figure out whether a £ or $ is closest
 			if (PIndex < DIndex) {
 				Index = PIndex;
 			} else {
@@ -45,7 +51,7 @@ public class ImportSpeech : MonoBehaviour {
 		}
 	}
 
-	void TestScript(){
+	public void TestScript(){
 		string InString = Ping ();
 		GUIText btnText = gameObject.GetComponentInChildren (typeof(GUIText)) as GUIText;
 		if (InString == null) {
