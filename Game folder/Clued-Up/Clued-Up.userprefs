@@ -1,9 +1,9 @@
-﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/NewSceneOnClick.cs">
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/IntroController.cs">
     <Files>
-      <File FileName="../../../Unity Test/Test Project/Assets/PlayerController.cs" Line="1" Column="1" />
-      <File FileName="Assets/NewSceneOnClick.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Story.cs" Line="8" Column="39" />
+      <File FileName="Assets/Scripts/IntroController.cs" Line="26" Column="23" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

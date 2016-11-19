@@ -45,9 +45,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\RainMaker\Prefab\BaseRainScript.cs" />
+     <Compile Include="Assets\RainMaker\Prefab\RainCollision.cs" />
+     <Compile Include="Assets\RainMaker\Prefab\RainScript.cs" />
+     <Compile Include="Assets\RainMaker\Prefab\RainScript2D.cs" />
+     <Compile Include="Assets\Realistic Hail Set\Demo Scene\Scripts\DemoSceneController.cs" />
+     <Compile Include="Assets\Scripts\IntroController.cs" />
      <Compile Include="Assets\Scripts\NewSceneOnClick.cs" />
      <Compile Include="Assets\Scripts\QuitOnClick.cs" />
+     <Compile Include="Assets\Scripts\Story.cs" />
      <Compile Include="Assets\Scripts\hello.cs" />
+     <None Include="Assets\Realistic Hail Set\README.txt" />
+     <None Include="Assets\RainMaker\Prefab\RainShader.shader" />
+     <None Include="Assets\RainMaker\Readme.txt" />
  <Reference Include="UnityEngine.Networking">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
