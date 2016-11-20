@@ -2,9 +2,31 @@
 using System.Collections;
 
 public class Story : MonoBehaviour {
+
+	//Makes the object persistant throughout scenes
+	public static Story Instance;
+
+	void Awake ()   
+	{
+		if (Instance == null)
+		{
+			DontDestroyOnLoad(gameObject);
+			Instance = this;
+		}
+		else if (Instance != this)
+		{
+			Destroy (gameObject);
+		}
+	}
+
+
+
+
 	private int weather; // 0 = sunny, 1 = rainy, 2 = sunset, 3 = snowy
+	private int detective; // int set by user in character selection
 
 	public string getIntro1(){
+		//returns first sentence of introduction
 		string weatherString;
 		switch (weather) {
 		case 0:
@@ -28,17 +50,26 @@ public class Story : MonoBehaviour {
 	}
 
 	public string getIntro2(){
+		//returns second sentence of introduction
 		string intro2 = "A loud shreik and thud allerted the guests to find a dead body on the ground outside. There had been a murder.";
 		return intro2;
 	}
 
 	public string getIntro3(){
+		//returns third sentence of introduction
 		string intro3 = "But whodunnit? Only you can find the truth.";
 		return intro3;
 	}
-
+		
 	public int setWeather(Material[] ma){
+		//sets weather condition to random int within range of array of all possible weather conditions, and returns this int.
 		weather = Random.Range (0, ma.Length);
 		return weather;
+	}
+
+	public void setDetective(int detectiveInt){
+		//sets detective to int chosen by user in Character Selection
+		detective = detectiveInt;
+		Debug.Log ("You have chosen dectective " + detective.ToString ());
 	}
 }

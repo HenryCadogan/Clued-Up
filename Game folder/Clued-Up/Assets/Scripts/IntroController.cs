@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class IntroController : MonoBehaviour {
 	public GameObject audioSource;
@@ -42,8 +43,9 @@ public class IntroController : MonoBehaviour {
 		yield return new WaitForSeconds(4f);
 		fadeText (0f, 3.5f);
 		overlayPanel.GetComponent<Image> ().CrossFadeAlpha (1f, 4f, false);
+		yield return new WaitForSeconds(4f); //wait for the overlay to fade in entirely
 
-
+		SceneManager.LoadScene (2);	//loads character selection scene
 
 	}
 
