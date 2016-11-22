@@ -18,30 +18,36 @@ public class ImportSpeech : MonoBehaviour {
 		Debug.Log("GOT THIS SWEET ARRAYLIST");
 		AssetText = asset.text; 		// Read the file
 		Debug.Log("GOT THIS SWEET ASSETTEXT");
-		AssetText = asset.text.Replace ("\n", "");	// Purge all newline chars
+		AssetText = AssetText.Replace("\r", "").Replace("\n", "");	// Purge all newline chars
 		Debug.Log("FUCK THE FUCK OFF NEWLINES");
-		//while (AssetText.Length > 0) {
-		for (int i = 1; i <= 2; i++) {
+		while (AssetText.Length > 0) {
+		//for (int i = 1; i <= 6; i++) {
 			Index = -1;
 			Debug.Log("I DID AN INDEX");
-			Debug.Log (AssetText + AssetText.Length.ToString());
 			string TestString = AssetText;
 			TestString = TestString.Substring (1, TestString.Length - 1);// Ignore the first symbol
-			Debug.Log(TestString);
+			Debug.Log(TestString + TestString.Length.ToString());
 			int PIndex = TestString.IndexOf ("(");
 			int DIndex = TestString.IndexOf (")");	//Figure out whether a £ or $ is closest
-			if (PIndex < DIndex) {
+			if (PIndex < DIndex && PIndex > 0) {
 				Index = PIndex;
-			} else {
+			} else if (DIndex > 0) { 
 				Index = DIndex;		// Store its position
 			}
-			Debug.Log (Index);
-			string Substring = AssetText.Substring (0, DIndex);	// Get the substring from it
-			Debug.Log(Substring);
-			SpeechList.Add (Substring); 						// Add to the arraylist
-			string TempText = AssetText.Substring (Index, AssetText.Length - Index);
-			AssetText = TempText;
-			Debug.Log (AssetText);
+			Debug.Log (Index.ToString () + " " + PIndex.ToString () + " " + DIndex.ToString ());
+			if (Index != -1) {
+				string Substring = AssetText.Substring (0, Index + 1);	// Get the substring from it
+				Debug.Log (Substring);
+				SpeechList.Add (Substring); 						// Add to the arraylist
+				string TempText = AssetText.Substring (Index + 1, AssetText.Length - Index - 1);
+				AssetText = TempText;
+			} else {
+				string Substring = AssetText;
+				Debug.Log (Substring);
+				SpeechList.Add (Substring);
+				AssetText = "";
+			}
+			Debug.Log (AssetText.Length.ToString ());
 			//yield return new WaitForSeconds (1);
 																// Remove parsed string
 		}
