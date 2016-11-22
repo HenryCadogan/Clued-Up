@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-sceneSetups: []
-=======
 sceneSetups:
-- path: Assets/IntroAndInit.unity
+- path: Assets/Room1.unity
   isLoaded: 1
   isActive: 1
->>>>>>> menu
