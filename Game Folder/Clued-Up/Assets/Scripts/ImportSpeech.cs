@@ -11,28 +11,38 @@ public class ImportSpeech : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		Debug.Log("STARTED FROM THE BOTTOM");
 		Pos = 0;
-		Debug.Log("WE GOT TO HERE");
+		Debug.Log("NOW WE HERE");
 		SpeechList = new ArrayList ();	// Make sure speeck starts as an empty list
 		Debug.Log("GOT THIS SWEET ARRAYLIST");
 		AssetText = asset.text; 		// Read the file
 		Debug.Log("GOT THIS SWEET ASSETTEXT");
 		AssetText = asset.text.Replace ("\n", "");	// Purge all newline chars
 		Debug.Log("FUCK THE FUCK OFF NEWLINES");
-		while (AssetText.Length > 0) {
+		//while (AssetText.Length > 0) {
+		for (int i = 1; i <= 2; i++) {
 			Index = -1;
-			string TestString = AssetText.Substring (1, AssetText.Length - 1); // Ignore the first symbol
+			Debug.Log("I DID AN INDEX");
+			Debug.Log (AssetText + AssetText.Length.ToString());
+			string TestString = AssetText;
+			TestString = TestString.Substring (1, TestString.Length - 1);// Ignore the first symbol
 			Debug.Log(TestString);
-			int PIndex = TestString.IndexOf ("+");
-			int DIndex = TestString.IndexOf ("=");	//Figure out whether a £ or $ is closest
+			int PIndex = TestString.IndexOf ("(");
+			int DIndex = TestString.IndexOf (")");	//Figure out whether a £ or $ is closest
 			if (PIndex < DIndex) {
 				Index = PIndex;
 			} else {
 				Index = DIndex;		// Store its position
 			}
+			Debug.Log (Index);
 			string Substring = AssetText.Substring (0, DIndex);	// Get the substring from it
+			Debug.Log(Substring);
 			SpeechList.Add (Substring); 						// Add to the arraylist
-			AssetText = AssetText.Substring (Index, AssetText.Length - Index);
+			string TempText = AssetText.Substring (Index, AssetText.Length - Index);
+			AssetText = TempText;
+			Debug.Log (AssetText);
+			//yield return new WaitForSeconds (1);
 																// Remove parsed string
 		}
 	}
@@ -57,10 +67,10 @@ public class ImportSpeech : MonoBehaviour {
 		if (InString == null) {
 			transform.position = new Vector3 (0, 0, 0);
 			btnText.text = "~~END OF MESSAGE~~";
-		} else if (InString [0].ToString() == "£") {
+		} else if (InString [0].ToString() == "(") {
 			transform.position = new Vector3 (-50, 0, 0);
 			btnText.text = InString.Substring (1, InString.Length - 1);
-		} else if (InString [0].ToString() == "$") {
+		} else if (InString [0].ToString() == ")") {
 			transform.position = new Vector3 (50, 0, 0);
 			btnText.text = InString.Substring (1, InString.Length - 1);
 		} else {
