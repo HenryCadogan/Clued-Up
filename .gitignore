@@ -34,3 +34,8 @@ sysinfo.txt
 ehthumbs.db
 [Tt]humbs.db
 [Dd]esktop.ini
+
+##Trying something out'##
+ $PROJDIR/Temp/
+ $PROJDIR/Library/
+ $PROJDIR/Obj/
