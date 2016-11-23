@@ -67,6 +67,10 @@ public class Story : MonoBehaviour {
 		return weather;
 	}
 
+	public int getWeather(){
+		return weather;
+	}
+
 	public void setDetective(int detectiveInt){
 		//sets detective to int chosen by user in Character Selection
 		detective = detectiveInt;

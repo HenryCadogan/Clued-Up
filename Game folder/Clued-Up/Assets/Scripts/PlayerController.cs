@@ -19,19 +19,15 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	IEnumerator TimedWalkIn(){
-		yield return new WaitForSeconds (2);
-		anim.SetBool ("walking", false);
-	}
-
 	void Start () {
 		anim = gameObject.GetComponentInChildren<Animator> (); // Finds the animator that controls this object
-		StartCoroutine("TimedWalkIn"); //as the character walks in, time the enterence and stop it walking
 	}
 
 	// Update is called once per frame
 	void Update () {
 		// Walking annimations triggered if keys pressed
+
+
 		if (Input.GetKey ("right")) {
 			if (direction != "right") {	//if previous direction is left or down, then turn the player
 				turnPlayer ("right");
