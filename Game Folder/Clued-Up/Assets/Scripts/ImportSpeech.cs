@@ -1,9 +1,13 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class ImportSpeech : MonoBehaviour {
 
 	public TextAsset asset;  // POINT THIS AT THE TEXT FILE YOU WANT
+	public Vector3 LeftPos;  // THIS CO-ORDINATE WANTS TO BE WHERE YOU WANT ( TO APPEAR
+	public Vector3 RightPos;   // SAME BUT FOR )
+	public Vector3 NeutralPos; // SAME BUT FOR WHEN YOU'RE DONE
 	private string AssetText;
 	private ArrayList SpeechList;
 	private int Pos;
@@ -11,49 +15,39 @@ public class ImportSpeech : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Debug.Log("STARTED FROM THE BOTTOM");
 		Pos = 0;
-		Debug.Log("NOW WE HERE");
 		SpeechList = new ArrayList ();	// Make sure speeck starts as an empty list
-		Debug.Log("GOT THIS SWEET ARRAYLIST");
 		AssetText = asset.text; 		// Read the file
-		Debug.Log("GOT THIS SWEET ASSETTEXT");
 		AssetText = AssetText.Replace("\r", "").Replace("\n", "");	// Purge all newline chars
-		Debug.Log("FUCK THE FUCK OFF NEWLINES");
 		while (AssetText.Length > 0) {
-		//for (int i = 1; i <= 6; i++) {
+		//for (int i = 1; i <= 6; i++) {    //IGNORE THIS LINE IT'S FOR TEST PURPOSES
 			Index = -1;
-			Debug.Log("I DID AN INDEX");
 			string TestString = AssetText;
 			TestString = TestString.Substring (1, TestString.Length - 1);// Ignore the first symbol
-			Debug.Log(TestString + TestString.Length.ToString());
 			int PIndex = TestString.IndexOf ("(");
-			int DIndex = TestString.IndexOf (")");	//Figure out whether a £ or $ is closest
+			int DIndex = TestString.IndexOf (")");	//Figure out whether a ( or ) is closest
 			if (PIndex < DIndex && PIndex > 0) {
 				Index = PIndex;
 			} else if (DIndex > 0) { 
 				Index = DIndex;		// Store its position
 			}
-			Debug.Log (Index.ToString () + " " + PIndex.ToString () + " " + DIndex.ToString ());
-			if (Index != -1) {
+			if (Index != -1) {		// If we found a ( or )
 				string Substring = AssetText.Substring (0, Index + 1);	// Get the substring from it
-				Debug.Log (Substring);
 				SpeechList.Add (Substring); 						// Add to the arraylist
 				string TempText = AssetText.Substring (Index + 1, AssetText.Length - Index - 1);
-				AssetText = TempText;
-			} else {
+				AssetText = TempText;					// Repeat with the rest of the string
+			} else {							// If there isn't one...
 				string Substring = AssetText;
-				Debug.Log (Substring);
-				SpeechList.Add (Substring);
-				AssetText = "";
+				SpeechList.Add (Substring);		// The rest of the string gets added to the arraylist
+				AssetText = "";		// Then clear out the text
 			}
-			Debug.Log (AssetText.Length.ToString ());
-			//yield return new WaitForSeconds (1);
-																// Remove parsed string
 		}
 	}
 
-	string Ping () {
+
+	// tl;cbacommenting: Everytime you call Ping() it will return the next line of the arraylist
+	// When it's done you get a null string, which can be interpreted as required
+	public string Ping () {
 		if (0 <= Pos && Pos < SpeechList.Count) {
 			string ReturnString = SpeechList [Pos].ToString ();
 			Pos += 1;
@@ -67,18 +61,20 @@ public class ImportSpeech : MonoBehaviour {
 		}
 	}
 
+	//This shit is gonna be rewritten into something relevent it's just here for demonstration
 	public void TestScript(){
 		string InString = Ping ();
-		GUIText btnText = gameObject.GetComponentInChildren (typeof(GUIText)) as GUIText;
 		if (InString == null) {
-			transform.position = new Vector3 (0, 0, 0);
-			btnText.text = "~~END OF MESSAGE~~";
+			transform.position = NeutralPos;
+			GetComponentInChildren<Text>().text = "~~END OF MESSAGE~~";
 		} else if (InString [0].ToString() == "(") {
-			transform.position = new Vector3 (-50, 0, 0);
-			btnText.text = InString.Substring (1, InString.Length - 1);
+			transform.position = LeftPos;
+			string MemeString = InString.Substring (1, InString.Length - 1);
+			GetComponentInChildren<Text>().text = MemeString;
 		} else if (InString [0].ToString() == ")") {
-			transform.position = new Vector3 (50, 0, 0);
-			btnText.text = InString.Substring (1, InString.Length - 1);
+			transform.position = RightPos;
+			string MemeString = InString.Substring (1, InString.Length - 1);
+			GetComponentInChildren<Text>().text = MemeString;
 		} else {
 			throw new UnityException ("ERROR: What in the fuck is " + InString);
 		}
