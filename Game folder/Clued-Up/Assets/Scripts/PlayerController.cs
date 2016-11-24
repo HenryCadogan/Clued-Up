@@ -49,5 +49,16 @@ public class PlayerController : MonoBehaviour {
 		} else {
 			anim.SetBool ("walking", false);
 		}	
+
+		if (Time.timeSinceLevelLoad > 1){	//if enough time has passed to allow detective to walk on then clamp to certain range
+			Vector3 pos = this.transform.position;
+			pos.x = Mathf.Clamp (this.transform.position.x, -7.5f, 7.5f);
+			pos.z = Mathf.Clamp (this.transform.position.x, 4.5f, 5.5f); //leeway on z position. but cannot walk forward
+			this.transform.position = pos;
+		}
+
+
+
+
 	}
 }
