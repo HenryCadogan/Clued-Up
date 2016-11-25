@@ -4,6 +4,10 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 
 	private Animator anim;
+	public float minX;
+	public float maxX;
+	public float maxZ;
+
 	private string direction = "right";
 
 
@@ -52,8 +56,8 @@ public class PlayerController : MonoBehaviour {
 
 		if (Time.timeSinceLevelLoad > 1){	//if enough time has passed to allow detective to walk on then clamp to certain range
 			Vector3 pos = this.transform.position;
-			pos.x = Mathf.Clamp (this.transform.position.x, -7.5f, 7.5f);
-			pos.z = Mathf.Clamp (this.transform.position.x, 4.5f, 5.5f); //leeway on z position. but cannot walk forward
+			pos.x = Mathf.Clamp (this.transform.position.x, minX, maxX);
+			pos.z = Mathf.Clamp (this.transform.position.x, maxZ, maxZ); //leeway on z position. but cannot walk forward
 			this.transform.position = pos;
 		}
 
