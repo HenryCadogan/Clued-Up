@@ -2,9 +2,21 @@ language: objective-c
 osx_image: xcode8.1
 rvm:
 - 2.3.1
+branches:
+  except:
+    - gh-pages
+env:
+  global:
+    - GH_REPO_NAME: Clued-up
+    - DOXYFILE: $TRAVIS_BUILD_DIR/Scripts/doxygen.config
+    - PROJECT_FILE: "$TRAVIS_BUILD_DIR/Game/Clued-Up"
+    - GH_REPO_REF: github.com/HenryCadogan/Clued-up.git
 before_install:
+- brew update
+- brew install doxygen
 - chmod +x ./Scripts/install.sh
 - chmod +x ./Scripts/build.sh
+- chmod +x ./Scripts/documentation.sh
 install:
 - ./Scripts/install.sh
 script:
