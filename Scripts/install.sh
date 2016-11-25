@@ -17,7 +17,7 @@ download() {
 	curl -o `basename "$package"` "$url"
 }
 
-install() {
+install_package() {
 	# This is the first (and only) parameter passed to this function, and represents the file name
 	package=$1
 	# Call to download the specified package
@@ -29,7 +29,7 @@ install() {
 }
 
 # The files needed for this to work, the Unity editor itself and then the target machine compilers
-install "MacEditorInstaller/Unity-$VERSION.pkg"
-install "MacEditorTargetInstaller/UnitySetup-Windows-Support-for-Editor-$VERSION.pkg"
-install "MacEditorTargetInstaller/UnitySetup-Mac-Support-for-Editor-$VERSION.pkg"
-install "MacEditorTargetInstaller/UnitySetup-Linux-Support-for-Editor-$VERSION.pkg"
+install_package "MacEditorInstaller/Unity-$VERSION.pkg"
+install_package "MacEditorTargetInstaller/UnitySetup-Windows-Support-for-Editor-$VERSION.pkg"
+install_package "MacEditorTargetInstaller/UnitySetup-Mac-Support-for-Editor-$VERSION.pkg"
+install_package "MacEditorTargetInstaller/UnitySetup-Linux-Support-for-Editor-$VERSION.pkg"
