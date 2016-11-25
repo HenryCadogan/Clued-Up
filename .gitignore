@@ -1,10 +1,10 @@
 # =============== #
 # Unity generated #
 # =============== #
-[Tt]emp/
-[Oo]bj/
-[Bb]uild
-Game Folder/Clued-Up/[Ll]ibrary/
+Temp/
+Obj/
+Build
+Game/Clued-Up/Library/
 sysinfo.txt
 *.stackdump
  
