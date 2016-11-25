@@ -4,6 +4,10 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 
 	private Animator anim;
+	public float minX;
+	public float maxX;
+	public float maxZ;
+
 	private string direction = "right";
 
 
@@ -19,19 +23,15 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	IEnumerator TimedWalkIn(){
-		yield return new WaitForSeconds (2);
-		anim.SetBool ("walking", false);
-	}
-
 	void Start () {
 		anim = gameObject.GetComponentInChildren<Animator> (); // Finds the animator that controls this object
-		StartCoroutine("TimedWalkIn"); //as the character walks in, time the enterence and stop it walking
 	}
 
 	// Update is called once per frame
 	void Update () {
 		// Walking annimations triggered if keys pressed
+
+
 		if (Input.GetKey ("right")) {
 			if (direction != "right") {	//if previous direction is left or down, then turn the player
 				turnPlayer ("right");
@@ -53,5 +53,16 @@ public class PlayerController : MonoBehaviour {
 		} else {
 			anim.SetBool ("walking", false);
 		}	
+
+		if (Time.timeSinceLevelLoad > 1){	//if enough time has passed to allow detective to walk on then clamp to certain range
+			Vector3 pos = this.transform.position;
+			pos.x = Mathf.Clamp (this.transform.position.x, minX, maxX);
+			pos.z = Mathf.Clamp (this.transform.position.x, maxZ, maxZ); //leeway on z position. but cannot walk forward
+			this.transform.position = pos;
+		}
+
+
+
+
 	}
 }

@@ -1,12 +1,16 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 using System.Collections;
 
 public class Story : MonoBehaviour {
+	public static Story Instance;//Makes the object persistant throughout scenes
 
+
+	private int weather = 3; // 0 = sunny, 1 = rainy, 2 = sunset, 3 = snowy. 0 set for debug
+	private int detective; // int set by user in character selection
+
+	void Awake ()  
 	//Makes the object persistant throughout scenes
-	public static Story Instance;
-
-	void Awake ()   
 	{
 		if (Instance == null)
 		{
@@ -18,12 +22,7 @@ public class Story : MonoBehaviour {
 			Destroy (gameObject);
 		}
 	}
-
-
-
-
-	private int weather; // 0 = sunny, 1 = rainy, 2 = sunset, 3 = snowy
-	private int detective; // int set by user in character selection
+		
 
 	public string getIntro1(){
 		//returns first sentence of introduction
@@ -64,6 +63,10 @@ public class Story : MonoBehaviour {
 	public int setWeather(Material[] ma){
 		//sets weather condition to random int within range of array of all possible weather conditions, and returns this int.
 		weather = Random.Range (0, ma.Length);
+		return weather;
+	}
+
+	public int getWeather(){
 		return weather;
 	}
 

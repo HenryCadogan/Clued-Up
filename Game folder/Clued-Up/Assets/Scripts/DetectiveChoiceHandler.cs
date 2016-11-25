@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class DetectiveChoiceHandler : MonoBehaviour {
 	public GameObject characterDescriptionsObject;
@@ -11,6 +12,7 @@ public class DetectiveChoiceHandler : MonoBehaviour {
 	public void chooseDetective(){
 		//Sets detective in story to the one the player is viewing the description of after they click the confirm button
 		story.setDetective(currentlyActive);
+		SceneManager.LoadScene (3); //loads room1/ lakeside
 	}
 
 	public void displayInformation(int detective){
