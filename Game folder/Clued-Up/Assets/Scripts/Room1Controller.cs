@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Room1Controller : MonoBehaviour {
 	public GameObject backgroundPane;
@@ -46,6 +47,12 @@ public class Room1Controller : MonoBehaviour {
 		}
 	}
 
+	private void setOverlay(){
+		//turns on overlay panel, fades out
+		overlayPanel.SetActive (true);
+		overlayPanel.GetComponent<Image>().CrossFadeAlpha(0f,3f,false);
+	}
+
 	void Start () {
 		story = GameObject.Find("Story").GetComponent<Story>(); // references persistant object story
 
@@ -60,12 +67,8 @@ public class Room1Controller : MonoBehaviour {
 		materialArray[6] = (Material)Resources.Load("Room1FSunset", typeof(Material));
 		materialArray[7] = (Material)Resources.Load("Room1FSnow", typeof(Material));
 
+		setOverlay ();
 		setBackground (materialArray);
 		setLights ();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
 	}
 }

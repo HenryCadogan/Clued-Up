@@ -51,6 +51,7 @@
      <Compile Include="Assets\RainMaker\Prefab\RainScript2D.cs" />
      <Compile Include="Assets\Realistic Hail Set\Demo Scene\Scripts\DemoSceneController.cs" />
      <Compile Include="Assets\Scripts\DetectiveChoiceHandler.cs" />
+     <Compile Include="Assets\Scripts\HUDController.cs" />
      <Compile Include="Assets\Scripts\IntroController.cs" />
      <Compile Include="Assets\Scripts\NewSceneOnClick.cs" />
      <Compile Include="Assets\Scripts\OverlayPanelFader.cs" />
