@@ -9,7 +9,7 @@ env:
   global:
     - GH_REPO_NAME: Clued-up
     - DOXYFILE: $TRAVIS_BUILD_DIR/Scripts/doxygen.config
-    - PROJECT_FILE: "$TRAVIS_BUILD_DIR/Game Folder/Clued-Up"
+    - PROJECT_FILE: "$TRAVIS_BUILD_DIR/Game/Clued-Up"
     - GH_REPO_REF: github.com/HenryCadogan/Clued-up.git
 before_install:
 - brew update

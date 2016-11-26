@@ -8,7 +8,7 @@ echo "Attempting to build $project for Windows x64"
   -nographics \
   -silent-crashes \
   -logFile $(pwd)/unity.log \
-  -projectPath "$(pwd)/Game folder/Clued-Up" \
+  -projectPath "$(pwd)/Game/Clued-Up" \
   -buildWindows64Player "$(pwd)/Build/windows64/$project.exe" \
   -quit
   
@@ -18,7 +18,7 @@ echo "Attempting to build $project for Windows"
   -nographics \
   -silent-crashes \
   -logFile $(pwd)/unity.log \
-  -projectPath "$(pwd)/Game folder/Clued-Up" \
+  -projectPath "$(pwd)/Game/Clued-Up" \
   -buildWindowsPlayer "$(pwd)/Build/windows32/$project.exe" \
   -quit
 
@@ -28,7 +28,7 @@ echo "Attempting to build $project for OS X"
   -nographics \
   -silent-crashes \
   -logFile $(pwd)/unity.log \
-  -projectPath "$(pwd)/Game folder/Clued-Up" \
+  -projectPath "$(pwd)/Game/Clued-Up" \
   -buildOSXUniversalPlayer "$(pwd)/Build/osx/$project.app" \
   -quit
 
@@ -38,7 +38,7 @@ echo "Attempting to build $project for Linux"
   -nographics \
   -silent-crashes \
   -logFile $(pwd)/unity.log \
-  -projectPath "$(pwd)/Game folder/Clued-Up" \
+  -projectPath "$(pwd)/Game/Clued-Up" \
   -buildLinuxUniversalPlayer "$(pwd)/Build/linux/$project.exe" \
   -quit
 
