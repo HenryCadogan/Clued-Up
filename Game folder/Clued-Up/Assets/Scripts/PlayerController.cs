@@ -2,6 +2,8 @@
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
+	//Class that handles movement of the character, as well as inventory
+
 
 	private Animator anim;
 	public float minX;
@@ -30,7 +32,6 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		// Walking annimations triggered if keys pressed
-
 
 		if (Input.GetKey ("right")) {
 			if (direction != "right") {	//if previous direction is left or down, then turn the player

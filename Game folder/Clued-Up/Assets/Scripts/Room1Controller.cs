@@ -53,6 +53,13 @@ public class Room1Controller : MonoBehaviour {
 		overlayPanel.GetComponent<Image>().CrossFadeAlpha(0f,3f,false);
 	}
 
+	private void setClues(){
+		//instanciates new clue prefab with location & rotation, scales for perspective calls its initialisation method
+		GameObject bodyClue = Instantiate (Resources.Load ("Clue"), new Vector3(1.5f,-5.99f,-1.2f), Quaternion.Euler(90,0,0)) as GameObject;
+		bodyClue.GetComponent<Transform> ().localScale = new Vector3 (1f, 4.5f, 1f);
+		bodyClue.GetComponent<ClueController>().initialise("chalkOutline", "Chalk Outline", "A chalk outline of the deceased.");
+	}
+
 	void Start () {
 		story = GameObject.Find("Story").GetComponent<Story>(); // references persistant object story
 
@@ -70,5 +77,6 @@ public class Room1Controller : MonoBehaviour {
 		setOverlay ();
 		setBackground (materialArray);
 		setLights ();
+		setClues ();
 	}
 }

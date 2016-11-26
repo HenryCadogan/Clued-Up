@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\ClueController.cs" />
      <Compile Include="Assets\RainMaker\Prefab\BaseRainScript.cs" />
      <Compile Include="Assets\RainMaker\Prefab\RainCollision.cs" />
      <Compile Include="Assets\RainMaker\Prefab\RainScript.cs" />
