@@ -4,7 +4,11 @@
 [Tt]emp/
 [Oo]bj/
 [Bb]uild
+<<<<<<< Updated upstream
 Game/Clued-Up/[Ll]ibrary/
+=======
+/Game folder/Clued-Up/[Ll]ibrary/
+>>>>>>> Stashed changes
 sysinfo.txt
 *.stackdump
  
@@ -22,7 +26,6 @@ sysinfo.txt
 /*.unityproj
 /*.booproj
 /.idea*/
-*.pidb.meta
  
 # ============ #
 # OS generated #
