@@ -1,18 +1,42 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+public class Inventory{
+	public Clue[] CollectedClues;
+
+}
+
+
+
+
+
 public class PlayerController : MonoBehaviour {
 	//Class that handles movement of the character, as well as inventory
-
-
-	private Animator anim;
+		
+	public static PlayerController Instance; //Used to make the object persistant throughout scenes
 	public float minX;
 	public float maxX;
 	public float maxZ;
 
 	private string direction = "right";
+	private Inventory inventory;
+	private Animator anim;
 
 
+	void Awake ()  
+	//Makes the object persistant throughout scenes
+	{
+		if (Instance == null)
+		{
+			DontDestroyOnLoad(gameObject);
+			Instance = this;
+		}
+		else if (Instance != this)
+		{
+			Destroy (gameObject);
+		}
+	}
 
 	private void turnPlayer(string direction){
 		//chnages to y rotation of player object depending on the direction it walks
@@ -27,6 +51,7 @@ public class PlayerController : MonoBehaviour {
 
 	void Start () {
 		anim = gameObject.GetComponentInChildren<Animator> (); // Finds the animator that controls this object
+		inventory = new Inventory();
 	}
 
 	// Update is called once per frame

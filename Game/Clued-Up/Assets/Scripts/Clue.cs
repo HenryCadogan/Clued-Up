@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ClueController : MonoBehaviour {
+public class Clue : MonoBehaviour {
 
 	public string longName; //name used in notebook etc. not to be confused with this.name which is the GameObject name
 	public string description;
