@@ -1,14 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 
-public class Inventory{
-	public Clue[] CollectedClues;
+public class Inventory : MonoBehaviour{
+	public List<string> collectedClueNames;
 
+	public bool isCollected(string name){
+		//returns true if the passed name of a clue has been collected
+		return collectedClueNames.Contains (name);
+	}
+
+	public void collect(string name){
+		collectedClueNames.Add (name);
+	}
+
+	public Inventory(){
+		collectedClueNames = new List<string>();
+	}
 }
-
-
-
+	
 
 
 public class PlayerController : MonoBehaviour {
