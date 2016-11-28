@@ -45,15 +45,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\ClueController.cs" />
      <Compile Include="Assets\RainMaker\Prefab\BaseRainScript.cs" />
      <Compile Include="Assets\RainMaker\Prefab\RainCollision.cs" />
      <Compile Include="Assets\RainMaker\Prefab\RainScript.cs" />
      <Compile Include="Assets\RainMaker\Prefab\RainScript2D.cs" />
      <Compile Include="Assets\Realistic Hail Set\Demo Scene\Scripts\DemoSceneController.cs" />
+     <Compile Include="Assets\Scripts\Clue.cs" />
      <Compile Include="Assets\Scripts\DetectiveChoiceHandler.cs" />
      <Compile Include="Assets\Scripts\HUDController.cs" />
      <Compile Include="Assets\Scripts\IntroController.cs" />
+     <Compile Include="Assets\Scripts\Inventory.cs" />
      <Compile Include="Assets\Scripts\NewSceneOnClick.cs" />
      <Compile Include="Assets\Scripts\OverlayPanelFader.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
