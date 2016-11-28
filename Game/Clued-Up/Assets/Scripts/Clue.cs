@@ -15,7 +15,7 @@ public class Clue : MonoBehaviour {
 	private Text cluePanelName;
 	private Text cluePanelDescription;
 	private Image cluePanelImage;
-	private Image overlayPanel;
+	private GameObject overlayPanel;
 	private Inventory inventory;
 	private GameObject hud;
 		
@@ -24,8 +24,12 @@ public class Clue : MonoBehaviour {
 		this.cluePanelName.text = this.longName;
 		this.cluePanelImage.sprite = this.sprite;
 		this.cluePanelDescription.text = this.description;
-		this.overlayPanel.CrossFadeAlpha (0.3f, 0f, false); //change opacity to 0.3 instantaneously
 		this.cluePanel.GetComponent<CanvasGroup>().alpha = 1f; //change opacity to 0.3 instantaneously
+
+		this.overlayPanel.GetComponent<CanvasGroup> ().alpha = 0.5f; //make overlay canvas group visible
+		this.overlayPanel.GetComponent<Image> ().CrossFadeAlpha (1f, 0f, false); //instantaneously fade overlay panel. This is needed becuse initial fade leaves <Image> alpha at 0
+		this.overlayPanel.GetComponent<CanvasGroup> ().blocksRaycasts = true; //make it so nothing else on screen can be interacted with while overlay panel is on
+
 	}		
 
 	void OnMouseDown(){
@@ -49,7 +53,7 @@ public class Clue : MonoBehaviour {
 		this.cluePanelDescription = GameObject.Find ("Description").GetComponent<Text> ();
 		this.cluePanelName = GameObject.Find ("ClueName").GetComponent<Text> ();
 		this.cluePanelImage = GameObject.Find ("ClueImage").GetComponent<Image> ();
-		this.overlayPanel = GameObject.Find ("OverlayPanel").GetComponent<Image> ();
+		this.overlayPanel = GameObject.Find ("OverlayPanel");
 		this.inventory = GameObject.Find ("Detective").GetComponent<Inventory> ();
 		this.hud = GameObject.Find ("HUD");
 
