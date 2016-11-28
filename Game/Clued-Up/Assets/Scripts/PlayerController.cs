@@ -2,28 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
-
-public class Inventory : MonoBehaviour{
-	public List<string> collectedClueNames;
-
-	public bool isCollected(string name){
-		//returns true if the passed name of a clue has been collected
-		return collectedClueNames.Contains (name);
-	}
-
-	public void collect(string name){
-		collectedClueNames.Add (name);
-	}
-
-	public Inventory(){
-		collectedClueNames = new List<string>();
-	}
-}
-	
-
-
 public class PlayerController : MonoBehaviour {
-	//Class that handles movement of the character, as well as inventory
+	//Class that handles movement of the character
 		
 	public static PlayerController Instance; //Used to make the object persistant throughout scenes
 	public float minX;
@@ -31,7 +11,6 @@ public class PlayerController : MonoBehaviour {
 	public float maxZ;
 
 	private string direction = "right";
-	private Inventory inventory;
 	private Animator anim;
 
 
@@ -62,7 +41,6 @@ public class PlayerController : MonoBehaviour {
 
 	void Start () {
 		anim = gameObject.GetComponentInChildren<Animator> (); // Finds the animator that controls this object
-		inventory = new Inventory();
 	}
 
 	// Update is called once per frame

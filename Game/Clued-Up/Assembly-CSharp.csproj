@@ -54,6 +54,7 @@
      <Compile Include="Assets\Scripts\DetectiveChoiceHandler.cs" />
      <Compile Include="Assets\Scripts\HUDController.cs" />
      <Compile Include="Assets\Scripts\IntroController.cs" />
+     <Compile Include="Assets\Scripts\Inventory.cs" />
      <Compile Include="Assets\Scripts\NewSceneOnClick.cs" />
      <Compile Include="Assets\Scripts\OverlayPanelFader.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
