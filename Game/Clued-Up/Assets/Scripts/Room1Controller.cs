@@ -81,6 +81,6 @@ public class Room1Controller : MonoBehaviour {
 		setBackground (materialArray);
 		setLights ();
 		setClues ();
-		GameObject.Find("Detective").GetComponent<PlayerController> ().walkInFrom (false);
+		GameObject.Find("Detective").GetComponent<PlayerController> ().walkInFrom (true);
 	}
 }

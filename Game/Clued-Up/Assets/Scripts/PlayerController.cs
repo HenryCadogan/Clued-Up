@@ -23,15 +23,8 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	IEnumerator walkFor(float time){
-		//Animation handler initialises with walking = true, so this waits and sets it false
-		yield return new WaitForSeconds (time);
-		anim.SetBool ("walking", false);
-	}
-
 	public void walkInFrom(bool isLeft){
 		//Player walks in from a direction called by SceneController scripts
-
 		anim = this.gameObject.GetComponentInChildren<Animator> (); // Initial setup as this is the first called funtion
 
 		if (isLeft) { //if position should be from left
@@ -47,7 +40,6 @@ public class PlayerController : MonoBehaviour {
 			pos.x = 10f;
 			this.transform.position = pos;
 		}
-		StartCoroutine (walkFor (2f));	
 	}
 
 
@@ -77,11 +69,11 @@ public class PlayerController : MonoBehaviour {
 			turnPlayer ("down");
 			direction = "down";
 			anim.SetBool ("walking", false);
-		} else {
+		} else if (Time.timeSinceLevelLoad > 0.6f) { //this value depicts how long detective walks on screen for before stopping
 			anim.SetBool ("walking", false);
 		}	
 
-		if (Time.timeSinceLevelLoad > 2){	//if enough time has passed to allow detective to walk on then clamp to certain range
+		if (Time.timeSinceLevelLoad > 1){	//if enough time has passed to allow detective to walk on then clamp to certain range
 			Vector3 pos = this.transform.position;
 			pos.x = Mathf.Clamp (this.transform.position.x, minX, maxX);
 			pos.z = Mathf.Clamp (this.transform.position.x, maxZ, maxZ); //leeway on z position. but cannot walk forward
