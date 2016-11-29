@@ -4,29 +4,13 @@ using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour {
 	//Class that handles movement of the character
-		
-	public static PlayerController Instance; //Used to make the object persistant throughout scenes
+
 	public float minX;
 	public float maxX;
 	public float maxZ;
 
 	private string direction = "right";
 	private Animator anim;
-
-
-	void Awake ()  
-	//Makes the object persistant throughout scenes
-	{
-		if (Instance == null)
-		{
-			DontDestroyOnLoad(gameObject);
-			Instance = this;
-		}
-		else if (Instance != this)
-		{
-			Destroy (gameObject);
-		}
-	}
 
 	private void turnPlayer(string direction){
 		//chnages to y rotation of player object depending on the direction it walks
@@ -39,9 +23,37 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	void Start () {
-		anim = gameObject.GetComponentInChildren<Animator> (); // Finds the animator that controls this object
+	IEnumerator walkFor(float time){
+		//Animation handler initialises with walking = true, so this waits and sets it false
+		yield return new WaitForSeconds (time);
+		anim.SetBool ("walking", false);
 	}
+
+	public void walkInFrom(bool isLeft){
+		//Player walks in from a direction called by SceneController scripts
+
+		anim = this.gameObject.GetComponentInChildren<Animator> (); // Initial setup as this is the first called funtion
+
+		if (isLeft) { //if position should be from left
+			this.direction = "right";	//sets facing right
+			turnPlayer("right");
+			Vector3 pos = this.transform.position;
+			pos.x = -10f;
+			this.transform.position = pos;
+		} else {
+			this.direction = "left";	//sets facing left
+			turnPlayer("left");
+			Vector3 pos = this.transform.position;
+			pos.x = 10f;
+			this.transform.position = pos;
+		}
+		StartCoroutine (walkFor (2f));	
+	}
+
+
+
+
+
 
 	// Update is called once per frame
 	void Update () {
@@ -69,7 +81,7 @@ public class PlayerController : MonoBehaviour {
 			anim.SetBool ("walking", false);
 		}	
 
-		if (Time.timeSinceLevelLoad > 1){	//if enough time has passed to allow detective to walk on then clamp to certain range
+		if (Time.timeSinceLevelLoad > 2){	//if enough time has passed to allow detective to walk on then clamp to certain range
 			Vector3 pos = this.transform.position;
 			pos.x = Mathf.Clamp (this.transform.position.x, minX, maxX);
 			pos.z = Mathf.Clamp (this.transform.position.x, maxZ, maxZ); //leeway on z position. but cannot walk forward

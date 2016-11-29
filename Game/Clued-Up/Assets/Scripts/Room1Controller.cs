@@ -10,6 +10,7 @@ public class Room1Controller : MonoBehaviour {
 	public GameObject rainGenerator;
 	public GameObject ronCookeLights;
 	public GameObject mainLight;
+	public GameObject detectives;
 
 	private Story story;
 	// Use this for initialization
@@ -63,6 +64,7 @@ public class Room1Controller : MonoBehaviour {
 
 	void Start () {
 		story = GameObject.Find("Story").GetComponent<Story>(); // references persistant object story
+		detectives.transform.GetChild(story.getDetective()).gameObject.SetActive(true); //only activates the chosen detective by using the detective int as an index of children of the Detectives object
 
 		Material[] materialArray = new Material[8];
 		materialArray[0] = (Material)Resources.Load("Room1Sunny", typeof(Material)); //finds material located in the resources folder
@@ -79,5 +81,6 @@ public class Room1Controller : MonoBehaviour {
 		setBackground (materialArray);
 		setLights ();
 		setClues ();
+		GameObject.Find("Detective").GetComponent<PlayerController> ().walkInFrom (false);
 	}
 }
