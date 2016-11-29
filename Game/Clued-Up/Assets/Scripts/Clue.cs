@@ -34,16 +34,17 @@ public class Clue : MonoBehaviour {
 
 	void OnMouseDown(){
 		//when object is clicked for the first time, send message to HUD, add it to inventory, display clue. Destroys object afterwards if needed
-		if (!(inventory.isCollected (this.name))) {
-			inventory.collect (this.name);
-			hud.GetComponent<HUDController>().displayHUDText (this.longName + " added to inventory.");
-		}				
-		displayClueInformation ();
+		if (Time.timeScale != 0) {	//if game isn't paused
+			if (!(inventory.isCollected (this.name))) {
+				inventory.collect (this.name);
+				hud.GetComponent<HUDController> ().displayHUDText (this.longName + " added to inventory.");
+			}				
+			displayClueInformation ();
 
-		if (this.disappearWhenClicked) {
-			Destroy (gameObject);	//destroy this instance of the clue
+			if (this.disappearWhenClicked) {
+				Destroy (gameObject);	//destroy this instance of the clue
+			}
 		}
-
 	}
 		
 
