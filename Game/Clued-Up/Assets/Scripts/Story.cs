@@ -79,4 +79,12 @@ public class Story : MonoBehaviour {
 	public int getDetective(){
 		return this.detective;
 	}
+
+
+
+
+
+	public void setStory(){
+		Debug.Log ("START");
+	}
 }

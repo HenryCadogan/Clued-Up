@@ -22,7 +22,15 @@ public class Room2Controller : MonoBehaviour {
 
 	void Start () {
 		setOverlay ();
-		setClues ();
-		GameObject.Find("Detective").GetComponent<PlayerController> ().walkInFrom (true);
+		GameObject detective = GameObject.Find ("Detective");
+		detective.GetComponent<PlayerController> ().walkIn();
+
+		//Make vective slightly lower in screen
+		Vector3 pos = detective.transform.position;
+		pos.y = -6.5f;
+		detective.transform.position = pos;
+
+		//setClues ();
+		//GameObject.Find("Detective").GetComponent<PlayerController> ().walkInFrom (true);
 	}
 }

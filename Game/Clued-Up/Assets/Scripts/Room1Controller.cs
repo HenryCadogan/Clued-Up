@@ -56,10 +56,11 @@ public class Room1Controller : MonoBehaviour {
 
 	private void setClues(){
 		//instanciates new clue prefab with location & rotation, scales for perspective calls its initialisation method
+		//todo makes sure they havent already been collected first
 		GameObject bodyClue = Instantiate (Resources.Load ("Clue"), new Vector3(1.5f,-5.99f,-1.2f), Quaternion.Euler(90,0,0)) as GameObject;
 		bodyClue.GetComponent<Transform> ().localScale = new Vector3 (1f, 4.5f, 1f);
 		bodyClue.GetComponent<BoxCollider> ().size = new Vector3 (4.5f, 1.75f, 0f);	//manually set box collider as object is on floor & fixed position
-		bodyClue.GetComponent<Clue>().initialise("chalkOutline", "Chalk Outline", "A chalk outline of the deceased.");
+		bodyClue.GetComponent<Clue>().initialise("chalkOutline", "Chalk Outline", "A chalk outline of the deceased.", disappearWhenClicked:true);
 	}
 
 	void Start () {
@@ -81,6 +82,13 @@ public class Room1Controller : MonoBehaviour {
 		setBackground (materialArray);
 		setLights ();
 		setClues ();
-		GameObject.Find("Detective").GetComponent<PlayerController> ().walkInFrom (true);
+
+		GameObject detective = GameObject.Find("Detective");
+		detective.GetComponent<PlayerController> ().walkIn();
+		//Make detective slightly lower in screen
+		Vector3 pos = detective.transform.position;
+		pos.y = -5.9f;
+		detective.transform.position = pos;
+
 	}
 }

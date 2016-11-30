@@ -8,8 +8,9 @@ public class PlayerController : MonoBehaviour {
 	public float minX;
 	public float maxX;
 	public float maxZ;
+	public bool walkInDirectionIsLeft = true; //next walk in direction between scenes
 
-	private string direction = "right";
+	private string direction = "right"; //current direction
 	private Animator anim;
 
 	private void turnPlayer(string direction){
@@ -23,11 +24,11 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	public void walkInFrom(bool isLeft){
+	public void walkIn(){
 		//Player walks in from a direction called by SceneController scripts
 		anim = this.gameObject.GetComponentInChildren<Animator> (); // Initial setup as this is the first called funtion
 
-		if (isLeft) { //if position should be from left
+		if (this.walkInDirectionIsLeft) { //if position should be from left
 			this.direction = "right";	//sets facing right
 			turnPlayer("right");
 			Vector3 pos = this.transform.position;
@@ -40,6 +41,8 @@ public class PlayerController : MonoBehaviour {
 			pos.x = 10f;
 			this.transform.position = pos;
 		}
+
+		anim.SetBool ("walking", true);
 	}
 
 
