@@ -1,11 +1,13 @@
 #UNO
-(Hello, this is the first branch
-)If you're reading this, that means the buttons work
-(Which is actually a miracle...
-(Considering who wrote them.
-)You fucking what?
-(Well the programmer is.. well...
-(He's a bit shit.
+(Hello mr suspect
+)Hello mr detective
+(Do you know what this is?
+)What is that?
+(That is a [
+)A [ you say?
+)I think ] had one of those
+(Did he now?
+)No I just made that up
 #DOS
 (GLORIOUS
 )NO I WON'T GIVE IN

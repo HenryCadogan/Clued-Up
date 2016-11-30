@@ -1,17 +1,9 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ImportSpeech.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\GuiHelper.cs">
     <Files>
-      <File FileName="Assets\Scripts\QuitOnClick.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Room1Controller.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PlayerController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\NewSceneOnClick.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\DetectiveChoiceHandler.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\IntroController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\OverlayPanelFader.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Story.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ImportSpeech.cs" Line="96" Column="29" />
-      <File FileName="Assets\Scripts\ClueController.cs" Line="22" Column="1" />
+      <File FileName="Assets\Scripts\ImportSpeech.cs" Line="1" Column="1" />
+      <File FileName="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\GuiHelper.cs" Line="6" Column="13" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

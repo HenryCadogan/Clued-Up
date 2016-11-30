@@ -54,8 +54,6 @@ public class ImportSpeech : MonoBehaviour {
 			}
 		}
 		Array2Dict ();	// Once we've read the entire file we can add it to the dictionary
-
-		SetBranch ("INTRO"); //TODO: DELETE THIS LINE IT IS FOR TEST PURPOSES ONLY
 	}
 
 	private void Array2Dict(){
@@ -101,26 +99,6 @@ public class ImportSpeech : MonoBehaviour {
 		} else {		// The only remaining alternative is that Pos is somehow negative.
 			throw new UnityException ("ERROR: Pos is... negative?");
 						// Considering that Pos only gets set to 0 and incremented, this is VERY uninteded behaviour.
-		}
-	}
-
-	//This bit is gonna be rewritten into something relevent it's just here for demonstration
-	public void TestScript(){
-		string InString = NextLine ();
-		if (InString == null) {
-			transform.position = NeutralPos;
-			GetComponentInChildren<Text>().text = "~~END OF MESSAGE~~";
-			SetBranch ("QUACK");
-		} else if (InString [0].ToString() == "(") {
-			transform.position = LeftPos;
-			string MemeString = InString.Substring (1, InString.Length - 1);
-			GetComponentInChildren<Text>().text = MemeString;
-		} else if (InString [0].ToString() == ")") {
-			transform.position = RightPos;
-			string MemeString = InString.Substring (1, InString.Length - 1);
-			GetComponentInChildren<Text>().text = MemeString;
-		} else {
-			throw new UnityException ("ERROR: " + InString + " doesn't begin with a bracket");
 		}
 	}
 }
