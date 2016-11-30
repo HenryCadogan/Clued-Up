@@ -29,6 +29,7 @@ public class HUDController : MonoBehaviour {
 	}
 
 
+
 	public void testInventoryOnClickOfNotebookButton(){
 		GameObject.Find ("Detective").GetComponent<Inventory> ().collectedClueNames.ForEach(Debug.Log);	//print list of all collected clues
 	}
