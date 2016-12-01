@@ -27,4 +27,10 @@ public class HUDController : MonoBehaviour {
 	public void displayHUDText(string text){
 		StartCoroutine(fadeHUDText(text));
 	}
+
+
+
+	public void testInventoryOnClickOfNotebookButton(){
+		GameObject.Find ("Detective").GetComponent<Inventory> ().collectedClueNames.ForEach(Debug.Log);	//print list of all collected clues
+	}
 }

@@ -75,4 +75,16 @@ public class Story : MonoBehaviour {
 		detective = detectiveInt;
 		Debug.Log ("You have chosen dectective " + detective.ToString ());
 	}
+
+	public int getDetective(){
+		return this.detective;
+	}
+
+
+
+
+
+	public void setStory(){
+		Debug.Log ("START");
+	}
 }
