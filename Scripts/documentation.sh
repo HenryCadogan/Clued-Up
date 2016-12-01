@@ -1,18 +1,15 @@
 # Taken and modified from https://gist.github.com/vidavidorra/548ffbcdae99d752da02
 
-# This runs the file 'build.cfg' and loads the variables into this script
-source build.cfg
-
 # Navigate to the repository location
 cd $TRAVIS_BUILD_DIR
 cd ../..
 
 # Check if we are on the master branch, if not exit this script
 if [ ! $TRAVIS_BRANCH == "master" ]; then
-	echo "Not on the master branch, will build the documentation but not upload to the GitHub Pages branch. I shall upload to the FTP site instead :)"
-	ON_MASTER = 0
+	echo "Not on the master branch, will build the documentation but not upload to the GitHub Pages branch."
+	ON_MASTER=0
 else
-	ON_MASTER = 1
+	ON_MASTER=1
 fi
 
 # Setup this script and get the current gh-pages branch. 
@@ -77,11 +74,9 @@ if [ -d "html" ] && [ -f "html/index.html" ]; then
 		# The ouput is redirected to /dev/null to hide any sensitive credential data
 		# that might otherwise be exposed.
 		git push --force "https://$GH_REPO_TOKEN@$GH_REPO_REF" > /dev/null 2>&1
-	else
-		echo "Not on the master branch, zipping and uploading the documentation to the FTP site only"
 	fi
 	
-	else
+else
     echo '' >&2
     echo 'Warning: No documentation (html) files have been found!' >&2
     echo 'Warning: Not going to push the documentation to GitHub!' >&2
