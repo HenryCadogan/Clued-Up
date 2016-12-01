@@ -4,21 +4,21 @@ using System.Collections.Generic;
 
 public class Inventory : MonoBehaviour {
 
-	public List<string> collectedClueNames;
+	public List<Clue> collectedClues;
 
-	public bool isCollected(string name){
-		return collectedClueNames.Contains (name);
+	public bool isCollected(Clue clue){
+		return collectedClues.Contains (clue);
 	}
 
-	public void collect(string name){
+	public void collect(Clue clue){
 		//adds name of clue to clue array
-		Debug.Log (name + " COLLECTED");
-		collectedClueNames.Add (name);
+		Debug.Log (clue.name + " COLLECTED");
+		collectedClues.Add (clue);
 	}
 
 	void start(){
 		//initialises inventory list
-		collectedClueNames = new List<string>();
+		collectedClues = new List<Clue>();
 	}
 }
 
