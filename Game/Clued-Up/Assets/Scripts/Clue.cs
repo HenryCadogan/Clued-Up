@@ -19,6 +19,11 @@ public class Clue : MonoBehaviour {
 	private Inventory inventory;
 	private GameObject hud;
 		
+	public override string ToString ()
+	{
+		return this.longName;
+	}
+
 	public void displayClueInformation(){
 		//Populates information panel & displays
 		this.cluePanelName.text = this.longName;
@@ -35,8 +40,8 @@ public class Clue : MonoBehaviour {
 	void OnMouseDown(){
 		//when object is clicked for the first time, send message to HUD, add it to inventory, display clue. Destroys object afterwards if needed
 		if (Time.timeScale != 0) {	//if game isn't paused
-			if (!(inventory.isCollected (this.name))) {
-				inventory.collect (this.name);
+			if (!(inventory.isCollected (this))) {
+				inventory.collect (this);
 				hud.GetComponent<HUDController> ().displayHUDText (this.longName + " added to inventory.");
 			}				
 			displayClueInformation ();
