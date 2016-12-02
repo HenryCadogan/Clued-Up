@@ -37,10 +37,21 @@ public class Room1Controller : MonoBehaviour {
 			
 	}
 
-	private void setBackground(Material[] mats){
+	private void setBackground(){
+		Material[] materialArray = new Material[8];
+		materialArray[0] = (Material)Resources.Load("Room1Sunny", typeof(Material)); //finds material located in the resources folder
+		materialArray[1] = (Material)Resources.Load("Room1Rain", typeof(Material));
+		materialArray[2] = (Material)Resources.Load("Room1Sunset", typeof(Material));
+		materialArray[3] = (Material)Resources.Load("Room1Snow", typeof(Material));
+		//floor materials start
+		materialArray[4] = (Material)Resources.Load("Room1FSunny", typeof(Material));
+		materialArray[5] = (Material)Resources.Load("Room1FRain", typeof(Material));
+		materialArray[6] = (Material)Resources.Load("Room1FSunset", typeof(Material));
+		materialArray[7] = (Material)Resources.Load("Room1FSnow", typeof(Material));
+
 		int weather = story.getWeather ();
-		backgroundPane.GetComponent<Renderer> ().material = mats [weather];
-		floor.GetComponent<Renderer> ().material = mats [weather + 4];
+		backgroundPane.GetComponent<Renderer> ().material = materialArray [weather];
+		floor.GetComponent<Renderer> ().material = materialArray [weather + 4];
 		if (weather == 1) {	//set generators depending on weather
 			rainGenerator.SetActive (true);
 		} else if (weather == 3) {
@@ -72,19 +83,8 @@ public class Room1Controller : MonoBehaviour {
 		story = GameObject.Find("Story").GetComponent<Story>(); // references persistant object story
 		detectives.transform.GetChild(story.getDetective()).gameObject.SetActive(true); //only activates the chosen detective by using the detective int as an index of children of the Detectives object
 
-		Material[] materialArray = new Material[8];
-		materialArray[0] = (Material)Resources.Load("Room1Sunny", typeof(Material)); //finds material located in the resources folder
-		materialArray[1] = (Material)Resources.Load("Room1Rain", typeof(Material));
-		materialArray[2] = (Material)Resources.Load("Room1Sunset", typeof(Material));
-		materialArray[3] = (Material)Resources.Load("Room1Snow", typeof(Material));
-		//floor materials start
-		materialArray[4] = (Material)Resources.Load("Room1FSunny", typeof(Material));
-		materialArray[5] = (Material)Resources.Load("Room1FRain", typeof(Material));
-		materialArray[6] = (Material)Resources.Load("Room1FSunset", typeof(Material));
-		materialArray[7] = (Material)Resources.Load("Room1FSnow", typeof(Material));
-
 		setOverlay ();
-		setBackground (materialArray);
+		setBackground ();
 		setLights ();
 		setClues ();
 

@@ -8,7 +8,7 @@ public class Story : MonoBehaviour {
 
 	private int weather = 2; // 0 = sunny, 1 = rainy, 2 = sunset, 3 = snowy. 0 set for debug
 	private int detective; // int set by user in character selection
-	private Dictionary<int, int> charactersInRoom = new Dictionary<int,int>();
+	private Dictionary<int, List<int>> charactersInRoom = new Dictionary<int,List<int>>(); //characters in rooms stored as list of indexes for each roomID
 	private GameObject murderer;
 	private GameObject victim;
 	private List<GameObject> aliveCharacters;
@@ -141,13 +141,25 @@ public class Story : MonoBehaviour {
 			while(charactersInRoom.ContainsKey(randomRoom)){	//while there isnt already a character there
 				randomRoom = Random.Range (2, NUMBER_OF_ROOMS + 1);
 			}
-			charactersInRoom.Add (randomRoom, characterIndex); //CharactersInRoom[1] = 2 | char 2 is in room 1
+			charactersInRoom.Add (randomRoom, new List<int>{characterIndex}); //CharactersInRoom[1] = 2 | char 2 is in room 1 //using lists so it is adaptable to multiople chars in one room
 
 		}
 
-		foreach (KeyValuePair<int,int> room in charactersInRoom) {
-			Debug.Log ("charactersInRoom["+room.Key.ToString()+"] = " + room.Value.ToString());
+		foreach (KeyValuePair<int,List<int>> room in charactersInRoom) {
+			Debug.Log ("charactersInRoom["+room.Key.ToString()+"] = " + room.Value[0].ToString());
 		}
+	}
+
+	public List<GameObject> getCharactersInRoom(int room){
+		//returns list of all characters in given room
+		List<GameObject> charactersInRoom = new List<GameObject> (); 
+		if (this.charactersInRoom.ContainsKey (room)) {	//protects againnst invalid index exception
+			foreach (int characterIndex in this.charactersInRoom[room]) {
+				charactersInRoom.Add (this.aliveCharacters [characterIndex]);
+			}
+		}
+		return charactersInRoom;
+
 	}
 
 	public bool isMurderer(GameObject accused){
