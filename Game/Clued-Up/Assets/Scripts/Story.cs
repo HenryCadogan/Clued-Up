@@ -1,6 +1,7 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
+using System.IO;
+using System.Collections.Generic;
 
 public class Story : MonoBehaviour {
 	public static Story Instance;//Makes the object persistant throughout scenes
@@ -22,7 +23,20 @@ public class Story : MonoBehaviour {
 			Destroy (gameObject);
 		}
 	}
-		
+
+	private string randomLineFrom(string filename){
+		//returns a random line from specified file in resources
+		StreamReader stream = new StreamReader(filename);
+		List<string> lines = new List<string> ();
+
+		while(!stream.EndOfStream){
+			lines.Add(stream.ReadLine());
+		}
+		stream.Close( );
+
+		return lines [Random.Range (0, lines.Count)];
+	}
+
 
 	public string getIntro1(){
 		//returns first sentence of introduction
@@ -44,20 +58,16 @@ public class Story : MonoBehaviour {
 			throw new System.ArgumentOutOfRangeException ("Weather out of range");
 		}
 
-		string intro1 = "It was a " + weatherString + " at the Ron Cooke Hub, and some of the world's greatest detectives were enjoying a costume party.";
+		string intro1 = "It was a " + weatherString + randomLineFrom("Assets/TextFiles/intro1.txt");
 		return intro1;
 	}
 
 	public string getIntro2(){
-		//returns second sentence of introduction
-		string intro2 = "A loud shreik and thud allerted the guests to find a dead body on the ground outside. There had been a murder.";
-		return intro2;
+		return randomLineFrom("Assets/TextFiles/intro2.txt");
 	}
 
 	public string getIntro3(){
-		//returns third sentence of introduction
-		string intro3 = "But whodunnit? Only you can find the truth.";
-		return intro3;
+		return randomLineFrom ("Assets/TextFiles/intro3.txt");
 	}
 		
 	public int setWeather(Material[] ma){
@@ -74,5 +84,17 @@ public class Story : MonoBehaviour {
 		//sets detective to int chosen by user in Character Selection
 		detective = detectiveInt;
 		Debug.Log ("You have chosen dectective " + detective.ToString ());
+	}
+
+	public int getDetective(){
+		return this.detective;
+	}
+
+
+
+
+
+	public void setStory(){
+		Debug.Log ("START");
 	}
 }

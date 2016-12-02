@@ -52,7 +52,6 @@ public class IntroController : MonoBehaviour {
 
 
 
-	// Use this for initialization
 	void Start () {
 		Story story = storyObject.GetComponent<Story> (); // reference to story object (in Story script in Story GameObject)
 		Material[] materialArray = new Material[4];
@@ -70,6 +69,8 @@ public class IntroController : MonoBehaviour {
 		}
 		backgroundPlane.GetComponent<Renderer> ().material = materialArray [weather]; //change background image to be the correct image
 		fadeText(0f,0); //instantaneously fade text out
+
+		story.setStory ();
 
 		//initialisation done, now pass to a coroutine so that time delays can be done
 		StartCoroutine(IntroCutscene(story));
