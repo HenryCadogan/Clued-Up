@@ -2,13 +2,16 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Story.cs">
     <Files>
-      <File FileName="Assets/Scripts/Clue.cs" Line="28" Column="3" />
-      <File FileName="Assets/Scripts/PlayerController.cs" Line="27" Column="20" />
-      <File FileName="Assets/Scripts/Story.cs" Line="87" Column="24" />
-      <File FileName="Assets/Scripts/Room1Controller.cs" Line="87" Column="55" />
-      <File FileName="Assets/Room2Controller.cs" Line="26" Column="55" />
-      <File FileName="Assets/Scripts/SceneTransitions.cs" Line="55" Column="26" />
-      <File FileName="Assets/Scripts/IntroController.cs" Line="73" Column="21" />
+      <File FileName="Assets/Scripts/Clue.cs" Line="56" Column="100" />
+      <File FileName="Assets/Scripts/PlayerController.cs" Line="20" Column="26" />
+      <File FileName="Assets/Scripts/Story.cs" Line="142" Column="64" />
+      <File FileName="Assets/Scripts/Room1Controller.cs" Line="63" Column="140" />
+      <File FileName="Assets/Scripts/SceneTransitions.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/IntroController.cs" Line="63" Column="33" />
+      <File FileName="Assets/Scripts/DetectiveChoiceHandler.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Inventory.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/HUDController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Character.cs" Line="9" Column="22" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
