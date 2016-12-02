@@ -60,7 +60,12 @@ public class Room1Controller : MonoBehaviour {
 		GameObject bodyClue = Instantiate (Resources.Load ("Clue"), new Vector3(1.5f,-5.99f,-1.2f), Quaternion.Euler(90,0,0)) as GameObject;
 		bodyClue.GetComponent<Transform> ().localScale = new Vector3 (1f, 4.5f, 1f);
 		bodyClue.GetComponent<BoxCollider> ().size = new Vector3 (4.5f, 1.75f, 0f);	//manually set box collider as object is on floor & fixed position
-		bodyClue.GetComponent<Clue>().initialise("chalkOutline", "Chalk Outline", "A chalk outline of the deceased.");
+		bodyClue.GetComponent<Clue>().initialise("chalkOutline", "Chalk Outline", "A chalk outline of the body of " + story.getVictim().longName +". " + this.getChalkOutlineDescription());
+	}
+
+	private string getChalkOutlineDescription(){
+		//TODO read random outline descriptions from file
+		return "It looks like the body was removed by the police a while ago.";
 	}
 
 	void Start () {
@@ -84,7 +89,7 @@ public class Room1Controller : MonoBehaviour {
 		setClues ();
 
 		GameObject detective = GameObject.Find("Detective");
-		detective.GetComponent<PlayerController> ().walkIn();
+		detective.GetComponent<Detective> ().walkIn();
 		//Make detective slightly lower in screen
 		Vector3 pos = detective.transform.position;
 		pos.y = -5.9f;
