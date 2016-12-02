@@ -159,7 +159,6 @@ public class Story : MonoBehaviour {
 			}
 		}
 		return charactersInRoom;
-
 	}
 
 	public bool isMurderer(GameObject accused){
