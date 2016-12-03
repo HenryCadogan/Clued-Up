@@ -54,8 +54,11 @@ public class Room2Controller : MonoBehaviour {
 		setOverlay ();
 		GameObject detective = GameObject.Find ("Detective");
 		detective.GetComponent<Detective> ().walkIn();
+<<<<<<< HEAD
+=======
 
 		story = GameObject.Find("Story").GetComponent<Story>(); // references persistant object story
+>>>>>>> Room2-Atrium
 
 		//Make detective slightly lower in screen
 		Vector3 pos = detective.transform.position;
