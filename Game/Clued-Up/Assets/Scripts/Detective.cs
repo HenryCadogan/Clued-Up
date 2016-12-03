@@ -2,17 +2,41 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/// <summary>
+///Class that handles movement of the character
+/// </summary>
 public class Detective : MonoBehaviour {
-	//Class that handles movement of the character
-
+	/// <summary>
+	/// The minimum x.
+	/// </summary>
 	public float minX;
+	/// <summary>
+	/// The max x.
+	/// </summary>
 	public float maxX;
+	/// <summary>
+	/// The max z.
+	/// </summary>
 	public float maxZ;
-	public bool walkInDirectionIsLeft = true; //next walk in direction between scenes
+	/// <summary>
+	/// //next walk in direction between scenes
+	/// </summary>
+	public bool walkInDirectionIsLeft = true; 
 
-	private string direction = "right"; //current direction
+	/// <summary>
+	/// The current direction.
+	/// </summary>
+	private string direction = "right";
+	/// <summary>
+	/// The animator.
+	/// </summary>
 	private Animator anim;
 
+
+	/// <summary>
+	/// Turns the player.
+	/// </summary>
+	/// <param name="direction">Direction.</param>
 	private void turnPlayer(string direction){
 		//chnages to y rotation of player object depending on the direction it walks
 		if (direction == "right") {
@@ -24,6 +48,10 @@ public class Detective : MonoBehaviour {
 		}
 	}
 
+
+	/// <summary>
+	/// Player walks in from a direction called by SceneController scripts
+	/// </summary>
 	public void walkIn(){
 		//Player walks in from a direction called by SceneController scripts
 		anim = this.gameObject.GetComponentInChildren<Animator> (); // Initial setup as this is the first called funtion

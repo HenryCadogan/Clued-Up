@@ -2,26 +2,63 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+/// <summary>
+/// Controls the introduction into a new game
+/// </summary>
 public class IntroController : MonoBehaviour {
+	/// <summary>
+	/// The audio source.
+	/// </summary>
 	public GameObject audioSource;
+	/// <summary>
+	/// The snow generator.
+	/// </summary>
 	public GameObject snowGenerator;
+	/// <summary>
+	/// The rain generator.
+	/// </summary>
 	public GameObject rainGenerator;
+	/// <summary>
+	/// The intro text object.
+	/// </summary>
 	public GameObject introTextObject;
+	/// <summary>
+	/// The overlay panel.
+	/// </summary>
 	public GameObject overlayPanel;
+	/// <summary>
+	/// The background plane.
+	/// </summary>
 	public GameObject backgroundPlane;
+	/// <summary>
+	/// The story object.
+	/// </summary>
 	public GameObject storyObject;
 
+	/// <summary>
+	/// Fades the text.
+	/// </summary>
+	/// <param name="alpha">Alpha.</param>
+	/// <param name="time">Time.</param>
 	private void fadeText(float alpha, float time){ 
 		introTextObject.GetComponent<Text>().CrossFadeAlpha(alpha,time,false);
 	}
 
+	/// <summary>
+	/// Displays the introtext.
+	/// </summary>
+	/// <param name="introText">Intro text.</param>
 	private void displayText(string introText){	
 		//will change UI Text object and fade in
 		introTextObject.GetComponent<Text>().text = introText;
 		fadeText (1f, 3f);
 	}
 
+	/// <summary>
+	/// Plays the intro to the game
+	/// </summary>
+	/// <returns>The cutscene.</returns>
+	/// <param name="story">Story.</param>
 	IEnumerator IntroCutscene(Story story){
 		//plays scream, fades and updates text
 		audioSource.GetComponent<AudioSource> ().Play (); //play scream
@@ -51,7 +88,9 @@ public class IntroController : MonoBehaviour {
 
 
 
-
+	/// <summary>
+	/// Start this instance.
+	/// </summary>
 	void Start () {
 		Story story = storyObject.GetComponent<Story> (); // reference to story object (in Story script in Story GameObject)
 		Material[] materialArray = new Material[4];
@@ -76,8 +115,9 @@ public class IntroController : MonoBehaviour {
 		StartCoroutine(IntroCutscene(story));
 	}
 
-
-	//SKIP INTRO cos it gets bloody tedius after a while!!
+	/// <summary>
+	/// if space is held down during then skip the intro
+	/// </summary>
 	void Update() {
 		if (Input.GetKeyDown("space"))
 			SceneManager.LoadScene (2);	//loads character selection scene

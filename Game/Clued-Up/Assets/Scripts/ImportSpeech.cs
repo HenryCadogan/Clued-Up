@@ -3,6 +3,9 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
+/// <summary>
+/// Imports the speech elements into the game.
+/// </summary>
 public class ImportSpeech : MonoBehaviour {
 
 		// QUICK BIT ON THE TEXT FILE FORMATTING
@@ -11,22 +14,51 @@ public class ImportSpeech : MonoBehaviour {
 		// Anything after a ) is said by the suspect
 		// [ and ] are replaced by the name of the incoming Item and Character respectively
 		// Set those by changing ItemName and OtherChar as appropriate.
-
+	/// <summary>
+	/// The text from file
+	/// </summary>
 	public TextAsset asset;  // POINT THIS AT THE TEXT FILE YOU WANT
-	public Vector3 LeftPos;  // THIS CO-ORDINATE WANTS TO BE WHERE YOU WANT ( TO APPEAR
-	public Vector3 RightPos;   // SAME BUT FOR )
-	public Vector3 NeutralPos; // SAME BUT FOR WHEN YOU'RE DONE
+	/// <summary>
+	/// // Coordinate for "("
+	/// </summary>
+	public Vector3 LeftPos;  
+	/// <summary>
+	/// Coordinate for ")"
+	/// </summary>
+	public Vector3 RightPos;
+	/// <summary>
+	/// The neutral position.
+	/// </summary>
+	public Vector3 NeutralPos;
 
+	/// <summary>
+	/// The item in.
+	/// </summary>
 	public GameObject ItemIn;		// TODO: Update these to be object pointers
+	/// <summary>
+	/// The char in.
+	/// </summary>
 	public string CharIn;
-
-	private int Pos = 0;			// Pos is the current position in the Branch
-	private ArrayList BranchList;	// BranchList is the arraylist of the current branch
-	private ArrayList SpeechList;	// Speechlist is the arraylist of the entire speech file
+	/// <summary>
+	/// Pos is the current position in the Branch
+	/// </summary>
+	private int Pos = 0;
+	/// <summary>
+	/// The arraylist of the current branch
+	/// </summary>
+	private ArrayList BranchList;
+	/// <summary>
+	/// arraylist of the whole file
+	/// </summary>
+	private ArrayList SpeechList;
+	/// <summary>
+	/// SpeechDict is a dictionary of the form BranchName -> The relevent BranchList
+	/// </summary>
 	private Dictionary<string, ArrayList> SpeechDict;
-									// SpeechDict is a dictionary of the form BranchName -> The relevent BranchList
-
-	// Use this for initialization
+									
+	/// <summary>
+	/// Start this instance.
+	/// </summary>
 	private void Start () {
 		SpeechDict = new Dictionary<string, ArrayList>();	//Set up the dictionary and the list for input
 		SpeechList = new ArrayList ();
@@ -56,6 +88,9 @@ public class ImportSpeech : MonoBehaviour {
 		Array2Dict ();	// Once we've read the entire file we can add it to the dictionary
 	}
 
+	/// <summary>
+	/// Convert the Array into a dictionary
+	/// </summary>
 	private void Array2Dict(){
 		ArrayList CurrentBranch = new ArrayList();	//First we set up a working ArrayList
 		string BranchName = "INIT";		// We want to name our branch so we set up a string to do so
@@ -75,6 +110,10 @@ public class ImportSpeech : MonoBehaviour {
 		SpeechDict.Add(BranchName, CurrentBranch);	// At the EoA, we can just put what we had into the dict.
 	}
 
+	/// <summary>
+	/// Sets the branch.
+	/// </summary>
+	/// <param name="BranchName">Branch name.</param>
 	public void SetBranch (string BranchName) {	// This subroutine, suprisingly, sets the branch to read from
 		if (Pos != 0) {		// If the Pos isn't 0 when you do this, that means you were in the middle of the branch when you did it...
 			Debug.LogWarning ("SetBranch called in middle of branch? Resetting branch position...");
@@ -83,7 +122,12 @@ public class ImportSpeech : MonoBehaviour {
 		BranchList = SpeechDict [BranchName];	// At any rate, BranchList gets updated from the SpeechDict appropriately.
 	}
 
+
 	// tl;dr: Everytime you call Ping() it will return the next line of the current branch
+	/// <summary>
+	/// Gets the next line in the branch
+	/// </summary>
+	/// <returns>The line.</returns>
 	public string NextLine () {
 		if (0 <= Pos && Pos < BranchList.Count) {				// Assuming we're still in bounds of the arraylist...
 			string ReturnString = BranchList [Pos].ToString();	// Get the current line
@@ -97,7 +141,7 @@ public class ImportSpeech : MonoBehaviour {
 			string NullString = null;				// Set up and return a null string.
 			return NullString;						// The recieving object can use this as a cue that the branch is done.
 		} else {		// The only remaining alternative is that Pos is somehow negative.
-			throw new UnityException ("ERROR: Pos is... negative?");
+			throw new UnityException ("ERROR: Pos is negative");
 						// Considering that Pos only gets set to 0 and incremented, this is VERY uninteded behaviour.
 		}
 	}

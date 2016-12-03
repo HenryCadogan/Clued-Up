@@ -3,18 +3,46 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class Room1Controller : MonoBehaviour {
+	/// <summary>
+	/// The background pane.
+	/// </summary>
 	public GameObject backgroundPane;
+	/// <summary>
+	/// The floor object
+	/// </summary>
 	public GameObject floor;
+	/// <summary>
+	/// The overlay panel.
+	/// </summary>
 	public GameObject overlayPanel;
+	/// <summary>
+	/// The snow generator.
+	/// </summary>
 	public GameObject snowGenerator;
+	/// <summary>
+	/// The rain generator.
+	/// </summary>
 	public GameObject rainGenerator;
+	/// <summary>
+	/// The ron cooke lights.
+	/// </summary>
 	public GameObject ronCookeLights;
+	/// <summary>
+	/// The main light.
+	/// </summary>
 	public GameObject mainLight;
+	/// <summary>
+	/// The detectives.
+	/// </summary>
 	public GameObject detectives;
-
+	/// <summary>
+	/// The story.
+	/// </summary>
 	private Story story;
-	// Use this for initialization
 
+	/// <summary>
+	/// Sets the lights of the scene
+	/// </summary>
 	private void setLights(){
 		//sets lighting to weather appropriate colour
 		int weather = story.getWeather ();
@@ -37,6 +65,9 @@ public class Room1Controller : MonoBehaviour {
 			
 	}
 
+	/// <summary>
+	/// Sets the background.
+	/// </summary>
 	private void setBackground(){
 		Material[] materialArray = new Material[8];
 		materialArray[0] = (Material)Resources.Load("Room1Sunny", typeof(Material)); //finds material located in the resources folder
@@ -59,12 +90,18 @@ public class Room1Controller : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Sets the overlay.
+	/// </summary>
 	private void setOverlay(){
 		//turns on overlay panel, fades out
 		overlayPanel.SetActive (true);
 		overlayPanel.GetComponent<Image>().CrossFadeAlpha(0f,3f,false);
 	}
 
+	/// <summary>
+	/// Sets the clues.
+	/// </summary>
 	private void setClues(){
 		//instanciates new clue prefab with location & rotation, scales for perspective calls its initialisation method
 		//todo makes sure they havent already been collected first
@@ -74,11 +111,18 @@ public class Room1Controller : MonoBehaviour {
 		bodyClue.GetComponent<Clue>().initialise("chalkOutline", "Chalk Outline", "A chalk outline of the body of " + story.getVictim().longName +". " + this.getChalkOutlineDescription());
 	}
 
+	/// <summary>
+	/// Gets the chalk outline description.
+	/// </summary>
+	/// <returns>The chalk outline description.</returns>
 	private string getChalkOutlineDescription(){
 		//TODO read random outline descriptions from file
 		return "It looks like the body was removed by the police a while ago.";
 	}
 
+	/// <summary>
+	/// Start this instance.
+	/// </summary>
 	void Start () {
 		story = GameObject.Find("Story").GetComponent<Story>(); // references persistant object story
 		detectives.transform.GetChild(story.getDetective()).gameObject.SetActive(true); //only activates the chosen detective by using the detective int as an index of children of the Detectives object
