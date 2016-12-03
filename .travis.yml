@@ -22,4 +22,4 @@ install:
 script:
 - ./Scripts/build.sh
 after_success:
--./Scripts/documentation.sh
+- ./Scripts/documentation.sh
