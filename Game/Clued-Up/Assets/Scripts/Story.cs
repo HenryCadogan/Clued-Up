@@ -8,11 +8,15 @@ public class Story : MonoBehaviour {
 
 	private int weather = 2; // 0 = sunny, 1 = rainy, 2 = sunset, 3 = snowy. 0 set for debug
 	private int detective; // int set by user in character selection
-	private Dictionary<int, int> charactersInRoom = new Dictionary<int,int>();
-	private int murderer;
-	private int victim;
+	private Dictionary<int, List<int>> charactersInRoom = new Dictionary<int,List<int>>(); //characters in rooms stored as list of indexes for each roomID
+	private GameObject murderer;
+	private GameObject victim;
 	private List<GameObject> aliveCharacters;
+	private List<GameObject> clues;
 
+
+
+	private static int NUMBER_OF_ROOMS = 8;
 	void Awake ()  
 	//Makes the object persistant throughout scenes
 	{
@@ -95,9 +99,9 @@ public class Story : MonoBehaviour {
 	private void setCharacters(){
 		List<GameObject> characters = new List<GameObject> ();
 
-		//set up all characters
-		//GameObject character0 = Instantiate (Resources.Load ("Character"), new Vector3(1.5f,-5.99f,-1.2f), Quaternion.Euler(90,0,0)) as GameObject;
-		//character0.GetComponent<Character>().initialise("character0", "Character 0");
+		//Set up characters
+		GameObject character0 = Instantiate (Resources.Load ("Character"), new Vector3(1.5f,-5.99f,-1.2f), Quaternion.Euler(90,0,0)) as GameObject;
+		character0.GetComponent<Character>().initialise("character0", "Character 0");
 
 		GameObject character1 = Instantiate (Resources.Load ("Character"), new Vector3(1.5f,-5.99f,-1.2f), Quaternion.Euler(90,0,0)) as GameObject;
 		character1.GetComponent<Character>().initialise("character1", "Character 1");
@@ -105,53 +109,73 @@ public class Story : MonoBehaviour {
 		GameObject character2 = Instantiate (Resources.Load ("Character"), new Vector3(1.5f,-5.99f,-1.2f), Quaternion.Euler(90,0,0)) as GameObject;
 		character2.GetComponent<Character>().initialise("character2", "Character 2");
 
-		Debug.Log (character2.name);
+		GameObject character3 = Instantiate (Resources.Load ("Character"), new Vector3(1.5f,-5.99f,-1.2f), Quaternion.Euler(90,0,0)) as GameObject;
+		character3.GetComponent<Character>().initialise("character3", "Character 3");
 
-		//GameObject character3 = Instantiate (Resources.Load ("Character"), new Vector3(1.5f,-5.99f,-1.2f), Quaternion.Euler(90,0,0)) as GameObject;
-		//character3.GetComponent<Character>().initialise("character3", "Character 3");
+		GameObject character4 = Instantiate (Resources.Load ("Character"), new Vector3(1.5f,-5.99f,-1.2f), Quaternion.Euler(90,0,0)) as GameObject;
+		character4.GetComponent<Character>().initialise("character4", "Character 4");
 
-		//GameObject character4 = Instantiate (Resources.Load ("Character"), new Vector3(1.5f,-5.99f,-1.2f), Quaternion.Euler(90,0,0)) as GameObject;
-		//character4.GetComponent<Character>().initialise("character4", "Character 4");
+		GameObject character5 = Instantiate (Resources.Load ("Character"), new Vector3(1.5f,-5.99f,-1.2f), Quaternion.Euler(90,0,0)) as GameObject;
+		character5.GetComponent<Character>().initialise("character5", "Character 5");
 
-		//GameObject character5 = Instantiate (Resources.Load ("Character"), new Vector3(1.5f,-5.99f,-1.2f), Quaternion.Euler(90,0,0)) as GameObject;
-		//character5.GetComponent<Character>().initialise("character5", "Character 5");
-
-		//characters.Add (character0);
+		characters.Add (character0);
 		characters.Add (character1);
 		characters.Add (character2);
-		//characters.Add (character3);
-		//characters.Add (character4);
-		//characters.Add (character5);
+		characters.Add (character3);
+		characters.Add (character4);
+		characters.Add (character5);
 
-		//this.victim = characters[Random.Range(0,characters.Count)];
-		//characters.Remove(this.victim);
-		//this.murderer = characters[Random.Range(0,characters.Count)];
+		this.victim = characters[Random.Range(0,characters.Count)];
+		characters.Remove(this.victim);
+		this.murderer = characters[Random.Range(0,characters.Count)];
 		this.aliveCharacters = characters;
+
+		this.victim.GetComponent<Character> ().isVictim = true;
+		this.murderer.GetComponent<Character> ().isMurderer = true;
 	}
 		
 	private void setCharacterRooms(){
-		Debug.Log ("Setting Character Rooms");
-		List<GameObject> unassignedCharacters = this.aliveCharacters;
 		int randomRoom;
-		int characterIndex = 0;
-		for(characterIndex = 0; characterIndex < this.aliveCharacters.Count; characterIndex ++) {	
-			randomRoom = Random.Range (2, 9); //rooms 2-8 (not including the crime scene which does not include 
+		for(int characterIndex = 0; characterIndex < this.aliveCharacters.Count; characterIndex ++) {	
+			randomRoom = Random.Range (2, NUMBER_OF_ROOMS + 1); //rooms 2-8 (i.e. all, not including the crime scene 
 			while(charactersInRoom.ContainsKey(randomRoom)){	//while there isnt already a character there
-				randomRoom = Random.Range (1, 9);
+				randomRoom = Random.Range (2, NUMBER_OF_ROOMS + 1);
 			}
-			charactersInRoom.Add (randomRoom, characterIndex);
-			unassignedCharacters [characterIndex].GetComponent<Character>().location = randomRoom;
+			charactersInRoom.Add (randomRoom, new List<int>{characterIndex}); //CharactersInRoom[1] = 2 | char 2 is in room 1 //using lists so it is adaptable to multiople chars in one room
+
 		}
 
-		foreach (KeyValuePair<int,int> room in charactersInRoom) {
-			Debug.Log ("charactersInRoom["+room.Key.ToString()+"] = " + room.Value.ToString());
+		foreach (KeyValuePair<int,List<int>> room in charactersInRoom) {
+			Debug.Log ("charactersInRoom["+room.Key.ToString()+"] = " + room.Value[0].ToString());
 		}
+	}
 
+	public List<GameObject> getCharactersInRoom(int room){
+		//returns list of all characters in given room
+		List<GameObject> charactersInRoom = new List<GameObject> (); 
+		if (this.charactersInRoom.ContainsKey (room)) {	//protects againnst invalid index exception
+			foreach (int characterIndex in this.charactersInRoom[room]) {
+				charactersInRoom.Add (this.aliveCharacters [characterIndex]);
+			}
+		}
+		return charactersInRoom;
+	}
+
+	public bool isMurderer(GameObject accused){
+		return this.murderer == accused;
+	}
+
+	public Character getVictim(){
+		return this.victim.GetComponent<Character>();
 	}
 
 
 	public void setStory(){
 		setCharacters ();
-		//setCharacterRooms();
+		setCharacterRooms();
+		//setCharacterClues ();
+		//setMotiveClue();
+		//setWeapon();
+		//setClueLocations();
 	}
 }

@@ -75,4 +75,12 @@ public class IntroController : MonoBehaviour {
 		//initialisation done, now pass to a coroutine so that time delays can be done
 		StartCoroutine(IntroCutscene(story));
 	}
+
+
+	//SKIP INTRO cos it gets bloody tedius after a while!!
+	void Update() {
+		if (Input.GetKeyDown("space"))
+			SceneManager.LoadScene (2);	//loads character selection scene
+
+	}
 }

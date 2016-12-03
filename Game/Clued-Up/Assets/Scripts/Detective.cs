@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class PlayerController : MonoBehaviour {
+public class Detective : MonoBehaviour {
 	//Class that handles movement of the character
 
 	public float minX;

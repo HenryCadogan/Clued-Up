@@ -47,7 +47,7 @@ public class Clue : MonoBehaviour {
 			displayClueInformation ();
 
 			if (this.disappearWhenClicked) {
-				Destroy (gameObject);	//destroy this instance of the clue
+				gameObject.GetComponent<Renderer>().enabled = true;	//hides but does not destroy the clue
 			}
 		}
 	}

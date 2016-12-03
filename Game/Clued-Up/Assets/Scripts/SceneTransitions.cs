@@ -20,7 +20,7 @@ public class SceneTransitions : MonoBehaviour {
 	public void OnMouseDown(){
 		//for when buttons are used to go to a scene
 		if (gameObject.name == "DoorQuad") {
-			GameObject.Find ("Detective").GetComponent<PlayerController> ().walkInDirectionIsLeft = true;
+			GameObject.Find ("Detective").GetComponent<Detective> ().walkInDirectionIsLeft = false;
 			//this.detective.GetComponent<PlayerController>().walkInDirectionIsLeft = true;
 			StartCoroutine (fadeLoadScene (3));
 		}
@@ -41,18 +41,18 @@ public class SceneTransitions : MonoBehaviour {
 			case "Room1R":
 				bool canProgress = true; //set conditions for progressing to room 2
 				if (canProgress){
-					detective.GetComponent<PlayerController>().walkInDirectionIsLeft = true;
+					detective.GetComponent<Detective>().walkInDirectionIsLeft = true;
 					StartCoroutine(fadeLoadScene(4));
 				}
 				break;
 
 			case "Room2L":
-				detective.GetComponent<PlayerController>().walkInDirectionIsLeft = false;
+				detective.GetComponent<Detective>().walkInDirectionIsLeft = false;
 				StartCoroutine(fadeLoadScene(5));
 				break;
 
 			case "Room2R":
-				detective.GetComponent<PlayerController>().walkInDirectionIsLeft = true;
+				detective.GetComponent<Detective>().walkInDirectionIsLeft = true;
 				StartCoroutine(fadeLoadScene(6));
 				break;
 
