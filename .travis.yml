@@ -21,3 +21,5 @@ install:
 - ./Scripts/install.sh
 script:
 - ./Scripts/build.sh
+after_success:
+-./documentation.sh
