@@ -4,25 +4,23 @@ using System.IO;
 using System.Collections.Generic;
 
 /// <summary>
-/// The stroy object for the game to run around
+/// Persistant story class that stores all game/ global variables and initialises Clues and Character objects
 /// </summary>
 public class Story : MonoBehaviour {
 	/// <summary>
-	/// Makes the object persistant throughout scenes
+	/// Variable to make sure there is only one instance of this object
 	/// </summary>
 	public static Story Instance;
 	/// <summary>
-	/// The weather index // 0 = sunny, 1 = rainy, 2 = sunset, 3 = snowy. 0 set for debug
+	/// Index of weather conditions where 0 = sunny, 1 = rainy, 2 = sunset, 3 = snowy. Preset for debugging different condtitions
 	/// </summary>
 	private int weather = 2;
 	/// <summary>
-	/// The detective.
-	/// int set by user in character selection
+	/// The detective int set by user in character selection
 	/// </summary>
 	private int detective; 
-
 	/// <summary>
-	/// The list of characters in room.
+	/// Dictionary to store which character Indexs are stored in each room index
 	/// </summary>
 	private Dictionary<int, List<int>> charactersInRoom = new Dictionary<int,List<int>>(); //characters in rooms stored as list of indexes for each roomID
 	/// <summary>
@@ -34,25 +32,21 @@ public class Story : MonoBehaviour {
 	/// </summary>
 	private GameObject victim;
 	/// <summary>
-	/// The alive characters.
+	/// Subset of all characters, ones that are not the victim
 	/// </summary>
 	private List<GameObject> aliveCharacters;
 	/// <summary>
-	/// The list of clues.
+	/// The list of clues availabe in this instance of the game.
 	/// </summary>
 	private List<GameObject> clues;
-
-
 	/// <summary>
-	/// The number of room that will be in the instance of the game.
+	/// The number of room that will be in the game.
 	/// </summary>
 	private static int NUMBER_OF_ROOMS = 8;
 	/// <summary>
-	/// Awake this instance.
+	/// Makes the object persistant throughout scenes.
 	/// </summary>
-	void Awake ()  
-	//Makes the object persistant throughout scenes
-	{
+	void Awake () {
 		if (Instance == null)
 		{
 			DontDestroyOnLoad(gameObject);
@@ -67,10 +61,9 @@ public class Story : MonoBehaviour {
 	/// <summary>
 	/// Gets a random line from a file
 	/// </summary>
-	/// <returns>The line from.</returns>
-	/// <param name="filename">Filename.</param>
+	/// <returns>A line from the file (string)</returns>
+	/// <param name="filename">Path to file (from root)</param>
 	private string randomLineFrom(string filename){
-		//returns a random line from specified file in resources
 		StreamReader stream = new StreamReader(filename);
 		List<string> lines = new List<string> ();
 
@@ -82,11 +75,10 @@ public class Story : MonoBehaviour {
 	}
 
 	/// <summary>
-	/// Gets the intro 1.
+	/// Selects a random first introductory paragraph
 	/// </summary>
-	/// <returns>The intro1.</returns>
+	/// <returns>1st introductory sentence (string)</returns>
 	public string getIntro1(){
-		//returns first sentence of introduction
 		string weatherString;
 		switch (weather) {
 		case 0:
@@ -110,43 +102,40 @@ public class Story : MonoBehaviour {
 	}
 
 	/// <summary>
-	/// Gets the intro 2.
+	/// Selects a random second introductory paragraph
 	/// </summary>
-	/// <returns>The intro2.</returns>
+	/// <returns>2nd introductory sentence (string)</returns>
 	public string getIntro2(){
 		return randomLineFrom("Assets/TextFiles/intro2.txt");
 	}
 	/// <summary>
-	/// Gets the intro 3.
+	/// Selects a random third introductory paragraph
 	/// </summary>
-	/// <returns>The intro3.</returns>
+	/// <returns>3rd introductory sentence (string)</returns>
 	public string getIntro3(){
 		return randomLineFrom ("Assets/TextFiles/intro3.txt");
 	}
 	/// <summary>
-	/// Sets the weather.
+	/// Sets the weather for the rest of the game
 	/// </summary>
-	/// <returns>The weather.</returns>
-	/// <param name="ma">Ma.</param>
-	public int setWeather(Material[] ma){
-		//sets weather condition to random int within range of array of all possible weather conditions, and returns this int.
-		weather = Random.Range (0, ma.Length);
+	/// <returns>Weather index</returns>
+	/// <param name="materialArray">array of background materials; one each weather condition</param>
+	public int setWeather(Material[] materialArray){
+		weather = Random.Range (0, materialArray.Length);
 		return weather;
 	}
-
 	/// <summary>
-	/// Gets the weather.
+	/// Gets weather index
 	/// </summary>
-	/// <returns>The weather.</returns>
+	/// <returns>The weather index</returns>
 	public int getWeather(){
 		return weather;
 	}
 	/// <summary>
 	/// Sets the detective.
 	/// </summary>
-	/// <param name="detectiveInt">Detective int.</param>
+	/// <param name="detectiveInt">Index for the detective to set, passed from when the corresponding button is pressed in character selection</param>
 	public void setDetective(int detectiveInt){
-		//sets detective to int chosen by user in Character Selection
 		detective = detectiveInt;
 		Debug.Log ("You have chosen dectective " + detective.ToString ());
 	}
@@ -159,7 +148,7 @@ public class Story : MonoBehaviour {
 	}
 		
 	/// <summary>
-	/// Sets the characters.
+	/// Initial definitions for all characters and selection of victim/murderer
 	/// </summary>
 	private void setCharacters(){
 		List<GameObject> characters = new List<GameObject> ();
@@ -199,7 +188,7 @@ public class Story : MonoBehaviour {
 		this.murderer.GetComponent<Character> ().isMurderer = true;
 	}
 	/// <summary>
-	/// Sets the character rooms.
+	/// Decides which of the alive characters occupy each room, excluding the initial crime scene room.
 	/// </summary>
 	private void setCharacterRooms(){
 		int randomRoom;
@@ -218,14 +207,12 @@ public class Story : MonoBehaviour {
 
 		}
 	}
-
 	/// <summary>
-	/// Gets the characters in room.
+	/// Get list of the characters positioned within room index
 	/// </summary>
-	/// <returns>The characters in room.</returns>
-	/// <param name="room">Room.</param>
+	/// <returns>List of character GameObjects that are within room index</returns>
+	/// <param name="room">Index of the room of choice</param>
 	public List<GameObject> getCharactersInRoom(int room){
-		//returns list of all characters in given room
 		List<GameObject> charactersInRoom = new List<GameObject> (); 
 		if (this.charactersInRoom.ContainsKey (room)) {	//protects againnst invalid index exception
 			foreach (int characterIndex in this.charactersInRoom[room]) {
@@ -235,26 +222,23 @@ public class Story : MonoBehaviour {
 		return charactersInRoom;
 
 	}
-
 	/// <summary>
-	/// Checks if the accused character is the murderer
+	/// Checks if a particular character is the murderer
 	/// </summary>
-	/// <returns><c>true</c>, if murderer was ised, <c>false</c> otherwise.</returns>
-	/// <param name="accused">Accused.</param>
+	/// <returns><c>true</c>, if accused character GameObject is the murderer, <c>false</c> otherwise.</returns>
+	/// <param name="accused">character GameObject</param>
 	public bool isMurderer(GameObject accused){
 		return this.murderer == accused;
 	}
-
 	/// <summary>
-	/// Gets the victim.
+	/// Gets the victim character GameObject
 	/// </summary>
-	/// <returns>The victim.</returns>
+	/// <returns>The victim character GameObject</returns>
 	public Character getVictim(){
 		return this.victim.GetComponent<Character>();
 	}
-
 	/// <summary>
-	/// Sets the story.
+	/// Initialises story characters and clues
 	/// </summary>
 	public void setStory(){
 		setCharacters ();

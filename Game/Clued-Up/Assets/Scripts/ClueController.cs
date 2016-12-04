@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 /// <summary>
-/// The controller for the clues
+/// The controller for the clues NOT SURE IF THIS IS BEING USED. IF READING THIS, PLEASE CHECK AND OR DELETE
 /// </summary>
 public class ClueController : MonoBehaviour {
 	/// <summary>

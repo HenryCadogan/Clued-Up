@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class Clue : MonoBehaviour {
 	/// <summary>
-	/// //name used in notebook etc. not to be confused with this.name which is the GameObject name
+	/// //Long name displayed in game (i.e with spaces). Not to be confused with this.name which is the GameObject name
 	/// </summary>
 	public string longName;
 	/// <summary>
@@ -15,49 +15,49 @@ public class Clue : MonoBehaviour {
 	/// </summary>
 	public string description;
 	/// <summary>
-	/// The sprite of the clue
+	/// The 2D sprite of the clue
 	/// </summary>
 	public Sprite sprite;
 	/// <summary>
-	/// Boolean if this clue is a weapon
+	/// <c>True<c>/ if clue is weapon
 	/// </summary>
 	public bool isWeapon;
 	/// <summary>
-	/// Boolean if this clue is the motive clue
+	/// if this clue is the motive clue
 	/// </summary>
 	public bool isMotive;
 	/// <summary>
-	/// Boolean if this item should dissapear from the game when clicked on
+	/// if this item should dissapear from the game when collected
 	/// </summary>
-	public bool disappearWhenClicked; //Clue will vanish when collected
+	public bool disappearWhenClicked; 
 
 
 	/// <summary>
-	/// The clue panel.
+	/// The clue description panel to be populated & shown when collected.
 	/// </summary>
 	private GameObject cluePanel;
 	/// <summary>
-	/// The name of the clue panel.
+	/// The clue title GameObject within the clue panel.
 	/// </summary>
 	private Text cluePanelName;
 	/// <summary>
-	/// The clue panel description.
+	/// The description GameObject within the clue panel.
 	/// </summary>
 	private Text cluePanelDescription;
 	/// <summary>
-	/// The clue panel image.
+	/// The image GameObject within CluePanel.
 	/// </summary>
 	private Image cluePanelImage;
 	/// <summary>
-	/// The overlay panel.
+	/// The overlay panel to be used for fading.
 	/// </summary>
 	private GameObject overlayPanel;
 	/// <summary>
-	/// The inventory.
+	/// The inventory of the detective.
 	/// </summary>
 	private Inventory inventory;
 	/// <summary>
-	/// The heads up display
+	/// The heads up display prefab
 	/// </summary>
 	private GameObject hud;
 
@@ -71,10 +71,9 @@ public class Clue : MonoBehaviour {
 	}
 
 	/// <summary>
-	/// Displays the clue information.
+	/// Populates and displays the clue information on screen.
 	/// </summary>
 	public void displayClueInformation(){
-		//Populates information panel & displays
 		this.cluePanelName.text = this.longName;
 		this.cluePanelImage.sprite = this.sprite;
 		this.cluePanelDescription.text = this.description;
@@ -85,12 +84,10 @@ public class Clue : MonoBehaviour {
 		this.overlayPanel.GetComponent<CanvasGroup> ().blocksRaycasts = true; //make it so nothing else on screen can be interacted with while overlay panel is on
 
 	}		
-
 	/// <summary>
-	/// Raises the mouse down event.
+	/// Activated when GameObject clicked on. If it's the first time, send message to HUD, add it to inventory, display clue.
 	/// </summary>
 	void OnMouseDown(){
-		//when object is clicked for the first time, send message to HUD, add it to inventory, display clue. Destroys object afterwards if needed
 		if (Time.timeScale != 0) {	//if game isn't paused
 			if (!(inventory.isCollected (this))) {
 				inventory.collect (this);
@@ -103,18 +100,16 @@ public class Clue : MonoBehaviour {
 			}
 		}
 	}
-		
 	/// <summary>
-	/// Initialise the specified objectName, name, description, isWeapon, isMotive and disappearWhenClicked.
+	/// Initialise the Clue with properties and finds sprite with same name as this clue.
 	/// </summary>
-	/// <param name="objectName">Object name.</param>
-	/// <param name="name">Name.</param>
-	/// <param name="description">Description.</param>
-	/// <param name="isWeapon">If set to <c>true</c> is weapon.</param>
-	/// <param name="isMotive">If set to <c>true</c> is motive.</param>
-	/// <param name="disappearWhenClicked">If set to <c>true</c> disappear when clicked.</param>
+	/// <param name="objectName">Object name of the clue</param>
+	/// <param name="name">Long name to be displayed in game</param>
+	/// <param name="description">Description to be displayed in the game</param>
+	/// <param name="isWeapon">If <c>true</c> then the clue is the murder weapon</param>
+	/// <param name="isMotive">If <c>true</c> then this clue is motive.</param>
+	/// <param name="disappearWhenClicked">If set to <c>true</c>, the clue will disappear when clicked.</param>
 	public void initialise(string objectName, string name, string description, bool isWeapon=false, bool isMotive=false, bool disappearWhenClicked=false){
-		//sets parameters and finds sprite
 		this.cluePanel = GameObject.Find ("CluePanel");
 		this.cluePanelDescription = GameObject.Find ("Description").GetComponent<Text> ();
 		this.cluePanelName = GameObject.Find ("ClueName").GetComponent<Text> ();
