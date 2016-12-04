@@ -2,19 +2,34 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/// <summary>
+/// Handles the movement and propertiesof the character
+/// </summary>
 public class Detective : MonoBehaviour {
-	//Class that handles movement of the character
-
-	public float minX;
-	public float maxX;
+	/// <summary>
+	/// The z coordinate the detective should be forced to have, making him unable to walk towards the camera.
+	/// </summary>
 	public float maxZ;
-	public bool walkInDirectionIsLeft = true; //next walk in direction between scenes
+	/// <summary>
+	/// //The next walk in direction to be used when switching between scenes
+	/// </summary>
+	public bool walkInDirectionIsLeft = true; 
 
-	private string direction = "right"; //current direction
+	/// <summary>
+	/// The current direction the detective is facing.
+	/// </summary>
+	private string direction = "right";
+	/// <summary>
+	/// The animator GameObject used by the detective.
+	/// </summary>
 	private Animator anim;
 
+
+	/// <summary>
+	/// Changes the y-direction of the detective GameObject to make him face differernt directions
+	/// </summary>
+	/// <param name="direction">Direction to turn the player, either "right" "left" or "centre".</param>
 	private void turnPlayer(string direction){
-		//chnages to y rotation of player object depending on the direction it walks
 		if (direction == "right") {
 			gameObject.transform.localEulerAngles = new Vector3 (0, 90, 0); 
 		} else if (direction == "left") {
@@ -23,9 +38,10 @@ public class Detective : MonoBehaviour {
 			gameObject.transform.localEulerAngles = new Vector3 (0, 180, 0);
 		}
 	}
-
+	/// <summary>
+	/// Player walks onto the scene from specific direction. Called from SceneController scripts
+	/// </summary>
 	public void walkIn(){
-		//Player walks in from a direction called by SceneController scripts
 		anim = this.gameObject.GetComponentInChildren<Animator> (); // Initial setup as this is the first called funtion
 
 		if (this.walkInDirectionIsLeft) { //if position should be from left
@@ -44,13 +60,12 @@ public class Detective : MonoBehaviour {
 
 		anim.SetBool ("walking", true);
 	}
+		
 
 
-
-
-
-
-	// Update is called once per frame
+	/// <summary>
+	/// Handles player walking toggle, direction & fixes Z position of detective GameObject to stop him walking forwards
+	/// </summary>
 	void Update () {
 		// Walking annimations triggered if keys pressed
 		if (Time.timeSinceLevelLoad > 1f){	//so player cannot walk out of scene at beginning or paused
@@ -80,9 +95,5 @@ public class Detective : MonoBehaviour {
 			pos.z = Mathf.Clamp (this.transform.position.x, maxZ, maxZ); //clamp z so detective cant walk forward
 			this.transform.position = pos;
 		}
-
-
-
-
 	}
 }

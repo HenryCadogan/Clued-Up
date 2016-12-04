@@ -1,31 +1,79 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+/// <summary>
+/// The clue class
+/// </summary>
 
 public class Clue : MonoBehaviour {
-
-	public string longName; //name used in notebook etc. not to be confused with this.name which is the GameObject name
+	/// <summary>
+	/// //Long name displayed in game (i.e with spaces). Not to be confused with this.name which is the GameObject name
+	/// </summary>
+	public string longName;
+	/// <summary>
+	/// The description of the clue
+	/// </summary>
 	public string description;
+	/// <summary>
+	/// The 2D sprite of the clue
+	/// </summary>
 	public Sprite sprite;
+	/// <summary>
+	/// <c>True<c>/ if clue is weapon
+	/// </summary>
 	public bool isWeapon;
+	/// <summary>
+	/// if this clue is the motive clue
+	/// </summary>
 	public bool isMotive;
-	public bool disappearWhenClicked; //Clue will vanish when collected
+	/// <summary>
+	/// if this item should dissapear from the game when collected
+	/// </summary>
+	public bool disappearWhenClicked; 
 
+
+	/// <summary>
+	/// The clue description panel to be populated & shown when collected.
+	/// </summary>
 	private GameObject cluePanel;
+	/// <summary>
+	/// The clue title GameObject within the clue panel.
+	/// </summary>
 	private Text cluePanelName;
+	/// <summary>
+	/// The description GameObject within the clue panel.
+	/// </summary>
 	private Text cluePanelDescription;
+	/// <summary>
+	/// The image GameObject within CluePanel.
+	/// </summary>
 	private Image cluePanelImage;
+	/// <summary>
+	/// The overlay panel to be used for fading.
+	/// </summary>
 	private GameObject overlayPanel;
+	/// <summary>
+	/// The inventory of the detective.
+	/// </summary>
 	private Inventory inventory;
+	/// <summary>
+	/// The heads up display prefab
+	/// </summary>
 	private GameObject hud;
-		
+
+	/// <summary>
+	/// Returns a <see cref="System.String"/> that represents the current <see cref="Clue"/>.
+	/// </summary>
+	/// <returns>A <see cref="System.String"/> that represents the current <see cref="Clue"/>.</returns>
 	public override string ToString ()
 	{
 		return this.longName;
 	}
 
+	/// <summary>
+	/// Populates and displays the clue information on screen.
+	/// </summary>
 	public void displayClueInformation(){
-		//Populates information panel & displays
 		this.cluePanelName.text = this.longName;
 		this.cluePanelImage.sprite = this.sprite;
 		this.cluePanelDescription.text = this.description;
@@ -36,9 +84,10 @@ public class Clue : MonoBehaviour {
 		this.overlayPanel.GetComponent<CanvasGroup> ().blocksRaycasts = true; //make it so nothing else on screen can be interacted with while overlay panel is on
 
 	}		
-
+	/// <summary>
+	/// Activated when GameObject clicked on. If it's the first time, send message to HUD, add it to inventory, display clue.
+	/// </summary>
 	void OnMouseDown(){
-		//when object is clicked for the first time, send message to HUD, add it to inventory, display clue. Destroys object afterwards if needed
 		if (Time.timeScale != 0) {	//if game isn't paused
 			if (!(inventory.isCollected (this))) {
 				inventory.collect (this);
@@ -51,10 +100,16 @@ public class Clue : MonoBehaviour {
 			}
 		}
 	}
-		
-
+	/// <summary>
+	/// Initialise the Clue with properties and finds sprite with same name as this clue.
+	/// </summary>
+	/// <param name="objectName">Object name of the clue</param>
+	/// <param name="name">Long name to be displayed in game</param>
+	/// <param name="description">Description to be displayed in the game</param>
+	/// <param name="isWeapon">If <c>true</c> then the clue is the murder weapon</param>
+	/// <param name="isMotive">If <c>true</c> then this clue is motive.</param>
+	/// <param name="disappearWhenClicked">If set to <c>true</c>, the clue will disappear when clicked.</param>
 	public void initialise(string objectName, string name, string description, bool isWeapon=false, bool isMotive=false, bool disappearWhenClicked=false){
-		//sets parameters and finds sprite
 		this.cluePanel = GameObject.Find ("CluePanel");
 		this.cluePanelDescription = GameObject.Find ("Description").GetComponent<Text> ();
 		this.cluePanelName = GameObject.Find ("ClueName").GetComponent<Text> ();

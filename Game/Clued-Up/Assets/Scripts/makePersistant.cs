@@ -1,11 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+/// <summary>
+/// Make persistant.
+/// </summary>
 public class makePersistant : MonoBehaviour {
-	public static GameObject Instance;//Makes the object persistant throughout scenes
-	//public static makePersistant Instance; //Used to make the object persistant throughout scenes
+	/// <summary>
+	/// Copy of this object
+	/// </summary>
+	public static GameObject Instance;
+	/// <summary>
+	/// Makes the GameObject persistant through all scenes while also only allowing one single instance of the class
+	/// </summary>
 	void Awake ()  
-	//Makes the object persistant throughout scenes
 	{
 		if (Instance == null)
 		{

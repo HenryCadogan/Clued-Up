@@ -2,28 +2,62 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+/// <summary>
+/// Controls the introduction sequence in a new game
+/// </summary>
 public class IntroController : MonoBehaviour {
+	/// <summary>
+	/// The audio source GameObject.
+	/// </summary>
 	public GameObject audioSource;
+	/// <summary>
+	/// The snow generator prefab GameObject.
+	/// </summary>
 	public GameObject snowGenerator;
+	/// <summary>
+	/// The rain generator prefab GameObject.
+	/// </summary>
 	public GameObject rainGenerator;
+	/// <summary>
+	/// The intro textbox GameObject.
+	/// </summary>
 	public GameObject introTextObject;
+	/// <summary>
+	/// The overlay panel GameObject used for fading.
+	/// </summary>
 	public GameObject overlayPanel;
+	/// <summary>
+	/// The background plane GameObject used for displaying a background material.
+	/// </summary>
 	public GameObject backgroundPlane;
+	/// <summary>
+	/// The main story GameObject.
+	/// </summary>
 	public GameObject storyObject;
 
+	/// <summary>
+	/// Fades the introduction text in/out for specified time.
+	/// </summary>
+	/// <param name="alpha">Alpha component where 0f is transparent and 1f is all black</param>
+	/// <param name="time for fade, in seconds">Time.</param>
 	private void fadeText(float alpha, float time){ 
 		introTextObject.GetComponent<Text>().CrossFadeAlpha(alpha,time,false);
 	}
-
+	/// <summary>
+	/// Displays specified string as the intro text.
+	/// </summary>
+	/// <param name="introText">Text string to set the intro textbox</param>
 	private void displayText(string introText){	
-		//will change UI Text object and fade in
 		introTextObject.GetComponent<Text>().text = introText;
 		fadeText (1f, 3f);
 	}
 
+	/// <summary>
+	/// Plays the main intro sequence cutscene for the game
+	/// </summary>
+	/// <returns>Yields WaitForSeconds.</returns>
+	/// <param name="story">Main game story</param>
 	IEnumerator IntroCutscene(Story story){
-		//plays scream, fades and updates text
 		audioSource.GetComponent<AudioSource> ().Play (); //play scream
 		yield return new WaitForSeconds(1f); //wait 1 second after scream begins
 
@@ -46,12 +80,11 @@ public class IntroController : MonoBehaviour {
 		yield return new WaitForSeconds(4f); //wait for the overlay to fade in entirely
 
 		SceneManager.LoadScene (2);	//loads character selection scene
-
 	}
-
-
-
-
+		
+	/// <summary>
+	/// Initialises weather & background for scene, sets story, and loads cutscene
+	/// </summary>
 	void Start () {
 		Story story = storyObject.GetComponent<Story> (); // reference to story object (in Story script in Story GameObject)
 		Material[] materialArray = new Material[4];
@@ -76,11 +109,11 @@ public class IntroController : MonoBehaviour {
 		StartCoroutine(IntroCutscene(story));
 	}
 
-
-	//SKIP INTRO cos it gets bloody tedius after a while!!
+	/// <summary>
+	/// If space is pressed during this scene, then skip the intro
+	/// </summary>
 	void Update() {
 		if (Input.GetKeyDown("space"))
 			SceneManager.LoadScene (2);	//loads character selection scene
-
 	}
 }

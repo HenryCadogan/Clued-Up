@@ -3,20 +3,47 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class Room1Controller : MonoBehaviour {
+	/// <summary>
+	/// The background image pane GameObject.
+	/// </summary>
 	public GameObject backgroundPane;
+	/// <summary>
+	/// The floor image GameObject
+	/// </summary>
 	public GameObject floor;
+	/// <summary>
+	/// The overlay panel GameObject used for fading.
+	/// </summary>
 	public GameObject overlayPanel;
+	/// <summary>
+	/// The snow generator prefab GameObject.
+	/// </summary>
 	public GameObject snowGenerator;
+	/// <summary>
+	/// The rain generator prefab GameObject.
+	/// </summary>
 	public GameObject rainGenerator;
+	/// <summary>
+	/// The Ron Cooke Hub Lights group GameObject.
+	/// </summary>
 	public GameObject ronCookeLights;
+	/// <summary>
+	/// The main light GameObject.
+	/// </summary>
 	public GameObject mainLight;
+	/// <summary>
+	/// The detectives GameObject that contains all Dectectives as children.
+	/// </summary>
 	public GameObject detectives;
-
+	/// <summary>
+	/// The main story.
+	/// </summary>
 	private Story story;
-	// Use this for initialization
 
+	/// <summary>
+	/// Sets the lights of the scene depending on weather condition
+	/// </summary>
 	private void setLights(){
-		//sets lighting to weather appropriate colour
 		int weather = story.getWeather ();
 		switch (weather) {
 		case 0:
@@ -34,9 +61,11 @@ public class Room1Controller : MonoBehaviour {
 			mainLight.GetComponent<Light>().shadowStrength = 0.05f;
 			break;
 		}
-			
 	}
 
+	/// <summary>
+	/// Sets the background pane & floor GameObject images depending on weather condition. Also sets rain or snow.
+	/// </summary>
 	private void setBackground(){
 		Material[] materialArray = new Material[8];
 		materialArray[0] = (Material)Resources.Load("Room1Sunny", typeof(Material)); //finds material located in the resources folder
@@ -52,33 +81,45 @@ public class Room1Controller : MonoBehaviour {
 		int weather = story.getWeather ();
 		backgroundPane.GetComponent<Renderer> ().material = materialArray [weather];
 		floor.GetComponent<Renderer> ().material = materialArray [weather + 4];
-		if (weather == 1) {	//set generators depending on weather
+		if (weather == 1) {
 			rainGenerator.SetActive (true);
 		} else if (weather == 3) {
 			snowGenerator.SetActive (true);
 		}
 	}
 
+	/// <summary>
+	/// Prepares the overlay by turning on and immediately fading out, giving a fade from black effect.
+	/// </summary>
 	private void setOverlay(){
 		//turns on overlay panel, fades out
 		overlayPanel.SetActive (true);
 		overlayPanel.GetComponent<Image>().CrossFadeAlpha(0f,3f,false);
 	}
-
+	/// <summary>
+	/// Gets the clues for this room from story, and positions them within the room.
+	/// </summary>
 	private void setClues(){
 		//instanciates new clue prefab with location & rotation, scales for perspective calls its initialisation method
-		//todo makes sure they havent already been collected first
+		//TODO makes sure they havent already been collected first, read clues from story
 		GameObject bodyClue = Instantiate (Resources.Load ("Clue"), new Vector3(1.5f,-5.99f,-1.2f), Quaternion.Euler(90,0,0)) as GameObject;
 		bodyClue.GetComponent<Transform> ().localScale = new Vector3 (1f, 4.5f, 1f);
 		bodyClue.GetComponent<BoxCollider> ().size = new Vector3 (4.5f, 1.75f, 0f);	//manually set box collider as object is on floor & fixed position
 		bodyClue.GetComponent<Clue>().initialise("chalkOutline", "Chalk Outline", "A chalk outline of the body of " + story.getVictim().longName +". " + this.getChalkOutlineDescription());
 	}
 
+	/// <summary>
+	/// Gets the chalk outline description.
+	/// </summary>
+	/// <returns>The chalk outline description.</returns>
 	private string getChalkOutlineDescription(){
 		//TODO read random outline descriptions from file
 		return "It looks like the body was removed by the police a while ago.";
 	}
 
+	/// <summary>
+	/// Get reference of story, run initialisation sequence & make detective walk in
+	/// </summary>
 	void Start () {
 		story = GameObject.Find("Story").GetComponent<Story>(); // references persistant object story
 		detectives.transform.GetChild(story.getDetective()).gameObject.SetActive(true); //only activates the chosen detective by using the detective int as an index of children of the Detectives object
@@ -90,8 +131,8 @@ public class Room1Controller : MonoBehaviour {
 
 		GameObject detective = GameObject.Find("Detective");
 		detective.GetComponent<Detective> ().walkIn();
-		//Make detective slightly lower in screen
-		Vector3 pos = detective.transform.position;
+
+		Vector3 pos = detective.transform.position; //Make detective slightly lower in screen
 		pos.y = -5.9f;
 		detective.transform.position = pos;
 
