@@ -22,7 +22,7 @@ public class Detective : MonoBehaviour {
 	/// <summary>
 	/// The animator GameObject used by the detective.
 	/// </summary>
-	private Animator anim;
+	public Animator anim;
 
 
 	/// <summary>
@@ -42,7 +42,7 @@ public class Detective : MonoBehaviour {
 	/// Player walks onto the scene from specific direction. Called from SceneController scripts
 	/// </summary>
 	public void walkIn(){
-		anim = this.gameObject.GetComponentInChildren<Animator> (); // Initial setup as this is the first called funtion
+		//anim = this.gameObject.GetComponent<Animator> (); // Initial setup as this is the first called funtion
 
 		if (this.walkInDirectionIsLeft) { //if position should be from left
 			this.direction = "right";	//sets facing right

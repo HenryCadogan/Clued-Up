@@ -51,6 +51,6 @@ public class HUDController : MonoBehaviour {
 	/// Tests the inventory on click of notebook button. TEST TEST TEST REMOVE LATER!!
 	/// </summary>
 	public void testInventoryOnClickOfNotebookButton(){
-		GameObject.Find ("Detective").GetComponent<Inventory> ().collectedClues.ForEach(Debug.Log);	//print list of all collected clues
+		GameObject.Find ("Detective").GetComponent<Inventory> ().collectedClueNames.ForEach(Debug.Log);	//print list of all collected clues
 	}
 }

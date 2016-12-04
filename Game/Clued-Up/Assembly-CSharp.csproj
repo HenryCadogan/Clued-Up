@@ -66,9 +66,9 @@
      <Compile Include="Assets\Scripts\Room1Controller.cs" />
      <Compile Include="Assets\Scripts\Room2Controller.cs" />
      <Compile Include="Assets\Scripts\SceneTransitions.cs" />
+     <Compile Include="Assets\Scripts\SpeechHandler.cs" />
      <Compile Include="Assets\Scripts\Story.cs" />
      <Compile Include="Assets\Scripts\makePersistant.cs" />
-     <Compile Include="Assets\SpeechHandler.cs" />
      <Compile Include="Assets\UnityTestTools\Assertions\AssertionComponent.cs" />
      <Compile Include="Assets\UnityTestTools\Assertions\AssertionException.cs" />
      <Compile Include="Assets\UnityTestTools\Assertions\Assertions.cs" />

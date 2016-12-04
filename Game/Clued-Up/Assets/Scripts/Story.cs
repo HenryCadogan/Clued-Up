@@ -22,7 +22,7 @@ public class Story : MonoBehaviour {
 	/// <summary>
 	/// Dictionary to store which character Indexs are stored in each room index
 	/// </summary>
-	private Dictionary<int, List<int>> charactersInRoom = new Dictionary<int,List<int>>(); //characters in rooms stored as list of indexes for each roomID
+	private Dictionary<int, List<int>> charactersInRoom = new Dictionary<int,List<int>>();
 	/// <summary>
 	/// The murderer for this instance of the story
 	/// </summary>
@@ -36,11 +36,11 @@ public class Story : MonoBehaviour {
 	/// </summary>
 	private List<GameObject> aliveCharacters;
 	/// <summary>
-	/// The list of clues availabe in this instance of the game.
+	/// Dictionary of list of clue names present in each room in this instance of the game.
 	/// </summary>
-	private List<GameObject> clues;
+	public Dictionary<int, List<string>> cluesInRoom = new Dictionary<int, List<string>>();
 	/// <summary>
-	/// The number of room that will be in the game.
+	/// The number of room that will be in the game
 	/// </summary>
 	private static int NUMBER_OF_ROOMS = 8;
 	/// <summary>
@@ -192,10 +192,10 @@ public class Story : MonoBehaviour {
 	/// </summary>
 	private void setCharacterRooms(){
 		int randomRoom;
-		for(int characterIndex = 0; characterIndex < this.aliveCharacters.Count; characterIndex ++) {	
-			randomRoom = Random.Range (2, NUMBER_OF_ROOMS + 1); //rooms 2-8 (i.e. all, not including the crime scene 
+		for(int characterIndex = 0; characterIndex < this.aliveCharacters.Count + 1; characterIndex ++) {	
+			randomRoom = Random.Range (1, NUMBER_OF_ROOMS); //rooms 1-7 (i.e. all, not including the crime scene  (room 0)
 			while(charactersInRoom.ContainsKey(randomRoom)){	//while there isnt already a character there
-				randomRoom = Random.Range (2, NUMBER_OF_ROOMS + 1);
+				randomRoom = Random.Range (1, NUMBER_OF_ROOMS);
 			}
 
 			charactersInRoom.Add (randomRoom, new List<int>{characterIndex}); //CharactersInRoom[1] = 2 | char 2 is in room 1 //using lists so it is adaptable to multiople chars in one room
@@ -238,14 +238,63 @@ public class Story : MonoBehaviour {
 		return this.victim.GetComponent<Character>();
 	}
 	/// <summary>
+	/// Sets the location of each of the clues.
+	/// </summary>
+	/// <param name="clueNames">List of names of all clues in game</param>
+	private void setClueLocations(List<string> clueNames){
+		cluesInRoom [0] = new List<string>{ clueNames [0] }; //body clue always in room 0
+
+		int randomRoom;
+		for(int clueIndex = 1; clueIndex < clueNames.Count; clueIndex ++) {	
+			randomRoom = Random.Range (1, NUMBER_OF_ROOMS); //rooms 1-7 (i.e. all, not including the crime scene 
+			while(cluesInRoom.ContainsKey(randomRoom)){	//while there is already a character here, keep finsing new room
+				randomRoom = Random.Range (1, NUMBER_OF_ROOMS);
+			}
+			cluesInRoom.Add (randomRoom, new List<string>{clueNames[clueIndex]}); //cluesInRoom[0] = ["bodyClue"] | using lists so it is adaptable to multiople chars in one room
+		}
+	}
+	/// <summary>
+	/// Decides which clues will be used in this game and assigns them a room. Stored as a dictionary[RoomIndex] = [clue1name,clue2name...]
+	/// </summary>
+	private void setClues(){
+		List<string> cluesList = new List<string> (); 
+		cluesList.Add("bodyClue"); //Clue 0 will ALWAYS be the chalk outline.
+		//setCharacterClues ();
+		//setMotive();
+		//setWeapon();
+		setClueLocations(cluesList);
+	}
+	private void setClueInformation(string clueName, GameObject newClue){
+		switch (clueName){
+		case "bodyClue":
+			newClue.GetComponent<Clue>().initialise("chalkOutline", "Chalk Outline", "A chalk outline of the body of " + this.getVictim().longName +". " + "!!");
+			break;
+		default:
+			break;
+		}
+	}
+	/// <summary>
+	/// Instanciates all the clues in a particular room
+	/// </summary>
+	/// <returns>The clue GameObjects in the room</returns>
+	/// <param name="roomIndex">Index of the room to find clues for</param>
+	public List<GameObject> getCluesInRoom(int roomIndex){
+		List<GameObject> clues = new List<GameObject> ();
+		foreach (string clueName in this.cluesInRoom[roomIndex]) {	//for each clueName in room
+			GameObject newClue = Instantiate (Resources.Load ("Clue"), new Vector3(1.5f,-5.99f,-1.2f), Quaternion.Euler(90,0,0)) as GameObject;
+			setClueInformation (clueName, newClue); // calls the initialisation method with the relevent details
+			clues.Add(newClue);
+		}
+	
+		return clues;
+	}
+
+	/// <summary>
 	/// Initialises story characters and clues
 	/// </summary>
 	public void setStory(){
 		setCharacters ();
 		setCharacterRooms();
-		//setCharacterClues ();
-		//setMotiveClue();
-		//setWeapon();
-		//setClueLocations();
+		setClues();
 	}
 }

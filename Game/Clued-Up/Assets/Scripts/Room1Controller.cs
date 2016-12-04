@@ -40,6 +40,10 @@ public class Room1Controller : MonoBehaviour {
 	/// </summary>
 	private Story story;
 
+
+	public GameObject bodyClue;
+
+
 	/// <summary>
 	/// Sets the lights of the scene depending on weather condition
 	/// </summary>
@@ -99,13 +103,13 @@ public class Room1Controller : MonoBehaviour {
 	/// <summary>
 	/// Gets the clues for this room from story, and positions them within the room.
 	/// </summary>
-	private void setClues(){
+	private void getClues(){
 		//instanciates new clue prefab with location & rotation, scales for perspective calls its initialisation method
 		//TODO makes sure they havent already been collected first, read clues from story
-		GameObject bodyClue = Instantiate (Resources.Load ("Clue"), new Vector3(1.5f,-5.99f,-1.2f), Quaternion.Euler(90,0,0)) as GameObject;
-		bodyClue.GetComponent<Transform> ().localScale = new Vector3 (1f, 4.5f, 1f);
-		bodyClue.GetComponent<BoxCollider> ().size = new Vector3 (4.5f, 1.75f, 0f);	//manually set box collider as object is on floor & fixed position
-		bodyClue.GetComponent<Clue>().initialise("chalkOutline", "Chalk Outline", "A chalk outline of the body of " + story.getVictim().longName +". " + this.getChalkOutlineDescription());
+
+		bodyClue = story.getCluesInRoom(0) [0];
+		bodyClue.GetComponent<Transform> ().localScale = new Vector3 (1f, 4.5f, 1f); //sizes clue correctly
+		bodyClue.GetComponent<BoxCollider> ().size = new Vector3 (4.5f, 1.75f, 0f);	//manually set box collider as this clue is on floor, so normal collider doesnt work
 	}
 
 	/// <summary>
@@ -127,7 +131,7 @@ public class Room1Controller : MonoBehaviour {
 		setOverlay ();
 		setBackground ();
 		setLights ();
-		setClues ();
+		getClues ();
 
 		GameObject detective = GameObject.Find("Detective");
 		detective.GetComponent<Detective> ().walkIn();

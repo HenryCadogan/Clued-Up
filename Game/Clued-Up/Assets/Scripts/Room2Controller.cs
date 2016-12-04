@@ -45,7 +45,7 @@ public class Room2Controller : MonoBehaviour {
 	/// Gets the characters present in this room from story.
 	/// </summary>
 	private void getCharacters(){
-		List<GameObject> charactersInRoom = story.getCharactersInRoom (2);
+		List<GameObject> charactersInRoom = story.getCharactersInRoom (1);
 		switch (charactersInRoom.Count) {
 		case 1:
 			//do stuff to make one character active
