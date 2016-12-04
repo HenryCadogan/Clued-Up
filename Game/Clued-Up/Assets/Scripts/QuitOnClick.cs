@@ -5,7 +5,7 @@ using System.Collections;
 /// </summary>
 public class QuitOnClick : MonoBehaviour {
 	/// <summary>
-	/// Sets playing to false
+	/// Returns to Unity editor if running within, otherwise the game's application is quit.
 	/// </summary>
 	public void quit(){
 #if UNITY_EDITOR

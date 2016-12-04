@@ -6,34 +6,30 @@ using System.Collections.Generic;
 /// </summary>
 
 public class Inventory : MonoBehaviour {
-	
 	/// <summary>
 	/// The list of collected clues.
 	/// </summary>
 	public List<Clue> collectedClues;
 
 	/// <summary>
-	/// Returns a boolean if the parameter clue is already in the inventory or not
+	/// <true> if the specified clue has been collected
 	/// </summary>
-	/// <returns><c>true</c>, if collected was ised, <c>false</c> otherwise.</returns>
+	/// <returns><c>true</c>, if specified clue is in the inventory, <c>false</c> otherwise.</returns>
 	/// <param name="clue">Clue.</param>
 	public bool isCollected(Clue clue){
 		return collectedClues.Contains (clue);
 	}
-
 	/// <summary>
-	/// Collect the specified clue into the inventory
+	/// Collect the specified clue by adding it to the inventory list
 	/// </summary>
-	/// <param name="clue">Clue.</param>
+	/// <param name="clue">The clue to collect</param>
 	public void collect(Clue clue){
-		//adds name of clue to clue array
 		Debug.Log (clue.name + " COLLECTED");
 		collectedClues.Add (clue);
 	}
 
-
 	/// <summary>
-	//initialises inventory list
+	/// Initialises inventory list
 	/// </summary>
 	void start(){
 		collectedClues = new List<Clue>();

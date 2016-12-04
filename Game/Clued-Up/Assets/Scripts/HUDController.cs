@@ -6,33 +6,32 @@ using UnityEngine.UI;
 /// </summary>
 public class HUDController : MonoBehaviour {
 	/// <summary>
-	/// The HUD text.
+	/// Text GameObject from within the HUD prefab
 	/// </summary>
 	public GameObject HUDText;
 
 	/// <summary>
-	/// Loads the panel and pause.
+	/// Makes a panel active and pauses game time.
 	/// </summary>
-	/// <param name="panelToLoad">Panel to load.</param>
+	/// <param name="panelToLoad">Panel GameObject that will become visible</param>
 	public void loadPanelAndPause(GameObject panelToLoad){
 		panelToLoad.SetActive (true);
-		Time.timeScale = 0; //makes game time pause
+		Time.timeScale = 0;
 	}
-
 	/// <summary>
-	/// Hides the panel and resume.
+	/// Hides a panel and resumes game time.
 	/// </summary>
-	/// <param name="panelToHide">Panel to hide.</param>
+	/// <param name="panelToHide">Panel GameObject that will be hidden.</param>
 	public void hidePanelAndResume(GameObject panelToHide){
 		panelToHide.SetActive (false);
-		Time.timeScale = 1; //makes game time resume
+		Time.timeScale = 1;
 	}
 
 	/// <summary>
-	/// Fades the HUD text.
+	/// Fades new message in and out of HUD
 	/// </summary>
-	/// <returns>The HUD text.</returns>
-	/// <param name="text">Text.</param>
+	/// <returns>Yield WaitForSeconds</returns>
+	/// <param name="text">Text string to be displayed in HUD</param>
 	IEnumerator fadeHUDText(string text){
 		//instantly fades out text in case it isn't already, changes HUDText, fades in, waits, fades out
 		HUDText.GetComponent<Text> ().CrossFadeAlpha (0f, 0f, false);
@@ -41,18 +40,15 @@ public class HUDController : MonoBehaviour {
 		yield return new WaitForSeconds(3);
 		HUDText.GetComponent<Text> ().CrossFadeAlpha (0f, 3f, false);
 	}
-
 	/// <summary>
-	/// Displays the HUD text.
+	/// Calls coroutine to fade message in/out of HUD
 	/// </summary>
-	/// <param name="text">Text.</param>
+	/// <param name="text">Text string to be displayed in the HUD</param>
 	public void displayHUDText(string text){
 		StartCoroutine(fadeHUDText(text));
 	}
-
-
 	/// <summary>
-	/// Tests the inventory on click of notebook button.
+	/// Tests the inventory on click of notebook button. TEST TEST TEST REMOVE LATER!!
 	/// </summary>
 	public void testInventoryOnClickOfNotebookButton(){
 		GameObject.Find ("Detective").GetComponent<Inventory> ().collectedClues.ForEach(Debug.Log);	//print list of all collected clues

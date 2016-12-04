@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 
 /// <summary>
-/// Fades the overlay panel
+/// Fades the overlay panel HI IF YOU ARE READING THIS SEE IF YOU CAN MERGE THIS INTO ANOTHER SCRIPT/ REMOVE IF UNUSED
 /// </summary>
 public class OverlayPanelFader : MonoBehaviour {
 	/// <summary>
