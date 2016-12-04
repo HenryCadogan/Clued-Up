@@ -6,7 +6,7 @@ cd ../..
 
 # Check if we are on the master branch, if not exit this script
 if [ ! $TRAVIS_BRANCH == "master" ]; then
-	echo "Not on the master branch, will build the documentation but not upload to the GitHub Pages branch."
+	echo "Not on the master branch, will build the documentation but not upload to the website repository"
 	ON_MASTER=0
 else
 	ON_MASTER=1
@@ -22,9 +22,8 @@ mkdir code_docs
 cd code_docs
 
 # Get the current gh-pages branch
-git clone -b gh-pages https://$GH_REPO_TOKEN@$GH_REPO_REF
+git clone -b master https://$GH_REPO_TOKEN@$WEB_REPO_REF
 
-cd Clued-Up
 
 ##### Configure git.
 # Set the push default to simple i.e. push only the current branch.
@@ -59,21 +58,21 @@ doxygen $DOXYFILE 2>&1 | tee doxygen.log
 if [ -d "html" ] && [ -f "html/index.html" ]; then
 
 	if [ $ON_MASTER == 1 ]; then
-		echo 'Building on Master Branch - Uploading documentation to the gh-pages branch...'
+		echo 'Building on Master Branch - Uploading documentation to the website repository'
 		# Add everything in this directory (the Doxygen code documentation) to the
-		# gh-pages branch.
+		# website repository
 		# GitHub is smart enough to know which files have changed and which files have
 		# stayed the same and will only update the changed files.
 		git add --all
 
 		# Commit the added files with a title and description containing the Travis CI
 		# build number and the GitHub commit reference that issued this build.
-		git commit -m "Deploy code docs to GitHub Pages Travis build: ${TRAVIS_BUILD_NUMBER}" -m "Commit: ${TRAVIS_COMMIT}"
+		git commit -m "Deploy code docs to Website repository Travis build: ${TRAVIS_BUILD_NUMBER}" -m "Commit: ${TRAVIS_COMMIT}"
 
 		# Force push to the remote gh-pages branch.
 		# The ouput is redirected to /dev/null to hide any sensitive credential data
 		# that might otherwise be exposed.
-		git push --force "https://$GH_REPO_TOKEN@$GH_REPO_REF" > /dev/null 2>&1
+		git push --force "https://$GH_REPO_TOKEN@$WEB_REPO_REF" > /dev/null 2>&1
 	fi
 	
 else
