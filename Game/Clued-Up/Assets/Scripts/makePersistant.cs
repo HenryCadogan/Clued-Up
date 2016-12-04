@@ -5,14 +5,13 @@ using System.Collections;
 /// </summary>
 public class makePersistant : MonoBehaviour {
 	/// <summary>
-	/// Makes the object persistant throughout scenes
+	/// Copy of this object
 	/// </summary>
 	public static GameObject Instance;
 	/// <summary>
-	/// Awake this instance.
+	/// Makes the GameObject persistant through all scenes while also only allowing one single instance of the class
 	/// </summary>
 	void Awake ()  
-	//Makes the object persistant throughout scenes
 	{
 		if (Instance == null)
 		{

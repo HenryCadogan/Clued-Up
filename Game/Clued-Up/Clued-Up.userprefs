@@ -1,0 +1,28 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/SceneTransitions.cs">
+    <Files>
+      <File FileName="Assets/Scripts/Character.cs" Line="36" Column="75" />
+      <File FileName="Assets/Scripts/Clue.cs" Line="104" Column="86" />
+      <File FileName="Assets/Scripts/ClueController.cs" Line="4" Column="109" />
+      <File FileName="Assets/Scripts/DetectiveChoiceHandler.cs" Line="44" Column="54" />
+      <File FileName="Assets/Scripts/Detective.cs" Line="99" Column="2" />
+      <File FileName="Assets/Scripts/HUDController.cs" Line="51" Column="84" />
+      <File FileName="Assets/Scripts/ImportSpeech.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/IntroController.cs" Line="117" Column="65" />
+      <File FileName="Assets/Scripts/Inventory.cs" Line="32" Column="6" />
+      <File FileName="Assets/Scripts/makePersistant.cs" Line="12" Column="114" />
+      <File FileName="Assets/Scripts/NewSceneOnClick.cs" Line="5" Column="149" />
+      <File FileName="Assets/Scripts/OverlayPanelFader.cs" Line="6" Column="119" />
+      <File FileName="Assets/Scripts/QuitOnClick.cs" Line="8" Column="70" />
+      <File FileName="Assets/Scripts/Room1Controller.cs" Line="92" Column="101" />
+      <File FileName="Assets/Scripts/Room2Controller.cs" Line="64" Column="79" />
+      <File FileName="Assets/Scripts/SceneTransitions.cs" Line="10" Column="15" />
+      <File FileName="Assets/Scripts/Story.cs" Line="241" Column="44" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

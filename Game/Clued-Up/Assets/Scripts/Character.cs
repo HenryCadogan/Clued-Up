@@ -6,40 +6,39 @@ using System.Collections.Generic;
 /// </summary>
 public class Character : MonoBehaviour {
 	/// <summary>
-	/// The long name.
+	/// Name to be used when displaying a name (i.e. contains spaces)
 	/// </summary>
 	public string longName;
 	/// <summary>
-	/// Boolean if the character is the murderer
+	/// If character is the murderer. Set by Story.
 	/// </summary>
 	public bool isMurderer;
 	/// <summary>
-	/// Boolean if this character is the victim
+	/// If character is the victim. Set by Story.
 	/// </summary>
 	public bool isVictim;
 	/// <summary>
-	/// List of clues based on the characters
+	/// List of Clues attatched to this character instance
 	/// </summary>
 	public List<Clue> characterClues;
-
 	/// <summary>
-	/// Awake this instance.
+	/// Makes the object persistant throughout scenes
 	/// </summary>
 	void Awake ()
-	//Makes the object persistant throughout scenes
 	{
 		DontDestroyOnLoad(gameObject);
 
 	}
 
-	/// <summary>
-	/// Initialise the specified objectName, name, isMurderer and isVictim.
-	/// </summary>
-	/// <param name="objectName">Object name.</param>
-	/// <param name="name">Name.</param>
-	/// <param name="isMurderer">If set to <c>true</c> is murderer.</param>
-	/// <param name="isVictim">If set to <c>true</c> is victim.</param>
 
+
+	/// <summary>
+	/// Initialise the specified Character with properties and CharacterClues
+	/// </summary>
+	/// <param name="objectName">The name of the character GameObject</param>
+	/// <param name="name">Long name to be displayed in game</param>
+	/// <param name="isMurderer"></param><c>true</c> if character is murderer.</param>
+	/// <param name="isVictim"></param><c>true</c> if character is victim.</param>
 	public void initialise(string objectName, string name, bool isMurderer=false, bool isVictim=false){
 		this.gameObject.name = objectName;
 		this.longName = name;
