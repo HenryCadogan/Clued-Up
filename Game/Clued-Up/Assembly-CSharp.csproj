@@ -68,6 +68,8 @@
      <Compile Include="Assets\Scripts\SceneTransitions.cs" />
      <Compile Include="Assets\Scripts\SpeechHandler.cs" />
      <Compile Include="Assets\Scripts\Story.cs" />
+     <Compile Include="Assets\Scripts\UpdateCluesButtons.cs" />
+     <Compile Include="Assets\Scripts\UpdateCluesInfo.cs" />
      <Compile Include="Assets\Scripts\makePersistant.cs" />
      <Compile Include="Assets\UnityTestTools\Assertions\AssertionComponent.cs" />
      <Compile Include="Assets\UnityTestTools\Assertions\AssertionException.cs" />
