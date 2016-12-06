@@ -126,6 +126,5 @@ public class Clue : MonoBehaviour {
 		this.isMotive = isMotive;
 		this.disappearWhenClicked = disappearWhenClicked;
 		this.sprite =  Resources.Load<Sprite> ("Clues/" + objectName); //finds image in Resources with the same name as the clue & sets
-		this.GetComponent<SpriteRenderer> ().sprite = this.sprite;
 	}
 }

@@ -17,7 +17,7 @@ public class DetectiveChoiceHandler : MonoBehaviour {
 	/// <summary>
 	/// Stores which description/ detective is currently visible
 	/// </summary>
-	private int currentlyActive;
+	public int currentlyActive;
 
 
 	/// <summary>
