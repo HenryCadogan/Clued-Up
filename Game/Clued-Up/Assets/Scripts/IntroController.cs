@@ -68,12 +68,12 @@ public class IntroController : MonoBehaviour {
 		yield return new WaitForSeconds(4f);
 
 
-		displayText (story.getIntro2());
+		displayText (story.getIntro(2));
 		yield return new WaitForSeconds(4f);
 		fadeText (0f, 3.5f);
 		yield return new WaitForSeconds(4f);
 
-		displayText (story.getIntro3());
+		displayText (story.getIntro(3));
 		yield return new WaitForSeconds(4f);
 		fadeText (0f, 3.5f);
 		overlayPanel.GetComponent<Image> ().CrossFadeAlpha (1f, 4f, false);
