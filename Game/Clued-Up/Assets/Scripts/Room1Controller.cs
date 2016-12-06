@@ -104,9 +104,6 @@ public class Room1Controller : MonoBehaviour {
 	/// Gets the clues for this room from story, and positions them within the room.
 	/// </summary>
 	private void getClues(){
-		//instanciates new clue prefab with location & rotation, scales for perspective calls its initialisation method
-		//TODO makes sure they havent already been collected first, read clues from story
-
 		bodyClue = story.getCluesInRoom(0) [0];
 		bodyClue.GetComponent<Transform> ().localScale = new Vector3 (1f, 4.5f, 1f); //sizes clue correctly
 		bodyClue.GetComponent<BoxCollider> ().size = new Vector3 (4.5f, 1.75f, 0f);	//manually set box collider as this clue is on floor, so normal collider doesnt work

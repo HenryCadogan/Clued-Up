@@ -22,7 +22,7 @@ public class Story : MonoBehaviour {
 	/// <summary>
 	/// Dictionary to store which character Indexs are stored in each room index
 	/// </summary>
-	private Dictionary<int, List<int>> charactersInRoom = new Dictionary<int,List<int>>();
+	public Dictionary<int, List<int>> charactersInRoom = new Dictionary<int,List<int>>();
 	/// <summary>
 	/// The murderer for this instance of the story
 	/// </summary>
@@ -254,6 +254,23 @@ public class Story : MonoBehaviour {
 		}
 	}
 	/// <summary>
+	/// Gets the information associated with a Clue, and where all Clues are initially defined
+	/// </summary>
+	/// <returns>The clue information as a GameObect with Clue component</returns>
+	/// <param name="clueName">Name of the clue to lookup</param>
+	public GameObject getClueInformation(string clueName){
+		GameObject newClue = new GameObject ();
+		newClue.AddComponent<Clue> ();
+		switch (clueName) {
+		case "bodyClue":
+			newClue.GetComponent<Clue> ().initialise ("chalkOutline", "Chalk Outline", "A chalk outline of the body of " + this.getVictim ().longName + "!!");
+			break;
+		default:
+			break;
+		}
+		return newClue;
+	}
+	/// <summary>
 	/// Decides which clues will be used in this game and assigns them a room. Stored as a dictionary[RoomIndex] = [clue1name,clue2name...]
 	/// </summary>
 	private void setClues(){
@@ -264,14 +281,15 @@ public class Story : MonoBehaviour {
 		//setWeapon();
 		setClueLocations(cluesList);
 	}
+	/// <summary>
+	/// Sets the clue initialisation parameters for newClue, based on clueName.
+	/// </summary>
+	/// <param name="clueName">Name of clue to get information for.</param>
+	/// <param name="newClue">Clue GameObject to initialise</param>
 	private void setClueInformation(string clueName, GameObject newClue){
-		switch (clueName){
-		case "bodyClue":
-			newClue.GetComponent<Clue>().initialise("chalkOutline", "Chalk Outline", "A chalk outline of the body of " + this.getVictim().longName +". " + "!!");
-			break;
-		default:
-			break;
-		}
+		Clue clueInfo = getClueInformation (clueName).GetComponent<Clue>(); //sets up temp Clue that stores all properties
+		newClue.GetComponent<Clue>().initialise(clueInfo.name,clueInfo.longName, clueInfo.description, clueInfo.isWeapon, clueInfo.isMotive, clueInfo.disappearWhenClicked);
+		GameObject.Destroy (clueInfo.gameObject); //destroys temp Clue GameObject to remove it from scene
 	}
 	/// <summary>
 	/// Instanciates all the clues in a particular room
@@ -283,9 +301,9 @@ public class Story : MonoBehaviour {
 		foreach (string clueName in this.cluesInRoom[roomIndex]) {	//for each clueName in room
 			GameObject newClue = Instantiate (Resources.Load ("Clue"), new Vector3(1.5f,-5.99f,-1.2f), Quaternion.Euler(90,0,0)) as GameObject;
 			setClueInformation (clueName, newClue); // calls the initialisation method with the relevent details
+			newClue.GetComponent<SpriteRenderer> ().sprite = newClue.GetComponent<Clue>().sprite;	// Add Clue's sprite to the Clue's GameObject sprite renderer
 			clues.Add(newClue);
 		}
-	
 		return clues;
 	}
 
