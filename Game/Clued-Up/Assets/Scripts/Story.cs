@@ -102,18 +102,12 @@ public class Story : MonoBehaviour {
 	}
 
 	/// <summary>
-	/// Selects a random second introductory paragraph
+	/// Selects a random introductory paragraph from relevent file
 	/// </summary>
 	/// <returns>2nd introductory sentence (string)</returns>
-	public string getIntro2(){
-		return randomLineFrom("Assets/TextFiles/intro2.txt");
-	}
-	/// <summary>
-	/// Selects a random third introductory paragraph
-	/// </summary>
-	/// <returns>3rd introductory sentence (string)</returns>
-	public string getIntro3(){
-		return randomLineFrom ("Assets/TextFiles/intro3.txt");
+	/// <param name="introIndex">Index of the intro file to read a line from</param>
+	public string getIntro(int introIndex){
+		return randomLineFrom("Assets/TextFiles/intro"+introIndex.ToString()+".txt");
 	}
 	/// <summary>
 	/// Sets the weather for the rest of the game
