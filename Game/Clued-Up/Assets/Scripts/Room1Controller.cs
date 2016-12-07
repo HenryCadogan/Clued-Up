@@ -36,12 +36,17 @@ public class Room1Controller : MonoBehaviour {
 	/// </summary>
 	public GameObject detectives;
 	/// <summary>
+	/// The GUI HUD.
+	/// </summary>
+	public GameObject hud;
+	/// <summary>
 	/// The main story.
 	/// </summary>
 	private Story story;
-
-
-	public GameObject bodyClue;
+	/// <summary>
+	/// The inventory.
+	/// </summary>
+	private Inventory inventory;
 
 
 	/// <summary>
@@ -104,26 +109,30 @@ public class Room1Controller : MonoBehaviour {
 	/// Gets the clues for this room from story, and positions them within the room.
 	/// </summary>
 	private void getClues(){
-		bodyClue = story.getCluesInRoom(0) [0];
-		bodyClue.GetComponent<Transform> ().localScale = new Vector3 (1f, 4.5f, 1f); //sizes clue correctly
-		bodyClue.GetComponent<BoxCollider> ().size = new Vector3 (4.5f, 1.75f, 0f);	//manually set box collider as this clue is on floor, so normal collider doesnt work
+		GameObject chalkOutline = story.getCluesInRoom(0) [0];
+		chalkOutline.GetComponent<Transform> ().localScale = new Vector3 (1f, 4.5f, 1f); //sizes clue correctly
+		chalkOutline.GetComponent<BoxCollider> ().size = new Vector3 (4.5f, 1.75f, 0f);	//manually set box collider as this clue is on floor, so normal collider doesnt work
 	}
-
+		
 	/// <summary>
-	/// Gets the chalk outline description.
+	/// Can the player progress from this scene to another? 
 	/// </summary>
-	/// <returns>The chalk outline description.</returns>
-	private string getChalkOutlineDescription(){
-		//TODO read random outline descriptions from file
-		return "It looks like the body was removed by the police a while ago.";
+	/// <returns><c>true</c>, if criteria is met (namely they have collected the body clue), <c>false</c> otherwise.</returns>
+	public bool canProgress(){
+		if (inventory.isCollected("chalkOutline")){
+			return true;
+		}else{
+			hud.GetComponent<HUDController> ().displayHUDText ("Try inspecting the scene of the murder");
+			return false;
+		}
 	}
-
 	/// <summary>
 	/// Get reference of story, run initialisation sequence & make detective walk in
 	/// </summary>
 	void Start () {
 		story = GameObject.Find("Story").GetComponent<Story>(); // references persistant object story
 		detectives.transform.GetChild(story.getDetective()).gameObject.SetActive(true); //only activates the chosen detective by using the detective int as an index of children of the Detectives object
+		inventory = GameObject.Find("Detective").GetComponent<Inventory>();
 
 		setOverlay ();
 		setBackground ();

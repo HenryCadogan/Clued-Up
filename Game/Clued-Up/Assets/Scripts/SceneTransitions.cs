@@ -15,7 +15,10 @@ public class SceneTransitions : MonoBehaviour {
 	/// The Detective GameObject.
 	/// </summary>
 	private GameObject detective;
-
+	/// <summary>
+	/// Will hold the transform position of Detective if the character tries to walk out of bounds
+	/// </summary>
+	private Vector3 pos;
 	/// <summary>
 	/// Fades to black and then loads a scene.
 	/// </summary>
@@ -47,16 +50,20 @@ public class SceneTransitions : MonoBehaviour {
 			switch (this.gameObject.name) {
 			case "Room1L":
 				//will force location of detective to not go past collider
-				Vector3 pos = detective.transform.position;
+			 	pos = detective.transform.position;
 				pos.x = -7f;
 				detective.transform.position = pos;
 				break;
 
 			case "Room1R":
-				bool canProgress = true; //set conditions for progressing to room 2
-				if (canProgress){
-					detective.GetComponent<Detective>().walkInDirectionIsLeft = true;
-					StartCoroutine(fadeLoadScene(4));
+				if (GameObject.Find ("SceneController").GetComponent<Room1Controller> ().canProgress ()){
+					detective.GetComponent<Detective> ().walkInDirectionIsLeft = true;
+					StartCoroutine (fadeLoadScene (4));
+				} else {
+					Debug.Log ("NOT HTIS TIME");
+					pos = detective.transform.position;
+					pos.x = 6.65f;
+					detective.transform.position = pos;
 				}
 				break;
 

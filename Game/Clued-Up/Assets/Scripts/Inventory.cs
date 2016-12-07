@@ -16,8 +16,8 @@ public class Inventory : MonoBehaviour {
 	/// </summary>
 	/// <returns><c>true</c>, if specified clue is in the inventory, <c>false</c> otherwise.</returns>
 	/// <param name="clue">Clue.</param>
-	public bool isCollected(Clue clue){
-		return collectedClueNames.Contains (clue.name);
+	public bool isCollected(string clueName){
+		return collectedClueNames.Contains (clueName);
 	}
 	/// <summary>
 	/// Collect the specified clue by adding it to the inventory list
