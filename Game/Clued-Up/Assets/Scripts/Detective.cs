@@ -11,6 +11,14 @@ public class Detective : MonoBehaviour {
 	/// </summary>
 	public float maxZ;
 	/// <summary>
+	/// The animator GameObject used by the detective.
+	/// </summary>
+	public Animator anim;
+	/// <summary>
+	/// The footsteps audio source.
+	/// </summary>
+	public AudioSource footstepsAudioSource;
+	/// <summary>
 	/// //The next walk in direction to be used when switching between scenes
 	/// </summary>
 	public bool walkInDirectionIsLeft = true; 
@@ -19,11 +27,20 @@ public class Detective : MonoBehaviour {
 	/// The current direction the detective is facing.
 	/// </summary>
 	private string direction = "right";
-	/// <summary>
-	/// The animator GameObject used by the detective.
-	/// </summary>
-	public Animator anim;
 
+	/// <summary>
+	/// Starts or stops the detective walking animations, movement and footsteps
+	/// </summary>
+	/// <param name="walking">If set to <c>true</c> the character will walk.</param>
+	private void setWalk(bool walking){
+		anim.SetBool ("walking", walking);
+		Debug.Log (footstepsAudioSource.isPlaying);
+		if (walking && ( ! (footstepsAudioSource.isPlaying))) {
+			footstepsAudioSource.Play ();
+		} else if (footstepsAudioSource.isPlaying ){
+			footstepsAudioSource.Stop ();
+		}
+	}
 
 	/// <summary>
 	/// Changes the y-direction of the detective GameObject to make him face differernt directions
@@ -42,8 +59,6 @@ public class Detective : MonoBehaviour {
 	/// Player walks onto the scene from specific direction. Called from SceneController scripts
 	/// </summary>
 	public void walkIn(){
-		//anim = this.gameObject.GetComponent<Animator> (); // Initial setup as this is the first called funtion
-
 		if (this.walkInDirectionIsLeft) { //if position should be from left
 			this.direction = "right";	//sets facing right
 			turnPlayer("right");
@@ -57,8 +72,7 @@ public class Detective : MonoBehaviour {
 			pos.x = 10f;
 			this.transform.position = pos;
 		}
-
-		anim.SetBool ("walking", true);
+		setWalk (true);
 	}
 		
 
@@ -74,21 +88,21 @@ public class Detective : MonoBehaviour {
 					turnPlayer ("right");
 					direction = "right";
 				}
-				anim.SetBool ("walking", true);
+				setWalk (true);
 
 			} else if (Input.GetKey ("left")) {
 				if (direction != "left") {	//if previous direction is right or down, then turn the player
 					turnPlayer ("left");
 					direction = "left";
 				}
-				anim.SetBool ("walking", true);
+				setWalk (true);
 
 			} else if (Input.GetKey ("down")) {
 				turnPlayer ("down");
 				direction = "down";
-				anim.SetBool ("walking", false);
+				setWalk (false);
 			} else if (Time.timeSinceLevelLoad > 0.6f) { //this value depicts how long detective walks on screen for before stopping
-				anim.SetBool ("walking", false);
+				setWalk(false);
 			}	
 				
 			Vector3 pos = this.transform.position;

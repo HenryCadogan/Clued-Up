@@ -309,7 +309,7 @@ namespace DigitalRuby.RainMaker
             AudioSource.loop = true;
             AudioSource.clip = clip;
             AudioSource.Stop();
-            TargetVolume = 1.0f;
+            TargetVolume = 0.5f;
         }
 
         public void Play(float targetVolume)
