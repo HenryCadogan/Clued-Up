@@ -50,8 +50,9 @@ public class SceneTransitions : MonoBehaviour {
 			switch (this.gameObject.name) {
 			case "Room1L":
 				//will force location of detective to not go past collider
-			 	pos = detective.transform.position;
-				pos.x = -7f;
+				detective.GetComponent<Detective> ().canWalkLeft = false;
+				pos = detective.transform.position;
+				pos.x = -7.5f;
 				detective.transform.position = pos;
 				break;
 
@@ -60,9 +61,9 @@ public class SceneTransitions : MonoBehaviour {
 					detective.GetComponent<Detective> ().walkInDirectionIsLeft = true;
 					StartCoroutine (fadeLoadScene (4));
 				} else {
-					Debug.Log ("NOT HTIS TIME");
+					detective.GetComponent<Detective> ().canWalkRight = false;
 					pos = detective.transform.position;
-					pos.x = 6.65f;
+					pos.x = 6.8f;
 					detective.transform.position = pos;
 				}
 				break;

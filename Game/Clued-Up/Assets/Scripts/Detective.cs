@@ -23,6 +23,14 @@ public class Detective : MonoBehaviour {
 	/// //The next walk in direction to be used when switching between scenes
 	/// </summary>
 	public bool walkInDirectionIsLeft = true; 
+	/// <summary>
+	/// The detective can walk right (i.e. not forced not to).
+	/// </summary>
+	public bool canWalkRight = true;
+	/// <summary>
+	/// The detective can walk left (i.e. not forced not to).
+	/// </summary>
+	public bool canWalkLeft = true;
 
 	/// <summary>
 	/// The main story.
@@ -32,28 +40,17 @@ public class Detective : MonoBehaviour {
 	/// The current direction the detective is facing.
 	/// </summary>
 	private string direction = "right";
-	/// <summary>
-	/// The detective can walk right (i.e. not forced not to).
-	/// </summary>
-	private bool canWalkRight = true;
-	/// <summary>
-	/// The detective can walk left (i.e. not forced not to).
-	/// </summary>
-	private bool canWalkLeft = true;
 
 	/// <summary>
 	/// Starts or stops the detective walking animations, movement and footsteps
 	/// </summary>
 	/// <param name="walking">If set to <c>true</c> the character will walk.</param>
 	private void setWalk(bool walking){
-		
-		if (anim.GetBool ("walking") != walking) {
+		if (anim.GetBool ("walking") != walking) { // if not already walking... need this to keep the footsteps from restarting  every frame
 			anim.SetBool ("walking", walking);
 			if (walking) {
-				//	Debug.Log ("PLAY");
 				footstepsAudioSource.Play ();
 			} else {
-				//	Debug.Log ("STOP");
 				footstepsAudioSource.Stop ();
 			}
 		}
@@ -128,13 +125,15 @@ public class Detective : MonoBehaviour {
 		if (Input.GetKey ("right") && (Time.timeSinceLevelLoad > 1f)) {
 			if (direction != "right") {	//if previous direction is left or down, then turn the player
 				turnPlayer ("right");
+				this.canWalkRight = true;
 			}
-			setWalk (true);
+			setWalk (this.canWalkRight); //false if the player cannot move, true otherwise
 		} else if (Input.GetKey ("left") && (Time.timeSinceLevelLoad > 1f)) {
 			if (direction != "left") {	//if previous direction is right or down, then turn the player
 				turnPlayer ("left");
+				this.canWalkLeft = true;
 			}
-			setWalk (true);
+			setWalk (this.canWalkLeft);
 		} else if (Input.GetKey ("down")  && (Time.timeSinceLevelLoad > 1f)) {
 			turnPlayer ("down");
 			setWalk (false);
