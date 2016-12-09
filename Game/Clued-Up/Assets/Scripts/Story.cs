@@ -214,7 +214,6 @@ public class Story : MonoBehaviour {
 			}
 		}
 		return charactersInRoom;
-
 	}
 	/// <summary>
 	/// Checks if a particular character is the murderer

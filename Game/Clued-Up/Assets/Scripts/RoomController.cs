@@ -2,12 +2,17 @@
 using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System;
 
 /// <summary>
-/// Room 2 Controller
+/// Room Controller
 /// </summary>
 
-public class Room2Controller : MonoBehaviour {
+public class RoomController : MonoBehaviour {
+	/// <summary>
+	/// The index of the room.
+	/// </summary>
+	public int roomIndex;
 	/// <summary>
 	/// The overlay panel GameObject.
 	/// </summary>
@@ -16,6 +21,7 @@ public class Room2Controller : MonoBehaviour {
 	/// The door quad GameObject.
 	/// </summary>
 	public GameObject doorQuad;
+
 	/// <summary>
 	/// The main story.
 	/// </summary>
@@ -45,7 +51,14 @@ public class Room2Controller : MonoBehaviour {
 	/// Gets the characters present in this room from story.
 	/// </summary>
 	private void getCharacters(){
-		List<GameObject> charactersInRoom = story.getCharactersInRoom (1);
+		List<GameObject> charactersInRoom = new List<GameObject> ();
+		Debug.Log (roomIndex);
+		if (story.getCharactersInRoom (roomIndex).Count > 0) {
+			charactersInRoom = story.getCharactersInRoom (roomIndex);
+		} else {
+			Debug.Log ("No characters this time");
+		}
+
 		switch (charactersInRoom.Count) {
 		case 1:
 			//do stuff to make one character active
@@ -55,7 +68,6 @@ public class Room2Controller : MonoBehaviour {
 			//do stuff to make two characters active in the same room
 			break;
 		default:
-			Debug.Log ("No characters this time");
 			break;
 		}			
 	}
@@ -75,7 +87,14 @@ public class Room2Controller : MonoBehaviour {
 		pos.y = -6.5f;
 		detective.transform.position = pos;
 
-		setDoor ();
+		switch (roomIndex) {
+		case 1:
+			setDoor ();
+			break;
+		default:
+			break;
+		}
+
 		getCharacters ();
 		//setClues ();
 		//GameObject.Find("Detective").GetComponent<PlayerController> ().walkInFrom (true);

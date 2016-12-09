@@ -56,7 +56,6 @@ public class Detective : MonoBehaviour {
 		}
 	}
 	private void setWalkSound(){
-		Debug.Log (SceneManager.GetActiveScene ().buildIndex);
 		switch (SceneManager.GetActiveScene().buildIndex){
 		case 3: //room0 crime scene
 			if (story.getWeather () == 1) { 	//rainy
@@ -68,6 +67,12 @@ public class Detective : MonoBehaviour {
 			}
 			break;
 		case 4: //room1 lobby
+			footstepsAudioSource.clip = (AudioClip)Resources.Load ("Sounds/footsteps-concrete");
+			break;
+		case 5: //room2 train station
+			footstepsAudioSource.clip = (AudioClip)Resources.Load ("Sounds/footsteps-concrete");
+			break;
+		case 6: //room3 cafe
 			footstepsAudioSource.clip = (AudioClip)Resources.Load ("Sounds/footsteps-concrete");
 			break;
 		default:
@@ -137,7 +142,7 @@ public class Detective : MonoBehaviour {
 		} else if (Input.GetKey ("down")  && (Time.timeSinceLevelLoad > 1f)) {
 			turnPlayer ("down");
 			setWalk (false);
-		} else if (Time.timeSinceLevelLoad > 0.6f) { 
+		} else if (Time.timeSinceLevelLoad > 1f) { 
 			setWalk (false);
 		}	
 				

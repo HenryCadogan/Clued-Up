@@ -64,7 +64,7 @@
      <Compile Include="Assets\Scripts\OverlayPanelFader.cs" />
      <Compile Include="Assets\Scripts\QuitOnClick.cs" />
      <Compile Include="Assets\Scripts\Room1Controller.cs" />
-     <Compile Include="Assets\Scripts\Room2Controller.cs" />
+     <Compile Include="Assets\Scripts\RoomController.cs" />
      <Compile Include="Assets\Scripts\SceneTransitions.cs" />
      <Compile Include="Assets\Scripts\SpeechHandler.cs" />
      <Compile Include="Assets\Scripts\Story.cs" />
