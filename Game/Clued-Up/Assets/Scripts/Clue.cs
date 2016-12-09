@@ -89,7 +89,7 @@ public class Clue : MonoBehaviour {
 	/// </summary>
 	void OnMouseDown(){
 		if (Time.timeScale != 0) {	//if game isn't paused
-			if (!(inventory.isCollected (this))) {
+			if (!(inventory.isCollected (this.name))) {
 				inventory.collect (this);
 				hud.GetComponent<HUDController> ().displayHUDText (this.longName + " added to inventory.");
 			}				
