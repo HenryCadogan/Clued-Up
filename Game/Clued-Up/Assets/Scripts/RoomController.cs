@@ -62,7 +62,7 @@ public class RoomController : MonoBehaviour {
 		switch (charactersInRoom.Count) {
 		case 1:
 			//do stuff to make one character active
-			Debug.Log (charactersInRoom [0].GetComponent<Character>().longName + "is in the room!");
+			Debug.Log (charactersInRoom [0].GetComponent<Character>().longName + " is in the room!");
 			break;
 		case 2:
 			//do stuff to make two characters active in the same room

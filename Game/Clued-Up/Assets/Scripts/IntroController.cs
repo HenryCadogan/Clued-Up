@@ -39,7 +39,7 @@ public class IntroController : MonoBehaviour {
 	/// Fades the introduction text in/out for specified time.
 	/// </summary>
 	/// <param name="alpha">Alpha component where 0f is transparent and 1f is all black</param>
-	/// <param name="time for fade, in seconds">Time.</param>
+	/// <param name="time">time for fade, in seconds</param>
 	private void fadeText(float alpha, float time){ 
 		introTextObject.CrossFadeAlpha(alpha,time,false);
 	}

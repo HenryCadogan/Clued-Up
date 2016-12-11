@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 /// <summary>
 /// Character class
 /// </summary>
@@ -35,15 +36,19 @@ public class Character : MonoBehaviour {
 	/// <summary>
 	/// Initialise the specified Character with properties and CharacterClues
 	/// </summary>
-	/// <param name="objectName">The name of the character GameObject</param>
-	/// <param name="name">Long name to be displayed in game</param>
-	/// <param name="isMurderer"></param><c>true</c> if character is murderer.</param>
-	/// <param name="isVictim"></param><c>true</c> if character is victim.</param>
-	public void initialise(string objectName, string name, bool isMurderer=false, bool isVictim=false){
-		this.gameObject.name = objectName;
-		this.longName = name;
-		this.isMurderer = isMurderer;
-		this.isVictim = isVictim;
+	///<param name="characterIndex">Index of character to be initialised</param>
+	public void initialise(int characterIndex){
+		StreamReader stream = new StreamReader("Assets/TextFiles/character" + characterIndex.ToString() + ".txt");
+		List<string> lines = new List<string> ();
+		while(!stream.EndOfStream){
+			lines.Add(stream.ReadLine());
+		}
+		stream.Close( );
+
+		this.gameObject.name = lines[1]; //file contains comment in line 0
+		this.longName = lines [2];
+		this.isMurderer = false;
+		this.isVictim = false;
 
 		//gameObject.GetComponent<Renderer> ().enabled = false; //dont draw any characters yet
 
