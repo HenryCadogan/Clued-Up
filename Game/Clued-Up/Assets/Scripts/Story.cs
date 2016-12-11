@@ -149,22 +149,22 @@ public class Story : MonoBehaviour {
 
 		//Set up characters
 		GameObject character0 = Instantiate (Resources.Load ("Character"), new Vector3(1.5f,-5.99f,-1.2f), Quaternion.Euler(90,0,0)) as GameObject;
-		character0.GetComponent<Character>().initialise("character0", "Character 0");
+		character0.GetComponent<Character>().initialise(0);
 
 		GameObject character1 = Instantiate (Resources.Load ("Character"), new Vector3(1.5f,-5.99f,-1.2f), Quaternion.Euler(90,0,0)) as GameObject;
-		character1.GetComponent<Character>().initialise("character1", "Character 1");
+		character1.GetComponent<Character>().initialise(1);
 
 		GameObject character2 = Instantiate (Resources.Load ("Character"), new Vector3(1.5f,-5.99f,-1.2f), Quaternion.Euler(90,0,0)) as GameObject;
-		character2.GetComponent<Character>().initialise("character2", "Character 2");
+		character2.GetComponent<Character>().initialise(2);
 
 		GameObject character3 = Instantiate (Resources.Load ("Character"), new Vector3(1.5f,-5.99f,-1.2f), Quaternion.Euler(90,0,0)) as GameObject;
-		character3.GetComponent<Character>().initialise("character3", "Character 3");
+		character3.GetComponent<Character>().initialise(3);
 
 		GameObject character4 = Instantiate (Resources.Load ("Character"), new Vector3(1.5f,-5.99f,-1.2f), Quaternion.Euler(90,0,0)) as GameObject;
-		character4.GetComponent<Character>().initialise("character4", "Character 4");
+		character4.GetComponent<Character>().initialise(4);
 
 		GameObject character5 = Instantiate (Resources.Load ("Character"), new Vector3(1.5f,-5.99f,-1.2f), Quaternion.Euler(90,0,0)) as GameObject;
-		character5.GetComponent<Character>().initialise("character5", "Character 5");
+		character5.GetComponent<Character>().initialise(5);
 
 		characters.Add (character0);
 		characters.Add (character1);
