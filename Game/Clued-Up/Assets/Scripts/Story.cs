@@ -141,6 +141,33 @@ public class Story : MonoBehaviour {
 		return this.detective;
 	}
 		
+
+	/// <summary>
+	/// Gets written translation of trait index.
+	/// </summary>
+	/// <returns>The trait string.</returns>
+	/// <param name="traitIndex">Trait index.</param>
+	public string getTraitString(int traitIndex){
+		switch(traitIndex){
+		case 0:
+			return "Aggressive";
+		case 1:
+			return "Annoying";
+		case 2:
+			return "Calm";
+		case 3:
+			return "Comedic";
+		case 4:
+			return "Friendly";
+		case 5:
+			return "Manipulative";
+		case 6:
+			return "Rude";
+		default:
+			Debug.Log ("ERROR!"); //TODO raise exception
+			return "";
+		}
+	}
 	/// <summary>
 	/// Initial definitions for all characters and selection of victim/murderer
 	/// </summary>

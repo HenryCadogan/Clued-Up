@@ -131,7 +131,6 @@ public class Room1Controller : MonoBehaviour {
 	/// </summary>
 	void Start () {
 		story = GameObject.Find("Story").GetComponent<Story>(); // references persistant object story
-		detectives.transform.GetChild(story.getDetective()).gameObject.SetActive(true); //only activates the chosen detective by using the detective int as an index of children of the Detectives object
 		inventory = GameObject.Find("Detective").GetComponent<Inventory>();
 
 		setOverlay ();
