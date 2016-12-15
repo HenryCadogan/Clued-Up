@@ -117,8 +117,6 @@
      <None Include="Assets\UnityTestTools\LICENSE.txt" />
      <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\Fx\ParticleAdditiveBlend.shader" />
      <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\Fx\Additive.shader" />
-     <None Include="Assets\TextFiles\character1.txt" />
-     <None Include="Assets\TextFiles\character3.txt" />
      <None Include="Assets\TransparentButWithShadows.shader" />
      <None Include="Assets\Realistic Hail Set\README.txt" />
      <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\BackgroundAndCharacters\Fallback.shader" />
@@ -127,24 +125,27 @@
      <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\BackgroundAndCharacters\PlanarRealtimeReflection.shader" />
      <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\BackgroundAndCharacters\ReflectiveBackgroundPlanar.shader" />
      <None Include="Assets\RainMaker\Prefab\RainShader.shader" />
+     <None Include="Assets\TextFiles\character0.txt" />
      <None Include="Assets\TextFiles\intro3.txt" />
      <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\BackgroundAndCharacters\EnemySelfIlluminationReflective.shader" />
      <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\BackgroundAndCharacters\AngryInclude.cginc" />
      <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\Fx\ParticleAdditive.shader" />
+     <None Include="Assets\TextFiles\character4.txt" />
      <None Include="Assets\Resources\test2.txt" />
      <None Include="Assets\UnityTestTools\changelog.txt" />
-     <None Include="Assets\TextFiles\character4.txt" />
+     <None Include="Assets\TextFiles\character1.txt" />
+     <None Include="Assets\TextFiles\character5.txt" />
+     <None Include="Assets\TextFiles\character3.txt" />
      <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\Fx\LaserScope.shader" />
      <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\BackgroundAndCharacters\SuperSimpleSelfIllumination.shader" />
-     <None Include="Assets\TextFiles\character2.txt" />
      <None Include="Assets\Raw Mocap Data\Animations\_CompleteAnimationList.txt" />
      <None Include="Assets\TextFiles\intro1.txt" />
      <None Include="Assets\TextFiles\intro2.txt" />
+     <None Include="Assets\ShadowsOnly.shader" />
      <None Include="Assets\RainMaker\Readme.txt" />
-     <None Include="Assets\TextFiles\character0.txt" />
-     <None Include="Assets\TextFiles\character5.txt" />
      <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\Fx\ParticleBlend.shader" />
      <None Include="Assets\Resources\test.txt" />
+     <None Include="Assets\TextFiles\character2.txt" />
  <Reference Include="UnityEngine.Networking">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
