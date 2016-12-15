@@ -2,14 +2,21 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/SceneTransitions.cs">
     <Files>
-      <File FileName="Assets/Scripts/Character.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Inventory.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/IntroController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Clue.cs" Line="114" Column="55" />
-      <File FileName="Assets/Scripts/Room1Controller.cs" Line="142" Column="55" />
-      <File FileName="Assets/Scripts/Story.cs" Line="216" Column="27" />
-      <File FileName="Assets/Scripts/RoomController.cs" Line="55" Column="25" />
-      <File FileName="Assets/Scripts/Detective.cs" Line="50" Column="25" />
-      <File FileName="Assets/Scripts/SceneTransitions.cs" Line="93" Column="69" />
+      <File FileName="Assets/Scripts/Clue.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Room1Controller.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Story.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Room2Controller.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/SceneTransitions.cs" Line="21" Column="1" />
+      <File FileName="Assets/Scripts/UpdateCluesButtons.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/UpdateCluesInfo.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/HUDController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Detective.cs" Line="37" Column="16" />
+      <File FileName="Assets/RainMaker/Readme.txt" Line="1" Column="1" />
+      <File FileName="Assets/RainMaker/Prefab/RainScript.cs" Line="1" Column="1" />
+      <File FileName="Assets/RainMaker/Prefab/BaseRainScript.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/DetectiveChoiceHandler.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
