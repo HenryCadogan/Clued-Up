@@ -114,7 +114,7 @@ public class IntroController : MonoBehaviour {
 	void Update() {
 		if (Input.GetKeyDown ("space")){
 			story.setDetective (0);
-			SceneManager.LoadScene (3);	//loads character selection scene
+			SceneManager.LoadScene (2);	//loads character selection scene
 		}
 	}
 }

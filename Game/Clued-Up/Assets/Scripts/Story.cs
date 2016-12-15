@@ -141,6 +141,33 @@ public class Story : MonoBehaviour {
 		return this.detective;
 	}
 		
+
+	/// <summary>
+	/// Gets written translation of trait index.
+	/// </summary>
+	/// <returns>The trait string.</returns>
+	/// <param name="traitIndex">Trait index.</param>
+	public string getTraitString(int traitIndex){
+		switch(traitIndex){
+		case 0:
+			return "Aggressive";
+		case 1:
+			return "Annoying";
+		case 2:
+			return "Calm";
+		case 3:
+			return "Comedic";
+		case 4:
+			return "Friendly";
+		case 5:
+			return "Manipulative";
+		case 6:
+			return "Rude";
+		default:
+			Debug.Log ("ERROR!"); //TODO raise exception
+			return "";
+		}
+	}
 	/// <summary>
 	/// Initial definitions for all characters and selection of victim/murderer
 	/// </summary>
@@ -243,7 +270,7 @@ public class Story : MonoBehaviour {
 			while(cluesInRoom.ContainsKey(randomRoom)){	//while there is already a character here, keep finsing new room
 				randomRoom = Random.Range (1, NUMBER_OF_ROOMS);
 			}
-			cluesInRoom.Add (randomRoom, new List<string>{clueNames[clueIndex]}); //cluesInRoom[0] = ["bodyClue"] | using lists so it is adaptable to multiople chars in one room
+			cluesInRoom.Add (randomRoom, new List<string>{clueNames[clueIndex]}); //cluesInRoom[0] = ["chalkOutline"] | using lists so it is adaptable to multiople chars in one room
 		}
 	}
 	/// <summary>
@@ -255,9 +282,13 @@ public class Story : MonoBehaviour {
 		GameObject newClue = new GameObject ();
 		newClue.AddComponent<Clue> ();
 		switch (clueName) {
-		case "bodyClue":
+		case "chalkOutline":
 			newClue.GetComponent<Clue> ().initialise ("chalkOutline", "Chalk Outline", "A chalk outline of the body of " + this.getVictim ().longName + "!!");
 			break;
+		case "microphone":
+			newClue.GetComponent<Clue> ().initialise ("microphone", "Microphone", "Someone wants to make themselves heard");
+			break;
+			//TODO INSERT MORE CLUES HERE!
 		default:
 			break;
 		}
@@ -268,7 +299,7 @@ public class Story : MonoBehaviour {
 	/// </summary>
 	private void setClues(){
 		List<string> cluesList = new List<string> (); 
-		cluesList.Add("bodyClue"); //Clue 0 will ALWAYS be the chalk outline.
+		cluesList.Add("chalkOutline"); //Clue 0 will ALWAYS be the chalk outline.
 		//setCharacterClues ();
 		//setMotive();
 		//setWeapon();

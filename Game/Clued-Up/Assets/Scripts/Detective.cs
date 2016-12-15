@@ -31,11 +31,23 @@ public class Detective : MonoBehaviour {
 	/// The detective can walk left (i.e. not forced not to).
 	/// </summary>
 	public bool canWalkLeft = true;
+	/// <summary>
+	/// Traits index array, traits are defined in Story.
+	/// </summary>
+	public int[] traits = new int[3];
+	/// <summary>
+	/// Name of detective.
+	/// </summary>
+	public string longName;
+	/// <summary>
+	/// Breif description of detective.
+	/// </summary>
+	public string description;
 
 	/// <summary>
 	/// The main story.
 	/// </summary>
-	public Story story;
+	private Story story;
 	/// <summary>
 	/// The current direction the detective is facing.
 	/// </summary>
