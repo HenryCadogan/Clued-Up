@@ -72,6 +72,17 @@ public class RoomController : MonoBehaviour {
 		}			
 	}
 
+	private void fengShui(){
+		switch (roomIndex) {
+		case 1:
+			GameObject newClue = Instantiate (Resources.Load ("Furniture"), new Vector3 (3f, -4f, -1.2f), Quaternion.Euler (90, 0, 0)) as GameObject;
+			newClue.GetComponent<Furniture>().Initialise ("lockers");
+			break;
+		default:
+			break;
+		}
+	}
+
 	/// <summary>
 	/// Walk character in, get reference to story and do initialisation for scene
 	/// </summary>
@@ -96,6 +107,7 @@ public class RoomController : MonoBehaviour {
 		}
 
 		getCharacters ();
+		fengShui ();  
 		//setClues ();
 		//GameObject.Find("Detective").GetComponent<PlayerController> ().walkInFrom (true);
 	}
