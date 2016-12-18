@@ -22,6 +22,7 @@ public class RoomController : MonoBehaviour {
 	/// </summary>
 	public GameObject doorQuad;
 
+	private List<GameObject> cluesInRoom = new List<GameObject>();
 	/// <summary>
 	/// The main story.
 	/// </summary>
@@ -75,13 +76,21 @@ public class RoomController : MonoBehaviour {
 	private void fengShui(){
 		switch (roomIndex) {
 		case 1:
-			GameObject newClue = Instantiate (Resources.Load ("Furniture"), new Vector3 (3f, -4f, -1.2f), Quaternion.Euler (90, 0, 0)) as GameObject;
-			newClue.GetComponent<Furniture>().Initialise ("lockers");
+			GameObject newClue = Instantiate (Resources.Load ("Lockers"), new Vector3 (3f, -4f, 2f), Quaternion.Euler (0, 0, 0)) as GameObject;
+			newClue.GetComponent<Lockers>().Initialise ();
 			break;
 		default:
 			break;
 		}
 	}
+
+
+	private void getClues(){
+		this.cluesInRoom.Add(story.getCluesInRoom (1) [0]);
+
+		Debug.Log ("Clue in room: " + this.cluesInRoom [0].GetComponent<Clue> ().longName);
+	}
+			
 
 	/// <summary>
 	/// Walk character in, get reference to story and do initialisation for scene
@@ -108,7 +117,6 @@ public class RoomController : MonoBehaviour {
 
 		getCharacters ();
 		fengShui ();  
-		//setClues ();
-		//GameObject.Find("Detective").GetComponent<PlayerController> ().walkInFrom (true);
+		getClues ();
 	}
 }

@@ -111,6 +111,8 @@ public class Room1Controller : MonoBehaviour {
 	private void getClues(){
 		GameObject chalkOutline = story.getCluesInRoom(0) [0];
 		chalkOutline.GetComponent<Transform> ().localScale = new Vector3 (1f, 4.5f, 1f); //sizes clue correctly
+		chalkOutline.GetComponent<Transform>().position = new Vector3(1.5f,-5.99f,-1.2f); 
+		chalkOutline.GetComponent<Transform> ().Rotate (new Vector3 (90f, 0f, 0f));
 		chalkOutline.GetComponent<BoxCollider> ().size = new Vector3 (4.5f, 1.75f, 0f);	//manually set box collider as this clue is on floor, so normal collider doesnt work
 	}
 		

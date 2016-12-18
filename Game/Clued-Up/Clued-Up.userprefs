@@ -1,14 +1,16 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Story.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/RoomController.cs">
     <Files>
+      <File FileName="Assets/Scripts/Clue.cs" Line="114" Column="1" />
+      <File FileName="Assets/Scripts/Room1Controller.cs" Line="115" Column="78" />
       <File FileName="Assets/Scripts/Detective.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Inventory.cs" Line="27" Column="1" />
+      <File FileName="Assets/Scripts/Inventory.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/IntroController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Clue.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Room1Controller.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Story.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Story.cs" Line="327" Column="104" />
       <File FileName="Assets/Scripts/DetectiveChoiceHandler.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/RoomController.cs" Line="79" Column="88" />
+      <File FileName="Assets/Scripts/Lockers.cs" Line="77" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

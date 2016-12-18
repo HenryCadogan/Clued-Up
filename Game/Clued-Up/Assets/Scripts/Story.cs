@@ -263,7 +263,7 @@ public class Story : MonoBehaviour {
 	/// <param name="clueNames">List of names of all clues in game</param>
 	private void setClueLocations(List<string> clueNames){
 		cluesInRoom [0] = new List<string>{ clueNames [0] }; //body clue always in room 0
-
+		cluesInRoom[1] = new List<string>{clueNames[1]}; //FOR TESTING OF LOCKERS, DO NOT DO THIS
 		int randomRoom;
 		for(int clueIndex = 1; clueIndex < clueNames.Count; clueIndex ++) {	
 			randomRoom = Random.Range (1, NUMBER_OF_ROOMS); //rooms 1-7 (i.e. all, not including the crime scene 
@@ -300,6 +300,7 @@ public class Story : MonoBehaviour {
 	private void setClues(){
 		List<string> cluesList = new List<string> (); 
 		cluesList.Add("chalkOutline"); //Clue 0 will ALWAYS be the chalk outline.
+		cluesList.Add("microphone"); //FOR TESTING ONLY- always use methods
 		//setCharacterClues ();
 		//setMotive();
 		//setWeapon();
@@ -323,7 +324,7 @@ public class Story : MonoBehaviour {
 	public List<GameObject> getCluesInRoom(int roomIndex){
 		List<GameObject> clues = new List<GameObject> ();
 		foreach (string clueName in this.cluesInRoom[roomIndex]) {	//for each clueName in room
-			GameObject newClue = Instantiate (Resources.Load ("Clue"), new Vector3(1.5f,-5.99f,-1.2f), Quaternion.Euler(90,0,0)) as GameObject;
+			GameObject newClue = Instantiate (Resources.Load ("Clue"), new Vector3(1f,1f,1f), Quaternion.Euler(0,0,0)) as GameObject;
 			setClueInformation (clueName, newClue); // calls the initialisation method with the relevent details
 			newClue.GetComponent<SpriteRenderer> ().sprite = newClue.GetComponent<Clue>().sprite;	// Add Clue's sprite to the Clue's GameObject sprite renderer
 			clues.Add(newClue);
