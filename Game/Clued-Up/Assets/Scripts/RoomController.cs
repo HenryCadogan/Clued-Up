@@ -81,6 +81,19 @@ public class RoomController : MonoBehaviour {
 			lockers.GetComponent<Lockers> ().Initialise ();
 			furnitureInRoom.Add (lockers);
 			break;
+		case 4:
+			GameObject cupboardL = Instantiate (Resources.Load ("Cupboard"), new Vector3 (3.22f, -4f, 2f), Quaternion.Euler (0, 0, 0)) as GameObject;
+			cupboardL.GetComponent<Cupboard> ().Initialise ("cupboard-left","cupboard");
+			furnitureInRoom.Add (cupboardL);
+
+			GameObject cupboardR = Instantiate (Resources.Load ("Cupboard"), new Vector3 (3.22f, -4f, 2f), Quaternion.Euler (0, 0, 0)) as GameObject;
+			cupboardL.GetComponent<Cupboard> ().Initialise ("cupboard-right","cupboard");
+			furnitureInRoom.Add (cupboardR);
+
+			GameObject oven = Instantiate (Resources.Load ("Cupboard"), new Vector3 (3.22f, -4f, 2f), Quaternion.Euler (0, 0, 0)) as GameObject;
+			cupboardL.GetComponent<Cupboard> ().Initialise ("oven-door","oven");
+			furnitureInRoom.Add (oven);
+			break;
 		default:
 			break;
 		}
@@ -88,14 +101,24 @@ public class RoomController : MonoBehaviour {
 
 
 	private void getClues(){
+		//USED SO ALL ROOMS HAVE A MICROPHONE. THIS NEEDS TO CHANGE. TODO
 		this.cluesInRoom.Add(story.getCluesInRoom (1) [0]);
 		Debug.Log ("Clue in room: " + this.cluesInRoom [0].GetComponent<Clue> ().longName);
 	}
 		
-
-	private void assignCluesFurniture(){
-		//TODO if furniture exists etc.
-		furnitureInRoom[0].GetComponent<Lockers>().addClue(cluesInRoom[0]);
+	/// <summary>
+	/// Assigns one clue to the furniture in a room by selecting a random furniture to give the clue to, then trsting which kind of clue it was
+	/// </summary>
+	private void assignCluesFurniture(GameObject clue){
+		if(furnitureInRoom.Count > 0){
+			int furnitureIndex = UnityEngine.Random.Range (0, furnitureInRoom.Count);
+			if (furnitureInRoom [furnitureIndex].GetComponent<Lockers> () != null) {
+				furnitureInRoom [furnitureIndex].GetComponent<Lockers> ().addClue (clue);
+			}else if (furnitureInRoom [furnitureIndex].GetComponent<Cupboard> () != null) {
+				furnitureInRoom [furnitureIndex].GetComponent<Cupboard> ().addClue (clue);
+	
+			}
+		}
 	}
 
 	/// <summary>
@@ -124,6 +147,6 @@ public class RoomController : MonoBehaviour {
 		getCharacters ();
 		fengShui ();  
 		getClues ();
-		assignCluesFurniture ();
+		assignCluesFurniture (cluesInRoom[0]);
 	}
 }

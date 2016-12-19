@@ -54,6 +54,7 @@
      <Compile Include="Assets\Scripts\Character.cs" />
      <Compile Include="Assets\Scripts\Clue.cs" />
      <Compile Include="Assets\Scripts\ClueController.cs" />
+     <Compile Include="Assets\Scripts\Cupboard.cs" />
      <Compile Include="Assets\Scripts\Detective.cs" />
      <Compile Include="Assets\Scripts\DetectiveChoiceHandler.cs" />
      <Compile Include="Assets\Scripts\HUDController.cs" />

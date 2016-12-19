@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Room1Controller : MonoBehaviour {
 	/// <summary>
@@ -146,6 +147,14 @@ public class Room1Controller : MonoBehaviour {
 		Vector3 pos = detective.transform.position; //Make detective slightly lower in screen
 		pos.y = -5.9f;
 		detective.transform.position = pos;
+	}
 
+	/// <summary>
+	/// If number is pressed during this scene, then skip to appropriate room
+	/// </summary>
+	void Update() {
+		if (Input.GetKeyDown ("5")){
+			SceneManager.LoadScene (7);	//loads character selection scene
+		}
 	}
 }
