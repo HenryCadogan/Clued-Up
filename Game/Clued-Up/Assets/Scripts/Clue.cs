@@ -30,6 +30,10 @@ public class Clue : MonoBehaviour {
 	/// if this item should dissapear from the game when collected
 	/// </summary>
 	public bool disappearWhenClicked; 
+	/// <summary>
+	/// <c>True<c>/ Clue has been collected
+	/// </summary>
+	public bool isCollected = false;
 
 
 	/// <summary>
@@ -92,11 +96,12 @@ public class Clue : MonoBehaviour {
 			if (!(inventory.isCollected (this.name))) {
 				inventory.collect (this);
 				hud.GetComponent<HUDController> ().displayHUDText (this.longName + " added to inventory.");
+				this.isCollected = true;
 			}				
 			displayClueInformation ();
 
 			if (this.disappearWhenClicked) {
-				gameObject.GetComponent<Renderer>().enabled = true;	//hides but does not destroy the clue
+				gameObject.GetComponent<Renderer>().enabled = false;	//hides but does not destroy the clue
 			}
 		}
 	}
@@ -109,7 +114,7 @@ public class Clue : MonoBehaviour {
 	/// <param name="isWeapon">If <c>true</c> then the clue is the murder weapon</param>
 	/// <param name="isMotive">If <c>true</c> then this clue is motive.</param>
 	/// <param name="disappearWhenClicked">If set to <c>true</c>, the clue will disappear when clicked.</param>
-	public void initialise(string objectName, string name, string description, bool isWeapon=false, bool isMotive=false, bool disappearWhenClicked=false){
+	public void initialise(string objectName, string name, string description, bool isWeapon=false, bool isMotive=false, bool disappearWhenClicked=true){
 		this.cluePanel = GameObject.Find ("CluePanel");
 		this.cluePanelDescription = GameObject.Find ("Description").GetComponent<Text> ();
 		this.cluePanelName = GameObject.Find ("ClueName").GetComponent<Text> ();

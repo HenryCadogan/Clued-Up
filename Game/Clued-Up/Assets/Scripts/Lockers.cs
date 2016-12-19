@@ -13,6 +13,7 @@ public class Lockers : MonoBehaviour {
 	/// For outputting to the hud text
 	/// </summary>
 	private HUDController HUDC;
+	private GameObject containedClue;
 
 	/// <summary>
 	/// Changes the locker sprite when one is opened.
@@ -26,14 +27,19 @@ public class Lockers : MonoBehaviour {
 	/// </summary>
 	/// <param name="locker">Locker.</param>
 	private void openLocker (int locker){
-		if(openLockers[locker] == 0){ //if locker is not open 
-			this.openLockers[locker] = 1;
-			changeLockerSprite();
-			if (clueIsInLocker == locker) {
+		if (openLockers [locker] == 0) { //if locker is not open 
+			this.openLockers [locker] = 1;
+			changeLockerSprite ();
+			if ((clueIsInLocker == locker) && (!containedClue.GetComponent<Clue> ().isCollected)) {
 				HUDC.displayHUDText ("There is something in the locker...");
+				containedClue.SetActive (true); //make clue visible
 			} else {
 				HUDC.displayHUDText ("The locker is empty.");
 			}
+		} else if ((clueIsInLocker == locker) && (!containedClue.GetComponent<Clue> ().isCollected)) {
+			HUDC.displayHUDText ("There is something in the locker...");
+		} else {
+			HUDC.displayHUDText ("The locker is empty.");
 		}
 	}
 	/// <summary>
@@ -50,16 +56,16 @@ public class Lockers : MonoBehaviour {
 	void OnMouseDown(){
 		float mousex = Input.mousePosition.x;
 		float mousey = Input.mousePosition.y;
-		if ((mousex > 700f) && (mousex < 740f)) { // column1
-			if ((mousey > 195f) && (mousey < 275f)) {	//column1 row 1
+		if ((mousex > 695f) && (mousex < 755f)) { // column1
+			if ((mousey > 245f) && (mousey < 345f)) {	//column1 row 1
 				openLocker(0);
-			} else if ((mousey > 120f) && (mousey < 195f)) { //column1 row 2
+			} else if ((mousey > 140f) && (mousey < 245f)) { //column1 row 2
 				openLocker(2);
 			}
-		}else if ((mousex > 765f) && (mousex < 815f)) { // column2
-			if ((mousey > 195f) && (mousey < 275f)) {	//column2 row 1
+		}else if ((mousex > 780f) && (mousex < 850f)) { // column2
+			if ((mousey > 245f) && (mousey < 345f)) {	//column2 row 1
 				openLocker(1);
-			} else if ((mousey > 120f) && (mousey < 195f)) { //column2 row 2
+			} else if ((mousey > 140f) && (mousey < 245f)) { //column2 row 2
 				openLocker(3);
 			}
 		} 
@@ -69,10 +75,22 @@ public class Lockers : MonoBehaviour {
 		this.clueIsInLocker = Random.Range (0, 4);
 		switch (this.clueIsInLocker) {
 		case 0:
-			///clueObject.transform.position.Set(
+			clueObject.transform.position = new Vector3(2.5f, -3.3f, 1f);
+			break;
+		case 1:
+			clueObject.transform.position = new Vector3(3.95f, -3.5f, 1f);
+			break;
+		case 2:
+			clueObject.transform.position = new Vector3(2.5f, -5f, 1f);
+			break;
+		case 3:
+			clueObject.transform.position = new Vector3(3.95f, -5f, 1f);
 			break;
 		default:
 			break;
 		}
+		clueObject.SetActive (false); // hides clue behind door
+		this.containedClue = clueObject;
+
 	}
 }

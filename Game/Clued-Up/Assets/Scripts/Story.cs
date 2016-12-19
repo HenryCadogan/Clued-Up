@@ -283,7 +283,7 @@ public class Story : MonoBehaviour {
 		newClue.AddComponent<Clue> ();
 		switch (clueName) {
 		case "chalkOutline":
-			newClue.GetComponent<Clue> ().initialise ("chalkOutline", "Chalk Outline", "A chalk outline of the body of " + this.getVictim ().longName + "!!");
+			newClue.GetComponent<Clue> ().initialise ("chalkOutline", "Chalk Outline", "A chalk outline of the body of " + this.getVictim ().longName + "!!", disappearWhenClicked:false);
 			break;
 		case "microphone":
 			newClue.GetComponent<Clue> ().initialise ("microphone", "Microphone", "Someone wants to make themselves heard");
@@ -325,6 +325,7 @@ public class Story : MonoBehaviour {
 		List<GameObject> clues = new List<GameObject> ();
 		foreach (string clueName in this.cluesInRoom[roomIndex]) {	//for each clueName in room
 			GameObject newClue = Instantiate (Resources.Load ("Clue"), new Vector3(1f,1f,1f), Quaternion.Euler(0,0,0)) as GameObject;
+			newClue.transform.localScale = new Vector3(0.25F, 0.25f, 1f); //scales all clues
 			setClueInformation (clueName, newClue); // calls the initialisation method with the relevent details
 			newClue.GetComponent<SpriteRenderer> ().sprite = newClue.GetComponent<Clue>().sprite;	// Add Clue's sprite to the Clue's GameObject sprite renderer
 			clues.Add(newClue);
