@@ -5,41 +5,33 @@ public class Cupboard : MonoBehaviour {
 	/// <summary>
 	/// <c>T<c>/ if cupboard is open
 	/// </summary>
-	public bool isOpen= false;
+	private bool isOpen= false;
 	/// <summary>
 	/// <c>T</c> if clue is in behind this door
 	/// </summary>
-	public bool hasClue = false;
+	private bool hasClue = false;
 	/// <summary>
 	/// For example "oven"; name of the cupboard
 	/// </summary>
-	public string longName;
-	public HUDController HUDC;
-	public GameObject containedClue;
+	private string longName;
+	private HUDController HUDC;
+	private GameObject containedClue;
 
 	/// <summary>
 	/// Changes the sprite when opened.
 	/// </summary>
 	private void changeSprite(){
-		string imageName = AssetDatabase.GetAssetPath(gameObject.GetComponent<SpriteRenderer>().sprite) + "-open";
-		Debug.Log (imageName);
-		gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(imageName);
+		gameObject.GetComponent<SpriteRenderer> ().sprite = Resources.Load<Sprite> ("Furniture/" + this.name + "-open");
 	}
 	/// <summary>
 	/// Opens the cupboard to view contents & output to HUD text.
 	/// </summary>
 	private void open (){
-		if (! this.isOpen) { //if cupboard is not open 
-			this.isOpen = true;
-			changeSprite ();
-			if(hasClue){
-				HUDC.displayHUDText ("There is something in the " + this.longName + "...");
-				containedClue.SetActive (true); //make clue visible
-			} else {
-				HUDC.displayHUDText ("The " + this.longName + " is empty.");
-			}
-		} else if ((hasClue) && (!containedClue.GetComponent<Clue> ().isCollected)) {
+		this.isOpen = true;
+		changeSprite ();
+		if(hasClue){
 			HUDC.displayHUDText ("There is something in the " + this.longName + "...");
+			containedClue.SetActive (true); //make clue visible
 		} else {
 			HUDC.displayHUDText ("The " + this.longName + " is empty.");
 		}
@@ -56,14 +48,22 @@ public class Cupboard : MonoBehaviour {
 		this.longName = longName;
 		this.HUDC = GameObject.Find("HUD").GetComponent<HUDController>();
 	}
-
+	/// <summary>
+	/// Raises the mouse down event. Opens cupboard if it isnt open already
+	/// </summary>
 	void OnMouseDown(){
-		//hmmmm 
+		if (!this.isOpen) { //if cupboard is not ope
+			this.open ();
+		}else if ((hasClue) && (!containedClue.GetComponent<Clue> ().isCollected)) {
+			HUDC.displayHUDText ("There is something in the " + this.longName + "...");
+		} else {
+			HUDC.displayHUDText ("The " + this.longName + " is empty.");
+		}
 	}
 
 	public void addClue(GameObject clueObject){
 		this.hasClue = true;
-		clueObject.transform.position = new Vector3(2.5f, -3.3f, 1f); //TODO
+		clueObject.transform.position = this.gameObject.transform.position + new Vector3(-0.2f, 0f, 0f);
 		clueObject.SetActive (false); // hides clue behind door
 		this.containedClue = clueObject;
 
