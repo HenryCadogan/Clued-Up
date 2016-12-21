@@ -74,6 +74,7 @@
      <Compile Include="Assets\Scripts\UpdateCluesButtons.cs" />
      <Compile Include="Assets\Scripts\UpdateCluesInfo.cs" />
      <Compile Include="Assets\Scripts\makePersistant.cs" />
+     <Compile Include="Assets\Train.cs" />
      <Compile Include="Assets\UnityTestTools\Assertions\AssertionComponent.cs" />
      <Compile Include="Assets\UnityTestTools\Assertions\AssertionException.cs" />
      <Compile Include="Assets\UnityTestTools\Assertions\Assertions.cs" />
