@@ -52,14 +52,17 @@
      <Compile Include="Assets\Realistic Hail Set\Demo Scene\Scripts\DemoSceneController.cs" />
      <Compile Include="Assets\Scripts\ButtonTest.cs" />
      <Compile Include="Assets\Scripts\Character.cs" />
+     <Compile Include="Assets\Scripts\ClickHotspot.cs" />
      <Compile Include="Assets\Scripts\Clue.cs" />
      <Compile Include="Assets\Scripts\ClueController.cs" />
+     <Compile Include="Assets\Scripts\Cupboard.cs" />
      <Compile Include="Assets\Scripts\Detective.cs" />
      <Compile Include="Assets\Scripts\DetectiveChoiceHandler.cs" />
      <Compile Include="Assets\Scripts\HUDController.cs" />
      <Compile Include="Assets\Scripts\ImportSpeech.cs" />
      <Compile Include="Assets\Scripts\IntroController.cs" />
      <Compile Include="Assets\Scripts\Inventory.cs" />
+     <Compile Include="Assets\Scripts\Lockers.cs" />
      <Compile Include="Assets\Scripts\NewSceneOnClick.cs" />
      <Compile Include="Assets\Scripts\OverlayPanelFader.cs" />
      <Compile Include="Assets\Scripts\QuitOnClick.cs" />
@@ -71,6 +74,7 @@
      <Compile Include="Assets\Scripts\UpdateCluesButtons.cs" />
      <Compile Include="Assets\Scripts\UpdateCluesInfo.cs" />
      <Compile Include="Assets\Scripts\makePersistant.cs" />
+     <Compile Include="Assets\Train.cs" />
      <Compile Include="Assets\UnityTestTools\Assertions\AssertionComponent.cs" />
      <Compile Include="Assets\UnityTestTools\Assertions\AssertionException.cs" />
      <Compile Include="Assets\UnityTestTools\Assertions\Assertions.cs" />

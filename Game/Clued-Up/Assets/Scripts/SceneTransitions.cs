@@ -23,6 +23,20 @@ public class SceneTransitions : MonoBehaviour {
 		yield return new WaitForSeconds (1);
 		SceneManager.LoadScene (scene);
 	}
+		
+	private void stopDetective(bool directionIsRight, Collider detective){
+		if (directionIsRight) {
+			detective.GetComponent<Detective> ().canWalkRight = false;
+			pos = detective.transform.position;
+			pos.x = 6.8f;
+			detective.transform.position = pos;
+		} else {
+			detective.GetComponent<Detective> ().canWalkLeft = false;
+			pos = detective.transform.position;
+			pos.x = -7.5f;
+			detective.transform.position = pos;
+		}
+	}
 
 	/// <summary>
 	/// Raises the mouse down event for use when DoorQuads are clicked.
@@ -33,10 +47,9 @@ public class SceneTransitions : MonoBehaviour {
 			StartCoroutine (fadeLoadScene (3));
 		} else if (gameObject.name == "KitchenDoorQuad") {
 			GameObject.Find ("Detective").GetComponent<Detective> ().walkInDirectionIsLeft = false;
-			StartCoroutine (fadeLoadScene (8));
+			StartCoroutine (fadeLoadScene (7));
 		}
 	}
-
 	/// <summary>
 	/// Handles what happens when player walks into a transparent collider at the edge of either side of the scene.
 	/// </summary>
@@ -45,11 +58,7 @@ public class SceneTransitions : MonoBehaviour {
 		if (Time.timeSinceLevelLoad > 0.2){	//enough time for them to walk on screen
 			switch (this.gameObject.name) {
 			case "Room1L":
-				//will force location of detective to not go past collider
-				detective.GetComponent<Detective> ().canWalkLeft = false;
-				pos = detective.transform.position;
-				pos.x = -7.5f;
-				detective.transform.position = pos;
+				stopDetective(false,detective);
 				break;
 
 			case "Room1R":
@@ -57,14 +66,11 @@ public class SceneTransitions : MonoBehaviour {
 					detective.GetComponent<Detective> ().walkInDirectionIsLeft = true;
 					StartCoroutine (fadeLoadScene (4));
 				} else {
-					detective.GetComponent<Detective> ().canWalkRight = false;
-					pos = detective.transform.position;
-					pos.x = 6.8f;
-					detective.transform.position = pos;
+					stopDetective(true,detective);
 				}
 				break;
 
-			case "Room2L":
+			case "Room2L": //room2 is lobby
 				detective.GetComponent<Detective>().walkInDirectionIsLeft = false;
 				StartCoroutine(fadeLoadScene(6)); // load cafe
 				break;
@@ -74,7 +80,7 @@ public class SceneTransitions : MonoBehaviour {
 				StartCoroutine(fadeLoadScene(5)); // load train station
 				break;
 
-			case "Room3L":
+			case "Room3L": //room3 is train station
 				detective.GetComponent<Detective>().walkInDirectionIsLeft = false;
 				StartCoroutine(fadeLoadScene(4)); // load lobby
 				break;
@@ -84,7 +90,7 @@ public class SceneTransitions : MonoBehaviour {
 				StartCoroutine(fadeLoadScene(5)); // load ...
 				break;
 
-			case "Room4L":
+			case "Room4L": //room4 is cafe
 				detective.GetComponent<Detective>().walkInDirectionIsLeft = false;
 				StartCoroutine(fadeLoadScene(9)); // load ...
 				break;
@@ -92,6 +98,14 @@ public class SceneTransitions : MonoBehaviour {
 			case "Room4R":
 				detective.GetComponent<Detective>().walkInDirectionIsLeft = true;
 				StartCoroutine(fadeLoadScene(4)); // load lobby
+				break;
+			case "Room5L": //room 5 is kitchen
+				stopDetective(false,detective);
+				break;
+
+			case "Room5R":
+				detective.GetComponent<Detective>().walkInDirectionIsLeft = true;
+				StartCoroutine(fadeLoadScene(6)); // load cafe
 				break;
 
 			default:

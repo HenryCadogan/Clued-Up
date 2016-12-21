@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Room1Controller : MonoBehaviour {
 	/// <summary>
@@ -101,8 +102,9 @@ public class Room1Controller : MonoBehaviour {
 	/// Prepares the overlay by turning on and immediately fading out, giving a fade from black effect.
 	/// </summary>
 	private void setOverlay(){
-		//turns on overlay panel, fades out
+		//turns on overlay panel, instantly turns black & fades out
 		overlayPanel.SetActive (true);
+		overlayPanel.GetComponent<Image>().CrossFadeAlpha(1f,0f,false);
 		overlayPanel.GetComponent<Image>().CrossFadeAlpha(0f,3f,false);
 	}
 	/// <summary>
@@ -111,6 +113,8 @@ public class Room1Controller : MonoBehaviour {
 	private void getClues(){
 		GameObject chalkOutline = story.getCluesInRoom(0) [0];
 		chalkOutline.GetComponent<Transform> ().localScale = new Vector3 (1f, 4.5f, 1f); //sizes clue correctly
+		chalkOutline.GetComponent<Transform>().position = new Vector3(1.5f,-5.99f,-1.2f); 
+		chalkOutline.GetComponent<Transform> ().Rotate (new Vector3 (90f, 0f, 0f));
 		chalkOutline.GetComponent<BoxCollider> ().size = new Vector3 (4.5f, 1.75f, 0f);	//manually set box collider as this clue is on floor, so normal collider doesnt work
 	}
 		
@@ -144,6 +148,14 @@ public class Room1Controller : MonoBehaviour {
 		Vector3 pos = detective.transform.position; //Make detective slightly lower in screen
 		pos.y = -5.9f;
 		detective.transform.position = pos;
+	}
 
+	/// <summary>
+	/// If number is pressed during this scene, then skip to appropriate room
+	/// </summary>
+	void Update() {
+		if (Input.GetKeyDown ("5")){
+			SceneManager.LoadScene (7);	//loads character selection scene
+		}
 	}
 }
