@@ -52,6 +52,7 @@
      <Compile Include="Assets\Realistic Hail Set\Demo Scene\Scripts\DemoSceneController.cs" />
      <Compile Include="Assets\Scripts\ButtonTest.cs" />
      <Compile Include="Assets\Scripts\Character.cs" />
+     <Compile Include="Assets\Scripts\ClickHotspot.cs" />
      <Compile Include="Assets\Scripts\Clue.cs" />
      <Compile Include="Assets\Scripts\ClueController.cs" />
      <Compile Include="Assets\Scripts\Cupboard.cs" />

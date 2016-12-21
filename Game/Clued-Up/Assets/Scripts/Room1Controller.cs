@@ -102,8 +102,9 @@ public class Room1Controller : MonoBehaviour {
 	/// Prepares the overlay by turning on and immediately fading out, giving a fade from black effect.
 	/// </summary>
 	private void setOverlay(){
-		//turns on overlay panel, fades out
+		//turns on overlay panel, instantly turns black & fades out
 		overlayPanel.SetActive (true);
+		overlayPanel.GetComponent<Image>().CrossFadeAlpha(1f,0f,false);
 		overlayPanel.GetComponent<Image>().CrossFadeAlpha(0f,3f,false);
 	}
 	/// <summary>

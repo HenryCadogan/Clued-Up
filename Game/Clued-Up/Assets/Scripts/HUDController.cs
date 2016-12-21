@@ -36,9 +36,9 @@ public class HUDController : MonoBehaviour {
 		//instantly fades out text in case it isn't already, changes HUDText, fades in, waits, fades out
 		HUDText.GetComponent<Text> ().CrossFadeAlpha (0f, 0f, false);
 		HUDText.GetComponent<Text> ().text = text;
-		HUDText.GetComponent<Text> ().CrossFadeAlpha (1f, 3f, false);
+		HUDText.GetComponent<Text> ().CrossFadeAlpha (1f, 1.5f, false);
 		yield return new WaitForSeconds(3);
-		HUDText.GetComponent<Text> ().CrossFadeAlpha (0f, 3f, false);
+		HUDText.GetComponent<Text> ().CrossFadeAlpha (0f, 1.5f, false);
 	}
 	/// <summary>
 	/// Calls coroutine to fade message in/out of HUD
