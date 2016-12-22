@@ -67,6 +67,11 @@ public class RoomController : MonoBehaviour {
 
 		doorQuad.GetComponent<Renderer> ().material = materialArray [story.getWeather ()];
 	}
+	private void setLobbyMusic(){
+		string filepath = "Sounds/Ambience-Lobby" + UnityEngine.Random.Range (0, 2).ToString ();
+		GameObject.Find ("Audio Source").GetComponent<AudioSource> ().clip = Resources.Load<AudioClip> (filepath);
+		GameObject.Find ("Audio Source").GetComponent<AudioSource> ().Play ();
+	}
 	/// <summary>
 	/// Gets the characters present in this room from story.
 	/// </summary>
@@ -91,7 +96,10 @@ public class RoomController : MonoBehaviour {
 			break;
 		}			
 	}
-
+	/// <summary>
+	/// Fengs the shui.
+	/// Instanciates the furniture in each room, setting its position & initialising.
+	/// </summary>
 	private void fengShui(){
 		switch (roomIndex) {
 		case 1:
@@ -126,7 +134,11 @@ public class RoomController : MonoBehaviour {
 		this.cluesInRoom.Add(story.getCluesInRoom (1) [0]);
 		Debug.Log ("Clue in room: " + this.cluesInRoom [0].GetComponent<Clue> ().longName);
 	}
-		
+
+	/// <summary>
+	/// Gets & sets the potential positions of clues in the room.
+	/// </summary>
+	/// <returns>The room clue locations.</returns>
 	private List<Vector3> getRoomClueLocations(){
 		List<Vector3> locationList = new List<Vector3> ();
 		switch (roomIndex) {
@@ -178,8 +190,9 @@ public class RoomController : MonoBehaviour {
 		detective.transform.position = pos;
 
 		switch (roomIndex) {
-		case 1:
+		case 1: //lobby
 			setDoor ();
+			setLobbyMusic ();
 			break;
 		default:
 			break;
