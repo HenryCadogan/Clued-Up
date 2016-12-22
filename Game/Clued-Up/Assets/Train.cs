@@ -14,6 +14,10 @@ public class Train : MonoBehaviour {
 	/// The overlay sign that can be turned off if not needed.
 	/// </summary>
 	public GameObject overlaySign;
+	/// <summary>
+	/// The overlay sign that can be turned off if not needed.
+	/// </summary>
+	public GameObject horn;
 
 	/// <summary>
 	/// Decides wether or not to allow train to continue
@@ -21,10 +25,12 @@ public class Train : MonoBehaviour {
 	void Start () {
 		int chanceI = (int)(chance * 100);
 		int randI = Random.Range (0, 100);
+		this.horn.GetComponent<AudioSource> ().Play ();
 		Debug.Log (randI);
 		if (chanceI - 2 < randI) {
 			overlaySign.SetActive (false);
 			this.gameObject.SetActive (false);
+			this.horn.SetActive (false);
 		}
 	}
 

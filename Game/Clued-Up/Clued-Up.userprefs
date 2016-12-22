@@ -1,18 +1,21 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Cupboard.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Train.cs">
     <Files>
-      <File FileName="Assets/Scripts/Lockers.cs" Line="3" Column="1" />
-      <File FileName="Assets/Scripts/Clue.cs" Line="42" Column="9" />
-      <File FileName="Assets/Scripts/Room1Controller.cs" Line="157" Column="29" />
+      <File FileName="Assets/Scripts/Lockers.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Clue.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Room1Controller.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Detective.cs" Line="62" Column="25" />
       <File FileName="Assets/Scripts/Inventory.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/IntroController.cs" Line="119" Column="3" />
-      <File FileName="Assets/Scripts/Story.cs" Line="25" Column="2" />
+      <File FileName="Assets/Scripts/IntroController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Story.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/DetectiveChoiceHandler.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/RoomController.cs" Line="141" Column="78" />
-      <File FileName="Assets/Scripts/Cupboard.cs" Line="66" Column="71" />
-      <File FileName="Assets/Scripts/SceneTransitions.cs" Line="70" Column="13" />
+      <File FileName="Assets/Scripts/RoomController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Cupboard.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/SceneTransitions.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/ClickHotspot.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/HUDController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Train.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

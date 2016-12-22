@@ -154,7 +154,9 @@ public class Room1Controller : MonoBehaviour {
 	/// If number is pressed during this scene, then skip to appropriate room
 	/// </summary>
 	void Update() {
-		if (Input.GetKeyDown ("5")){
+		if (Input.GetKeyDown ("2")){
+			SceneManager.LoadScene (4);	//loads character selection scene
+		}else if (Input.GetKeyDown ("5")){
 			SceneManager.LoadScene (7);	//loads character selection scene
 		}
 	}
