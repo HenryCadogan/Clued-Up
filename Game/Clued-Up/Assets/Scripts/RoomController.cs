@@ -36,7 +36,7 @@ public class RoomController : MonoBehaviour {
 	/// <summary>
 	/// Size of detective in each room so it can be adjusted for realistic scaling
 	/// </summary>
-	private float[] detectiveSizeByRoom = {3f,3f,3.5f,3f,3.5f};
+	private float[] detectiveSizeByRoom = {3f,3f,3.5f,3f,3.5f,3.5f,3.5f};
 
 	/// <summary>
 	/// Scales the detective.
@@ -102,12 +102,12 @@ public class RoomController : MonoBehaviour {
 	/// </summary>
 	private void fengShui(){
 		switch (roomIndex) {
-		case 1:
+		case 1: //lobby
 			GameObject lockers = Instantiate (Resources.Load ("Lockers"), new Vector3 (3.22f, -4f, 2f), Quaternion.Euler (0, 0, 0)) as GameObject;
 			lockers.GetComponent<Lockers> ().Initialise ();
 			furnitureInRoom.Add (lockers);
 			break;
-		case 4:
+		case 4: //kitchen
 			GameObject cupboardL = Instantiate (Resources.Load ("Cupboard"), new Vector3 (6.11f, -4.88f, 2f), Quaternion.Euler (0, 0, 0)) as GameObject;
 			cupboardL.transform.localScale = new Vector3 (0.95f, 1f, 1f);
 			cupboardL.GetComponent<Cupboard> ().Initialise ("cupboard-left","cupboard");
@@ -123,6 +123,11 @@ public class RoomController : MonoBehaviour {
 			oven.GetComponent<Cupboard> ().Initialise ("oven-door","oven");
 			furnitureInRoom.Add (oven);
 			break;
+		case 6: //studio
+			GameObject sofa = Instantiate (Resources.Load ("Sofa"), new Vector3 (-5.9f, -4.8f, 0f), Quaternion.Euler (0, 0, 0)) as GameObject;
+			sofa.GetComponent<Sofa> ().Initialise ();
+			furnitureInRoom.Add (sofa);
+			break;
 		default:
 			break;
 		}
@@ -130,7 +135,7 @@ public class RoomController : MonoBehaviour {
 
 
 	private void getClues(){
-		//USED SO ALL ROOMS HAVE A MICROPHONE. THIS NEEDS TO CHANGE. TODO
+		//USED SO ALL ROOMS HAVE A MICROPHONE. THIS NEEDS TO CHANGE. TODO MAKE IT ONLY ADD THE CLUE IF IT ISNT ALREADY COLLECTED
 		this.cluesInRoom.Add(story.getCluesInRoom (1) [0]);
 		Debug.Log ("Clue in room: " + this.cluesInRoom [0].GetComponent<Clue> ().longName);
 	}
@@ -143,7 +148,10 @@ public class RoomController : MonoBehaviour {
 		List<Vector3> locationList = new List<Vector3> ();
 		switch (roomIndex) {
 		case 4: //kitchen
-			locationList.Add (new Vector3 (-5.74f, -3.96f, 1f));
+			locationList.Add (new Vector3 (-5.74f, -3.96f, 1f)); //on shelf
+			break;
+		case 6: //studio
+			locationList.Add (new Vector3 (2f, -1.77f, 1f));  // on piano
 			break;
 		default:
 			break;
@@ -169,7 +177,9 @@ public class RoomController : MonoBehaviour {
 				furnitureInRoom [locationIndex].GetComponent<Lockers> ().addClue (clue);
 			}else if (furnitureInRoom [locationIndex].GetComponent<Cupboard> () != null) {
 				furnitureInRoom [locationIndex].GetComponent<Cupboard> ().addClue (clue);
-			}
+			}else if (furnitureInRoom [locationIndex].GetComponent<Sofa> () != null) {
+			furnitureInRoom [locationIndex].GetComponent<Sofa> ().addClue (clue);
+		}
 		}
 	}
 

@@ -155,9 +155,12 @@ public class Room1Controller : MonoBehaviour {
 	/// </summary>
 	void Update() {
 		if (Input.GetKeyDown ("2")){
-			SceneManager.LoadScene (4);	//loads character selection scene
+			SceneManager.LoadScene (4);	//train station
 		}else if (Input.GetKeyDown ("5")){
-			SceneManager.LoadScene (7);	//loads character selection scene
-		}
+			SceneManager.LoadScene (7);	//loads kitchen
+		}else if (Input.GetKeyDown ("6")){
+		SceneManager.LoadScene (8);	//loads studio
+	}
+
 	}
 }
