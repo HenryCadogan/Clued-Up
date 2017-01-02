@@ -117,7 +117,7 @@
      <None Include="Assets\Resources\test.txt" />
      <None Include="Assets\TextFiles\character2.txt" />
  <Reference Include="Assembly-UnityScript">
- <HintPath>/Users/Toby/Documents/School/Uni 2nd Stage/SEPR/Clued-up/Game/Clued-Up/Library/ScriptAssemblies/Assembly-UnityScript.dll</HintPath>
+ <HintPath>/Users/tobias/Documents/School/Uni 2nd Stage/SEPR/Clued-Up/Game/Clued-Up/Library/ScriptAssemblies/Assembly-UnityScript.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>

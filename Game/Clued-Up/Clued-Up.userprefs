@@ -2,15 +2,15 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Train.cs">
     <Files>
+      <File FileName="Assets/Scripts/RoomController.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Lockers.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Clue.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Room1Controller.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Detective.cs" Line="62" Column="25" />
+      <File FileName="Assets/Scripts/Detective.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Inventory.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/IntroController.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Story.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/DetectiveChoiceHandler.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/RoomController.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Cupboard.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/SceneTransitions.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/ClickHotspot.cs" Line="1" Column="1" />

@@ -22,7 +22,7 @@ public class Detective : MonoBehaviour {
 	/// <summary>
 	/// //The next walk in direction to be used when switching between scenes
 	/// </summary>
-	public bool walkInDirectionIsLeft = true; 
+	public int walkInDirection = 0; //0 = left 1 = centre 2 = right 
 	/// <summary>
 	/// The detective can walk right (i.e. not forced not to).
 	/// </summary>
@@ -111,17 +111,23 @@ public class Detective : MonoBehaviour {
 	/// Player walks onto the scene from specific direction. Called from SceneController scripts.
 	/// </summary>
 	public void walkIn(){
-		if (this.walkInDirectionIsLeft) { //if position should be from left
+		if (this.walkInDirection == 0) { //if position should be from left
 			this.direction = "right";	//sets facing right
-			turnPlayer("right");
+			turnPlayer ("right");
 			Vector3 pos = this.transform.position;
 			pos.x = -10f;
 			this.transform.position = pos;
-		} else {
+		} else if (this.walkInDirection == 2) { // if walk in from right
 			this.direction = "left";	//sets facing left
-			turnPlayer("left");
+			turnPlayer ("left");
 			Vector3 pos = this.transform.position;
 			pos.x = 10f;
+			this.transform.position = pos;
+		} else { // walk in at centre
+			this.direction = "right";	//sets facing left
+			turnPlayer ("right");
+			Vector3 pos = this.transform.position;
+			pos.x = 0f;
 			this.transform.position = pos;
 		}
 		setWalkSound ();
