@@ -42,12 +42,18 @@ public class SceneTransitions : MonoBehaviour {
 	/// Raises the mouse down event for use when DoorQuads are clicked.
 	/// </summary>
 	public void OnMouseDown(){
-		if (gameObject.name == "ExitDoorQuad") {
-			GameObject.Find ("Detective").GetComponent<Detective> ().walkInDirectionIsLeft = false;
+		if (gameObject.name == "LobbyDoorQuad") {
+			GameObject.Find ("Detective").GetComponent<Detective> ().walkInDirection = 2;
 			StartCoroutine (fadeLoadScene (3));
 		} else if (gameObject.name == "KitchenDoorQuad") {
-			GameObject.Find ("Detective").GetComponent<Detective> ().walkInDirectionIsLeft = false;
+			GameObject.Find ("Detective").GetComponent<Detective> ().walkInDirection = 2;
 			StartCoroutine (fadeLoadScene (7));
+		} else if (gameObject.name == "StudioDoorQuad") {
+			GameObject.Find ("Detective").GetComponent<Detective> ().walkInDirection = 1;
+			StartCoroutine (fadeLoadScene (8));
+		} else if (gameObject.name == "StudioExitDoorQuad") {
+			GameObject.Find ("Detective").GetComponent<Detective> ().walkInDirection = 1;
+			StartCoroutine (fadeLoadScene (9));
 		}
 	}
 	/// <summary>
@@ -63,7 +69,7 @@ public class SceneTransitions : MonoBehaviour {
 
 			case "Room1R":
 				if (GameObject.Find ("SceneController").GetComponent<Room1Controller> ().canProgress ()){
-					detective.GetComponent<Detective> ().walkInDirectionIsLeft = true;
+					detective.GetComponent<Detective> ().walkInDirection = 1;
 					StartCoroutine (fadeLoadScene (4));
 				} else {
 					stopDetective(true,detective);
@@ -71,41 +77,70 @@ public class SceneTransitions : MonoBehaviour {
 				break;
 
 			case "Room2L": //room2 is lobby
-				detective.GetComponent<Detective>().walkInDirectionIsLeft = false;
+				detective.GetComponent<Detective>().walkInDirection = 2;
 				StartCoroutine(fadeLoadScene(6)); // load cafe
 				break;
 
 			case "Room2R":
-				detective.GetComponent<Detective>().walkInDirectionIsLeft = true;
+				detective.GetComponent<Detective>().walkInDirection = 0;
 				StartCoroutine(fadeLoadScene(5)); // load train station
 				break;
 
 			case "Room3L": //room3 is train station
-				detective.GetComponent<Detective>().walkInDirectionIsLeft = false;
+				detective.GetComponent<Detective>().walkInDirection = 2;
 				StartCoroutine(fadeLoadScene(4)); // load lobby
 				break;
 
 			case "Room3R":
-				detective.GetComponent<Detective>().walkInDirectionIsLeft = true;
-				StartCoroutine(fadeLoadScene(5)); // load ...
+				detective.GetComponent<Detective>().walkInDirection = 0;
+				StartCoroutine(fadeLoadScene(10)); // load toilets
 				break;
 
 			case "Room4L": //room4 is cafe
-				detective.GetComponent<Detective>().walkInDirectionIsLeft = false;
-				StartCoroutine(fadeLoadScene(9)); // load ...
+				detective.GetComponent<Detective>().walkInDirection = 2;
+				StartCoroutine(fadeLoadScene(9)); // load bar
 				break;
 
 			case "Room4R":
-				detective.GetComponent<Detective>().walkInDirectionIsLeft = true;
+				detective.GetComponent<Detective>().walkInDirection = 0;
 				StartCoroutine(fadeLoadScene(4)); // load lobby
 				break;
+
 			case "Room5L": //room 5 is kitchen
 				stopDetective(false,detective);
 				break;
 
 			case "Room5R":
-				detective.GetComponent<Detective>().walkInDirectionIsLeft = true;
+				detective.GetComponent<Detective>().walkInDirection = 0;
 				StartCoroutine(fadeLoadScene(6)); // load cafe
+				break;
+
+			case "Room6L": //room 6 is bar
+				detective.GetComponent<Detective>().walkInDirection = 2;
+				StartCoroutine(fadeLoadScene(10)); // load toilets
+				break;
+
+			case "Room6R":
+				detective.GetComponent<Detective>().walkInDirection = 0;
+				StartCoroutine(fadeLoadScene(6)); // load cafe
+				break;
+
+			case "Room7L": //room 7 is studio
+				stopDetective(false, detective);
+				break;
+
+			case "Room7R":
+				stopDetective (true, detective);
+				break;
+
+			case "Room8L": //room 8 is toilets
+				detective.GetComponent<Detective>().walkInDirection = 2;
+				StartCoroutine(fadeLoadScene(5)); // load station
+				break;
+
+			case "Room8R":
+				detective.GetComponent<Detective>().walkInDirection = 0;
+				StartCoroutine(fadeLoadScene(9)); // load bar
 				break;
 
 			default:
