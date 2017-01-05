@@ -168,19 +168,22 @@ public class RoomController : MonoBehaviour {
 		List<Vector3> roomLocations = getRoomClueLocations (); //possible locations that are not furniture
 		int totalLocationsCount = roomLocations.Count + furnitureInRoom.Count;
 
-		int locationIndex = UnityEngine.Random.Range (0, totalLocationsCount);
-		if (locationIndex < roomLocations.Count) {	//If clue is in room locations
-			clue.gameObject.GetComponent<Transform> ().position = roomLocations [locationIndex];
-		} else{
-			locationIndex = locationIndex - roomLocations.Count; //change to only include furniture clues
-			if (furnitureInRoom [locationIndex].GetComponent<Lockers> () != null) {
-				furnitureInRoom [locationIndex].GetComponent<Lockers> ().addClue (clue);
-			}else if (furnitureInRoom [locationIndex].GetComponent<Cupboard> () != null) {
-				furnitureInRoom [locationIndex].GetComponent<Cupboard> ().addClue (clue);
-			}else if (furnitureInRoom [locationIndex].GetComponent<Sofa> () != null) {
-			furnitureInRoom [locationIndex].GetComponent<Sofa> ().addClue (clue);
-		}
-		}
+		if (totalLocationsCount != 0) {
+			int locationIndex = UnityEngine.Random.Range (0, totalLocationsCount);
+			if (locationIndex < roomLocations.Count) {	//If clue is in room locations
+				clue.gameObject.GetComponent<Transform> ().position = roomLocations [locationIndex];
+			} else {
+				locationIndex = locationIndex - roomLocations.Count; //change to only include furniture clues
+				if (furnitureInRoom [locationIndex].GetComponent<Lockers> () != null) {
+					furnitureInRoom [locationIndex].GetComponent<Lockers> ().addClue (clue);
+				} else if (furnitureInRoom [locationIndex].GetComponent<Cupboard> () != null) {
+					furnitureInRoom [locationIndex].GetComponent<Cupboard> ().addClue (clue);
+				} else if (furnitureInRoom [locationIndex].GetComponent<Sofa> () != null) {
+					furnitureInRoom [locationIndex].GetComponent<Sofa> ().addClue (clue);
+				}
+			}
+		} else
+			Debug.Log ("No clue locations!");
 	}
 
 	/// <summary>
