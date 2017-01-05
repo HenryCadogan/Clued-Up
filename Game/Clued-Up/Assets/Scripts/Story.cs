@@ -40,9 +40,13 @@ public class Story : MonoBehaviour {
 	/// </summary>
 	public Dictionary<int, List<string>> cluesInRoom = new Dictionary<int, List<string>>();
 	/// <summary>
-	/// The number of room that will be in the game
+	/// The number of rooms that will be in the game
 	/// </summary>
 	private static int NUMBER_OF_ROOMS = 8;
+	/// <summary>
+	/// The number of detectives that will be in the game
+	/// </summary>
+	private static int NUMBER_OF_DETECTIVES = 3;
 	/// <summary>
 	/// Makes the object persistant throughout scenes.
 	/// </summary>
@@ -130,8 +134,11 @@ public class Story : MonoBehaviour {
 	/// </summary>
 	/// <param name="detectiveInt">Index for the detective to set, passed from when the corresponding button is pressed in character selection</param>
 	public void setDetective(int detectiveInt){
-		detective = detectiveInt;
-		Debug.Log ("You have chosen dectective " + detective.ToString ());
+		if ((detectiveInt < NUMBER_OF_DETECTIVES) || (detectiveInt >= 0)){
+			detective = detectiveInt;
+			Debug.Log ("You have chosen dectective " + detective.ToString ());
+		} else
+			throw new System.ArgumentOutOfRangeException ("Not enough detectives");
 	}
 	/// <summary>
 	/// Gets the detective.
@@ -164,8 +171,7 @@ public class Story : MonoBehaviour {
 		case 6:
 			return "Rude";
 		default:
-			Debug.Log ("ERROR!"); //TODO raise exception
-			return "";
+			throw new System.IndexOutOfRangeException ("Trait index out of range");
 		}
 	}
 	/// <summary>
@@ -211,16 +217,20 @@ public class Story : MonoBehaviour {
 	/// <summary>
 	/// Decides which of the alive characters occupy each room, excluding the initial crime scene room.
 	/// </summary>
-	private void setCharacterRooms(){
+	public void setCharacterRooms(){
 		int randomRoom;
-		for(int characterIndex = 0; characterIndex < this.aliveCharacters.Count + 1; characterIndex ++) {	
-			randomRoom = Random.Range (1, NUMBER_OF_ROOMS); //rooms 1-7 (i.e. all, not including the crime scene  (room 0)
-			while(charactersInRoom.ContainsKey(randomRoom)){	//while there isnt already a character there
-				randomRoom = Random.Range (1, NUMBER_OF_ROOMS);
-			}
+		List<int> emptyRooms = new List<int>();
 
-			charactersInRoom.Add (randomRoom, new List<int>{characterIndex}); //CharactersInRoom[1] = 2 | char 2 is in room 1 //using lists so it is adaptable to multiople chars in one room
+		for (int roomI = 1; roomI <  NUMBER_OF_ROOMS ; roomI++) { //initialise all rooms to have character index -1, and adding all rooms to emptyRooms
+			this.charactersInRoom.Add (roomI, new List<int>{-1});
+			emptyRooms.Add (roomI);
+		}
 
+		//for each character, assign a random room that isnt the crime scene & provided there isnt anyone in it, add it to characters in room
+		for(int characterIndex = 0; characterIndex < this.aliveCharacters.Count; characterIndex ++) {	
+			randomRoom = emptyRooms[Random.Range (0, emptyRooms.Count)];
+			emptyRooms.Remove (randomRoom);
+			charactersInRoom[randomRoom] = new List<int>{characterIndex}; //CharactersInRoom[1] = 2 | char 2 is in room 1 //using lists so it is adaptable to multiple characters being in one room
 		}
 
 		foreach (KeyValuePair<int,List<int>> room in charactersInRoom) {
@@ -234,13 +244,16 @@ public class Story : MonoBehaviour {
 	/// <returns>List of character GameObjects that are within room index</returns>
 	/// <param name="room">Index of the room of choice</param>
 	public List<GameObject> getCharactersInRoom(int room){
-		List<GameObject> charactersInRoom = new List<GameObject> (); 
-		if (this.charactersInRoom.ContainsKey (room)) {	//protects againnst invalid index exception
+		List<GameObject> charactersInCurrentRoom = new List<GameObject> (); 
+		if (this.charactersInRoom.ContainsKey (room)) {
 			foreach (int characterIndex in this.charactersInRoom[room]) {
-				charactersInRoom.Add (this.aliveCharacters [characterIndex]);
+				if (characterIndex != -1) {	//where -1 is default
+					charactersInCurrentRoom.Add (this.aliveCharacters [characterIndex]);
+				}
 			}
-		}
-		return charactersInRoom;
+		} else
+			throw new System.IndexOutOfRangeException ("Room out of range");
+		return charactersInCurrentRoom;
 	}
 	/// <summary>
 	/// Checks if a particular character is the murderer
