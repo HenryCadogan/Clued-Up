@@ -25,13 +25,18 @@ public class Character : MonoBehaviour {
 	/// <summary>
 	/// Makes the object persistant throughout scenes
 	/// </summary>
+	public SpeechHandler SpeechUI;
+
 	void Awake ()
 	{
+		//SpeechUI = GetComponent<SpeechHandler> ();
 		DontDestroyOnLoad(gameObject);
 
 	}
 
-
+	void OnMouseDown(){
+		SpeechUI.TurnOnSpeechUI ();
+	}
 
 	/// <summary>
 	/// Initialise the specified Character with properties and CharacterClues

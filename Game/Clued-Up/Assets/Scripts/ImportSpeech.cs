@@ -34,11 +34,11 @@ public class ImportSpeech : MonoBehaviour {
 	/// <summary>
 	/// The item in.
 	/// </summary>
-	public GameObject ItemIn;		// TODO: Update these to be object pointers
+	public Clue ItemIn;		// TODO: Update these to be object pointers
 	/// <summary>
 	/// The char in.
 	/// </summary>
-	public string CharIn;
+	public Character CharIn;
 	/// <summary>
 	/// Pos is the current position in the Branch
 	/// </summary>
@@ -131,9 +131,16 @@ public class ImportSpeech : MonoBehaviour {
 	public string NextLine () {
 		if (0 <= Pos && Pos < BranchList.Count) {				// Assuming we're still in bounds of the arraylist...
 			string ReturnString = BranchList [Pos].ToString();	// Get the current line
-			string ItemName = ItemIn.GetComponent<ClueController>().longName;
+			string ItemName = "ERR_NO_ITEM";
+			string CharName = "ERR_NO_CHAR";
+			if (ItemIn != null) {
+				ItemName = ItemIn.GetComponent<ClueController> ().longName;
+			}
+			if (CharIn != null) {
+				CharName = CharIn.longName;
+			}
 			ReturnString = ReturnString.Replace("[",ItemName);	// Replace token characters
-			ReturnString = ReturnString.Replace("]",CharIn);
+			ReturnString = ReturnString.Replace("]",CharName);
 			Pos += 1;											// Increment the position marker
 			return ReturnString;								// And throw the string back
 		} else if (Pos >= BranchList.Count) {		// If we've gone past the length of the list, then we're done with the branch.
