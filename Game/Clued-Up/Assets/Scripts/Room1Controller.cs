@@ -159,7 +159,9 @@ public class Room1Controller : MonoBehaviour {
 		}else if (Input.GetKeyDown ("5")){
 			SceneManager.LoadScene (7);	//loads kitchen
 		}else if (Input.GetKeyDown ("6")){
-		SceneManager.LoadScene (8);	//loads studio
+			SceneManager.LoadScene (8);	//loads studio
+		}else if (Input.GetKeyDown ("7")){
+			SceneManager.LoadScene (9);	//loads toilets
 	}
 
 	}

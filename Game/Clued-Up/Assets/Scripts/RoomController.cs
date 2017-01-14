@@ -36,7 +36,7 @@ public class RoomController : MonoBehaviour {
 	/// <summary>
 	/// Size of detective in each room so it can be adjusted for realistic scaling
 	/// </summary>
-	private float[] detectiveSizeByRoom = {3f,3f,3.5f,3f,3.5f,3.5f,3.5f};
+	private float[] detectiveSizeByRoom = {3f,3f,3.5f,3f,3.5f,3.5f,3.5f,3f};
 
 	/// <summary>
 	/// Scales the detective.
@@ -127,6 +127,22 @@ public class RoomController : MonoBehaviour {
 			GameObject sofa = Instantiate (Resources.Load ("Sofa"), new Vector3 (-5.9f, -4.8f, 0f), Quaternion.Euler (0, 0, 0)) as GameObject;
 			sofa.GetComponent<Sofa> ().Initialise ();
 			furnitureInRoom.Add (sofa);
+			break;
+		case 7: //toilets
+			GameObject cubicleDoorLeft = Instantiate (Resources.Load ("Cupboard"), new Vector3 (-5.42f, -3.27f, 2f), Quaternion.Euler (0, 0, 0)) as GameObject;
+			cubicleDoorLeft.transform.localScale = new Vector3 (0.95f, 0.95f, 1f);
+			cubicleDoorLeft.GetComponent<Cupboard> ().Initialise ("cubicle-door", "cubicle", 0.14f, -0.6f);
+			furnitureInRoom.Add (cubicleDoorLeft);
+
+			GameObject cubicleDoorCentre = Instantiate (Resources.Load ("Cupboard"), new Vector3 (-2.93f, -3.27f, 2f), Quaternion.Euler (0, 0, 0)) as GameObject;
+			cubicleDoorCentre.transform.localScale = new Vector3 (0.95f, 0.95f, 1f);
+			cubicleDoorCentre.GetComponent<Cupboard> ().Initialise ("cubicle-door", "cubicle", 0.14f, -0.6f);
+			furnitureInRoom.Add (cubicleDoorCentre);
+
+			GameObject cubicleDoorRight = Instantiate (Resources.Load ("Cupboard"), new Vector3 (-0.52f, -3.27f, 2f), Quaternion.Euler (0, 0, 0)) as GameObject;
+			cubicleDoorRight.transform.localScale = new Vector3 (0.95f, 0.95f, 1f);
+			cubicleDoorRight.GetComponent<Cupboard> ().Initialise ("cubicle-door", "cubicle", 0.14f, -0.6f);
+			furnitureInRoom.Add (cubicleDoorRight);
 			break;
 		default:
 			break;

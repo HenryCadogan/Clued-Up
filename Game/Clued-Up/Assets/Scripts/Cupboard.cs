@@ -16,6 +16,7 @@ public class Cupboard : MonoBehaviour {
 	private string longName;
 	private HUDController HUDC;
 	private GameObject containedClue;
+	private Vector3 cluePosOffset;
 
 	/// <summary>
 	/// Changes the sprite when opened.
@@ -39,7 +40,7 @@ public class Cupboard : MonoBehaviour {
 	/// <summary>
 	/// Initialise this instance.
 	/// </summary>
-	public void Initialise(string name, string longName){
+	public void Initialise(string name, string longName, float clueOffsetx = -0.2f, float clueOffsety = 0f, float clueOffsetz =  0f){
 		gameObject.GetComponent<SpriteRenderer> ().sprite = Resources.Load<Sprite> ("Furniture/" + name);
 		Debug.Log ("trying to load image: " + "Furniture/" + name);
 		Vector2 S = this.gameObject.GetComponent<SpriteRenderer>().sprite.bounds.size; //get size of sprite
@@ -47,6 +48,7 @@ public class Cupboard : MonoBehaviour {
 		this.name = name;
 		this.longName = longName;
 		this.HUDC = GameObject.Find("HUD").GetComponent<HUDController>();
+		this.cluePosOffset = new Vector3(clueOffsetx,clueOffsety,clueOffsetz);
 	}
 	/// <summary>
 	/// Raises the mouse down event. Opens cupboard if it isnt open already
@@ -63,7 +65,7 @@ public class Cupboard : MonoBehaviour {
 
 	public void addClue(GameObject clueObject){
 		this.hasClue = true;
-		clueObject.transform.position = this.gameObject.transform.position + new Vector3(-0.2f, 0f, 0f);
+		clueObject.transform.position = this.gameObject.transform.position + cluePosOffset;
 		clueObject.SetActive (false); // hides clue behind door
 		this.containedClue = clueObject;
 
