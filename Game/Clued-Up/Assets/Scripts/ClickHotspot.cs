@@ -80,6 +80,11 @@ public class ClickHotspot : MonoBehaviour {
 			break;
 
 		//room4 kitchen
+		case "trainSign":
+			messages.Add ("Helpful directions...");
+			break;
+
+		//room4 kitchen
 		case "pan":
 			messages.Add ("Sadly there's nothing in the pan");
 			break;
@@ -104,7 +109,7 @@ public class ClickHotspot : MonoBehaviour {
 			messages.Add ("It's not on, don't worry.");
 			break;
 
-			//room5 studio
+		//room7 studio
 		case "keyboard":
 			messages.Add ("Everybody loves these.");
 			messages.Add ("Remember these from Y9 music?");
@@ -130,6 +135,31 @@ public class ClickHotspot : MonoBehaviour {
 		case "piano":
 			messages.Add ("I think it's in tune!");
 			messages.Add ("Love a bit of classical every once in a while.");
+			break;
+
+
+		//room8 toilets
+		case "doors95":
+			messages.Add ("The new OS from Megahard coming soon.");
+			messages.Add ("Have you heard it can support multitasking?!");
+			break;
+		case "murderPoster":
+			messages.Add ("The Great Ron Cooke Hub Murder, in cinemas July 2017.");
+			break;
+		case "burglarKing":
+			messages.Add ("Have it my way.");
+			messages.Add ("Finger sucking good.");
+			break;
+		case "beerBottles":
+			messages.Add ("Someone's been drinking recently...");
+			messages.Add ("I guess it's this way to the bar.");
+			break;
+		case "puddle":
+			messages.Add ("I hope that's spilled beer.");
+			break;
+		case "condomMachine":
+			messages.Add ("Better safe than sorry...");
+			messages.Add ("I'm still not sure why we included this.");
 			break;
 
 
