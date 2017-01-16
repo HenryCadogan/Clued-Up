@@ -166,6 +166,12 @@ public class RoomController : MonoBehaviour {
 		case 4: //kitchen
 			locationList.Add (new Vector3 (-5.74f, -3.96f, 1f)); //on shelf
 			break;
+		case 5: //bar
+			locationList.Add (new Vector3 (7.43f, -2.1f, 1f));  // on bar
+			locationList.Add (new Vector3 (5.08f, -2.1f, 1f));  // on bar
+			locationList.Add (new Vector3 (4.36f, -3.1f, 1f));  // on stool
+			locationList.Add (new Vector3 (1.8f, -3.1f, 1f));  // on stool
+			break;
 		case 6: //studio
 			locationList.Add (new Vector3 (2f, -1.77f, 1f));  // on piano
 			break;
@@ -200,7 +206,7 @@ public class RoomController : MonoBehaviour {
 			}
 		} else
 			Debug.Log ("No clue locations!");
-	}
+		}
 
 	/// <summary>
 	/// Walk character in, get reference to story and do initialisation for scene
