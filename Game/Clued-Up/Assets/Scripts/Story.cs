@@ -14,7 +14,7 @@ public class Story : MonoBehaviour {
 	/// <summary>
 	/// Index of weather conditions where 0 = sunny, 1 = rainy, 2 = sunset, 3 = snowy. Preset for debugging different condtitions
 	/// </summary>
-	private int weather = 3;
+	private int weather = 1;
 	/// <summary>
 	/// The detective int set by user in character selection
 	/// </summary>
