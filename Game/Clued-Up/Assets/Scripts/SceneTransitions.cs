@@ -49,11 +49,11 @@ public class SceneTransitions : MonoBehaviour {
 			GameObject.Find ("Detective").GetComponent<Detective> ().walkInDirection = 2;
 			StartCoroutine (fadeLoadScene (7));
 		} else if (gameObject.name == "StudioDoorQuad") {
-			GameObject.Find ("Detective").GetComponent<Detective> ().walkInDirection = 1;
-			StartCoroutine (fadeLoadScene (8));
-		} else if (gameObject.name == "StudioExitDoorQuad") {
-			GameObject.Find ("Detective").GetComponent<Detective> ().walkInDirection = 1;
+			GameObject.Find ("Detective").GetComponent<Detective> ().walkInDirection = 2;
 			StartCoroutine (fadeLoadScene (9));
+		} else if (gameObject.name == "StudioExitDoorQuad") {
+			GameObject.Find ("Detective").GetComponent<Detective> ().walkInDirection = 0;
+			StartCoroutine (fadeLoadScene (8));
 		}
 	}
 	/// <summary>
@@ -98,7 +98,7 @@ public class SceneTransitions : MonoBehaviour {
 
 			case "Room4L": //room4 is cafe
 				detective.GetComponent<Detective>().walkInDirection = 2;
-				StartCoroutine(fadeLoadScene(9)); // load bar
+				StartCoroutine(fadeLoadScene(8)); // load bar
 				break;
 
 			case "Room4R":
@@ -140,7 +140,7 @@ public class SceneTransitions : MonoBehaviour {
 
 			case "Room8R":
 				detective.GetComponent<Detective>().walkInDirection = 0;
-				StartCoroutine(fadeLoadScene(9)); // load bar
+				StartCoroutine(fadeLoadScene(8)); // load bar
 				break;
 
 			default:
