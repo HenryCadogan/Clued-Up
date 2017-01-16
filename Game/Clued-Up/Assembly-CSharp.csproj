@@ -50,6 +50,7 @@
      <Compile Include="Assets\RainMaker\Prefab\RainScript.cs" />
      <Compile Include="Assets\RainMaker\Prefab\RainScript2D.cs" />
      <Compile Include="Assets\Realistic Hail Set\Demo Scene\Scripts\DemoSceneController.cs" />
+     <Compile Include="Assets\Scripts\Bar.cs" />
      <Compile Include="Assets\Scripts\ButtonTest.cs" />
      <Compile Include="Assets\Scripts\Character.cs" />
      <Compile Include="Assets\Scripts\ClickHotspot.cs" />
