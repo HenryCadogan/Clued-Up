@@ -206,7 +206,7 @@ public class RoomController : MonoBehaviour {
 			}
 		} else
 			Debug.Log ("No clue locations!");
-	}
+		}
 
 	/// <summary>
 	/// Walk character in, get reference to story and do initialisation for scene

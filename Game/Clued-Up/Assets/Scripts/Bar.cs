@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class Bar : MonoBehaviour {
 
 	public Image fullPint;
-	public GameObject tap;
+	public Image stream;
 	public float speed;
 	private bool hasBeenPoured = false;
 	private bool pouring = false;
@@ -16,7 +16,6 @@ public class Bar : MonoBehaviour {
 		if (!hasBeenPoured) {
 			hasBeenPoured = true;
 			pouring = true;
-			tap.SetActive (true);
 		}
 	}
 	/// <summary>
@@ -34,11 +33,15 @@ public class Bar : MonoBehaviour {
 		if (pouring) {
 			if (fullPint.transform.localPosition.y >= 0) {
 				pouring = false;
-				tap.SetActive (false);
+				stream.gameObject.SetActive (false);
 			} else {
 				Vector3 pos = fullPint.transform.localPosition;
 				pos.y += speed * 10;
 				fullPint.transform.localPosition = pos;
+
+				pos = stream.transform.localPosition;
+				pos.y -= 50;
+				stream.transform.localPosition = pos;
 			}
 		}
 	}
