@@ -111,6 +111,7 @@ public class Room1Controller : MonoBehaviour {
 	/// Gets the clues for this room from story, and positions them within the room.
 	/// </summary>
 	private void getClues(){
+		Debug.Log ("HERE");
 		GameObject chalkOutline = story.getCluesInRoom(0) [0];
 		chalkOutline.GetComponent<Transform> ().localScale = new Vector3 (1f, 4.5f, 1f); //sizes clue correctly
 		chalkOutline.GetComponent<Transform>().position = new Vector3(1.5f,-5.99f,-1.2f); 
