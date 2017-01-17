@@ -26,6 +26,8 @@ public class Story : MonoBehaviour {
 	/// <summary>
 	/// The murderer for this instance of the story
 	/// </summary>
+	public string MurderWeapon;
+	public string MotiveClue;
 	private GameObject murderer;
 	/// <summary>
 	/// The victim for this instance of the story
@@ -139,6 +141,11 @@ public class Story : MonoBehaviour {
 	/// <returns>The detective.</returns>
 	public int getDetective(){
 		return this.detective;
+	}
+
+	public void EndGame(){
+		Debug.Log ("Congratulations! You have beaten the game!");
+		//TODO: End cutscene.
 	}
 		
 

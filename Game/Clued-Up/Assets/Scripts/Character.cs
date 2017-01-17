@@ -26,16 +26,34 @@ public class Character : MonoBehaviour {
 	/// Makes the object persistant throughout scenes
 	/// </summary>
 	public SpeechHandler SpeechUI;
+	public string CritBranch;
+	public TextAsset SpeechFile;
 
 	void Awake ()
 	{
-		//SpeechUI = GetComponent<SpeechHandler> ();
+		SpeechUI = FindObjectOfType<SpeechHandler> ();
 		DontDestroyOnLoad(gameObject);
-
 	}
 
 	void OnMouseDown(){
 		SpeechUI.TurnOnSpeechUI ();
+	}
+
+	public void PreSpeech (string BranchName){
+		//TODO: Figure out what clues and items go into speech
+	}
+
+	public void PostSpeech (string BranchName){
+		if (BranchName == CritBranch) {
+			//TODO: Give item
+		} else if (BranchName == "Accuse-NoItems" || BranchName == "Accuse-WrongChar"
+		           || BranchName == "Accuse-Motive" || BranchName == "Accuse-Weapon") {
+			Collider CharCollider = gameObject.GetComponent<Collider> ();
+			CharCollider.gameObject.SetActive (false);
+		} else if (BranchName == "Accuse-Right") {
+			Story ActiveStory = FindObjectOfType<Story> ();
+			ActiveStory.EndGame ();
+		}
 	}
 
 	/// <summary>
