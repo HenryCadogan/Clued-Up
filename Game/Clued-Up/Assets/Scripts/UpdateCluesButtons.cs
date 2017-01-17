@@ -12,25 +12,15 @@ public class UpdateCluesButtons : MonoBehaviour {
    
     public void updateButtonText(GameObject ClueButtons)
     {
+		Debug.Log ("UPDATE BUTTON TEXT:");
         inventory = GameObject.Find("Detective").GetComponent<Inventory>();
         Debug.Log("size of collected clues:" + inventory.collectedClueNames.Count);
-        if (inventory.collectedClueNames.Count < 4)
-        {
-            for (int i = 0; i < inventory.collectedClueNames.Count; i++)
-            {
-				ClueButtons.transform.GetChild(0).GetChild(0).GetChild(i).GetComponent<Text>().text = story.getClueInformation(inventory.collectedClueNames[i]).GetComponent<Clue>().longName;
-            }
-            
-        }
-        else
-        {
-            for (int i = 0; i < 4; i++)
-            {
-				ClueButtons.transform.GetChild(0).GetChild(0).GetChild(i).GetComponent<Text>().text = story.getClueInformation(inventory.collectedClueNames[i]).GetComponent<Clue>().longName;
-            }
-            for (int i = 4; i < inventory.collectedClueNames.Count; i++)
-            {
-				ClueButtons.transform.GetChild(0).GetChild(1).GetChild(i-4).GetComponent<Text>().text = story.getClueInformation(inventory.collectedClueNames[i]).GetComponent<Clue>().longName;
+        for (int i = 0; i < inventory.collectedClueNames.Count; i++){
+			if (i < 4) {
+				Debug.Log ("LESS THAN 4, i = " + i);
+				ClueButtons.transform.GetChild (0).GetChild (i).GetChild (0).GetComponent<Text> ().text = story.getClueInformation (inventory.collectedClueNames [i]).GetComponent<Clue> ().longName;
+			}else{
+				ClueButtons.transform.GetChild(0).GetChild(i-4).GetChild(0).GetComponent<Text>().text = story.getClueInformation(inventory.collectedClueNames[i]).GetComponent<Clue>().longName;
             }
         }  
     }
