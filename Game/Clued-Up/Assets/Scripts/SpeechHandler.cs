@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
+using System.IO;
+using System.Collections.Generic;
 
 public class SpeechHandler : MonoBehaviour {
 
-	public GameObject TargetChar;
+	public Character TargetChar;
 	public GameObject TextObject;
-	public GameObject ParentCanvas;
 	public HUDController HUDCanvas;
 	public Vector3 DetectivePos;
 	public Vector3 SuspectPos;
@@ -15,6 +17,7 @@ public class SpeechHandler : MonoBehaviour {
 	public Story ActiveStory;
 	public Button LeaveButton;
 	public GameObject[] OtherUIElements;
+	public Text ClueText;
 
 	private Button ParentButton;
 	private Text ActualText;
@@ -22,11 +25,23 @@ public class SpeechHandler : MonoBehaviour {
 	private string BranchName;
 	private Inventory PlayerInv;
 	private Character CharInScene;
+	private GameObject ParentCanvas;
+	private int ClueIndex = 0;
 
 	void Start (){
 		Waiting ();
+		ActiveDet = FindObjectOfType<Detective> ();
+		ActiveStory = FindObjectOfType<Story> ();
+		PlayerInv = FindObjectOfType<Inventory> ();
+		CharInScene = FindObjectOfType<Character> ();
+		HUDCanvas = FindObjectOfType<HUDController> ();
+		string SceneName = SceneManager.GetActiveScene ().name;
+		int RoomNo = (SceneName[SceneName.Length-1]) - '0';
+		List<GameObject> ListOfCharsInRoom = ActiveStory.getCharactersInRoom (RoomNo);
+		//TargetChar = ListOfCharsInRoom [0].GetComponent<Character> ();
 		SpeechRef = TargetChar.GetComponentInChildren<ImportSpeech> ();
 		ActualText = TextObject.GetComponentInChildren<Text> ();
+		ParentCanvas = GameObject.Find ("SpeechUI");
 		ParentCanvas.SetActive (false);
 		gameObject.SetActive(false);
 	}
@@ -36,6 +51,7 @@ public class SpeechHandler : MonoBehaviour {
 		ActiveStory = FindObjectOfType<Story> ();
 		PlayerInv = FindObjectOfType<Inventory> ();
 		CharInScene = FindObjectOfType<Character> ();
+		HUDCanvas = FindObjectOfType<HUDController> ();
 		string[] StrTraits = new string[ActiveDet.traits.Length];
 		//string [] StrTraits = new string[3] {"UNO", "DOS", "TRES"};
 		for (int i = 0; i < StrTraits.Length; i++) {
@@ -57,6 +73,8 @@ public class SpeechHandler : MonoBehaviour {
 			foreach (GameObject ForObj in OtherUIElements) {
 				ForObj.gameObject.SetActive (false);
 			}
+			UpdateClueName (PlayerInv.collectedClueNames [ClueIndex]);
+			ParentCanvas.SetActive (true);
 			HUDCanvas.loadPanelAndPause (ParentCanvas);
 		} else {
 			Debug.Log ("Tried to turn on speech UI, but was already on");
@@ -68,15 +86,18 @@ public class SpeechHandler : MonoBehaviour {
 			foreach (GameObject ForObj in OtherUIElements) {
 				ForObj.gameObject.SetActive (true);
 			}
+			ClueIndex = 0;
+			ParentCanvas.SetActive (false);
 			HUDCanvas.hidePanelAndResume (ParentCanvas);
 		} else {
 			Debug.Log ("Tried to turn off speech UI but it was already off.");
 		}
 	}
 
-	public void StartBranch(Button SendingButton){
+	public void QuestionBranch(Button SendingButton){
 		SpeechRef.SetBranch (SendingButton.name);
 		BranchName = SendingButton.name;
+		BranchName = BranchName + PlayerInv.collectedClueNames [ClueIndex];
 		CharInScene.PreSpeech (BranchName);
 		gameObject.SetActive(true);
 		TextObject.SetActive(true);
@@ -97,6 +118,26 @@ public class SpeechHandler : MonoBehaviour {
 		}
 		LeaveButton.gameObject.SetActive (false);
 		OnClick ();
+	}
+
+	public void NextClue (){
+		ClueIndex += 1;
+		if (ClueIndex >= PlayerInv.collectedClueNames.Count) {
+			ClueIndex = 0;
+		}
+		UpdateClueName (PlayerInv.collectedClueNames [ClueIndex]);
+	}
+
+	public void PrevClue (){
+		ClueIndex -= 1;
+		if (ClueIndex < 0) {
+			ClueIndex = PlayerInv.collectedClueNames.Count - 1;
+		}
+		UpdateClueName (PlayerInv.collectedClueNames [ClueIndex]);
+	}
+
+	void UpdateClueName (string ClueName){
+		ClueText.text = ClueName;
 	}
 
 	public void Accuse (){
@@ -134,7 +175,7 @@ public class SpeechHandler : MonoBehaviour {
 				TextObject.transform.position = SuspectPos;
 			}
 		} else {
-			Character CharInScene = GetComponent<Character> ();
+			Character CharInScene = FindObjectOfType<Character> ();
 			CharInScene.PostSpeech (BranchName);
 			gameObject.SetActive(false);
 			TextObject.SetActive(false);
