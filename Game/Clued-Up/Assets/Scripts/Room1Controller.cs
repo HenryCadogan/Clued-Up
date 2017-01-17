@@ -148,6 +148,8 @@ public class Room1Controller : MonoBehaviour {
 		Vector3 pos = detective.transform.position; //Make detective slightly lower in screen
 		pos.y = -5.9f;
 		detective.transform.position = pos;
+
+
 	}
 
 	/// <summary>

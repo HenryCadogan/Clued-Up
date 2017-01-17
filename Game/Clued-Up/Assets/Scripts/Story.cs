@@ -47,6 +47,12 @@ public class Story : MonoBehaviour {
 	/// The number of detectives that will be in the game
 	/// </summary>
 	private static int NUMBER_OF_DETECTIVES = 3;
+
+	/// <summary>
+	/// The list that stores the indexes of the rooms that the player has visited
+	/// </summary>
+	private static List<int> visitedRooms = new List<int>();
+
 	/// <summary>
 	/// Makes the object persistant throughout scenes.
 	/// </summary>
@@ -354,4 +360,21 @@ public class Story : MonoBehaviour {
 		setCharacterRooms();
 		setClues();
 	}
+
+	/// <summary>
+	/// This adds the index of the room to the list of visited rooms only if it is not already in the list
+	/// </summary>
+	/// <param name="x">The index of the room to add.</param>
+	public void addVisitedRoom(int x){
+		visitedRooms.Add(x);
+	}
+
+	/// <summary>
+	/// Gets the visited rooms list.
+	/// </summary>
+	/// <returns>The list of indexes of visited rooms.</returns>
+	public List<int> getVisitedRooms(){
+		return visitedRooms;
+	}
+
 }

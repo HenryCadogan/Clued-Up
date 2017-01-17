@@ -216,8 +216,16 @@ public class RoomController : MonoBehaviour {
 		GameObject detective = GameObject.Find ("Detective");
 		detective.GetComponent<Detective> ().walkIn();
 		scaleDetective (detective, detectiveSizeByRoom[roomIndex]);
-
 		story = GameObject.Find("Story").GetComponent<Story>(); // references persistant object story
+
+
+		//add this room to the list of visited rooms only if it doesnt exist already
+		List<int> visitedRooms = story.getVisitedRooms();
+		if (!visitedRooms.Contains(roomIndex)){
+			story.addVisitedRoom(roomIndex);	
+		}
+
+
 
 		//Make detective slightly lower in screen
 		Vector3 pos = detective.transform.position;
@@ -237,5 +245,7 @@ public class RoomController : MonoBehaviour {
 		fengShui ();  
 		getClues ();
 		assignCluesLocations (cluesInRoom[0]);
+
+
 	}
 }
