@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class UpdateCluesButtons : MonoBehaviour {
+public class UpdateButtons : MonoBehaviour {
     private Inventory inventory;
 	private Story story;
     // Use this for initialization
@@ -10,18 +10,23 @@ public class UpdateCluesButtons : MonoBehaviour {
 		story = GameObject.Find ("Story").GetComponent<Story> ();
     }
    
-    public void updateButtonText(GameObject ClueButtons)
+
+	public void updateButtonText(GameObject ClueButtons, GameObject CharacterButtons){
+		updateClueButtonText (ClueButtons);
+	}
+
+    public void updateClueButtonText(GameObject ClueButtons)
     {
-		Debug.Log ("UPDATE BUTTON TEXT:");
         inventory = GameObject.Find("Detective").GetComponent<Inventory>();
-        Debug.Log("size of collected clues:" + inventory.collectedClueNames.Count);
         for (int i = 0; i < inventory.collectedClueNames.Count; i++){
 			if (i < 4) {
-				Debug.Log ("LESS THAN 4, i = " + i);
 				ClueButtons.transform.GetChild (0).GetChild (i).GetChild (0).GetComponent<Text> ().text = story.getClueInformation (inventory.collectedClueNames [i]).GetComponent<Clue> ().longName;
+				ClueButtons.transform.GetChild (0).GetChild (i).GetComponent<Button> ().interactable = true;
+
 			}else{
-				ClueButtons.transform.GetChild(0).GetChild(i-4).GetChild(0).GetComponent<Text>().text = story.getClueInformation(inventory.collectedClueNames[i]).GetComponent<Clue>().longName;
-            }
+				ClueButtons.transform.GetChild(1).GetChild(i-4).GetChild(0).GetComponent<Text>().text = story.getClueInformation(inventory.collectedClueNames[i]).GetComponent<Clue>().longName;
+				ClueButtons.transform.GetChild (1).GetChild (i-4).GetComponent<Button> ().interactable = true;
+			}
         }  
     }
 }
