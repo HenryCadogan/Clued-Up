@@ -38,7 +38,7 @@ public class Story : MonoBehaviour {
 	/// <summary>
 	/// All characters talked to by the detective
 	/// </summary>
-	private List<string> encounteredCharacterNames = new List<string>();
+	public List<string> encounteredCharacterNames = new List<string>();
 	/// <summary>
 	/// Dictionary of list of clue names present in each room in this instance of the game.
 	/// </summary>
@@ -217,8 +217,19 @@ public class Story : MonoBehaviour {
 
 		this.victim.GetComponent<Character> ().isVictim = true;
 		this.murderer.GetComponent<Character> ().isMurderer = true;
+	}
 
-		this.encounteredCharacterNames.Add(victim.name);
+	public Character getCharacterInformation(string name){
+		if (victim.name == name) {
+			return victim.GetComponent<Character> ();
+		} else {
+			foreach (GameObject character in aliveCharacters) {
+				if (character.name == name) {
+					return character.GetComponent<Character> ();
+				}
+			}
+		}
+		throw new System.ArgumentException ("No character has name " + name);
 	}
 	/// <summary>
 	/// Decides which of the alive characters occupy each room, excluding the initial crime scene room.
