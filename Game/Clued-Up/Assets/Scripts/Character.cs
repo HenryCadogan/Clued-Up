@@ -39,7 +39,21 @@ public class Character : MonoBehaviour {
 
 	}
 
-
+	/// <summary>
+	/// Loads model at specific location as child of character and adds animation controller.
+	/// </summary>
+	/// <param name="position">Position.</param>
+	public void display(Vector3 position){
+		GameObject model = Instantiate (Resources.Load<GameObject> ("Models/" + this.name));
+		model.transform.parent = gameObject.transform;
+		Vector3 pos = new Vector3();
+		pos.x = position.x;
+		pos.y = position.y;
+		pos.z = position.z; //moves onto ground
+		model.transform.position = pos;
+		model.transform.Rotate (new Vector3 (0f, 180f, 0f)); //rotate to face camera
+		model.GetComponent<Animator>().runtimeAnimatorController = (Resources.Load<RuntimeAnimatorController> ("Models/" + this.name + "Anim"));
+	}
 
 	/// <summary>
 	/// Initialise the specified Character with properties and CharacterClues
@@ -60,8 +74,16 @@ public class Character : MonoBehaviour {
 		this.isVictim = false;
 		this.image = Resources.Load<Sprite> ("CharacterImages/" + characterIndex.ToString ());
 
-		//gameObject.GetComponent<Renderer> ().enabled = false; //dont draw any characters yet
-
 		//TODO set up character clues
 }
+
+	/// <summary>
+	/// Destroys the model of the character if there is one, each time a new room is loaded
+	/// </summary>
+	///<param name="characterIndex">Index of character to be initialised</param>
+	void OnLevelWasLoaded(){
+		foreach (Transform child in gameObject.transform) {
+			GameObject.Destroy (child.gameObject);
+		}
+	}
 }
