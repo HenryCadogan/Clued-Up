@@ -11,6 +11,14 @@ public class Character : MonoBehaviour {
 	/// </summary>
 	public string longName;
 	/// <summary>
+	/// Description to be used by the notebook.
+	/// </summary>
+	public string description;
+	/// <summary>
+	/// Image to be used by notebook.
+	/// </summary>
+	public Sprite image;
+	/// <summary>
 	/// If character is the murderer. Set by Story.
 	/// </summary>
 	public bool isMurderer;
@@ -47,8 +55,10 @@ public class Character : MonoBehaviour {
 
 		this.gameObject.name = lines[1]; //file contains comment in line 0
 		this.longName = lines [2];
+		this.description = lines [3];
 		this.isMurderer = false;
 		this.isVictim = false;
+		this.image = Resources.Load<Sprite> ("CharacterImages/" + characterIndex.ToString ());
 
 		//gameObject.GetComponent<Renderer> ().enabled = false; //dont draw any characters yet
 

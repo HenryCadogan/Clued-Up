@@ -36,12 +36,5 @@ public class Inventory : MonoBehaviour {
 		Debug.Log (character.name + " ENCOUNTERED");
 		encounteredCharacterNames.Add (character.name);
 	}
-
-	/// <summary>
-	/// Initialises inventory list
-	/// </summary>
-	void start(){
-		encounter (GameObject.Find ("Story").GetComponent<Story> ().getVictim ().GetComponent<Character> ());
-	}
 }
 

@@ -36,10 +36,6 @@ public class Story : MonoBehaviour {
 	/// </summary>
 	private List<GameObject> aliveCharacters;
 	/// <summary>
-	/// All characters talked to by the detective
-	/// </summary>
-	public List<string> encounteredCharacterNames = new List<string>();
-	/// <summary>
 	/// Dictionary of list of clue names present in each room in this instance of the game.
 	/// </summary>
 	public Dictionary<int, List<string>> cluesInRoom = new Dictionary<int, List<string>>();

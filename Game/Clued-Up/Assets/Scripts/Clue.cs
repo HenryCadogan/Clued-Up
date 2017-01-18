@@ -103,11 +103,15 @@ public class Clue : MonoBehaviour {
 				inventory.collect (this);
 				hud.GetComponent<HUDController> ().displayHUDText (this.longName + " added to inventory.");
 				this.isCollected = true;
-			}				
-			displayClueInformation ();
 
-			if (this.disappearWhenClicked) {
-				gameObject.GetComponent<Renderer>().enabled = false;	//hides but does not destroy the clue
+				if (this.name == "chalkOutline") { // add victim to character notebook
+					inventory.encounter (GameObject.Find ("Story").GetComponent<Story> ().getVictim ());
+				}				
+				displayClueInformation ();
+
+				if (this.disappearWhenClicked) {
+					gameObject.GetComponent<Renderer> ().enabled = false;	//hides but does not destroy the clue
+				}
 			}
 		}
 	}
