@@ -6,9 +6,9 @@ public class UpdateCluesInfo : MonoBehaviour {
 	private Inventory inventory;
 	private Story story;
 
-    public Text clueName;
-    public Text clueDescription;
-    public Image clueImage;
+    public Text nameText;
+    public Text descriptionText;
+    public Image notebookImage;
     //public GameObject buttonPressed;
     
 
@@ -20,41 +20,31 @@ public class UpdateCluesInfo : MonoBehaviour {
 
     public void UpdateClueInformation(GameObject buttonPressed)
     {
-		if (buttonPressed.transform.GetComponentInChildren<Text> ().text != "Undiscovered Clue") {
-			inventory = GameObject.Find ("Detective").GetComponent<Inventory> ();
-			int index = buttonPressed.transform.GetSiblingIndex ();
-			int buttonsInColumn = 4;
-			int parent = buttonPressed.transform.parent.GetSiblingIndex ();
-			//The clue buttons are split into two panels on the clue button panels. The LHS (col1) and RHS (col2)
-			//As the top buttons initially would have the same index, we add on the parent index (0 or 1) * (how many buttons in each column)
-			index = index + (parent * buttonsInColumn);
-			if (inventory.collectedClueNames.Count != 0) { //if there are clues in inventory
-				Debug.Log(index);
-				Clue activeClue = story.getClueInformation (inventory.collectedClueNames [index]).GetComponent<Clue> ();
-				clueName.text = activeClue.longName;
-				clueDescription.text = activeClue.description;
-				clueImage.sprite = activeClue.sprite;
-			}  
-		}
-    }
+		inventory = GameObject.Find ("Detective").GetComponent<Inventory> ();
+		int index = buttonPressed.transform.GetSiblingIndex ();
+		int buttonsInColumn = 4;
+		int parent = buttonPressed.transform.parent.GetSiblingIndex ();
+		//The clue buttons are split into two panels on the clue button panels. The LHS (col1) and RHS (col2)
+		//As the top buttons initially would have the same index, we add on the parent index (0 or 1) * (how many buttons in each column)
+		index = index + (parent * buttonsInColumn);
+		Clue activeClue = story.getClueInformation (inventory.collectedClueNames [index]).GetComponent<Clue> ();
+		nameText.text = activeClue.longName;
+		descriptionText.text = activeClue.description;
+		notebookImage.sprite = activeClue.sprite;
+	}
 
 	public void UpdateCharacterInformation(GameObject buttonPressed)
 	{
-		if (buttonPressed.transform.GetComponentInChildren<Text> ().text != "Undiscovered Clue") {
-			inventory = GameObject.Find ("Detective").GetComponent<Inventory> ();
-			int index = buttonPressed.transform.GetSiblingIndex ();
-			int buttonsInColumn = 4;
-			int parent = buttonPressed.transform.parent.GetSiblingIndex ();
-			//The clue buttons are split into two panels on the clue button panels. The LHS (col1) and RHS (col2)
-			//As the top buttons initially would have the same index, we add on the parent index (0 or 1) * (how many buttons in each column)
-			index = index + (parent * buttonsInColumn);
-			if (inventory.collectedClueNames.Count != 0) { //if there are clues in inventory
-				Debug.Log(index);
-				Clue activeClue = story.getClueInformation (inventory.collectedClueNames [index]).GetComponent<Clue> ();
-				clueName.text = activeClue.longName;
-				clueDescription.text = activeClue.description;
-				clueImage.sprite = activeClue.sprite;
-			}  
-		}
+		inventory = GameObject.Find ("Detective").GetComponent<Inventory> ();
+		int index = buttonPressed.transform.GetSiblingIndex ();
+		int buttonsInColumn = 4;
+		int parent = buttonPressed.transform.parent.GetSiblingIndex ();
+		//The clue buttons are split into two panels on the clue button panels. The LHS (col1) and RHS (col2)
+		//As the top buttons initially would have the same index, we add on the parent index (0 or 1) * (how many buttons in each column)
+		index = index + (parent * buttonsInColumn);
+		Character activeChar = story.getCharacterInformation (inventory.encounteredCharacterNames [index]);
+		nameText.text = activeChar.longName;
+		descriptionText.text = activeChar.description;
+		notebookImage.sprite = activeChar.image; 
 	}
 }

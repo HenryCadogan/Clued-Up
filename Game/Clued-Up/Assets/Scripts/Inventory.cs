@@ -9,7 +9,11 @@ public class Inventory : MonoBehaviour {
 	/// <summary>
 	/// The list of collected clues.
 	/// </summary>
-	public List<string> collectedClueNames; //cannot store the clues themselves as they are Destroyed between scenes
+	public List<string> collectedClueNames = new List<string>(); //cannot store the clues themselves as they are Destroyed between scenes
+	/// <summary>
+	/// The list of encountered characters.
+	/// </summary>
+	public List<string> encounteredCharacterNames = new List<string>();
 
 	/// <summary>
 	/// <true> if the specified clue has been collected
@@ -28,11 +32,9 @@ public class Inventory : MonoBehaviour {
 		collectedClueNames.Add (clue.name);
 	}
 
-	/// <summary>
-	/// Initialises inventory list
-	/// </summary>
-	void start(){
-		collectedClueNames = new List<string>();
+	public void encounter(Character character){
+		Debug.Log (character.name + " ENCOUNTERED");
+		encounteredCharacterNames.Add (character.name);
 	}
 }
 
