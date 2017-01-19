@@ -2,3 +2,9 @@ LINE 2 = object name; LINE 3 = long name
 Lionel
 Lionel Richtea
 Dancing on the ceiling.
+microphone
+comb
+blackHair
+stapler
+ticket
+tape

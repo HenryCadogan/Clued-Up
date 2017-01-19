@@ -2,3 +2,7 @@ LINE 2 = object name; LINE 3 = long name
 Fumbledore
 Fumbledore
 Frog off
+whiteHair
+wand
+monocle
+hat
