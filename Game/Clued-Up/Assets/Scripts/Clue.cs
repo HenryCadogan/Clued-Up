@@ -78,6 +78,12 @@ public class Clue : MonoBehaviour {
 	/// Populates and displays the clue information on screen.
 	/// </summary>
 	public void displayClueInformation(){
+		this.cluePanel = GameObject.Find ("CluePanel");
+		this.cluePanelDescription = GameObject.Find ("Description").GetComponent<Text> ();
+		this.cluePanelName = GameObject.Find ("ClueName").GetComponent<Text> ();
+		this.cluePanelImage = GameObject.Find ("ClueImage").GetComponent<Image> ();
+		this.overlayPanel = GameObject.Find ("OverlayPanel");
+
 		this.cluePanelName.text = this.longName;
 		this.cluePanelImage.sprite = this.sprite;
 		this.cluePanelDescription.text = this.description;
@@ -97,11 +103,15 @@ public class Clue : MonoBehaviour {
 				inventory.collect (this);
 				hud.GetComponent<HUDController> ().displayHUDText (this.longName + " added to inventory.");
 				this.isCollected = true;
-			}				
-			displayClueInformation ();
 
-			if (this.disappearWhenClicked) {
-				gameObject.GetComponent<Renderer>().enabled = false;	//hides but does not destroy the clue
+				if (this.name == "chalkOutline") { // add victim to character notebook
+					inventory.encounter (GameObject.Find ("Story").GetComponent<Story> ().getVictim ());
+				}				
+				displayClueInformation ();
+
+				if (this.disappearWhenClicked) {
+					gameObject.GetComponent<Renderer> ().enabled = false;	//hides but does not destroy the clue
+				}
 			}
 		}
 	}
@@ -115,14 +125,8 @@ public class Clue : MonoBehaviour {
 	/// <param name="isMotive">If <c>true</c> then this clue is motive.</param>
 	/// <param name="disappearWhenClicked">If set to <c>true</c>, the clue will disappear when clicked.</param>
 	public void initialise(string objectName, string name, string description, bool isWeapon=false, bool isMotive=false, bool disappearWhenClicked=true){
-		this.cluePanel = GameObject.Find ("CluePanel");
-		this.cluePanelDescription = GameObject.Find ("Description").GetComponent<Text> ();
-		this.cluePanelName = GameObject.Find ("ClueName").GetComponent<Text> ();
-		this.cluePanelImage = GameObject.Find ("ClueImage").GetComponent<Image> ();
-		this.overlayPanel = GameObject.Find ("OverlayPanel");
 		this.inventory = GameObject.Find ("Detective").GetComponent<Inventory> ();
 		this.hud = GameObject.Find ("HUD");
-
 
 		this.name = objectName;
 		this.longName = name;

@@ -223,6 +223,19 @@ public class Story : MonoBehaviour {
 		this.victim.GetComponent<Character> ().isVictim = true;
 		this.murderer.GetComponent<Character> ().isMurderer = true;
 	}
+
+	public Character getCharacterInformation(string name){
+		if (victim.name == name) {
+			return victim.GetComponent<Character> ();
+		} else {
+			foreach (GameObject character in aliveCharacters) {
+				if (character.name == name) {
+					return character.GetComponent<Character> ();
+				}
+			}
+		}
+		throw new System.ArgumentException ("No character has name " + name);
+	}
 	/// <summary>
 	/// Decides which of the alive characters occupy each room, excluding the initial crime scene room.
 	/// </summary>

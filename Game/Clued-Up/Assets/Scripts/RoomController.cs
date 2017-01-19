@@ -37,6 +37,18 @@ public class RoomController : MonoBehaviour {
 	/// Size of detective in each room so it can be adjusted for realistic scaling
 	/// </summary>
 	private float[] detectiveSizeByRoom = {3f,3f,3.5f,3f,3.5f,3.5f,3.5f,3f};
+	/// <summary>
+	/// Character pos for each room (characterPositionByRoom[roomIndex]).
+	/// </summary>
+	private Vector3[] characterPositionsByRoom = {new Vector3 (), 
+		new Vector3 (-3.3f, -7.2f, 4.2f), //lobby
+		new Vector3 (-2.2f, -6.5f, 4.2f), //train
+		new Vector3 (0, -6.7f, 4.2f), //cafe
+		new Vector3 (3.55f, -7.2f, 4.2f), //kitchen
+		new Vector3 (-2f, -6.5f, 4.2f), //bar
+		new Vector3 (-0.8f, -7.3f, 4.2f), //studio
+		new Vector3 (5.2f, -7.3f, 4.2f) //toilets
+	};
 
 	/// <summary>
 	/// Scales the detective.
@@ -87,7 +99,8 @@ public class RoomController : MonoBehaviour {
 		switch (charactersInRoom.Count) {
 		case 1:
 			//do stuff to make one character active
-			Debug.Log (charactersInRoom [0].GetComponent<Character>().longName + " is in the room!");
+			Debug.Log (charactersInRoom [0].GetComponent<Character> ().longName + " is in the room!");
+			charactersInRoom [0].GetComponent<Character> ().display (characterPositionsByRoom[roomIndex]);
 			break;
 		case 2:
 			//do stuff to make two characters active in the same room
