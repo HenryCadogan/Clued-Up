@@ -312,7 +312,7 @@ public class Story : MonoBehaviour {
 			newClue.GetComponent<Clue> ().initialise ("chalkOutline", "Chalk Outline", "A chalk outline of the body of " + this.getVictim ().longName + "!!", disappearWhenClicked:false);
 			break;
 		case "microphone":
-			newClue.GetComponent<Clue> ().initialise ("microphone", "Microphone", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("microphone", "microphone", "Someone wants to make themselves heard");
 			break;
 		case "knife":
 			newClue.GetComponent<Clue> ().initialise ("knife", "knife", "Someone wants to make themselves heard");
@@ -359,8 +359,8 @@ public class Story : MonoBehaviour {
 		case "whistle":
 			newClue.GetComponent<Clue> ().initialise ("whistle", "whistle", "Someone wants to make themselves heard");
 			break;
-		case "whitehair":
-			newClue.GetComponent<Clue> ().initialise ("whitehair", "whitehair", "Someone wants to make themselves heard");
+		case "whiteHair":
+			newClue.GetComponent<Clue> ().initialise ("whiteHair", "whiteHair", "Someone wants to make themselves heard");
 			break;
 		case "money":
 			newClue.GetComponent<Clue> ().initialise ("money", "money", "Someone wants to make themselves heard");
@@ -385,9 +385,6 @@ public class Story : MonoBehaviour {
 			break;
 		case "blondHair":
 			newClue.GetComponent<Clue> ().initialise ("blondHair", "blondHair", "Someone wants to make themselves heard");
-			break;
-		case "brownHair":
-			newClue.GetComponent<Clue> ().initialise ("brownHair", "brownHair", "Someone wants to make themselves heard");
 			break;
 		case "chefHat":
 			newClue.GetComponent<Clue> ().initialise ("chefHat", "chefHat", "Someone wants to make themselves heard");
@@ -417,6 +414,7 @@ public class Story : MonoBehaviour {
 			newClue.GetComponent<Clue> ().initialise ("gun", "gun", "Someone wants to make themselves heard");
 			break;
 		default:
+			//throw new System.ArgumentException ("The passed string is not a valid Clue Name");
 			break;
 		}
 		return newClue;
@@ -425,11 +423,13 @@ public class Story : MonoBehaviour {
 	/// Decides which character 5 clues to use (2 from victim, 3 from murderer) 
 	/// </summary>
 	private void setCharacterClues(List<string> cluesList){
-		cluesList.Add (victim.GetComponent<Character> ().characterClues [0]);
-		cluesList.Add (victim.GetComponent<Character> ().characterClues [1]);
-		cluesList.Add (murderer.GetComponent<Character> ().characterClues [0]);
-		cluesList.Add (murderer.GetComponent<Character> ().characterClues [1]);
-		cluesList.Add (murderer.GetComponent<Character> ().characterClues [2]);
+		cluesList.Add (victim.GetComponent<Character> ().characterClues [0].name);
+		cluesList.Add (victim.GetComponent<Character> ().characterClues [1].name);
+		cluesList.Add (murderer.GetComponent<Character> ().characterClues [0].name);
+		cluesList.Add (murderer.GetComponent<Character> ().characterClues [1].name);
+		cluesList.Add (murderer.GetComponent<Character> ().characterClues [2].name);
+		foreach (string clueName in cluesList)
+			print (clueName);
 	}
 
 
