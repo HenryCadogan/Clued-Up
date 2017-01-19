@@ -314,20 +314,138 @@ public class Story : MonoBehaviour {
 		case "microphone":
 			newClue.GetComponent<Clue> ().initialise ("microphone", "Microphone", "Someone wants to make themselves heard");
 			break;
-			//TODO INSERT MORE CLUES HERE!
+		case "knife":
+			newClue.GetComponent<Clue> ().initialise ("knife", "knife", "Someone wants to make themselves heard");
+			break;
+		case "hat":
+			newClue.GetComponent<Clue> ().initialise ("hat", "hat", "Someone wants to make themselves heard");
+			break;
+		case "moustache":
+			newClue.GetComponent<Clue> ().initialise ("moustache", "moustache", "Someone wants to make themselves heard");
+			break;
+		case "pen":
+			newClue.GetComponent<Clue> ().initialise ("pen", "pen", "Someone wants to make themselves heard");
+			break;
+		case "salmon":
+			newClue.GetComponent<Clue> ().initialise ("salmon", "salmon", "Someone wants to make themselves heard");
+			break;
+		case "plunger":
+			newClue.GetComponent<Clue> ().initialise ("plunger", "plunger", "Someone wants to make themselves heard");
+			break;
+		case "polaroid":
+			newClue.GetComponent<Clue> ().initialise ("polaroid", "polaroid", "Someone wants to make themselves heard");
+			break;
+		case "brownHair":
+			newClue.GetComponent<Clue> ().initialise ("brownHair", "brownHair", "Someone wants to make themselves heard");
+			break;
+		case "sandwich":
+			newClue.GetComponent<Clue> ().initialise ("sandwich", "sandwich", "Someone wants to make themselves heard");
+			break;
+		case "recorder":
+			newClue.GetComponent<Clue> ().initialise ("recorder", "recorder", "Someone wants to make themselves heard");
+			break;
+		case "stapler":
+			newClue.GetComponent<Clue> ().initialise ("stapler", "stapler", "Someone wants to make themselves heard");
+			break;
+		case "suitcase":
+			newClue.GetComponent<Clue> ().initialise ("suitcase", "suitcase", "Someone wants to make themselves heard");
+			break;
+		case "wand":
+			newClue.GetComponent<Clue> ().initialise ("wand", "wand", "Someone wants to make themselves heard");
+			break;
+		case "sunglasses":
+			newClue.GetComponent<Clue> ().initialise ("sunglasses", "sunglasses", "Someone wants to make themselves heard");
+			break;
+		case "whistle":
+			newClue.GetComponent<Clue> ().initialise ("whistle", "whistle", "Someone wants to make themselves heard");
+			break;
+		case "whitehair":
+			newClue.GetComponent<Clue> ().initialise ("whitehair", "whitehair", "Someone wants to make themselves heard");
+			break;
+		case "money":
+			newClue.GetComponent<Clue> ().initialise ("money", "money", "Someone wants to make themselves heard");
+			break;
+		case "tape":
+			newClue.GetComponent<Clue> ().initialise ("tape", "tape", "Someone wants to make themselves heard");
+			break;
+		case "bling":
+			newClue.GetComponent<Clue> ().initialise ("bling", "bling", "Someone wants to make themselves heard");
+			break;
+		case "ladder":
+			newClue.GetComponent<Clue> ().initialise ("ladder", "ladder", "Someone wants to make themselves heard");
+			break;
+		case "ticket":
+			newClue.GetComponent<Clue> ().initialise ("ticket", "ticket", "Someone wants to make themselves heard");
+			break;
+		case "coal":
+			newClue.GetComponent<Clue> ().initialise ("coal", "coal", "Someone wants to make themselves heard");
+			break;
+		case "cloak":
+			newClue.GetComponent<Clue> ().initialise ("cloak", "cloak", "Someone wants to make themselves heard");
+			break;
+		case "blondHair":
+			newClue.GetComponent<Clue> ().initialise ("blondHair", "blondHair", "Someone wants to make themselves heard");
+			break;
+		case "brownHair":
+			newClue.GetComponent<Clue> ().initialise ("brownHair", "brownHair", "Someone wants to make themselves heard");
+			break;
+		case "chefHat":
+			newClue.GetComponent<Clue> ().initialise ("chefHat", "chefHat", "Someone wants to make themselves heard");
+			break;
+		case "comb":
+			newClue.GetComponent<Clue> ().initialise ("comb", "comb", "Someone wants to make themselves heard");
+			break;
+		case "diary":
+			newClue.GetComponent<Clue> ().initialise ("diary", "diary", "Someone wants to make themselves heard");
+			break;
+		case "monocle":
+			newClue.GetComponent<Clue> ().initialise ("monocle", "monocle", "Someone wants to make themselves heard");
+			break;
+		case "feather":
+			newClue.GetComponent<Clue> ().initialise ("feather", "feather", "Someone wants to make themselves heard");
+			break;
+		case "lighter":
+			newClue.GetComponent<Clue> ().initialise ("lighter", "lighter", "Someone wants to make themselves heard");
+			break;
+		case "blackHair":
+			newClue.GetComponent<Clue> ().initialise ("blackHair", "blackHair", "Someone wants to make themselves heard");
+			break;
+		case "hammer":
+			newClue.GetComponent<Clue> ().initialise ("hammer", "hammer", "Someone wants to make themselves heard");
+			break;
+		case "gun":
+			newClue.GetComponent<Clue> ().initialise ("gun", "gun", "Someone wants to make themselves heard");
+			break;
 		default:
 			break;
 		}
 		return newClue;
 	}
 	/// <summary>
+	/// Decides which character 5 clues to use (2 from victim, 3 from murderer) 
+	/// </summary>
+	private void setCharacterClues(List<string> cluesList){
+		cluesList.Add (victim.GetComponent<Character> ().characterClues [0]);
+		cluesList.Add (victim.GetComponent<Character> ().characterClues [1]);
+		cluesList.Add (murderer.GetComponent<Character> ().characterClues [0]);
+		cluesList.Add (murderer.GetComponent<Character> ().characterClues [1]);
+		cluesList.Add (murderer.GetComponent<Character> ().characterClues [2]);
+	}
+
+
+
+	/// <summary>
 	/// Decides which clues will be used in this game and assigns them a room. Stored as a dictionary[RoomIndex] = [clue1name,clue2name...]
+	/// Clue 0 = chalkOutline
+	/// Clue 1,2,3,4,5 = characterClues
+	/// Clue 6 = motiveClue
+	/// Clue 7 = setWeapon
 	/// </summary>
 	private void setClues(){
 		List<string> cluesList = new List<string> (); 
 		cluesList.Add("chalkOutline"); //Clue 0 will ALWAYS be the chalk outline.
-		cluesList.Add("microphone"); //FOR TESTING ONLY- always use methods
-		//setCharacterClues ();
+		//cluesList.Add("microphone"); //FOR TESTING ONLY- always use methods
+		setCharacterClues (cluesList);
 		//setMotive();
 		//setWeapon();
 		setClueLocations(cluesList);

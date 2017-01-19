@@ -61,6 +61,19 @@ public class Character : MonoBehaviour {
 			model.GetComponent<Animator>().runtimeAnimatorController = (Resources.Load<RuntimeAnimatorController> ("Models/" + modelName + "Anim"));
 	}
 
+
+
+	private List<Clue> getCharacterClues(int characterIndex, List<string> lines){
+		Story story = GameObject.Find ("Story").GetComponent<Story> ();
+		List<Clue> characterClueList = new List<Clue> ();
+		foreach (string clueName in lines) {
+			characterClueList.Add (story.getClueInformation (clueName).GetComponent<Clue> ());
+		}
+
+		return characterClueList;
+	}
+
+
 	/// <summary>
 	/// Initialise the specified Character with properties and CharacterClues
 	/// </summary>
@@ -80,7 +93,7 @@ public class Character : MonoBehaviour {
 		this.isVictim = false;
 		this.image = Resources.Load<Sprite> ("CharacterImages/" + characterIndex.ToString ());
 
-		//TODO set up character clues
+		this.characterClues = getCharacterClues(int characterClues,  List<string> lines[4]);
 }
 
 	/// <summary>
