@@ -36,7 +36,7 @@ public class RoomController : MonoBehaviour {
 	/// <summary>
 	/// Size of detective in each room so it can be adjusted for realistic scaling
 	/// </summary>
-	private float[] detectiveSizeByRoom = {3f,3f,3.5f,3f,3.5f,3.5f,3.5f,3f};
+	private float[] detectiveSizeByRoom = {1f,1f,1.2f,1f,1.2f,1.2f,1.2f,1f};
 	/// <summary>
 	/// Character pos for each room (characterPositionByRoom[roomIndex]).
 	/// </summary>
@@ -183,7 +183,7 @@ public class RoomController : MonoBehaviour {
 			locationList.Add (new Vector3 (-4.6f, -3f, 1f)); //on shelf
 			break;
 		case 4: //kitchen
-			locationList.Add (new Vector3 (-4.7f, -3f, 1f)); //on shelf
+			locationList.Add (new Vector3 (-5.55f, -3.89f, 1f)); //on shelf
 			break;
 		case 5: //bar
 			locationList.Add (new Vector3 (7.43f, -2.1f, 1f));  // on bar
