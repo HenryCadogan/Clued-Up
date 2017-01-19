@@ -21,6 +21,7 @@ public class SceneTransitions : MonoBehaviour {
 		overlayPanel.SetActive (true);
 		overlayPanel.GetComponent<Image> ().CrossFadeAlpha (1f, 1f, false);
 		yield return new WaitForSeconds (1);
+		//print ("loading scene " + SceneManager.GetSceneAt (scene));
 		SceneManager.LoadScene (scene);
 	}
 		
@@ -153,9 +154,5 @@ public class SceneTransitions : MonoBehaviour {
 
 	public void fadeAndLoadScene(int roomBuildindex){
 		StartCoroutine(fadeLoadScene(roomBuildindex));
-	}
-
-	public void foo(){
-		
 	}
 }
