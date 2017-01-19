@@ -36,7 +36,7 @@ public class RoomController : MonoBehaviour {
 	/// <summary>
 	/// Size of detective in each room so it can be adjusted for realistic scaling
 	/// </summary>
-	private float[] detectiveSizeByRoom = {3f,3f,3.5f,3f,3.5f,3.5f,3.5f,3f};
+	//private float[] detectiveSizeByRoom = {3f,3f,3.5f,3f,3.5f,3.5f,3.5f,3f};
 	/// <summary>
 	/// Character pos for each room (characterPositionByRoom[roomIndex]).
 	/// </summary>
@@ -55,9 +55,9 @@ public class RoomController : MonoBehaviour {
 	/// </summary>
 	/// <param name="detective">Detective GameObject.</param>
 	/// <param name="scaler">Scaler (can be negative).</param>
-	private void scaleDetective(GameObject detective, float scaler){
-		detective.transform.localScale = new Vector3 (scaler, scaler, scaler);
-	}
+	//private void scaleDetective(GameObject detective, float scaler){
+	//	detective.transform.localScale = new Vector3 (scaler, scaler, scaler);
+	//}
 
 	/// <summary>
 	/// Prepares the overlay by turning on and immediately fading out, giving a fade from black effect.
@@ -234,7 +234,7 @@ public class RoomController : MonoBehaviour {
 		setOverlay ();
 		GameObject detective = GameObject.Find ("Detective");
 		detective.GetComponent<Detective> ().walkIn();
-		scaleDetective (detective, detectiveSizeByRoom[roomIndex]);
+		//scaleDetective (detective, detectiveSizeByRoom[roomIndex]);
 
 		story = GameObject.Find("Story").GetComponent<Story>(); // references persistant object story
 
