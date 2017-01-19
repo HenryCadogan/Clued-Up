@@ -40,11 +40,15 @@ public class Character : MonoBehaviour {
 	}
 
 	/// <summary>
-	/// Loads model at specific location as child of character and adds animation controller.
+	/// Loads model at specific location as child of character and adds animation controller. If name is Kanye append either 0 or 1 to end, as there are different annimation options.
 	/// </summary>
 	/// <param name="position">Position.</param>
 	public void display(Vector3 position){
-		GameObject model = Instantiate (Resources.Load<GameObject> ("Models/" + this.name));
+		string modelName = this.name;
+		if (modelName == "Kanye")
+			modelName += Random.Range (0, 2).ToString ();
+		
+		GameObject model = Instantiate (Resources.Load<GameObject> ("Models/" + modelName));
 		model.transform.parent = gameObject.transform;
 		Vector3 pos = new Vector3();
 		pos.x = position.x;
@@ -52,7 +56,7 @@ public class Character : MonoBehaviour {
 		pos.z = position.z; //moves onto ground
 		model.transform.position = pos;
 		model.transform.Rotate (new Vector3 (0f, 180f, 0f)); //rotate to face camera
-		model.GetComponent<Animator>().runtimeAnimatorController = (Resources.Load<RuntimeAnimatorController> ("Models/" + this.name + "Anim"));
+		model.GetComponent<Animator>().runtimeAnimatorController = (Resources.Load<RuntimeAnimatorController> ("Models/" + modelName + "Anim"));
 	}
 
 	/// <summary>
