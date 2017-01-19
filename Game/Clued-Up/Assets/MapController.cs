@@ -1,27 +1,48 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class MapController : MonoBehaviour {
-
-
-
-	// Use this for initialization
-	void Start () {
-		GameObject Colliders = GameObject.Find("MapColliders");
-		Physics.queriesHitTriggers = true;
-
-	}
 	
-	// Update is called once per frame
-	void Update () {
-		
+	Story story;
+	List<int> visitedRooms;
+	List<Button> mapButtons;
+	SceneTransitions sceneTransitions;
+	Dictionary<int,string> RoomBuildLUT;
+
+	void start(){
+		//add all scenes into the LUT
+		for(int x = 3; x < SceneManager.sceneCount - 3; x++) {
+			RoomBuildLUT.Add(x, SceneManager.GetSceneAt(x).name);
+		}
+		print(RoomBuildLUT.ToString());
 	}
 
-	void OnMouseDown(){
-		Debug.Log ("Mouse pressed");
+	void showPanel(){
+		//set onyl the visited room buttons to enabled
+		//foreach (GameObject button in GameObject.FindGameObjectsWithTag("MapMenuButtons")){
+		//	mapButtons.Add(button.GetComponent<Button>);
+		//}
+
+		//show the mapPanel
 	}
-	void printThing(){
-		Debug.Log ("Thing");
+		
+
+	public void loadScene(int buildIndex){
+		
+		story = GameObject.Find("Story").GetComponent<Story>();
+		visitedRooms = story.getVisitedRooms();
+
+
+		sceneTransitions = GameObject.Find("MapPanel").GetComponent<SceneTransitions>();
+		Time.timeScale = 1;
+
+		sceneTransitions.fadeAndLoadScene(buildIndex);
 	}
 
 }
+
+	

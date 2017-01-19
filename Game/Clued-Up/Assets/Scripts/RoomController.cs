@@ -221,9 +221,6 @@ public class RoomController : MonoBehaviour {
 
 		//add this room to the list of visited rooms only if it doesnt exist already
 		List<int> visitedRooms = story.getVisitedRooms();
-		if (!visitedRooms.Contains(roomIndex)){
-			story.addVisitedRoom(roomIndex);	
-		}
 
 
 

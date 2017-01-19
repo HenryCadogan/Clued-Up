@@ -146,6 +146,16 @@ public class SceneTransitions : MonoBehaviour {
 			default:
 				break;
 			}
+
+
 		}
+	}
+
+	public void fadeAndLoadScene(int roomBuildindex){
+		StartCoroutine(fadeLoadScene(roomBuildindex));
+	}
+
+	public void foo(){
+		
 	}
 }
