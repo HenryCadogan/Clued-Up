@@ -312,109 +312,109 @@ public class Story : MonoBehaviour {
 			newClue.GetComponent<Clue> ().initialise ("chalkOutline", "Chalk Outline", "A chalk outline of the body of " + this.getVictim ().longName + "!!", disappearWhenClicked:false);
 			break;
 		case "microphone":
-			newClue.GetComponent<Clue> ().initialise ("microphone", "microphone", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("microphone", "Microphone", "Someone wants to make themselves heard");
 			break;
 		case "knife":
-			newClue.GetComponent<Clue> ().initialise ("knife", "knife", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("knife", "Knife", "Someone wants to make themselves heard");
 			break;
 		case "hat":
-			newClue.GetComponent<Clue> ().initialise ("hat", "hat", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("hat", "Hat", "Someone wants to make themselves heard");
 			break;
 		case "moustache":
-			newClue.GetComponent<Clue> ().initialise ("moustache", "moustache", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("moustache", "Moustache", "Someone wants to make themselves heard");
 			break;
 		case "pen":
-			newClue.GetComponent<Clue> ().initialise ("pen", "pen", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("pen", "Pen", "Someone wants to make themselves heard");
 			break;
 		case "salmon":
-			newClue.GetComponent<Clue> ().initialise ("salmon", "salmon", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("salmon", "Salmon", "Someone wants to make themselves heard");
 			break;
 		case "plunger":
-			newClue.GetComponent<Clue> ().initialise ("plunger", "plunger", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("plunger", "Plunger", "Someone wants to make themselves heard");
 			break;
 		case "polaroid":
-			newClue.GetComponent<Clue> ().initialise ("polaroid", "polaroid", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("polaroid", "Polaroid", "Someone wants to make themselves heard");
 			break;
 		case "brownHair":
-			newClue.GetComponent<Clue> ().initialise ("brownHair", "brownHair", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("brownHair", "Brown Hair", "Someone wants to make themselves heard");
 			break;
 		case "sandwich":
-			newClue.GetComponent<Clue> ().initialise ("sandwich", "sandwich", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("sandwich", "Sandwich", "Someone wants to make themselves heard");
 			break;
 		case "recorder":
-			newClue.GetComponent<Clue> ().initialise ("recorder", "recorder", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("recorder", "Recorder", "Someone wants to make themselves heard");
 			break;
 		case "stapler":
-			newClue.GetComponent<Clue> ().initialise ("stapler", "stapler", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("stapler", "Stapler", "Someone wants to make themselves heard");
 			break;
 		case "suitcase":
-			newClue.GetComponent<Clue> ().initialise ("suitcase", "suitcase", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("suitcase", "Suitcase", "Someone wants to make themselves heard");
 			break;
 		case "wand":
-			newClue.GetComponent<Clue> ().initialise ("wand", "wand", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("wand", "Wand", "Someone wants to make themselves heard");
 			break;
 		case "sunglasses":
-			newClue.GetComponent<Clue> ().initialise ("sunglasses", "sunglasses", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("sunglasses", "Sunglasses", "Someone wants to make themselves heard");
 			break;
 		case "whistle":
-			newClue.GetComponent<Clue> ().initialise ("whistle", "whistle", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("whistle", "Whistle", "Someone wants to make themselves heard");
 			break;
 		case "whiteHair":
-			newClue.GetComponent<Clue> ().initialise ("whiteHair", "whiteHair", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("whiteHair", "White Hair", "Someone wants to make themselves heard");
 			break;
 		case "money":
-			newClue.GetComponent<Clue> ().initialise ("money", "money", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("money", "Money", "Someone wants to make themselves heard");
 			break;
 		case "tape":
-			newClue.GetComponent<Clue> ().initialise ("tape", "tape", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("tape", "Tape", "Someone wants to make themselves heard");
 			break;
 		case "bling":
-			newClue.GetComponent<Clue> ().initialise ("bling", "bling", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("bling", "Bling", "Someone wants to make themselves heard");
 			break;
 		case "ladder":
-			newClue.GetComponent<Clue> ().initialise ("ladder", "ladder", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("ladder", "Ladder", "Someone wants to make themselves heard");
 			break;
 		case "ticket":
-			newClue.GetComponent<Clue> ().initialise ("ticket", "ticket", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("ticket", "Ticket", "Someone wants to make themselves heard");
 			break;
 		case "coal":
-			newClue.GetComponent<Clue> ().initialise ("coal", "coal", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("coal", "Coal", "Someone wants to make themselves heard");
 			break;
 		case "cloak":
-			newClue.GetComponent<Clue> ().initialise ("cloak", "cloak", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("cloak", "Cloak", "Someone wants to make themselves heard");
 			break;
 		case "blondHair":
-			newClue.GetComponent<Clue> ().initialise ("blondHair", "blondHair", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("blondHair", "Blond Hair", "Someone wants to make themselves heard");
 			break;
 		case "chefHat":
-			newClue.GetComponent<Clue> ().initialise ("chefHat", "chefHat", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("chefHat", "Chef's Hat", "Someone wants to make themselves heard");
 			break;
 		case "comb":
-			newClue.GetComponent<Clue> ().initialise ("comb", "comb", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("comb", "Comb", "Someone wants to make themselves heard");
 			break;
 		case "diary":
-			newClue.GetComponent<Clue> ().initialise ("diary", "diary", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("diary", "Diary", "Someone wants to make themselves heard");
 			break;
 		case "monocle":
-			newClue.GetComponent<Clue> ().initialise ("monocle", "monocle", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("monocle", "Monocle", "Someone wants to make themselves heard");
 			break;
 		case "feather":
-			newClue.GetComponent<Clue> ().initialise ("feather", "feather", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("feather", "Feather", "Someone wants to make themselves heard");
 			break;
 		case "lighter":
-			newClue.GetComponent<Clue> ().initialise ("lighter", "lighter", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("lighter", "Lighter", "Someone wants to make themselves heard");
 			break;
 		case "blackHair":
-			newClue.GetComponent<Clue> ().initialise ("blackHair", "blackHair", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("blackHair", "Black Hair", "Someone wants to make themselves heard");
 			break;
 		case "hammer":
-			newClue.GetComponent<Clue> ().initialise ("hammer", "hammer", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("hammer", "Hammer", "Someone wants to make themselves heard");
 			break;
 		case "gun":
-			newClue.GetComponent<Clue> ().initialise ("gun", "gun", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("gun", "Gun", "Someone wants to make themselves heard");
 			break;
 		default:
-			//throw new System.ArgumentException ("The passed string is not a valid Clue Name");
+			throw new System.ArgumentException ("'"+ clueName + "' is not a valid Clue Name");
 			break;
 		}
 		return newClue;
