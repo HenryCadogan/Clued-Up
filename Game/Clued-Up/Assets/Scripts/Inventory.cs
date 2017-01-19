@@ -26,6 +26,10 @@ public class Inventory : MonoBehaviour {
 	public void collect(Clue clue){
 		Debug.Log (clue.name + " COLLECTED");
 		collectedClueNames.Add (clue.name);
+		Character[] ListOfChars = FindObjectsOfType<Character> ();
+		foreach (Character ForChar in ListOfChars) {
+			ForChar.CanBeTalkedTo = true;
+		}
 	}
 
 	/// <summary>

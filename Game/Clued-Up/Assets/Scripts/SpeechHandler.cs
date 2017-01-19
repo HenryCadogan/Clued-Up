@@ -38,20 +38,14 @@ public class SpeechHandler : MonoBehaviour {
 		string SceneName = SceneManager.GetActiveScene ().name;
 		int RoomNo = (SceneName[SceneName.Length-1]) - '0';
 		List<GameObject> ListOfCharsInRoom = ActiveStory.getCharactersInRoom (RoomNo);
-		//TargetChar = ListOfCharsInRoom [0].GetComponent<Character> ();
+		try{
+			TargetChar = ListOfCharsInRoom [0].GetComponent<Character> ();
+		} catch {}
 		SpeechRef = TargetChar.GetComponentInChildren<ImportSpeech> ();
 		ActualText = TextObject.GetComponentInChildren<Text> ();
 		ParentCanvas = GameObject.Find ("SpeechUI");
 		ParentCanvas.SetActive (false);
 		gameObject.SetActive(false);
-	}
-
-	void Awake(){
-		ActiveDet = FindObjectOfType<Detective> ();
-		ActiveStory = FindObjectOfType<Story> ();
-		PlayerInv = FindObjectOfType<Inventory> ();
-		CharInScene = FindObjectOfType<Character> ();
-		HUDCanvas = FindObjectOfType<HUDController> ();
 		string[] StrTraits = new string[ActiveDet.traits.Length];
 		//string [] StrTraits = new string[3] {"UNO", "DOS", "TRES"};
 		for (int i = 0; i < StrTraits.Length; i++) {
@@ -76,6 +70,10 @@ public class SpeechHandler : MonoBehaviour {
 			UpdateClueName (PlayerInv.collectedClueNames [ClueIndex]);
 			ParentCanvas.SetActive (true);
 			HUDCanvas.loadPanelAndPause (ParentCanvas);
+			if (CharInScene.HasBeenTalkedTo == false) {
+				CharInScene.HasBeenTalkedTo = true;
+				StartBranch ("INTRO");
+			}
 		} else {
 			Debug.Log ("Tried to turn on speech UI, but was already on");
 		}
@@ -95,9 +93,15 @@ public class SpeechHandler : MonoBehaviour {
 	}
 
 	public void QuestionBranch(Button SendingButton){
-		SpeechRef.SetBranch (SendingButton.name);
 		BranchName = SendingButton.name;
-		BranchName = BranchName + PlayerInv.collectedClueNames [ClueIndex];
+		string LongName = BranchName + "-" + PlayerInv.collectedClueNames [ClueIndex];
+		try{
+			SpeechRef.SetBranch (LongName);
+			BranchName = LongName;
+		}
+		catch{
+			SpeechRef.SetBranch(BranchName);
+		}
 		CharInScene.PreSpeech (BranchName);
 		gameObject.SetActive(true);
 		TextObject.SetActive(true);
@@ -169,7 +173,7 @@ public class SpeechHandler : MonoBehaviour {
 		string NextLine = SpeechRef.NextLine ();
 		if (NextLine != null) {
 			ActualText.text = NextLine.Substring(1, NextLine.Length - 1);
-			if (NextLine [0].ToString () == "(") {
+			if (NextLine [0].ToString () == "$") {
 				TextObject.transform.position = DetectivePos;
 			} else {
 				TextObject.transform.position = SuspectPos;

@@ -28,10 +28,14 @@ public class Character : MonoBehaviour {
 	public SpeechHandler SpeechUI;
 	public string CritBranch;
 	public TextAsset SpeechFile;
+	public bool HasBeenTalkedTo = false;
+	public bool CanBeTalkedTo = true;
+	private ImportSpeech SpeechRef;
 
 	void Awake ()
 	{
 		SpeechUI = FindObjectOfType<SpeechHandler> ();
+		SpeechRef = GetComponent<ImportSpeech> ();
 		DontDestroyOnLoad(gameObject);
 	}
 
@@ -40,7 +44,10 @@ public class Character : MonoBehaviour {
 	}
 
 	public void PreSpeech (string BranchName){
-		//TODO: Figure out what clues and items go into speech
+		Story ActiveStory = FindObjectOfType<Story> ();
+		if (BranchName == "INTRO") {
+			SpeechRef.CharIn = ActiveStory.getVictim ();
+		}
 	}
 
 	public void PostSpeech (string BranchName){
@@ -48,8 +55,7 @@ public class Character : MonoBehaviour {
 			//TODO: Give item
 		} else if (BranchName == "Accuse-NoItems" || BranchName == "Accuse-WrongChar"
 		           || BranchName == "Accuse-Motive" || BranchName == "Accuse-Weapon") {
-			Collider CharCollider = gameObject.GetComponent<Collider> ();
-			CharCollider.gameObject.SetActive (false);
+			CanBeTalkedTo = false;
 		} else if (BranchName == "Accuse-Right") {
 			Story ActiveStory = FindObjectOfType<Story> ();
 			ActiveStory.EndGame ();

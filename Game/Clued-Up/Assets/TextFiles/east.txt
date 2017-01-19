@@ -1,0 +1,71 @@
+#INTRO
+$Who are you?
+£...
+$...
+£...Oh, you were being serious?
+$What do you mean?
+£Well, everybody knows who I am.
+£I just assumed that you were setting up some joke or something.
+$...So who are you?
+£Kanye East, the greatest rapper in the world, has no time for people like you.
+$...
+£...
+$...Did you know ]?
+£They sound like one of my fans.
+$How can you tell?
+£Everybody is a fan of Kanye East.
+
+#Aggressive
+$Tell me what you know about this [.
+£I don't know anything about that.
+£Talk to my agent, maybe they know.
+#Rude
+$What's this [?
+£What, you think I know what that is?
+#Friendly
+$Hey, do you know anything about this [?
+£Do you want it signed?
+$No?
+£Then why are you showing it to me?
+#Calmly
+$Could you tell me about this [?
+£I don't know about it.
+#Jokingly
+$You wouldn't happen to know about this [, would you?
+£Do you want me to sign it or something?
+$No?
+£Then why would I care about it?
+#Pestering
+$Hey, tell me about this [.
+£I can't say I know about it.
+#Manipulative
+$You're a world renowned rapper, surely you know about this [?
+£You're right, but I can't say I know what that [ is.
+
+#Aggressive-Feather
+$Tell me what you know about this [.
+£A feather? I don't know.
+£Maybe it came from one of my coats or something.
+#Rude-Feather
+$What's this [?
+£What, you find a feather and immediately assume it was the guy with the nice coat?
+$I wasn't saying-
+£Then what were you saying? Get outta here.
+#Friendly-Feather
+$Hey, do you know anything about this [?
+£What, you think I know about feathers?
+#Calmly-Feather
+$Could you tell me about this [?
+£A... feather?
+£I dunno, it could be from one of my coats?
+#Jokingly-Feather
+$You wouldn't happen to know about this [, would you?
+£Do you want me to sign it or something?
+$No?
+£Then why would I care about it?
+#Pestering-Feather
+$Hey, tell me about this [.
+£I can't say I know about it.
+#Manipulative-Feather
+$You're a world renowned rapper, surely you know about this [?
+£You're right, but I can't say I know what that [ is.

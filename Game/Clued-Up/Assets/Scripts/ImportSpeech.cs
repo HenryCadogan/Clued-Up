@@ -18,18 +18,6 @@ public class ImportSpeech : MonoBehaviour {
 	/// The text from file
 	/// </summary>
 	public TextAsset asset;  // POINT THIS AT THE TEXT FILE YOU WANT
-	/// <summary>
-	/// // Coordinate for "("
-	/// </summary>
-	public Vector3 LeftPos;  
-	/// <summary>
-	/// Coordinate for ")"
-	/// </summary>
-	public Vector3 RightPos;
-	/// <summary>
-	/// The neutral position.
-	/// </summary>
-	public Vector3 NeutralPos;
 
 	/// <summary>
 	/// The item in.
@@ -67,8 +55,8 @@ public class ImportSpeech : MonoBehaviour {
 		while (AssetText.Length > 0) {		// While we still have text to parse...
 			string TestString = AssetText;	// Make a copy of it
 			TestString = TestString.Substring (1, TestString.Length - 1);// Ignore the first symbol
-			int LIndex = TestString.IndexOf ("(");
-			int RIndex = TestString.IndexOf (")");	//Figure out whether a (, ) or # is closest to the start
+			int LIndex = TestString.IndexOf ("£");
+			int RIndex = TestString.IndexOf ("$");	//Figure out whether a (, ) or # is closest to the start
 			int HIndex = TestString.IndexOf("#");
 			if (LIndex == -1 && RIndex == -1 && HIndex == -1) {	// If none of the above could be found
 				string Substring = AssetText;
