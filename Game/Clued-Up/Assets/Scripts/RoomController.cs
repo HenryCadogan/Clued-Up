@@ -176,8 +176,11 @@ public class RoomController : MonoBehaviour {
 	private List<Vector3> getRoomClueLocations(){
 		List<Vector3> locationList = new List<Vector3> ();
 		switch (roomIndex) {
-		case 3: //kitchen
-			locationList.Add (new Vector3 (-4.7f, -4f, 1f)); //on shelf
+		case 2: //train station
+			locationList.Add (new Vector3 (-3.6f, -3.8f, 1f)); //on shelf
+			break;
+		case 3: //cafe
+			locationList.Add (new Vector3 (-4.6f, -3f, 1f)); //on shelf
 			break;
 		case 4: //kitchen
 			locationList.Add (new Vector3 (-4.7f, -3f, 1f)); //on shelf
