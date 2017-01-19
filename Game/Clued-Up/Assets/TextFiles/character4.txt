@@ -5,4 +5,4 @@ Frog off
 whiteHair
 wand
 monocle
-hat
+wizzardHat

@@ -164,7 +164,7 @@ public class RoomController : MonoBehaviour {
 
 
 	private void getClues(){
-		//TODO MAKE IT ONLY ADD THE CLUE IF IT ISNT ALREADY COLLECTED
+		//TODO MAKE IT ONLY ADD THE CLUE IF IT ISNT ALREADY COLLECTED & add exception
 		this.cluesInRoom.Add(story.getCluesInRoom (roomIndex) [0]);
 		Debug.Log ("Clue in room: " + this.cluesInRoom [0].GetComponent<Clue> ().longName);
 	}
