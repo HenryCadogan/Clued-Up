@@ -164,8 +164,8 @@ public class RoomController : MonoBehaviour {
 
 
 	private void getClues(){
-		//USED SO ALL ROOMS HAVE A MICROPHONE. THIS NEEDS TO CHANGE. TODO MAKE IT ONLY ADD THE CLUE IF IT ISNT ALREADY COLLECTED
-		this.cluesInRoom.Add(story.getCluesInRoom (1) [0]);
+		//TODO MAKE IT ONLY ADD THE CLUE IF IT ISNT ALREADY COLLECTED & add exception
+		this.cluesInRoom.Add(story.getCluesInRoom (roomIndex) [0]);
 		Debug.Log ("Clue in room: " + this.cluesInRoom [0].GetComponent<Clue> ().longName);
 	}
 
@@ -176,8 +176,14 @@ public class RoomController : MonoBehaviour {
 	private List<Vector3> getRoomClueLocations(){
 		List<Vector3> locationList = new List<Vector3> ();
 		switch (roomIndex) {
+		case 2: //train station
+			locationList.Add (new Vector3 (-3.6f, -3.8f, 1f)); //on shelf
+			break;
+		case 3: //cafe
+			locationList.Add (new Vector3 (-4.6f, -3f, 1f)); //on shelf
+			break;
 		case 4: //kitchen
-			locationList.Add (new Vector3 (-5.74f, -3.96f, 1f)); //on shelf
+			locationList.Add (new Vector3 (-4.7f, -3f, 1f)); //on shelf
 			break;
 		case 5: //bar
 			locationList.Add (new Vector3 (7.43f, -2.1f, 1f));  // on bar
@@ -218,7 +224,7 @@ public class RoomController : MonoBehaviour {
 				}
 			}
 		} else
-			Debug.Log ("No clue locations!");
+			throw new System.NotSupportedException ("Room " + roomIndex + " does not support clues.");
 		}
 
 	/// <summary>

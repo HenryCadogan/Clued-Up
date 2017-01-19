@@ -61,6 +61,24 @@ public class Character : MonoBehaviour {
 			model.GetComponent<Animator>().runtimeAnimatorController = (Resources.Load<RuntimeAnimatorController> ("Models/" + modelName + "Anim"));
 	}
 
+
+	/// <summary>
+	/// Uses character text file clueNames to validate clue, and then returns a list of all clues for the character. 
+	/// </summary>
+	/// <returns>The character clues.</returns>
+	/// <param name="characterClues">Character clues.</param>
+	/// <param name="lines">Lines from character file (after name and description) </param>
+	private List<Clue> getCharacterClues(List<Clue> characterClues, List<string> lines){
+		Story story = GameObject.Find ("Story").GetComponent<Story> ();
+		List<Clue> characterClueList = new List<Clue> ();
+		foreach (string clueName in lines) {
+			characterClueList.Add (story.getClueInformation (clueName).GetComponent<Clue> ());
+		}
+
+		return characterClueList;
+	}
+
+
 	/// <summary>
 	/// Initialise the specified Character with properties and CharacterClues
 	/// </summary>
@@ -80,7 +98,7 @@ public class Character : MonoBehaviour {
 		this.isVictim = false;
 		this.image = Resources.Load<Sprite> ("CharacterImages/" + characterIndex.ToString ());
 
-		//TODO set up character clues
+		this.characterClues = getCharacterClues(characterClues, lines.GetRange(4,lines.Count-4)); //uses all lines from character text file after name/description to get character clues
 }
 
 	/// <summary>

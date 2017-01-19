@@ -57,10 +57,6 @@ public class Clue : MonoBehaviour {
 	/// </summary>
 	private GameObject overlayPanel;
 	/// <summary>
-	/// The inventory of the detective.
-	/// </summary>
-	private Inventory inventory;
-	/// <summary>
 	/// The heads up display prefab
 	/// </summary>
 	private GameObject hud;
@@ -98,6 +94,7 @@ public class Clue : MonoBehaviour {
 	/// Activated when GameObject clicked on. If it's the first time, send message to HUD, add it to inventory, display clue.
 	/// </summary>
 	void OnMouseDown(){
+		Inventory inventory = GameObject.Find ("Detective").GetComponent<Inventory> ();
 		if (Time.timeScale != 0) {	//if game isn't paused
 			if (!(inventory.isCollected (this.name))) {
 				inventory.collect (this);
@@ -125,7 +122,6 @@ public class Clue : MonoBehaviour {
 	/// <param name="isMotive">If <c>true</c> then this clue is motive.</param>
 	/// <param name="disappearWhenClicked">If set to <c>true</c>, the clue will disappear when clicked.</param>
 	public void initialise(string objectName, string name, string description, bool isWeapon=false, bool isMotive=false, bool disappearWhenClicked=true){
-		this.inventory = GameObject.Find ("Detective").GetComponent<Inventory> ();
 		this.hud = GameObject.Find ("HUD");
 
 		this.name = objectName;

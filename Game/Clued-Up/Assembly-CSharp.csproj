@@ -70,13 +70,13 @@
      <Compile Include="Assets\Scripts\Room1Controller.cs" />
      <Compile Include="Assets\Scripts\RoomController.cs" />
      <Compile Include="Assets\Scripts\SceneTransitions.cs" />
+     <Compile Include="Assets\Scripts\Sofa.cs" />
      <Compile Include="Assets\Scripts\SpeechHandler.cs" />
      <Compile Include="Assets\Scripts\Story.cs" />
+     <Compile Include="Assets\Scripts\Train.cs" />
      <Compile Include="Assets\Scripts\UpdateButtons.cs" />
      <Compile Include="Assets\Scripts\UpdateCluesInfo.cs" />
      <Compile Include="Assets\Scripts\makePersistant.cs" />
-     <Compile Include="Assets\Sofa.cs" />
-     <Compile Include="Assets\Train.cs" />
      <Compile Include="Assets\UnityTestTools\Assertions\AssertionComponent.cs" />
      <Compile Include="Assets\UnityTestTools\Assertions\AssertionException.cs" />
      <Compile Include="Assets\UnityTestTools\Assertions\Assertions.cs" />

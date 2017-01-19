@@ -42,7 +42,6 @@ public class Cupboard : MonoBehaviour {
 	/// </summary>
 	public void Initialise(string name, string longName, float clueOffsetx = -0.2f, float clueOffsety = 0f, float clueOffsetz =  0f){
 		gameObject.GetComponent<SpriteRenderer> ().sprite = Resources.Load<Sprite> ("Furniture/" + name);
-		Debug.Log ("trying to load image: " + "Furniture/" + name);
 		Vector2 S = this.gameObject.GetComponent<SpriteRenderer>().sprite.bounds.size; //get size of sprite
 		gameObject.GetComponent<BoxCollider2D>().size = S; //change size of boxcollider to match
 		this.name = name;
