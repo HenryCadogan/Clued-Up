@@ -56,7 +56,9 @@ public class Character : MonoBehaviour {
 		pos.z = position.z; //moves onto ground
 		model.transform.position = pos;
 		model.transform.Rotate (new Vector3 (0f, 180f, 0f)); //rotate to face camera
-		model.GetComponent<Animator>().runtimeAnimatorController = (Resources.Load<RuntimeAnimatorController> ("Models/" + modelName + "Anim"));
+
+		if (modelName != "Reginald")
+			model.GetComponent<Animator>().runtimeAnimatorController = (Resources.Load<RuntimeAnimatorController> ("Models/" + modelName + "Anim"));
 	}
 
 	/// <summary>
