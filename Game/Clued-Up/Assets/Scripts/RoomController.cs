@@ -164,8 +164,8 @@ public class RoomController : MonoBehaviour {
 
 
 	private void getClues(){
-		//USED SO ALL ROOMS HAVE A MICROPHONE. THIS NEEDS TO CHANGE. TODO MAKE IT ONLY ADD THE CLUE IF IT ISNT ALREADY COLLECTED
-		this.cluesInRoom.Add(story.getCluesInRoom (1) [0]);
+		//TODO MAKE IT ONLY ADD THE CLUE IF IT ISNT ALREADY COLLECTED
+		this.cluesInRoom.Add(story.getCluesInRoom (roomIndex) [0]);
 		Debug.Log ("Clue in room: " + this.cluesInRoom [0].GetComponent<Clue> ().longName);
 	}
 
@@ -218,7 +218,7 @@ public class RoomController : MonoBehaviour {
 				}
 			}
 		} else
-			Debug.Log ("No clue locations!");
+			throw new System.NotSupportedException ("Room " + roomIndex + " does not support clues.");
 		}
 
 	/// <summary>
