@@ -418,6 +418,9 @@ public class Story : MonoBehaviour {
 		case "diary":
 			newClue.GetComponent<Clue> ().initialise ("diary", "Diary", "Someone wants to make themselves heard", isMotive:true);
 			break;
+		case "letter":
+			newClue.GetComponent<Clue> ().initialise ("letter", "Letter", "Someone wants to make themselves heard", isMotive:true);
+			break;
 
 
 
@@ -442,6 +445,7 @@ public class Story : MonoBehaviour {
 		motiveClueNames.Add ("diary");
 		motiveClueNames.Add ("recorder");
 		motiveClueNames.Add ("polaroid");
+		motiveClueNames.Add ("letter");
 
 		cluesList.Add(motiveClueNames [Random.Range (0, motiveClueNames.Count)]);
 	}
