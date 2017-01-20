@@ -1,6 +1,4 @@
 # Clued-up
 Dynamically generated murder mystery game set in the Ron Cooke Hub at the University of York
 
-
-https://travis-ci.org/HenryCadogan/Clued-up.svg?branch=master
-[![Build Status](https://travis-ci.org/HenryCadogan/Clued-up.svg?branch=master)](https://travis-ci.org/HenryCadogan/Clued-up)
+[![Build Status](https://travis-ci.org/HenryCadogan/Clued-Up.svg?branch=master)](https://travis-ci.org/HenryCadogan/Clued-Up)
