@@ -43,13 +43,10 @@ public class ImportSpeech : MonoBehaviour {
 	/// SpeechDict is a dictionary of the form BranchName -> The relevent BranchList
 	/// </summary>
 	private Dictionary<string, ArrayList> SpeechDict;
-									
-	/// <summary>
-	/// Start this instance.
-	/// </summary>
-	private void Start () {
-	}
 
+	/// <summary>
+	/// Runs initialisation, but after everything else is initialised for safety.
+	/// </summary>
 	public void ActualStart(){
 		SpeechDict = new Dictionary<string, ArrayList> ();	//Set up the dictionary and the list for input
 		SpeechList = new ArrayList ();
@@ -131,7 +128,7 @@ public class ImportSpeech : MonoBehaviour {
 			string ItemName = "ERR_NO_ITEM";
 			string CharName = "ERR_NO_CHAR";
 			if (ItemIn != null) {
-				ItemName = ItemIn.GetComponent<ClueController> ().longName;
+				ItemName = ItemIn.longName;
 			}
 			if (CharIn != null) {
 				CharName = CharIn.longName;

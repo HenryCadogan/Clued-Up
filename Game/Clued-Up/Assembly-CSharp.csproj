@@ -45,7 +45,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\GameOver.cs" />
      <Compile Include="Assets\RainMaker\Prefab\BaseRainScript.cs" />
      <Compile Include="Assets\RainMaker\Prefab\RainCollision.cs" />
      <Compile Include="Assets\RainMaker\Prefab\RainScript.cs" />
@@ -60,6 +59,7 @@
      <Compile Include="Assets\Scripts\Cupboard.cs" />
      <Compile Include="Assets\Scripts\Detective.cs" />
      <Compile Include="Assets\Scripts\DetectiveChoiceHandler.cs" />
+     <Compile Include="Assets\Scripts\GameOver.cs" />
      <Compile Include="Assets\Scripts\HUDController.cs" />
      <Compile Include="Assets\Scripts\ImportSpeech.cs" />
      <Compile Include="Assets\Scripts\IntroController.cs" />
