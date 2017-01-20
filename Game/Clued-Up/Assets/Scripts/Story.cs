@@ -2,6 +2,7 @@
 using System.Collections;
 using System.IO;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Persistant story class that stores all game/ global variables and initialises Clues and Character objects
@@ -26,11 +27,13 @@ public class Story : MonoBehaviour {
 	/// <summary>
 	/// The murderer for this instance of the story
 	/// </summary>
-	private GameObject murderer;
+	public string MurderWeapon;
+	public string MotiveClue;
+	public GameObject murderer;
 	/// <summary>
 	/// The victim for this instance of the story
 	/// </summary>
-	private GameObject victim;
+	public GameObject victim;
 	/// <summary>
 	/// Subset of all characters, ones that are not the victim
 	/// </summary>
@@ -146,6 +149,12 @@ public class Story : MonoBehaviour {
 	/// <returns>The detective.</returns>
 	public int getDetective(){
 		return this.detective;
+	}
+
+	public void EndGame(){
+		Debug.Log ("Congratulations! You have beaten the game!");
+		SceneManager.LoadScene (11);
+		//TODO: End cutscene.
 	}
 		
 
