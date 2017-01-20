@@ -17,11 +17,19 @@ public class SceneTransitions : MonoBehaviour {
 	/// <returns>Yield WaitForSeconds</returns>
 	/// <param name="scene">Scene index to load</param>
 	IEnumerator fadeLoadScene(int scene){
+		Story story = GameObject.Find ("Story").GetComponent<Story>();
+		for(int x = 3; x < SceneManager.sceneCount - 3; x++) {
+			if (!story.getRoomIndexLUT().ContainsKey(x)){
+				story.getRoomIndexLUT().Add(x, SceneManager.GetSceneAt(x).name);
+				print("Scene at: "+ x + "is: " + SceneManager.GetSceneAt(x).name);
+			}
+		}
+
 		GameObject overlayPanel = GameObject.Find ("OverlayPanel");
 		overlayPanel.SetActive (true);
 		overlayPanel.GetComponent<Image> ().CrossFadeAlpha (1f, 1f, false);
 		yield return new WaitForSeconds (1);
-		//print ("loading scene " + SceneManager.GetSceneAt (scene));
+		story.addVisitedRoom (scene);
 		SceneManager.LoadScene (scene);
 	}
 		
@@ -147,8 +155,6 @@ public class SceneTransitions : MonoBehaviour {
 			default:
 				break;
 			}
-
-
 		}
 	}
 

@@ -51,7 +51,9 @@ public class Story : MonoBehaviour {
 	/// <summary>
 	/// The list that stores the indexes of the rooms that the player has visited
 	/// </summary>
-	private static List<int> visitedRooms = new List<int>();
+	private static List<int> visitedRooms = new List<int>(0);
+	Dictionary<int,string> roomBuildLUT;
+
 
 	/// <summary>
 	/// Makes the object persistant throughout scenes.
@@ -376,5 +378,9 @@ public class Story : MonoBehaviour {
 	public List<int> getVisitedRooms(){
 		return visitedRooms;
 	}
+
+	public Dictionary<int,string> getRoomIndexLUT(){
+			return roomBuildLUT;
+		}
 
 }

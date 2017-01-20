@@ -7,23 +7,17 @@ using UnityEngine.UI;
 
 public class MapController : MonoBehaviour {
 	
-	Story story;
 	List<int> visitedRooms;
 	List<Button> mapButtons;
-	Dictionary<int,string> RoomBuildLUT;
+
+	public Story story;
 
 	void start(){
 		//getting a copy of the story
-		story = GameObject.Find("Story").GetComponent<Story>();
-		//add all scenes into the LUT
-		for(int x = 3; x < SceneManager.sceneCount - 3; x++) {
-			RoomBuildLUT.Add(x, SceneManager.GetSceneAt(x).name);
-		}
-		print(RoomBuildLUT.ToString());
 	}
 
 	void showPanel(){
-		//set onyl the visited room buttons to enabled
+		//set only the visited room buttons to enabled
 		//foreach (GameObject button in GameObject.FindGameObjectsWithTag("MapMenuButtons")){
 		//	mapButtons.Add(button.GetComponent<Button>);
 		//}
@@ -32,9 +26,11 @@ public class MapController : MonoBehaviour {
 		
 
 	public void loadScene(int buildIndex){
-		//visitedRooms = story.getVisitedRooms();
+		story = gameObject.GetComponent<Story>();
+		visitedRooms = story.getVisitedRooms();
+		print (visitedRooms.ToString ());
 		SceneTransitions sceneTransitions = gameObject.GetComponent<SceneTransitions>();
-		print (sceneTransitions.name);
+		//print (sceneTransitions.name);
 		//making the panel dissapear so the game looks nice when fading out to a new scene
 		Time.timeScale = 1;
 		print("Fading panel");

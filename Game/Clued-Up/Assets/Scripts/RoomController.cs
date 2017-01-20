@@ -222,8 +222,6 @@ public class RoomController : MonoBehaviour {
 		//add this room to the list of visited rooms only if it doesnt exist already
 		List<int> visitedRooms = story.getVisitedRooms();
 
-
-
 		//Make detective slightly lower in screen
 		Vector3 pos = detective.transform.position;
 		pos.y = -6.5f;
