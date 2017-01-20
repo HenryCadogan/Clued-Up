@@ -150,7 +150,8 @@ public class Character : MonoBehaviour {
 		this.description = lines [3];
 		this.isMurderer = false;
 		this.isVictim = false;
-		this.image = Resources.Load<Sprite> ("CharacterImages/" + characterIndex.ToString ());
+		print ("CharacterImages/" + this.gameObject.name);
+		this.image = Resources.Load<Sprite> ("CharacterImages/" + this.gameObject.name);
 
 		gameObject.AddComponent<ImportSpeech> ();
 		ImportSpeech SpeechHandler = GetComponent<ImportSpeech> ();
@@ -162,8 +163,6 @@ public class Character : MonoBehaviour {
 		gameObject.AddComponent<BoxCollider> ();
 		BoxCol = GetComponent<BoxCollider> ();
 		BoxCol.enabled = false;
-
-		//TODO set up character clues
 		this.characterClues = setCharacterClues(characterClues, lines.GetRange(4,lines.Count-4)); //uses all lines from character text file after name/description to get character clues
 }
 
