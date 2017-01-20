@@ -69,7 +69,12 @@ public class ClickHotspot : MonoBehaviour {
 			messages.Add ("All aboard!");
 			break;
 
-		//room3 cafe
+		//room3 train station
+		case "trainSign":
+			messages.Add ("Helpful directions...");
+			break;
+
+		//room4 cafe
 		case "18stand":
 			messages.Add ("Bar this way!");
 			messages.Add ("Who wants a beer? Or maybe a treble?");
@@ -79,12 +84,7 @@ public class ClickHotspot : MonoBehaviour {
 			messages.Add ("Mmm... Overpriced sandwiches.");
 			break;
 
-		//room4 kitchen
-		case "trainSign":
-			messages.Add ("Helpful directions...");
-			break;
-
-		//room4 kitchen
+		//room5 kitchen
 		case "pan":
 			messages.Add ("Sadly there's nothing in the pan");
 			break;
@@ -107,6 +107,15 @@ public class ClickHotspot : MonoBehaviour {
 		case "grill":
 			messages.Add ("Where the magic happens.");
 			messages.Add ("It's not on, don't worry.");
+			break;
+
+		//room6 bar
+		case "beerTaps":
+			messages.Add ("Brought to you by the awesome programming team; Toby, Simon, Henry and Will.");
+			break;
+		case "barDeals":
+			messages.Add ("I've always wanted to try a weird beer.");
+			messages.Add ("Such a bargain!");
 			break;
 
 		//room7 studio

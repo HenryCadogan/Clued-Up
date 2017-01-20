@@ -5,6 +5,7 @@ public class Bar : MonoBehaviour {
 
 	public Image fullPint;
 	public Image stream;
+	public AudioSource source;
 	public float speed;
 	private bool hasBeenPoured = false;
 	private bool pouring = false;
@@ -14,6 +15,7 @@ public class Bar : MonoBehaviour {
 	/// </summary>
 	void OnMouseDown(){
 		if (!hasBeenPoured) {
+			source.Play ();
 			hasBeenPoured = true;
 			pouring = true;
 		}
