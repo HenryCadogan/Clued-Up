@@ -18,27 +18,15 @@ public class ImportSpeech : MonoBehaviour {
 	/// The text from file
 	/// </summary>
 	public TextAsset asset;  // POINT THIS AT THE TEXT FILE YOU WANT
-	/// <summary>
-	/// // Coordinate for "("
-	/// </summary>
-	public Vector3 LeftPos;  
-	/// <summary>
-	/// Coordinate for ")"
-	/// </summary>
-	public Vector3 RightPos;
-	/// <summary>
-	/// The neutral position.
-	/// </summary>
-	public Vector3 NeutralPos;
 
 	/// <summary>
 	/// The item in.
 	/// </summary>
-	public GameObject ItemIn;		// TODO: Update these to be object pointers
+	public Clue ItemIn;		// TODO: Update these to be object pointers
 	/// <summary>
 	/// The char in.
 	/// </summary>
-	public string CharIn;
+	public Character CharIn;
 	/// <summary>
 	/// Pos is the current position in the Branch
 	/// </summary>
@@ -55,29 +43,35 @@ public class ImportSpeech : MonoBehaviour {
 	/// SpeechDict is a dictionary of the form BranchName -> The relevent BranchList
 	/// </summary>
 	private Dictionary<string, ArrayList> SpeechDict;
-									
+
 	/// <summary>
-	/// Start this instance.
+	/// Runs initialisation, but after everything else is initialised for safety.
 	/// </summary>
-	private void Start () {
-		SpeechDict = new Dictionary<string, ArrayList>();	//Set up the dictionary and the list for input
+	public void ActualStart(){
+		SpeechDict = new Dictionary<string, ArrayList> ();	//Set up the dictionary and the list for input
 		SpeechList = new ArrayList ();
 		string AssetText = asset.text; 		// Read the file
-		AssetText = AssetText.Replace("\r", "").Replace("\n", "");	// Purge all newline chars
+		AssetText = AssetText.Replace ("\r", "").Replace ("\n", "");	// Purge all newline chars
 		while (AssetText.Length > 0) {		// While we still have text to parse...
 			string TestString = AssetText;	// Make a copy of it
 			TestString = TestString.Substring (1, TestString.Length - 1);// Ignore the first symbol
-			int LIndex = TestString.IndexOf ("(");
-			int RIndex = TestString.IndexOf (")");	//Figure out whether a (, ) or # is closest to the start
-			int HIndex = TestString.IndexOf("#");
+			int LIndex = TestString.IndexOf ("£");
+			int RIndex = TestString.IndexOf ("$");	//Figure out whether a (, ) or # is closest to the start
+			int HIndex = TestString.IndexOf ("#");
 			if (LIndex == -1 && RIndex == -1 && HIndex == -1) {	// If none of the above could be found
 				string Substring = AssetText;
 				SpeechList.Add (Substring);		// The rest of the string gets added to the arraylist
 				AssetText = "";		// Then clear out the text
 			} else {
-				if (LIndex == -1) {LIndex = 9999999;}	// If we couldn't find one of them we still care about the smallest of the others
-				if (RIndex == -1) {RIndex = 9999999;}	// So set them to an arbitrarily larbe value
-				if (HIndex == -1) {HIndex = 9999999;}	// If you need 9,999,999 characters, maybe consider breaking them up into smaller lines
+				if (LIndex == -1) {
+					LIndex = 9999999;
+				}	// If we couldn't find one of them we still care about the smallest of the others
+				if (RIndex == -1) {
+					RIndex = 9999999;
+				}	// So set them to an arbitrarily larbe value
+				if (HIndex == -1) {
+					HIndex = 9999999;
+				}	// If you need 9,999,999 characters, maybe consider breaking them up into smaller lines
 				int Index = Mathf.Min (LIndex, RIndex, HIndex);	// Take the smallest value of them
 				string Substring = AssetText.Substring (0, Index + 1);	// Take the string up to the nearest character
 				SpeechList.Add (Substring); 						// Add to the arraylist
@@ -92,7 +86,7 @@ public class ImportSpeech : MonoBehaviour {
 	/// Convert the Array into a dictionary
 	/// </summary>
 	private void Array2Dict(){
-		ArrayList CurrentBranch = new ArrayList();	//First we set up a working ArrayList
+		ArrayList CurrentBranch = new ArrayList();	//First we set up a w	orking ArrayList
 		string BranchName = "INIT";		// We want to name our branch so we set up a string to do so
 		for (int i = 0; i < SpeechList.Count; i++) {	// For every line...
 			string TestLine = SpeechList[i].ToString();			// Store the current line in a variable for ease of access...
@@ -131,9 +125,16 @@ public class ImportSpeech : MonoBehaviour {
 	public string NextLine () {
 		if (0 <= Pos && Pos < BranchList.Count) {				// Assuming we're still in bounds of the arraylist...
 			string ReturnString = BranchList [Pos].ToString();	// Get the current line
-			string ItemName = ItemIn.GetComponent<ClueController>().longName;
+			string ItemName = "ERR_NO_ITEM";
+			string CharName = "ERR_NO_CHAR";
+			if (ItemIn != null) {
+				ItemName = ItemIn.longName;
+			}
+			if (CharIn != null) {
+				CharName = CharIn.longName;
+			}
 			ReturnString = ReturnString.Replace("[",ItemName);	// Replace token characters
-			ReturnString = ReturnString.Replace("]",CharIn);
+			ReturnString = ReturnString.Replace("]",CharName);
 			Pos += 1;											// Increment the position marker
 			return ReturnString;								// And throw the string back
 		} else if (Pos >= BranchList.Count) {		// If we've gone past the length of the list, then we're done with the branch.

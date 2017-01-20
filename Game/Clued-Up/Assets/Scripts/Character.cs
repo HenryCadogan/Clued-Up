@@ -55,7 +55,6 @@ public class Character : MonoBehaviour {
 		if (BranchName == "INTRO") {
 			SpeechRef.CharIn = ActiveStory.getVictim ();
 		}
-		BoxCol.enabled = false;
 	}
 
 	public void PostSpeech (string BranchName){
@@ -68,7 +67,6 @@ public class Character : MonoBehaviour {
 			Story ActiveStory = FindObjectOfType<Story> ();
 			ActiveStory.EndGame ();
 		}
-		BoxCol.enabled = true;
 	}
 	/// <summary>
 	/// Loads model at specific location as child of character and adds animation controller. If name is Kanye append either 0 or 1 to end, as there are different annimation options.
