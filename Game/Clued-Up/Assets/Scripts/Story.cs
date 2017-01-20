@@ -266,6 +266,7 @@ public class Story : MonoBehaviour {
 	/// <returns>List of character GameObjects that are within room index</returns>
 	/// <param name="room">Index of the room of choice</param>
 	public List<GameObject> getCharactersInRoom(int room){
+		print ("Get characters in room " + room);
 		List<GameObject> charactersInCurrentRoom = new List<GameObject> (); 
 		if (this.charactersInRoom.ContainsKey (room)) {
 			foreach (int characterIndex in this.charactersInRoom[room]) {
@@ -298,7 +299,6 @@ public class Story : MonoBehaviour {
 	/// <param name="clueNames">List of names of all clues in game</param>
 	private void setClueLocations(List<string> clueNames){
 		cluesInRoom [0] = new List<string>{ clueNames [0] }; //body clue always in room 0
-		cluesInRoom[1] = new List<string>{clueNames[1]}; //FOR TESTING OF LOCKERS, DO NOT DO THIS
 		int randomRoom;
 		for(int clueIndex = 1; clueIndex < clueNames.Count; clueIndex ++) {	
 			randomRoom = Random.Range (1, NUMBER_OF_ROOMS); //rooms 1-7 (i.e. all, not including the crime scene 
@@ -323,23 +323,172 @@ public class Story : MonoBehaviour {
 		case "microphone":
 			newClue.GetComponent<Clue> ().initialise ("microphone", "Microphone", "Someone wants to make themselves heard");
 			break;
-			//TODO INSERT MORE CLUES HERE!
-		default:
+		case "wizzardHat":
+			newClue.GetComponent<Clue> ().initialise ("wizzardHat", "Wizzard's Hat", "Someone wants to make themselves heard");
 			break;
+		case "moustache":
+			newClue.GetComponent<Clue> ().initialise ("moustache", "Moustache", "Someone wants to make themselves heard");
+			break;
+		case "pen":
+			newClue.GetComponent<Clue> ().initialise ("pen", "Pen", "Someone wants to make themselves heard");
+			break;
+		case "plunger":
+			newClue.GetComponent<Clue> ().initialise ("plunger", "Plunger", "Someone wants to make themselves heard");
+			break;
+		case "brownHair":
+			newClue.GetComponent<Clue> ().initialise ("brownHair", "Brown Hair", "Someone wants to make themselves heard");
+			break;
+		case "sandwich":
+			newClue.GetComponent<Clue> ().initialise ("sandwich", "Sandwich", "Someone wants to make themselves heard");
+			break;
+		case "stapler":
+			newClue.GetComponent<Clue> ().initialise ("stapler", "Stapler", "Someone wants to make themselves heard");
+			break;
+		case "suitcase":
+			newClue.GetComponent<Clue> ().initialise ("suitcase", "Suitcase", "Someone wants to make themselves heard");
+			break;
+		case "wand":
+			newClue.GetComponent<Clue> ().initialise ("wand", "Wand", "Someone wants to make themselves heard");
+			break;
+		case "sunglasses":
+			newClue.GetComponent<Clue> ().initialise ("sunglasses", "Sunglasses", "Someone wants to make themselves heard");
+			break;
+		case "whistle":
+			newClue.GetComponent<Clue> ().initialise ("whistle", "Whistle", "Someone wants to make themselves heard");
+			break;
+		case "whiteHair":
+			newClue.GetComponent<Clue> ().initialise ("whiteHair", "White Hair", "Someone wants to make themselves heard");
+			break;
+		case "money":
+			newClue.GetComponent<Clue> ().initialise ("money", "Money", "Someone wants to make themselves heard", localScale:0.15f);
+			break;
+		case "tape":
+			newClue.GetComponent<Clue> ().initialise ("tape", "Tape", "Someone wants to make themselves heard", localScale:0.1f);
+			break;
+		case "bling":
+			newClue.GetComponent<Clue> ().initialise ("bling", "Bling", "Someone wants to make themselves heard");
+			break;
+		case "ladder":
+			newClue.GetComponent<Clue> ().initialise ("ladder", "Ladder", "Someone wants to make themselves heard");
+			break;
+		case "ticket":
+			newClue.GetComponent<Clue> ().initialise ("ticket", "Ticket", "Someone wants to make themselves heard", localScale:0.1f);
+			break;
+		case "coal":
+			newClue.GetComponent<Clue> ().initialise ("coal", "Coal", "Someone wants to make themselves heard");
+			break;
+		case "cloak":
+			newClue.GetComponent<Clue> ().initialise ("cloak", "Cloak", "Someone wants to make themselves heard");
+			break;
+		case "blondHair":
+			newClue.GetComponent<Clue> ().initialise ("blondHair", "Blond Hair", "Someone wants to make themselves heard");
+			break;
+		case "chefHat":
+			newClue.GetComponent<Clue> ().initialise ("chefHat", "Chef's Hat", "Someone wants to make themselves heard");
+			break;
+		case "comb":
+			newClue.GetComponent<Clue> ().initialise ("comb", "Comb", "Someone wants to make themselves heard");
+			break;
+		case "monocle":
+			newClue.GetComponent<Clue> ().initialise ("monocle", "Monocle", "Someone wants to make themselves heard");
+			break;
+		case "feather":
+			newClue.GetComponent<Clue> ().initialise ("feather", "Feather", "Someone wants to make themselves heard");
+			break;
+		case "lighter":
+			newClue.GetComponent<Clue> ().initialise ("lighter", "Lighter", "Someone wants to make themselves heard");
+			break;
+		case "blackHair":
+			newClue.GetComponent<Clue> ().initialise ("blackHair", "Black Hair", "Someone wants to make themselves heard");
+			break;
+		
+		
+		
+		case "hammer":
+			newClue.GetComponent<Clue> ().initialise ("hammer", "Hammer", "Someone wants to make themselves heard", true);
+			break;
+		case "gun":
+			newClue.GetComponent<Clue> ().initialise ("gun", "Gun", "Someone wants to make themselves heard", true);
+			break;
+		case "knife":
+			newClue.GetComponent<Clue> ().initialise ("knife", "Knife", "Someone wants to make themselves heard", true);
+			break;
+		case "salmon":
+			newClue.GetComponent<Clue> ().initialise ("salmon", "Salmon", "Someone wants to make themselves heard", true);
+			break;
+
+
+
+		case "polaroid":
+			newClue.GetComponent<Clue> ().initialise ("polaroid", "Polaroid", "Someone wants to make themselves heard", isMotive:true);
+			break;
+		case "recorder":
+			newClue.GetComponent<Clue> ().initialise ("recorder", "Recorder", "Someone wants to make themselves heard", isMotive:true);
+			break;
+		case "diary":
+			newClue.GetComponent<Clue> ().initialise ("diary", "Diary", "Someone wants to make themselves heard", isMotive:true, localScale:0.15f);
+			break;
+		case "letter":
+			newClue.GetComponent<Clue> ().initialise ("letter", "Letter", "Someone wants to make themselves heard", isMotive:true, localScale:0.2f);
+			break;
+
+
+
+		default:
+			throw new System.ArgumentException ("'"+ clueName + "' is not a valid Clue Name");
 		}
 		return newClue;
 	}
 	/// <summary>
+	/// Decides which character 5 clues to use (2 from victim, 3 from murderer) 
+	/// </summary>
+	private void setCharacterClues(List<string> cluesList){
+		List<string> victimClueNames = victim.GetComponent<Character>().getRandomCharacterClueNames (2);
+		List<string> murdererClueNames = murderer.GetComponent<Character>().getRandomCharacterClueNames (3);
+		foreach (string clueName in victimClueNames)
+			cluesList.Add (clueName);
+		foreach (string clueName in murdererClueNames)
+			cluesList.Add (clueName);
+	}
+
+	private void setMotiveClue(List<string> cluesList){
+		List<string> motiveClueNames = new List<string> ();
+		motiveClueNames.Add ("diary");
+		motiveClueNames.Add ("recorder");
+		motiveClueNames.Add ("polaroid");
+		motiveClueNames.Add ("letter");
+
+		cluesList.Add(motiveClueNames [Random.Range (0, motiveClueNames.Count)]);
+	}
+
+	private void setWeaponClue(List<string> cluesList){
+		List<string> weaponClueNames = new List<string> ();
+		weaponClueNames.Add ("gun");
+		weaponClueNames.Add ("salmon");
+		weaponClueNames.Add ("hammer");
+		weaponClueNames.Add ("knife");
+
+		cluesList.Add(weaponClueNames [Random.Range (0, weaponClueNames.Count)]);
+	}
+
+
+	/// <summary>
 	/// Decides which clues will be used in this game and assigns them a room. Stored as a dictionary[RoomIndex] = [clue1name,clue2name...]
+	/// Clue 0 = chalkOutline
+	/// Clue 1,2,3,4,5 = characterClues
+	/// Clue 6 = motiveClue
+	/// Clue 7 = setWeapon
 	/// </summary>
 	private void setClues(){
 		List<string> cluesList = new List<string> (); 
 		cluesList.Add("chalkOutline"); //Clue 0 will ALWAYS be the chalk outline.
-		cluesList.Add("microphone"); //FOR TESTING ONLY- always use methods
-		//setCharacterClues ();
-		//setMotive();
-		//setWeapon();
+		setCharacterClues (cluesList);
+		setMotiveClue(cluesList);
+		setWeaponClue(cluesList);
 		setClueLocations(cluesList);
+
+		foreach (string clueName in cluesList)
+			print (clueName);
 	}
 	/// <summary>
 	/// Sets the clue initialisation parameters for newClue, based on clueName.
@@ -348,7 +497,7 @@ public class Story : MonoBehaviour {
 	/// <param name="newClue">Clue GameObject to initialise</param>
 	private void setClueInformation(string clueName, GameObject newClue){
 		Clue clueInfo = getClueInformation (clueName).GetComponent<Clue>(); //sets up temp Clue that stores all properties
-		newClue.GetComponent<Clue>().initialise(clueInfo.name,clueInfo.longName, clueInfo.description, clueInfo.isWeapon, clueInfo.isMotive, clueInfo.disappearWhenClicked);
+		newClue.GetComponent<Clue>().initialise(clueInfo.name,clueInfo.longName, clueInfo.description, clueInfo.isWeapon, clueInfo.isMotive, clueInfo.disappearWhenClicked, clueInfo.transform.localScale.x);
 		GameObject.Destroy (clueInfo.gameObject); //destroys temp Clue GameObject to remove it from scene
 	}
 	/// <summary>
@@ -358,12 +507,12 @@ public class Story : MonoBehaviour {
 	/// <param name="roomIndex">Index of the room to find clues for</param>
 	public List<GameObject> getCluesInRoom(int roomIndex){
 		List<GameObject> clues = new List<GameObject> ();
+		Inventory inventory = GameObject.Find ("Detective").GetComponent<Inventory> ();
 		foreach (string clueName in this.cluesInRoom[roomIndex]) {	//for each clueName in room
-			GameObject newClue = Instantiate (Resources.Load ("Clue"), new Vector3(1f,1f,1f), Quaternion.Euler(0,0,0)) as GameObject;
-			newClue.transform.localScale = new Vector3(0.25F, 0.25f, 1f); //scales all clues
+			GameObject newClue = Instantiate (Resources.Load ("Clue"), new Vector3 (1f, 1f, 1f), Quaternion.Euler (0, 0, 0)) as GameObject;
 			setClueInformation (clueName, newClue); // calls the initialisation method with the relevent details
-			newClue.GetComponent<SpriteRenderer> ().sprite = newClue.GetComponent<Clue>().sprite;	// Add Clue's sprite to the Clue's GameObject sprite renderer
-			clues.Add(newClue);
+			newClue.GetComponent<SpriteRenderer> ().sprite = newClue.GetComponent<Clue> ().sprite;	// Add Clue's sprite to the Clue's GameObject sprite renderer
+			clues.Add (newClue);
 		}
 		return clues;
 	}

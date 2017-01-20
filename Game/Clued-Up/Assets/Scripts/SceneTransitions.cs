@@ -23,7 +23,7 @@ public class SceneTransitions : MonoBehaviour {
 		yield return new WaitForSeconds (1);
 		SceneManager.LoadScene (scene);
 	}
-		
+
 	private void stopDetective(bool directionIsRight, Collider detective){
 		if (directionIsRight) {
 			detective.GetComponent<Detective> ().canWalkRight = false;

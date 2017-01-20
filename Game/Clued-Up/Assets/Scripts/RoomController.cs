@@ -26,7 +26,7 @@ public class RoomController : MonoBehaviour {
 	/// </summary>
 	private List<GameObject> furnitureInRoom = new List<GameObject>();
 	/// <summary>
-	/// List of Clue GameObjects in the room
+	/// List of Clue GameObjects in the room used to assign locations to them.
 	/// </summary>
 	private List<GameObject> cluesInRoom = new List<GameObject>();
 	/// <summary>
@@ -36,7 +36,7 @@ public class RoomController : MonoBehaviour {
 	/// <summary>
 	/// Size of detective in each room so it can be adjusted for realistic scaling
 	/// </summary>
-	private float[] detectiveSizeByRoom = {3f,3f,3.5f,3f,3.5f,3.5f,3.5f,3f};
+	private float[] detectiveSizeByRoom = {1f,1f,1.2f,1f,1.2f,1.2f,1.2f,1f};
 	/// <summary>
 	/// Character pos for each room (characterPositionByRoom[roomIndex]).
 	/// </summary>
@@ -89,7 +89,6 @@ public class RoomController : MonoBehaviour {
 	/// </summary>
 	private void getCharacters(){
 		List<GameObject> charactersInRoom = new List<GameObject> ();
-		Debug.Log (roomIndex);
 		if (story.getCharactersInRoom (roomIndex).Count > 0) {
 			charactersInRoom = story.getCharactersInRoom (roomIndex);
 		} else {
@@ -99,7 +98,7 @@ public class RoomController : MonoBehaviour {
 		switch (charactersInRoom.Count) {
 		case 1:
 			//do stuff to make one character active
-			Debug.Log (charactersInRoom [0].GetComponent<Character> ().longName + " is in the room!");
+			//Debug.Log (charactersInRoom [0].GetComponent<Character> ().longName + " is in the room!");
 			charactersInRoom [0].GetComponent<Character> ().display (characterPositionsByRoom[roomIndex]);
 			break;
 		case 2:
@@ -144,17 +143,17 @@ public class RoomController : MonoBehaviour {
 		case 7: //toilets
 			GameObject cubicleDoorLeft = Instantiate (Resources.Load ("Cupboard"), new Vector3 (-5.42f, -3.27f, 2f), Quaternion.Euler (0, 0, 0)) as GameObject;
 			cubicleDoorLeft.transform.localScale = new Vector3 (0.95f, 0.95f, 1f);
-			cubicleDoorLeft.GetComponent<Cupboard> ().Initialise ("cubicle-door", "cubicle", 0.14f, -0.6f);
+			cubicleDoorLeft.GetComponent<Cupboard> ().Initialise ("cubicle-door", "cubicle", 0.14f, -0.3f);
 			furnitureInRoom.Add (cubicleDoorLeft);
 
 			GameObject cubicleDoorCentre = Instantiate (Resources.Load ("Cupboard"), new Vector3 (-2.93f, -3.27f, 2f), Quaternion.Euler (0, 0, 0)) as GameObject;
 			cubicleDoorCentre.transform.localScale = new Vector3 (0.95f, 0.95f, 1f);
-			cubicleDoorCentre.GetComponent<Cupboard> ().Initialise ("cubicle-door", "cubicle", 0.14f, -0.6f);
+			cubicleDoorCentre.GetComponent<Cupboard> ().Initialise ("cubicle-door", "cubicle", 0.14f, -0.3f);
 			furnitureInRoom.Add (cubicleDoorCentre);
 
 			GameObject cubicleDoorRight = Instantiate (Resources.Load ("Cupboard"), new Vector3 (-0.52f, -3.27f, 2f), Quaternion.Euler (0, 0, 0)) as GameObject;
 			cubicleDoorRight.transform.localScale = new Vector3 (0.95f, 0.95f, 1f);
-			cubicleDoorRight.GetComponent<Cupboard> ().Initialise ("cubicle-door", "cubicle", 0.14f, -0.6f);
+			cubicleDoorRight.GetComponent<Cupboard> ().Initialise ("cubicle-door", "cubicle", 0.14f, -0.3f);
 			furnitureInRoom.Add (cubicleDoorRight);
 			break;
 		default:
@@ -162,11 +161,20 @@ public class RoomController : MonoBehaviour {
 		}
 	}
 
-
+	/// <summary>
+	/// Finds the clue in the room.
+	/// If clue isnt collected already, add it to cluesInRoom (used to assign clues in the room their locations).
+	/// If it is already collected the clue is destroyed.
+	/// </summary>
 	private void getClues(){
-		//USED SO ALL ROOMS HAVE A MICROPHONE. THIS NEEDS TO CHANGE. TODO MAKE IT ONLY ADD THE CLUE IF IT ISNT ALREADY COLLECTED
-		this.cluesInRoom.Add(story.getCluesInRoom (1) [0]);
-		Debug.Log ("Clue in room: " + this.cluesInRoom [0].GetComponent<Clue> ().longName);
+		GameObject clueInRoom = story.getCluesInRoom (roomIndex) [0]; //instanciate clue so its name can be used
+
+		if (!GameObject.Find ("Detective").GetComponent<Inventory> ().isCollected (clueInRoom.name)) { //If clue not already collected, add it to cluesInRoom
+			this.cluesInRoom.Add (clueInRoom);
+			Debug.Log ("Clue in room: " + this.cluesInRoom [0].GetComponent<Clue> ().longName);
+		} else {
+			Destroy (clueInRoom);
+		}
 	}
 
 	/// <summary>
@@ -176,14 +184,20 @@ public class RoomController : MonoBehaviour {
 	private List<Vector3> getRoomClueLocations(){
 		List<Vector3> locationList = new List<Vector3> ();
 		switch (roomIndex) {
+		case 2: //train station
+			locationList.Add (new Vector3 (-3.6f, -3.8f, 1f)); //on shelf
+			break;
+		case 3: //cafe
+			locationList.Add (new Vector3 (-4.6f, -3f, 1f)); //on shelf
+			break;
 		case 4: //kitchen
-			locationList.Add (new Vector3 (-5.74f, -3.96f, 1f)); //on shelf
+			locationList.Add (new Vector3 (-5.55f, -3.89f, 1f)); //on shelf
 			break;
 		case 5: //bar
 			locationList.Add (new Vector3 (7.43f, -2.1f, 1f));  // on bar
 			locationList.Add (new Vector3 (5.08f, -2.1f, 1f));  // on bar
-			locationList.Add (new Vector3 (4.36f, -3.1f, 1f));  // on stool
-			locationList.Add (new Vector3 (1.8f, -3.1f, 1f));  // on stool
+			locationList.Add (new Vector3 (4.36f, -3f, 1f));  // on stool
+			locationList.Add (new Vector3 (1.8f, -3f, 1f));  // on stool
 			break;
 		case 6: //studio
 			locationList.Add (new Vector3 (2f, -1.77f, 1f));  // on piano
@@ -218,7 +232,7 @@ public class RoomController : MonoBehaviour {
 				}
 			}
 		} else
-			Debug.Log ("No clue locations!");
+			throw new System.NotSupportedException ("Room " + roomIndex + " does not support clues.");
 		}
 
 	/// <summary>
@@ -249,6 +263,10 @@ public class RoomController : MonoBehaviour {
 		getCharacters ();
 		fengShui ();  
 		getClues ();
-		assignCluesLocations (cluesInRoom[0]);
+		if (cluesInRoom.Count > 0) {
+			assignCluesLocations (cluesInRoom [0]);
+		} else {
+			print ("No clues in this room");
+		}
 	}
 }

@@ -2,3 +2,8 @@ LINE 2 = object name; LINE 3 = long name
 Reginald
 Reginald Montgomery Ellsworth III
 Bloody goose.
+feather
+monocle
+sandwich
+suitcase
+money
