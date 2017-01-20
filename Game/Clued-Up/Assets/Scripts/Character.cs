@@ -39,11 +39,10 @@ public class Character : MonoBehaviour {
 	public bool HasBeenTalkedTo = false;
 	public bool CanBeTalkedTo = true;
 	private ImportSpeech SpeechRef;
+	private BoxCollider BoxCol;
 
 	void Awake ()
 	{
-		SpeechUI = FindObjectOfType<SpeechHandler> ();
-		SpeechRef = GetComponent<ImportSpeech> ();
 		DontDestroyOnLoad(gameObject);
 	}
 
@@ -51,12 +50,12 @@ public class Character : MonoBehaviour {
 		SpeechUI.TurnOnSpeechUI ();
 	}
 
-<<<<<<< HEAD
 	public void PreSpeech (string BranchName){
 		Story ActiveStory = FindObjectOfType<Story> ();
 		if (BranchName == "INTRO") {
 			SpeechRef.CharIn = ActiveStory.getVictim ();
 		}
+		BoxCol.enabled = false;
 	}
 
 	public void PostSpeech (string BranchName){
@@ -69,7 +68,8 @@ public class Character : MonoBehaviour {
 			Story ActiveStory = FindObjectOfType<Story> ();
 			ActiveStory.EndGame ();
 		}
-=======
+		BoxCol.enabled = true;
+	}
 	/// <summary>
 	/// Loads model at specific location as child of character and adds animation controller. If name is Kanye append either 0 or 1 to end, as there are different annimation options.
 	/// </summary>
@@ -88,9 +88,14 @@ public class Character : MonoBehaviour {
 		model.transform.position = pos;
 		model.transform.Rotate (new Vector3 (0f, 180f, 0f)); //rotate to face camera
 
+		BoxCollider BoxCol = GetComponent<BoxCollider> ();
+		BoxCol.center = model.transform.localPosition + new Vector3 (0, 0, -3);
+		BoxCol.size = new Vector3 (3, 1, 6);
+		BoxCol.enabled = true;
+
+
 		if (modelName != "Reginald")
 			model.GetComponent<Animator>().runtimeAnimatorController = (Resources.Load<RuntimeAnimatorController> ("Models/" + modelName + "Anim"));
->>>>>>> refs/remotes/origin/Development
 	}
 
 	/// <summary>
@@ -112,6 +117,17 @@ public class Character : MonoBehaviour {
 		this.isVictim = false;
 		this.image = Resources.Load<Sprite> ("CharacterImages/" + characterIndex.ToString ());
 
+		gameObject.AddComponent<ImportSpeech> ();
+		ImportSpeech SpeechHandler = GetComponent<ImportSpeech> ();
+		TextAsset TestAsset =(TextAsset)Resources.Load (lines [1]);
+		SpeechHandler.asset = TestAsset;
+		SpeechHandler.ActualStart ();
+		SpeechRef = GetComponent<ImportSpeech> ();
+
+		gameObject.AddComponent<BoxCollider> ();
+		BoxCol = GetComponent<BoxCollider> ();
+		BoxCol.enabled = false;
+
 		//TODO set up character clues
 }
 
@@ -122,6 +138,7 @@ public class Character : MonoBehaviour {
 	void OnLevelWasLoaded(){
 		foreach (Transform child in gameObject.transform) {
 			GameObject.Destroy (child.gameObject);
+			BoxCol.enabled = false;
 		}
 	}
 }

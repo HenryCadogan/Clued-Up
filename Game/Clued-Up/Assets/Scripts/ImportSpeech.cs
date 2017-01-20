@@ -48,24 +48,33 @@ public class ImportSpeech : MonoBehaviour {
 	/// Start this instance.
 	/// </summary>
 	private void Start () {
-		SpeechDict = new Dictionary<string, ArrayList>();	//Set up the dictionary and the list for input
+	}
+
+	public void ActualStart(){
+		SpeechDict = new Dictionary<string, ArrayList> ();	//Set up the dictionary and the list for input
 		SpeechList = new ArrayList ();
 		string AssetText = asset.text; 		// Read the file
-		AssetText = AssetText.Replace("\r", "").Replace("\n", "");	// Purge all newline chars
+		AssetText = AssetText.Replace ("\r", "").Replace ("\n", "");	// Purge all newline chars
 		while (AssetText.Length > 0) {		// While we still have text to parse...
 			string TestString = AssetText;	// Make a copy of it
 			TestString = TestString.Substring (1, TestString.Length - 1);// Ignore the first symbol
 			int LIndex = TestString.IndexOf ("£");
 			int RIndex = TestString.IndexOf ("$");	//Figure out whether a (, ) or # is closest to the start
-			int HIndex = TestString.IndexOf("#");
+			int HIndex = TestString.IndexOf ("#");
 			if (LIndex == -1 && RIndex == -1 && HIndex == -1) {	// If none of the above could be found
 				string Substring = AssetText;
 				SpeechList.Add (Substring);		// The rest of the string gets added to the arraylist
 				AssetText = "";		// Then clear out the text
 			} else {
-				if (LIndex == -1) {LIndex = 9999999;}	// If we couldn't find one of them we still care about the smallest of the others
-				if (RIndex == -1) {RIndex = 9999999;}	// So set them to an arbitrarily larbe value
-				if (HIndex == -1) {HIndex = 9999999;}	// If you need 9,999,999 characters, maybe consider breaking them up into smaller lines
+				if (LIndex == -1) {
+					LIndex = 9999999;
+				}	// If we couldn't find one of them we still care about the smallest of the others
+				if (RIndex == -1) {
+					RIndex = 9999999;
+				}	// So set them to an arbitrarily larbe value
+				if (HIndex == -1) {
+					HIndex = 9999999;
+				}	// If you need 9,999,999 characters, maybe consider breaking them up into smaller lines
 				int Index = Mathf.Min (LIndex, RIndex, HIndex);	// Take the smallest value of them
 				string Substring = AssetText.Substring (0, Index + 1);	// Take the string up to the nearest character
 				SpeechList.Add (Substring); 						// Add to the arraylist
@@ -80,7 +89,7 @@ public class ImportSpeech : MonoBehaviour {
 	/// Convert the Array into a dictionary
 	/// </summary>
 	private void Array2Dict(){
-		ArrayList CurrentBranch = new ArrayList();	//First we set up a working ArrayList
+		ArrayList CurrentBranch = new ArrayList();	//First we set up a w	orking ArrayList
 		string BranchName = "INIT";		// We want to name our branch so we set up a string to do so
 		for (int i = 0; i < SpeechList.Count; i++) {	// For every line...
 			string TestLine = SpeechList[i].ToString();			// Store the current line in a variable for ease of access...

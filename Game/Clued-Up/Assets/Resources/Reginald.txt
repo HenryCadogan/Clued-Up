@@ -1,0 +1,256 @@
+#INTRO
+$Who are you?
+£Quack. (My name is Reginald Montgomery Ellsworth III.)
+£Quack! (I am an arristocrat. A gentleman!)
+£Quack. (And a goose.)
+$Did you know ]
+£Quack. (]? I don't know them.)
+£Quack? (How would I know?)
+
+#Aggressive
+$Tell me what you know about this [.
+£Quack. (I don't know anything about it.)
+#Rude
+$What's this [?
+£**disgruntled quacks**
+#Friendly
+$Hey, do you know anything about this [?
+£Quack. (I'm afraid that I don't.)
+#Calm
+$Could you tell me about this [?
+£Quack. (I'm afraid I don't know anything about it.)
+#Comedic
+$You wouldn't happen to know about this [, would you?
+£Quack. (Quack.)
+#Annoying
+$Hey, tell me about this [.
+£Quack. (I don't know anything about it.)
+#Manipulative
+$You're a wise goose, surely you know about this [?
+£Quack. (No.)
+
+#Aggressive-Monocle
+$Tell me what you know about this [.
+£QUACK! (Hey! That's my monocle!)
+£Quack! (No wonder I can't see!)
+£Quack! (Give it back!)
+$No, I need it for the investigation.
+$Quack...! (Alright, but if you scratch it...!)
+#Rude-Monocle
+$What's this [?
+£QUACK! (Hey! That's my monocle!)
+£Quack! (No wonder I can't see!)
+£Quack! (Give it back, you villainous cur!)
+$No can do, I need it for the investigation.
+£Quack! (The nerve!)
+#Friendly-Monocle
+$Hey, do you know anything about this [?
+£QUACK! (Hey! That's my monocle!)
+£Quack! (No wonder I can't see!)
+£Quack. (I'd quite like it back once you're done with it.)
+$I'm afraid I can't give it back until I'm done with the investigation.
+£Quack. (Alright, you seem like you'll keep it safe.)
+#Calm-Monocle
+$Could you tell me about this [?
+£QUACK! (Hey! That's my monocle!)
+£Quack! (No wonder I can't see!)
+£Quack? (Can I have it back?)
+$Not until I'm done with the investigation.
+£Quack. (Very well then.)
+#Comedic-Monocle
+$You wouldn't happen to know about this [, would you?
+£QUACK! (Hey! That's my monocle!)
+£Quack! (No wonder I can't see!)
+£Quack? (Give it back!)
+$No can do. Not until the end of the investigation, anyway.
+£Quack! (If you scratch it, I'll peck your eyes out!)
+#Annoying-Monocle
+$Hey, tell me about this [.
+£QUACK! (Hey! That's my monocle!)
+£Quack! (No wonder I can't see!)
+£Quack! (Give it back, you villainous cur!)
+#Manipulative-Monocle
+$You're a wise goose, surely you know about this [?
+£QUACK! (Hey! That's my monocle!)
+£Quack! (No wonder I can't see!)
+£Quack! (Give it back, you villainous cur!)
+$Can't I hold on to it for the investigation?
+£Quack! (Absolutely not! I need it!)
+$...
+£...
+$(You keep the monocle.)
+
+#Aggressive-Feather
+$Tell me what you know about this [.
+£Quack! (A feather! That's one of mine!)
+£Quack? (Why do you have one of my feathers?)
+£Quack? (Where did you get it?)
+$I can't say.
+£Quack. (Of course you can't.)
+#Friendly-Feather
+$Hey, do you know anything about this [?
+£Quack! (A feather! That's one of mine!)
+£Quack? (Why do you have one of my feathers?)
+£Quack? (Tell me, where did you find it?)
+$I'm afraid I can't tell you.
+£Quack. (Really? Oh well.)
+#Calm-Feather
+$Could you tell me about this [?
+£Quack! (A feather! That's one of mine!)
+£Quack? (Why do you have one of my feathers?)
+£Quack? (Also, where did you find it?)
+$I'm can't tell you until the investigation is over.
+£Quack. (Then I suggest you get on with it.)
+#Comedic-Feather
+$You wouldn't happen to know about this [, would you?
+£Quack! (A feather! That's one of mine!)
+£Quack? (Why do you have one of my feathers?)
+£Quack? (Tell me, where did you find it?)
+$Wouldn't you like to know?
+£**quacks aggressively**
+#Annoying-Feather
+$Hey, tell me about this [.
+£Quack! (A feather! That's one of mine!)
+£Quack? (Why do you have one of my feathers?)
+£Quack? (Where did you even find it?)
+$I can't tell you.
+£**disgruntled quacking**
+
+#Aggressive-Stapler
+$Tell me what you know about this [.
+£Quack. (That's my stapler.)
+£Quack. (If you must know, I used it to fix some loose feathers.)
+£Quack! (Now leave me alone!)
+#Rude-Stapler
+$What's this [?
+£Quack. (I'm a goose, what would I want with a stapler?)
+$To staple some of your feathers back on?
+£Quack. (Don't be ridiculous.)
+#Friendly-Stapler
+$Hey, do you know anything about this [?
+£Quack. (That's my stapler.)
+£Quack. (I... uh... I'm currently having a bit of a feather issue.)
+£Quack. (They keep falling off, you see.)
+£Quack. (So I was using this stapler to reattatch them.)
+$Doesn't that hurt?
+£Quack... (Yes, but not as much as not having feathers...)
+#Calm-Stapler
+$Could you tell me about this [?
+£Quack. (That's my stapler.)
+£Quack. (If you must know, I used it to fix some loose feathers.)
+£Quack... (I'd rather not talk about it...)
+#Comedic-Stapler
+$You wouldn't happen to know about this [, would you?
+£Quack. (What would a goose want with a stapler?)
+#Annoying-Stapler
+$Hey, tell me about this [.
+£Quack. (That's my stapler.)
+£Quack. (If you must know, I used it to fix... something.)
+£Quack! (Now stop perstering me and go away!)
+#Manipulative-Stapler
+$You're a wise goose, surely you know about this [?
+£Quack. (That's my stapler.)
+£Quack. (If you must know, I used it to fix something.)
+£Quack... (I do not wish to discuss this issue further.)
+
+#Aggressive-Suitcase
+$Tell me what you know about this [.
+£Quack. (Yes, that's mine.)
+£Quack. (It's a long way from Heslington West.)
+£Quack. (I needed to prepare for the worst.)
+$The worst? What do you mean?
+£Quack. (Yes. For instance, a murder.)
+$You were prepared for a murder?
+£Quack. (No, but I think I've missed my train back because of this.)
+#Rude-Suitcase
+$What's this [?
+£Quack. (In case you hadn't noticed yet, I'm a goose.)
+£Quack. (Geese don't need suitcases.)
+#Friendly-Suitcase
+$Hey, do you know anything about this [?
+£Quack. (Yes, that's mine.)
+£Quack. (It's a long way from Heslington West.)
+£Quack. (I needed to prepare for the worst.)
+$The worst?
+£Quack. (Yes, I think because of this murder I have missed my train.)
+£Quack. (I believe I'll have to spend the night here.)
+#Calm-Suitcase
+$Could you tell me about this [?
+£Quack. (Yes, that's mine.)
+£Quack. (It's a long way from Heslington West.)
+£Quack. (I needed to prepare for the worst.)
+$What do you mean by the worst?
+£Quack. (Well, because of this murder I can't get home on time.)
+£Quack. (I think I'll need to spend the night here, unfortunately.)
+#Comedic-Suitcase
+$You wouldn't happen to know about this [, would you?
+£Quack. (In case you hadn't noticed yet, I'm a goose.)
+£Quack. (Geese don't need suitcases.)
+#Annoying-Suitcase
+$Hey, tell me about this [.
+£Quack. (Yes, that's mine.)
+£Quack. (It's a long way from Heslington West.)
+£Quack. (I needed to prepare for the worst.)
+$The worst? What do you mean?
+£Quack. (I do believe I've missed my train back.)
+£Quack. (I'll need to spend the night here.)
+£Quack. (I had the forsight to pack the necessities, so I should be fine.)
+#Manipulative-Suitcase
+$You're a wise goose, surely you know about this [?
+£Quack. (In case you hadn't noticed yet, I'm a goose.)
+£Quack. (Geese don't need suitcases.)
+
+#Aggressive-Money
+$Tell me what you know about this [.
+£Quack. (I do believe that's my money.)
+£Quack. (Sometimes I have so much, it just falls out of my feathers.)
+#Rude-Money
+$What's this [?
+£Quack! (I am Reginald Montgomery Ellsworth III!)
+£Quack?! (Do you think I would be so careless as to leave money strewn around?!)
+#Friendly-Money
+$Hey, do you know anything about this [?
+£Quack. (I do believe that's my money.)
+£Quack. (Sometimes I have so much, it just falls out of my feathers.)
+$Have you considered buying a wallet?
+£Quack. (Yes, but it's hard to use a wallet without fingers.)
+#Calm-Money
+$Could you tell me about this [?
+£Quack. (I do believe that's my money.)
+£Quack. (Sometimes I have so much, it just falls out of my feathers.)
+$That seems like an odd problem to have.
+£Quack. (Yes, I have considered buying a wallet.)
+£Quack. (Unfortunately, it's hard to use a wallet without any fingers.)
+#Comedic-Money
+$You wouldn't happen to know about this [, would you?
+£Quack! (I am Reginald Montgomery Ellsworth III!)
+£Quack?! (Do you think I would be so careless as to leave money strewn around?!)
+#Annoying-Money
+$Hey, tell me about this [.
+£Quack. (I do believe that's my money.)
+£Quack. (Sometimes I have so much, it just falls out of my feathers.)
+$...
+£...
+$...
+£Quack. (No, you cannot have any of it.)
+#Manipulative-Money
+$You're a wise goose, surely you know about this [?
+£Quack! (I am Reginald Montgomery Ellsworth III!)
+£Quack?! (Do you think I would be so careless as to leave money strewn around?!)
+
+#Accuse-NoItems
+$You did it
+£You have no proof
+$fuk
+#Accuse-WrongChar
+$You did it
+£No
+$fuk
+#Accuse-Motive
+$You did it
+£Why would I do it
+$fuk
+#Accuse-Weapon
+$You did it
+£With what
+$fuk

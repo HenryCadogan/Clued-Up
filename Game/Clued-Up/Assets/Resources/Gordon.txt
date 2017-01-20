@@ -31,14 +31,14 @@ $What's this [?
 #Friendly
 $Hey, do you know anything about this [?
 £I can't say I do.
-#Calmly
+#Calm
 $Could you tell me about this [?
 £Uh... no.
-#Jokingly
+#Comedic
 $You wouldn't happen to know about this [, would you?
 £What makes you think I would?
 £Bloody idiot.
-#Pestering
+#Annoying
 $Hey, tell me about this [.
 £Why the bloody hell would I know about that [?
 £You need to get your act together, and get the hell out of my face.
@@ -63,17 +63,17 @@ $Hey, do you know anything about this [?
 £It's a goose feather.
 £I was plucking a goose earlier, might have been from there.
 £What does it matter?
-#Calmly-Feather
+#Calm-Feather
 $Could you tell me about this [?
 £It looks like a goose feather.
 £I was plucking a goose earler, it might have come from that.
 £Why do you care?
-#Jokingly-Feather
+#Comedic-Feather
 $You wouldn't happen to know about this [, would you?
 £We're in the middle of bloody York and you're asking me about a bloody feather?
 £Have you tried asking one of the 5000 geese outside first?
 £Bloody moron.
-#Pestering-Feather
+#Annoying-Feather
 $Hey, tell me about this [.
 £Are you kidding me?
 £What the hell am I meant to tell you about a blood feather?
@@ -101,21 +101,21 @@ $Hey, do you know anything about this [?
 $I can't, I need it for the investigation.
 £Are you kidding me?
 £Bloody hell... alright, just make sure I get it back.
-#Calmly-ChefsHat
+#Calm-ChefsHat
 $Could you tell me about this [?
 £Yes, that's my hat.
 £Give it back to me.
 $I need it for the investigation.
 £Are you kidding me?
 £**sigh** Alright fine, just make sure I get it back.
-#Jokingly-ChefsHat
+#Comedic-ChefsHat
 $You wouldn't happen to know about this [, would you?
 £Listen here, you bloody fruitcake.
 £Just because it's a chef's hat it doesn't mean I know about it.
 £Now stop clowning around and do your bloody job.
 £Ideally far away from me.
 £Bloody hell.
-#Pestering-ChefsHat
+#Annoying-ChefsHat
 $Hey, tell me about this [.
 £...What, do you want me to sign it or something?
 $Uh... no?
@@ -149,19 +149,19 @@ $Hey, do you know anything about this [?
 £It's... some blonde hair?
 $Is it yours?
 £...How am I supposed to tell?
-#Calmly-BlondeHair
+#Calm-BlondeHair
 $Could you tell me about this [?
 £It... could be mine?
 $Do you know who else it could be?
 £I don't know, maybe it could be one of the diners at my restaurant?
-#Jokingly-BlondeHair
+#Comedic-BlondeHair
 $You wouldn't happen to know about this [, would you?
 £What the hell would I know about some blonde hair?
 £I'm not a bloody pathologist!
 £I'm not even a bloody hairdresser!
 $So that's a no?
 £Of course it's a bloody no!
-#Pestering-BlondeHair
+#Annoying-BlondeHair
 $Hey, tell me about this [.
 £It's some hair? Why do I care about hair?!
 $It looks like it's yours.
@@ -201,18 +201,18 @@ $Ham and cheese? I would have expected something a bit more interesting.
 £Yes, but unfortunately there wasn't much in the pantry of the kitchen here.
 £At least, nothing that would go in a sandwich.
 £They had whole bloody salmon in there, I can't use that in a sandwich!
-#Calmly-Sandwich
+#Calm-Sandwich
 $Could you tell me about this [?
 £I think that's the sandwich I made earlier.
 $Only ham and cheese?
 £The kitchen was pretty much cleaned out in the party.
 £Except for salmon. There's plenty of salmon left.
-#Jokingly-Sandwich
+#Comedic-Sandwich
 $You wouldn't happen to know about this [, would you?
 £It's a ham and cheese sandwich.
 $Is it yours?
 £It's a ham and cheese sandwich. Of course not.
-#Pestering-Sandwich
+#Annoying-Sandwich
 $Hey, tell me about this [.
 £It's a ham and cheese sandwich, why do you care?
 $Is it yours?
@@ -245,17 +245,17 @@ $Hey, do you know anything about this [?
 £That stapler? I was using it earler.
 $Can I ask why?
 £You could, but the answer would be something along the lines of "Get lost."
-#Calmly-Stapler
+#Calm-Stapler
 $Could you tell me about this [?
 £Yeah, I was using it earlier.
 $What for?
 £For stapling, what the hell do you think?
 $Yes, but stapling what.
 £I... don't want to say.
-#Jokingly-Stapler
+#Comedic-Stapler
 $You wouldn't happen to know about this [, would you?
 £What makes you think I know about bloody staplers?
-#Pestering-Stapler
+#Annoying-Stapler
 $Hey, tell me about this [.
 £Why the bloody hell would I know about staplers?
 £Get your act together and get out of my sight.
@@ -282,21 +282,21 @@ $Hey, do you know anything about this [?
 £I think that's the plunger I was using earlier...
 $You were cleaning toilets?
 $Well... no, but I can't say what I was doing.
-#Calmly-Plunger
+#Calm-Plunger
 $Could you tell me about this [?
 £I was using that plunger earlier.
 $Why were you cleaning a toilet?
 £I... wasn't cleaning a toilet.
 $What were you doing then?
 £That's none of your business.
-#Jokingly-Plunger
+#Comedic-Plunger
 $You wouldn't happen to know about this [, would you?
 £Yeah, I was using that plunger earlier.
 $I didn't know you were a plumber.
 £That's because I'm not. I wasn't using it for cleaning toilets.
 $Then what were you doing with a plunger?
 £That's none of your business.
-#Pestering-Plunger
+#Annoying-Plunger
 $Hey, tell me about this [.
 £Why the bloody hell would I know about a plunger?
 £I'm a chef, not a bloody toilet cleaner!
@@ -306,3 +306,20 @@ $You're a widely renowned chef, surely you know about this [?
 £Why would a chef know about a bloody plunger?
 $Don't you use a plunger in the kitchen?
 £Of course you don't! What kind of question is that!
+
+#Accuse-NoItems
+$You did it
+£You have no proof
+$fuk
+#Accuse-WrongChar
+$You did it
+£No
+$fuk
+#Accuse-Motive
+$You did it
+£Why would I do it
+$fuk
+#Accuse-Weapon
+$You did it
+£With what
+$fuk

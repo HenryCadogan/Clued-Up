@@ -1,0 +1,165 @@
+#INTRO
+$Who are you?
+£...
+$...
+£...Oh, you were being serious?
+$What do you mean?
+£Well, everybody knows who I am.
+£I just assumed that you were setting up some joke or something.
+$...So who are you?
+£Kanye East, the greatest rapper in the world, has no time for people like you.
+$...
+£...
+$...Did you know ]?
+£They sound like one of my fans.
+$How can you tell?
+£Everybody is a fan of Kanye East.
+
+#Aggressive
+$Tell me what you know about this [.
+£I don't know anything about that.
+£Talk to my agent, maybe they know.
+#Rude
+$What's this [?
+£What, you think I know what that is?
+#Friendly
+$Hey, do you know anything about this [?
+£Do you want it signed?
+$No?
+£Then why are you showing it to me?
+#Calm
+$Could you tell me about this [?
+£I don't know about it.
+#Comedic
+$You wouldn't happen to know about this [, would you?
+£Do you want me to sign it or something?
+$No?
+£Then why would I care about it?
+#Annoying
+$Hey, tell me about this [.
+£I can't say I know about it.
+#Manipulative
+$You're a world renowned rapper, surely you know about this [?
+£You're right, but I can't say I know what that [ is.
+
+#Aggressive-Feather
+$Tell me what you know about this [.
+£A feather? I don't know.
+£Maybe it came from one of my coats or something.
+#Rude-Feather
+$What's this [?
+£What, you find a feather and immediately assume it was the guy with the nice coat?
+$I wasn't saying-
+£Then what were you saying? Get outta here.
+#Friendly-Feather
+$Hey, do you know anything about this [?
+£What, you think I know about feathers?
+#Calm-Feather
+$Could you tell me about this [?
+£A... feather?
+£I dunno, it could be from one of my coats?
+#Comedic-Feather
+$You wouldn't happen to know about this [, would you?
+£Is that from one of my coats?
+$It could be, is one of your coats missing a feather?
+£How am I supposed to tell?
+#Annoying-Feather
+$Hey, tell me about this [.
+£It looks like a goose feather.
+£Might be from one of my coats.
+#Manipulative-Feather
+$You're a world renowned rapper, surely you know about this [?
+£Well, as a world famous rapper, I like expensive clothes.
+£You ever worn a goose-feather coat?
+$I can't say I have.
+£You're missing out, man.
+
+#Aggressive-BlackHair
+$Tell me what you know about this [.
+£Yeah, looks like it could be mine.
+£Why?
+#Rude-BlackHair
+$What's this [?
+£What, you find some black hair and think it was me?
+$I didn't say-
+£Yeah, well you were thinking it!
+#Friendly-BlackHair
+$Hey, do you know anything about this [?
+£Are you a fan now?
+$...No?
+£Then why are you collecting my hair?
+#Calm-BlackHair
+$Could you tell me about this [?
+£Yeah, looks like it could be mine.
+£You should put it on eSell, you'd make a fortune.
+£...I should sell my own hair on eSell.
+#Comedic-BlackHair
+$You wouldn't happen to know about this [, would you?
+£What, do you think it's my hair or something?
+$Well it does match your colour.
+£...
+$...
+£...Get out of here.
+#Annoying-BlackHair
+$Hey, tell me about this [.
+£It looks like it could be mine.
+£Does it matter?
+#Manipulative-BlackHair
+$You're a world renowned rapper, surely you know about this [?
+£When you're a world famous rapper, you make sure you have the freshest fade.
+£Obviously my fade was too fresh, and some of it decided to leave.
+£You should talk to my stylist.
+
+#Aggressive-Chain
+$Tell me what you know about this [.
+£Hey, that's my chain.
+£Give it back.
+$I can't, I need it for the investigation.
+£...
+#Rude-Chain
+$What's this [?
+£Hey! That's my chain!
+£Give it back you thief!
+$I need it for the investigation.
+£Investigaition? Investigaition my ass!
+£You just stole my chain!
+#Friendly-Chain
+$Hey, do you know anything about this [?
+£That's my chain!
+£You steal my chain and expect me to help you?
+£Give it back!
+$I'm afraid I need it for the investigation.
+£If I don't get it back, you will regret it.
+#Calm-Chain
+$Could you tell me about this [?
+£Hey, that's my chain!
+£Give it back to me!
+$I need it for the investigation.
+#Comedic-Chain
+$You wouldn't happen to know about this [, would you?
+£Do you want me to sign it or something?
+$No?
+£Then why would I care about it?
+#Annoying-Chain
+$Hey, tell me about this [.
+£I can't say I know about it.
+#Manipulative-Chain
+$You're a world renowned rapper, surely you know about this [?
+£You're right, but I can't say I know what that [ is.
+
+#Accuse-NoItems
+$You did it
+£You have no proof
+$fuk
+#Accuse-WrongChar
+$You did it
+£No
+$fuk
+#Accuse-Motive
+$You did it
+£Why would I do it
+$fuk
+#Accuse-Weapon
+$You did it
+£With what
+$fuk

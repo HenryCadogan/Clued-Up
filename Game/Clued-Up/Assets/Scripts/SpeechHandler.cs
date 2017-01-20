@@ -5,19 +5,28 @@ using System.Collections;
 using System.IO;
 using System.Collections.Generic;
 
+/// <summary>
+/// The Speech Handler, which takes the input from the UI and passes relevent bits
+/// to the character (and it's ImportSpeech).
+/// </summary>
 public class SpeechHandler : MonoBehaviour {
 
-	public Character TargetChar;
+	/// <summary>
+	/// The Unity Text UI object that the speech should appear on..
+	/// </summary>
 	public GameObject TextObject;
+	/// <summary>
+	/// The HUD canvas.
+	/// </summary>
 	public HUDController HUDCanvas;
 	public Vector3 DetectivePos;
 	public Vector3 SuspectPos;
 	public Button[] TraitButtonArray;
 	public Detective ActiveDet;
 	public Story ActiveStory;
-	public Button LeaveButton;
 	public GameObject[] OtherUIElements;
 	public Text ClueText;
+	public GameObject[] SpeechUIElements;
 
 	private Button ParentButton;
 	private Text ActualText;
@@ -33,16 +42,18 @@ public class SpeechHandler : MonoBehaviour {
 		ActiveDet = FindObjectOfType<Detective> ();
 		ActiveStory = FindObjectOfType<Story> ();
 		PlayerInv = FindObjectOfType<Inventory> ();
-		CharInScene = FindObjectOfType<Character> ();
 		HUDCanvas = FindObjectOfType<HUDController> ();
 		string SceneName = SceneManager.GetActiveScene ().name;
-		int RoomNo = (SceneName[SceneName.Length-1]) - '0';
+		int RoomNo = (SceneName[SceneName.Length-1]) - '1';
+		Debug.Log (RoomNo);
 		List<GameObject> ListOfCharsInRoom = ActiveStory.getCharactersInRoom (RoomNo);
+
 		try{
-			TargetChar = ListOfCharsInRoom [0].GetComponent<Character> ();
+			CharInScene = ListOfCharsInRoom [0].GetComponent<Character> ();
+			SpeechRef = CharInScene.GetComponentInChildren<ImportSpeech> ();
+			ActualText = TextObject.GetComponentInChildren<Text> ();
+			CharInScene.SpeechUI = this;
 		} catch {}
-		SpeechRef = TargetChar.GetComponentInChildren<ImportSpeech> ();
-		ActualText = TextObject.GetComponentInChildren<Text> ();
 		ParentCanvas = GameObject.Find ("SpeechUI");
 		ParentCanvas.SetActive (false);
 		gameObject.SetActive(false);
@@ -64,15 +75,19 @@ public class SpeechHandler : MonoBehaviour {
 	public void TurnOnSpeechUI(){
 		//TODO: Maybe some intro speech here?
 		if (ParentCanvas.gameObject.activeSelf == false) {
-			foreach (GameObject ForObj in OtherUIElements) {
-				ForObj.gameObject.SetActive (false);
-			}
-			UpdateClueName (PlayerInv.collectedClueNames [ClueIndex]);
-			ParentCanvas.SetActive (true);
-			HUDCanvas.loadPanelAndPause (ParentCanvas);
-			if (CharInScene.HasBeenTalkedTo == false) {
-				CharInScene.HasBeenTalkedTo = true;
-				StartBranch ("INTRO");
+			if (CharInScene.CanBeTalkedTo == true) {
+				foreach (GameObject ForObj in OtherUIElements) {
+					ForObj.gameObject.SetActive (false);
+				}
+				UpdateClueName (PlayerInv.collectedClueNames [ClueIndex]);
+				ParentCanvas.SetActive (true);
+				HUDCanvas.loadPanelAndPause (ParentCanvas);
+				if (CharInScene.HasBeenTalkedTo == false) {
+					CharInScene.HasBeenTalkedTo = true;
+					StartBranch ("INTRO");
+				}
+			} else {
+				Debug.Log ("You need to find another clue");
 			}
 		} else {
 			Debug.Log ("Tried to turn on speech UI, but was already on");
@@ -108,19 +123,24 @@ public class SpeechHandler : MonoBehaviour {
 		foreach (Button ForButton in TraitButtonArray) {
 			ForButton.gameObject.SetActive (false);
 		}
-		LeaveButton.gameObject.SetActive (false);
+		foreach (GameObject ForButton in SpeechUIElements) {
+			ForButton.gameObject.SetActive (false);
+		}
 		OnClick ();
 	}
 
 	public void StartBranch(string BranchIn){
 		BranchName = BranchIn;
+		SpeechRef.SetBranch(BranchName);
 		CharInScene.PreSpeech (BranchName);
 		gameObject.SetActive(true);
 		TextObject.SetActive(true);
 		foreach (Button ForButton in TraitButtonArray) {
 			ForButton.gameObject.SetActive (false);
 		}
-		LeaveButton.gameObject.SetActive (false);
+		foreach (GameObject ForButton in SpeechUIElements) {
+			ForButton.gameObject.SetActive (false);
+		}
 		OnClick ();
 	}
 
@@ -186,7 +206,15 @@ public class SpeechHandler : MonoBehaviour {
 			foreach (Button ForButton in TraitButtonArray) {
 				ForButton.gameObject.SetActive (true);
 			}
-			LeaveButton.gameObject.SetActive (true);
+			foreach (GameObject ForButton in SpeechUIElements) {
+				ForButton.gameObject.SetActive (true);
+			}
+			try{
+				if(BranchName.Substring(0,6) == "Accuse"){
+					TurnOffSpeechUI();
+				}
+			}
+			catch{}
 		}
 	}
 }
