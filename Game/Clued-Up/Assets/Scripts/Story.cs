@@ -53,6 +53,21 @@ public class Story : MonoBehaviour {
 	/// <summary>
 	/// Makes the object persistant throughout scenes.
 	/// </summary>
+
+
+	private List<int> visitedRooms =(null);
+
+
+	public List<int> getVisitedRooms(){
+		return visitedRooms;
+	}
+
+	public void addVisitedRoom(int roomIndex){
+		if(!visitedRooms.Contains(roomIndex)) {
+			visitedRooms.Add(roomIndex);
+		}
+	}
+
 	void Awake () {
 		if (Instance == null)
 		{
