@@ -351,7 +351,7 @@ public class Story : MonoBehaviour {
 			newClue.GetComponent<Clue> ().initialise ("whiteHair", "White Hair", "Someone wants to make themselves heard");
 			break;
 		case "money":
-			newClue.GetComponent<Clue> ().initialise ("money", "Money", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("money", "Money", "Someone wants to make themselves heard", localScale:0.15f);
 			break;
 		case "tape":
 			newClue.GetComponent<Clue> ().initialise ("tape", "Tape", "Someone wants to make themselves heard", localScale:0.1f);
@@ -434,11 +434,12 @@ public class Story : MonoBehaviour {
 	/// Decides which character 5 clues to use (2 from victim, 3 from murderer) 
 	/// </summary>
 	private void setCharacterClues(List<string> cluesList){
-		cluesList.Add (victim.GetComponent<Character> ().characterClues [0].name);
-		cluesList.Add (victim.GetComponent<Character> ().characterClues [1].name);
-		cluesList.Add (murderer.GetComponent<Character> ().characterClues [0].name);
-		cluesList.Add (murderer.GetComponent<Character> ().characterClues [1].name);
-		cluesList.Add (murderer.GetComponent<Character> ().characterClues [2].name);
+		List<string> victimClueNames = victim.GetComponent<Character>().getRandomCharacterClueNames (2);
+		List<string> murdererClueNames = murderer.GetComponent<Character>().getRandomCharacterClueNames (3);
+		foreach (string clueName in victimClueNames)
+			cluesList.Add (clueName);
+		foreach (string clueName in murdererClueNames)
+			cluesList.Add (clueName);
 	}
 
 	private void setMotiveClue(List<string> cluesList){

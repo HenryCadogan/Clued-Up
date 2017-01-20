@@ -26,7 +26,6 @@ public class Train : MonoBehaviour {
 		int chanceI = (int)(chance * 100);
 		int randI = Random.Range (0, 100);
 		this.horn.GetComponent<AudioSource> ().Play ();
-		Debug.Log (randI);
 		if (chanceI - 2 < randI) {
 			overlaySign.SetActive (false);
 			this.gameObject.SetActive (false);

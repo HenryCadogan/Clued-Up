@@ -196,8 +196,8 @@ public class RoomController : MonoBehaviour {
 		case 5: //bar
 			locationList.Add (new Vector3 (7.43f, -2.1f, 1f));  // on bar
 			locationList.Add (new Vector3 (5.08f, -2.1f, 1f));  // on bar
-			locationList.Add (new Vector3 (4.36f, -3.1f, 1f));  // on stool
-			locationList.Add (new Vector3 (1.8f, -3.1f, 1f));  // on stool
+			locationList.Add (new Vector3 (4.36f, -3f, 1f));  // on stool
+			locationList.Add (new Vector3 (1.8f, -3f, 1f));  // on stool
 			break;
 		case 6: //studio
 			locationList.Add (new Vector3 (2f, -1.77f, 1f));  // on piano
