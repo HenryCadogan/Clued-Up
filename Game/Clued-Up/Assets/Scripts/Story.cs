@@ -315,112 +315,112 @@ public class Story : MonoBehaviour {
 			newClue.GetComponent<Clue> ().initialise ("microphone", "Microphone", "Someone wants to make themselves heard");
 			break;
 		case "wizzardHat":
-			newClue.GetComponent<Clue> ().initialise ("wizzardHat", "Wizzard's Hat", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("wizzardHat", "Wizzard's Hat", "Looks like part of a Halloween costume");
 			break;
 		case "moustache":
-			newClue.GetComponent<Clue> ().initialise ("moustache", "Moustache", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("moustache", "Moustache", "Is someone trying to disguise themselves?");
 			break;
 		case "pen":
-			newClue.GetComponent<Clue> ().initialise ("pen", "Pen", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("pen", "Pen", "A fancy fountain pen.");
 			break;
 		case "plunger":
-			newClue.GetComponent<Clue> ().initialise ("plunger", "Plunger", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("plunger", "Plunger", "Oh wow. A plunger!");
 			break;
 		case "brownHair":
-			newClue.GetComponent<Clue> ().initialise ("brownHair", "Brown Hair", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("brownHair", "Brown Hair", "Whose hair is this colour?");
 			break;
 		case "sandwich":
-			newClue.GetComponent<Clue> ().initialise ("sandwich", "Sandwich", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("sandwich", "Sandwich", " A cheese sandwich. It’s half eaten. Delicious.");
 			break;
 		case "stapler":
-			newClue.GetComponent<Clue> ().initialise ("stapler", "Stapler", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("stapler", "Stapler", "Staples things.");
 			break;
 		case "suitcase":
-			newClue.GetComponent<Clue> ().initialise ("suitcase", "Suitcase", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("suitcase", "Suitcase", "Looks like someone’s forgot their suitcase. Oh no.");
 			break;
 		case "wand":
-			newClue.GetComponent<Clue> ().initialise ("wand", "Wand", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("wand", "Wand", "Casts spells and things.");
 			break;
 		case "sunglasses":
-			newClue.GetComponent<Clue> ().initialise ("sunglasses", "Sunglasses", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("sunglasses", "Sunglasses", "Why would you need sunglasses in York? Unless someone is trying to conceal their identity...");
 			break;
 		case "whistle":
-			newClue.GetComponent<Clue> ().initialise ("whistle", "Whistle", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("whistle", "Whistle", "It must belong to the train conductor...I wonder why it's here...");
 			break;
 		case "whiteHair":
-			newClue.GetComponent<Clue> ().initialise ("whiteHair", "White Hair", "Someone wants to make themselves heard");
+				newClue.GetComponent<Clue> ().initialise ("whiteHair", "White Hair", "Whose hair is this colour?");
 			break;
 		case "money":
-			newClue.GetComponent<Clue> ().initialise ("money", "Money", "Someone wants to make themselves heard", localScale:0.15f);
+			newClue.GetComponent<Clue> ().initialise ("money", "Money", "Someone's been careless...or they've got too much money...", localScale:0.15f);
 			break;
 		case "tape":
-			newClue.GetComponent<Clue> ().initialise ("tape", "Tape", "Someone wants to make themselves heard", localScale:0.1f);
+			newClue.GetComponent<Clue> ().initialise ("tape", "Tape", "It's sticky.", localScale:0.1f);
 			break;
 		case "bling":
-			newClue.GetComponent<Clue> ().initialise ("bling", "Bling", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("bling", "Bling", "What kind of person would wear this around their neck?");
 			break;
 		case "ladder":
-			newClue.GetComponent<Clue> ().initialise ("ladder", "Ladder", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("ladder", "Ladder", "Oops. Someone dropped their ladder.");
 			break;
 		case "ticket":
-			newClue.GetComponent<Clue> ().initialise ("ticket", "Ticket", "Someone wants to make themselves heard", localScale:0.1f);
+			newClue.GetComponent<Clue> ().initialise ("ticket", "Ticket", "A train ticket for use on the train.", localScale:0.1f);
 			break;
 		case "coal":
-			newClue.GetComponent<Clue> ().initialise ("coal", "Coal", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("coal", "Coal", "A lump of coal.");
 			break;
 		case "cloak":
-			newClue.GetComponent<Clue> ().initialise ("cloak", "Cloak", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("cloak", "Cloak", "Someone is trying to conceal themselves...");
 			break;
 		case "blondHair":
-			newClue.GetComponent<Clue> ().initialise ("blondHair", "Blond Hair", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("blondHair", "Blond Hair", "Whose hair is this colour?");
 			break;
 		case "chefHat":
-			newClue.GetComponent<Clue> ().initialise ("chefHat", "Chef's Hat", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("chefHat", "Chef's Hat", "I wonder who this belongs to...");
 			break;
 		case "comb":
-			newClue.GetComponent<Clue> ().initialise ("comb", "Comb", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("comb", "Comb", "I wonder who would carry a comb with them...");
 			break;
 		case "monocle":
-			newClue.GetComponent<Clue> ().initialise ("monocle", "Monocle", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("monocle", "Monocle", "This must belong to someone important.");
 			break;
 		case "feather":
-			newClue.GetComponent<Clue> ().initialise ("feather", "Feather", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("feather", "Feather", "Where could this feather have come from?");
 			break;
 		case "lighter":
-			newClue.GetComponent<Clue> ().initialise ("lighter", "Lighter", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("lighter", "Lighter", "Somoeone dropped their lighter. Oops.");
 			break;
 		case "blackHair":
-			newClue.GetComponent<Clue> ().initialise ("blackHair", "Black Hair", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("blackHair", "Black Hair", "Whose hair is this colour?");
 			break;
 		
 		
 		
 		case "hammer":
-			newClue.GetComponent<Clue> ().initialise ("hammer", "Hammer", "Someone wants to make themselves heard", true);
+			newClue.GetComponent<Clue> ().initialise ("hammer", "Hammer", "A bloody hammer.", true);
 			break;
 		case "gun":
-			newClue.GetComponent<Clue> ().initialise ("gun", "Gun", "Someone wants to make themselves heard", true);
+			newClue.GetComponent<Clue> ().initialise ("gun", "Gun", "A bloody gun.", true);
 			break;
 		case "knife":
-			newClue.GetComponent<Clue> ().initialise ("knife", "Knife", "Someone wants to make themselves heard", true);
+			newClue.GetComponent<Clue> ().initialise ("knife", "Knife", "A bloody knife.", true);
 			break;
 		case "salmon":
-			newClue.GetComponent<Clue> ().initialise ("salmon", "Salmon", "Someone wants to make themselves heard", true);
+			newClue.GetComponent<Clue> ().initialise ("salmon", "Salmon", "A bloody salmon that has been handled under suspicious circumstances.", true);
 			break;
 
 
 
 		case "polaroid":
-			newClue.GetComponent<Clue> ().initialise ("polaroid", "Polaroid", "Someone wants to make themselves heard", isMotive:true);
+			newClue.GetComponent<Clue> ().initialise ("polaroid", "Polaroid", "A dirty, crumpled polaroid. In the frame are [murderer] and [victim]. They have their arms around one another, and they’re laughing. You remember seeing them both at the party, but they didn’t seem to talk to one another at all. In fact, they seemed to be at opposite sides of the room for the entirety of the evening. You can’t help but feel like something must have happened between them...but what?", isMotive:true);
 			break;
 		case "recorder":
-			newClue.GetComponent<Clue> ().initialise ("recorder", "Recorder", "Someone wants to make themselves heard", isMotive:true);
+			newClue.GetComponent<Clue> ().initialise ("recorder", "Recorder", "The quality is terrible, but you can just about make out the voices. It appears to be two people having a conversation. You recognise both of them. One of them is [victim], the other is [murderer]. At first they are calm, and you can’t quite hear what they’re saying. But gradually it gets louder, their voices rising as their anger bubbles up. Someone starts shouting. There’s a loud bang. Everything goes quiet. There seems to be some muffled shuffling in the background. The recording cuts off. Everything is starting to make sense...", isMotive:true);
 			break;
 		case "diary":
-			newClue.GetComponent<Clue> ().initialise ("diary", "Diary", "Someone wants to make themselves heard", isMotive:true, localScale:0.15f);
+			newClue.GetComponent<Clue> ().initialise ("diary", "Diary", "[victim]’s diary. You know you shouldn’t be reading it, but you find yourself flicking through the pages anyway. After all, it could be used for evidence, right? You turn to the most recent entry. The day before the party. You can’t help noticing how many times[murderer]’s name has been mentioned. You read the entire page before slamming the book shut. Everything is starting to make sense...", isMotive:true, localScale:0.15f);
 			break;
 		case "letter":
-			newClue.GetComponent<Clue> ().initialise ("letter", "Letter", "Someone wants to make themselves heard", isMotive:true, localScale:0.2f);
+			newClue.GetComponent<Clue> ().initialise ("letter", "Letter", "A crumpled letter. The writing is small and scrawling, but if you squint you can just make it out. It appears to have been written by [murderer], and it’s addressed to [victim]. It’s messy and smudged, so you don’t attempt to read the entire thing, but you can’t help but notice the very last sentence... ‘Your days are numbered.’ Everything is starting to make sense...", isMotive:true, localScale:0.2f);
 			break;
 
 
