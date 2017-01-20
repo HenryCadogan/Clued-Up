@@ -354,7 +354,7 @@ public class Story : MonoBehaviour {
 			newClue.GetComponent<Clue> ().initialise ("money", "Money", "Someone wants to make themselves heard");
 			break;
 		case "tape":
-			newClue.GetComponent<Clue> ().initialise ("tape", "Tape", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("tape", "Tape", "Someone wants to make themselves heard", localScale:0.1f);
 			break;
 		case "bling":
 			newClue.GetComponent<Clue> ().initialise ("bling", "Bling", "Someone wants to make themselves heard");
@@ -363,7 +363,7 @@ public class Story : MonoBehaviour {
 			newClue.GetComponent<Clue> ().initialise ("ladder", "Ladder", "Someone wants to make themselves heard");
 			break;
 		case "ticket":
-			newClue.GetComponent<Clue> ().initialise ("ticket", "Ticket", "Someone wants to make themselves heard");
+			newClue.GetComponent<Clue> ().initialise ("ticket", "Ticket", "Someone wants to make themselves heard", localScale:0.1f);
 			break;
 		case "coal":
 			newClue.GetComponent<Clue> ().initialise ("coal", "Coal", "Someone wants to make themselves heard");
@@ -417,10 +417,10 @@ public class Story : MonoBehaviour {
 			newClue.GetComponent<Clue> ().initialise ("recorder", "Recorder", "Someone wants to make themselves heard", isMotive:true);
 			break;
 		case "diary":
-			newClue.GetComponent<Clue> ().initialise ("diary", "Diary", "Someone wants to make themselves heard", isMotive:true);
+			newClue.GetComponent<Clue> ().initialise ("diary", "Diary", "Someone wants to make themselves heard", isMotive:true, localScale:0.15f);
 			break;
 		case "letter":
-			newClue.GetComponent<Clue> ().initialise ("letter", "Letter", "Someone wants to make themselves heard", isMotive:true);
+			newClue.GetComponent<Clue> ().initialise ("letter", "Letter", "Someone wants to make themselves heard", isMotive:true, localScale:0.2f);
 			break;
 
 
@@ -487,7 +487,7 @@ public class Story : MonoBehaviour {
 	/// <param name="newClue">Clue GameObject to initialise</param>
 	private void setClueInformation(string clueName, GameObject newClue){
 		Clue clueInfo = getClueInformation (clueName).GetComponent<Clue>(); //sets up temp Clue that stores all properties
-		newClue.GetComponent<Clue>().initialise(clueInfo.name,clueInfo.longName, clueInfo.description, clueInfo.isWeapon, clueInfo.isMotive, clueInfo.disappearWhenClicked);
+		newClue.GetComponent<Clue>().initialise(clueInfo.name,clueInfo.longName, clueInfo.description, clueInfo.isWeapon, clueInfo.isMotive, clueInfo.disappearWhenClicked, clueInfo.transform.localScale.x);
 		GameObject.Destroy (clueInfo.gameObject); //destroys temp Clue GameObject to remove it from scene
 	}
 	/// <summary>
@@ -497,12 +497,12 @@ public class Story : MonoBehaviour {
 	/// <param name="roomIndex">Index of the room to find clues for</param>
 	public List<GameObject> getCluesInRoom(int roomIndex){
 		List<GameObject> clues = new List<GameObject> ();
+		Inventory inventory = GameObject.Find ("Detective").GetComponent<Inventory> ();
 		foreach (string clueName in this.cluesInRoom[roomIndex]) {	//for each clueName in room
-			GameObject newClue = Instantiate (Resources.Load ("Clue"), new Vector3(1f,1f,1f), Quaternion.Euler(0,0,0)) as GameObject;
-			newClue.transform.localScale = new Vector3(0.25F, 0.25f, 1f); //scales all clues
+			GameObject newClue = Instantiate (Resources.Load ("Clue"), new Vector3 (1f, 1f, 1f), Quaternion.Euler (0, 0, 0)) as GameObject;
 			setClueInformation (clueName, newClue); // calls the initialisation method with the relevent details
-			newClue.GetComponent<SpriteRenderer> ().sprite = newClue.GetComponent<Clue>().sprite;	// Add Clue's sprite to the Clue's GameObject sprite renderer
-			clues.Add(newClue);
+			newClue.GetComponent<SpriteRenderer> ().sprite = newClue.GetComponent<Clue> ().sprite;	// Add Clue's sprite to the Clue's GameObject sprite renderer
+			clues.Add (newClue);
 		}
 		return clues;
 	}
