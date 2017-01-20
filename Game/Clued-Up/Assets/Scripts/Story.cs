@@ -507,7 +507,6 @@ public class Story : MonoBehaviour {
 	/// <param name="roomIndex">Index of the room to find clues for</param>
 	public List<GameObject> getCluesInRoom(int roomIndex){
 		List<GameObject> clues = new List<GameObject> ();
-		Inventory inventory = GameObject.Find ("Detective").GetComponent<Inventory> ();
 		foreach (string clueName in this.cluesInRoom[roomIndex]) {	//for each clueName in room
 			GameObject newClue = Instantiate (Resources.Load ("Clue"), new Vector3 (1f, 1f, 1f), Quaternion.Euler (0, 0, 0)) as GameObject;
 			setClueInformation (clueName, newClue); // calls the initialisation method with the relevent details
