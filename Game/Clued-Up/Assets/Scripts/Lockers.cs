@@ -20,6 +20,7 @@ public class Lockers : MonoBehaviour {
 	/// </summary>
 	private HUDController HUDC;
 	private GameObject containedClue;
+	private bool entered;
 
 	/// <summary>
 	/// Changes the locker sprite when one is opened.
@@ -82,32 +83,7 @@ public class Lockers : MonoBehaviour {
 
 		this.name = "lockers";
 		this.HUDC = GameObject.Find("HUD").GetComponent<HUDController>();
-	}
-	/// <summary>
-	/// OnMouseDown of a child (door) collider, the parent method of openLocker is called with the child (door)'s ID.
-	/// </summary>
-	void OnMouseDown(){
-		this.gameObject.transform.parent.GetComponent<Lockers> ().openLocker (this.doorID);
-	}
-
-//	void OnMouseDown(){
-//		float mousex = Input.mousePosition.x;
-//		float mousey = Input.mousePosition.y;
-//		if ((mousex > 695f) && (mousex < 755f)) { // column1
-//			if ((mousey > 245f) && (mousey < 345f)) {	//column1 row 1
-//				openLocker(0);
-//			} else if ((mousey > 140f) && (mousey < 245f)) { //column1 row 2
-//				openLocker(2);
-//			}
-//		}else if ((mousex > 780f) && (mousex < 850f)) { // column2
-//			if ((mousey > 245f) && (mousey < 345f)) {	//column2 row 1
-//				openLocker(1);
-//			} else if ((mousey > 140f) && (mousey < 245f)) { //column2 row 2
-//				openLocker(3);
-//			}
-//		} 
-//	}
-
+}
 	/// <summary>
 	/// Adds clue to one of the lockers at random.
 	/// </summary>
@@ -133,5 +109,35 @@ public class Lockers : MonoBehaviour {
 		clueObject.SetActive (false); // hides clue behind door
 		this.containedClue = clueObject;
 
+	}
+
+
+	/// <summary>
+	/// OnMouseDown of a child (door) collider, the parent method of openLocker is called with the child (door)'s ID.
+	/// </summary>
+	void OnMouseDown(){
+		this.gameObject.transform.parent.GetComponent<Lockers> ().openLocker (this.doorID);
+		Destroy (this.gameObject);
+	}
+
+
+
+
+
+
+
+	void OnMouseEnter(){
+		Cursor.SetCursor (Resources.Load<Texture2D> ("clueCursor"), Vector2.zero, CursorMode.Auto);
+		entered = true;
+	}
+	void OnMouseExit(){
+		Cursor.SetCursor (null, Vector2.zero, CursorMode.Auto);
+		entered = false;
+	}
+
+	void Update(){
+		if (entered) {
+			Cursor.SetCursor (Resources.Load<Texture2D> ("clueCursor"), Vector2.zero, CursorMode.Auto);
+		}
 	}
 }

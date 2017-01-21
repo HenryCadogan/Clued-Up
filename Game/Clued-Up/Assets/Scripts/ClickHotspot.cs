@@ -20,6 +20,7 @@ public class ClickHotspot : MonoBehaviour {
 	/// HUD Controller
 	/// </summary>
 	private HUDController HUDC;
+	private bool entered;
 
 	/// <summary>
 	/// Plaies the sound when an object is clicked.
@@ -194,6 +195,27 @@ public class ClickHotspot : MonoBehaviour {
 		}
 		if (this.soundClip != "") {
 			this.playSound (this.soundClip);
+		}
+	}
+
+
+
+
+
+
+
+	void OnMouseEnter(){
+		Cursor.SetCursor (Resources.Load<Texture2D> ("clueCursor"), Vector2.zero, CursorMode.Auto);
+		entered = true;
+	}
+	void OnMouseExit(){
+		Cursor.SetCursor (null, Vector2.zero, CursorMode.Auto);
+		entered = false;
+	}
+
+	void Update(){
+		if (entered) {
+			Cursor.SetCursor (Resources.Load<Texture2D> ("clueCursor"), Vector2.zero, CursorMode.Auto);
 		}
 	}
 }

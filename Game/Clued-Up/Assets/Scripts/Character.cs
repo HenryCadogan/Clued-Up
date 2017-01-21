@@ -34,6 +34,7 @@ public class Character : MonoBehaviour {
 	/// Makes the object persistant throughout scenes
 	/// </summary>
 	public SpeechHandler SpeechUI;
+	public bool entered;
 
 
 	//TODO NEEDS SUMMARIES.
@@ -176,6 +177,25 @@ public class Character : MonoBehaviour {
 		foreach (Transform child in gameObject.transform) {
 			GameObject.Destroy (child.gameObject);
 			BoxCol.enabled = false;
+		}
+	}
+
+
+
+
+
+	void OnMouseEnter(){
+		Cursor.SetCursor (Resources.Load<Texture2D> ("clueCursor"), Vector2.zero, CursorMode.Auto);
+		entered = true;
+	}
+	void OnMouseExit(){
+		Cursor.SetCursor (null, Vector2.zero, CursorMode.Auto);
+		entered = false;
+	}
+
+	void Update(){
+		if (entered) {
+			Cursor.SetCursor (Resources.Load<Texture2D> ("clueCursor"), Vector2.zero, CursorMode.Auto);
 		}
 	}
 }

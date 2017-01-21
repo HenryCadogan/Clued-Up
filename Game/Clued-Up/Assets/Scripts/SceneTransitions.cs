@@ -11,18 +11,18 @@ public class SceneTransitions : MonoBehaviour {
 	/// Will hold the transform position of Detective if the character tries to walk out of bounds
 	/// </summary>
 	private Vector3 pos;
+
+
+
 	/// <summary>
 	/// Fades to black and then loads a scene.
 	/// </summary>
 	/// <returns>Yield WaitForSeconds</returns>
 	/// <param name="scene">Scene index to load</param>
-	/// 
-	Story story;
 	IEnumerator fadeLoadScene(int scene){
 		GameObject overlayPanel = GameObject.Find ("OverlayPanel");
 		overlayPanel.SetActive (true);
 		overlayPanel.GetComponent<Image> ().CrossFadeAlpha (1f, 1f, false);
-		story = GameObject.Find("Story").GetComponent<Story>();
 		yield return new WaitForSeconds (1);
 		SceneManager.LoadScene (scene);
 	}
