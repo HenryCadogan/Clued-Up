@@ -50,7 +50,7 @@ public class Character : MonoBehaviour {
 	}
 
 	void OnMouseDown(){
-		Inventory inventory = GameObject.Find ("Inventory").GetComponent<Inventory> ();
+		Inventory inventory = GameObject.Find ("Detective").GetComponent<Inventory> ();
 		inventory.encounter (this);
 		SpeechUI.TurnOnSpeechUI ();
 	}
