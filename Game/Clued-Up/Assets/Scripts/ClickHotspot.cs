@@ -20,6 +20,7 @@ public class ClickHotspot : MonoBehaviour {
 	/// HUD Controller
 	/// </summary>
 	private HUDController HUDC;
+	private bool entered;
 
 	/// <summary>
 	/// Plaies the sound when an object is clicked.
@@ -108,6 +109,10 @@ public class ClickHotspot : MonoBehaviour {
 			messages.Add ("Where the magic happens.");
 			messages.Add ("It's not on, don't worry.");
 			break;
+		case "wetFloor":
+			messages.Add ("Ooops! Spillage!");
+			messages.Add ("Thou shalt not pass the sign. (Health and saftey gone mad etc.)");
+			break;
 
 		//room6 bar
 		case "beerTaps":
@@ -194,6 +199,27 @@ public class ClickHotspot : MonoBehaviour {
 		}
 		if (this.soundClip != "") {
 			this.playSound (this.soundClip);
+		}
+	}
+
+
+
+
+
+
+
+	void OnMouseEnter(){
+		Cursor.SetCursor (Resources.Load<Texture2D> ("clueCursor"), Vector2.zero, CursorMode.Auto);
+		entered = true;
+	}
+	void OnMouseExit(){
+		Cursor.SetCursor (null, Vector2.zero, CursorMode.Auto);
+		entered = false;
+	}
+
+	void Update(){
+		if (entered) {
+			Cursor.SetCursor (Resources.Load<Texture2D> ("clueCursor"), Vector2.zero, CursorMode.Auto);
 		}
 	}
 }

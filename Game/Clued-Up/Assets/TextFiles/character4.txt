@@ -1,7 +1,7 @@
 LINE 2 = object name; LINE 3 = long name
 Fumbledore
 Fumbledore
-Frog off
+Fumbledoor is a wizard, and the headmaster of Pigwartz. Some say he has the most powerful wand around. 
 whiteHair
 wand
 monocle

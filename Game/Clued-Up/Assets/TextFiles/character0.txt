@@ -1,7 +1,7 @@
 LINE 2 = object name; LINE 3 = long name
 Reginald
 Reginald Montgomery Ellsworth III
-Bloody goose.
+Aristocrat, gentleman, goose. He’s looking down his nose at you.
 feather
 monocle
 sandwich

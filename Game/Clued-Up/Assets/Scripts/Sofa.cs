@@ -8,6 +8,7 @@ public class Sofa : MonoBehaviour {
 	private bool hasClue = false;
 	private HUDController HUDC;
 	private GameObject containedClue;
+	private bool entered;
 
 	/// <summary>
 	/// Opens the cupboard to view contents & output to HUD text.
@@ -42,5 +43,23 @@ public class Sofa : MonoBehaviour {
 		clueObject.transform.position = this.gameObject.transform.position + new Vector3(-0.2f, -1f, 0f);
 		clueObject.SetActive (false);
 		this.containedClue = clueObject;
+	}
+
+
+
+
+	void OnMouseEnter(){
+		Cursor.SetCursor (Resources.Load<Texture2D> ("clueCursor"), Vector2.zero, CursorMode.Auto);
+		entered = true;
+	}
+	void OnMouseExit(){
+		Cursor.SetCursor (null, Vector2.zero, CursorMode.Auto);
+		entered = false;
+	}
+
+	void Update(){
+		if (entered) {
+			Cursor.SetCursor (Resources.Load<Texture2D> ("clueCursor"), Vector2.zero, CursorMode.Auto);
+		}
 	}
 }

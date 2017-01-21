@@ -60,7 +60,7 @@ public class Clue : MonoBehaviour {
 	/// The heads up display prefab
 	/// </summary>
 	private GameObject hud;
-
+	private bool entered;
 	/// <summary>
 	/// Returns a <see cref="System.String"/> that represents the current <see cref="Clue"/>.
 	/// </summary>
@@ -133,5 +133,26 @@ public class Clue : MonoBehaviour {
 		this.sprite =  Resources.Load<Sprite> ("Clues/" + objectName); //finds image in Resources with the same name as the clue & sets
 
 		this.transform.localScale = new Vector3(localScale,localScale,localScale);
+	}
+
+
+
+
+
+
+
+	void OnMouseEnter(){
+		Cursor.SetCursor (Resources.Load<Texture2D> ("clueCursor"), Vector2.zero, CursorMode.Auto);
+		entered = true;
+	}
+	void OnMouseExit(){
+		Cursor.SetCursor (null, Vector2.zero, CursorMode.Auto);
+		entered = false;
+	}
+
+	void Update(){
+		if (entered) {
+			Cursor.SetCursor (Resources.Load<Texture2D> ("clueCursor"), Vector2.zero, CursorMode.Auto);
+		}
 	}
 }

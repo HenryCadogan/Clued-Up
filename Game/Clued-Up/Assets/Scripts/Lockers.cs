@@ -1,6 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 public class Lockers : MonoBehaviour {
+
+	/// <summary>
+	/// Used in Lockers component of the GameObject children of Locker prefab to distinguish door colliders.
+	/// </summary>
+	public int doorID;
+
 	/// <summary>
 	/// 0 means locker is closed, 1 = locker is open
 	/// </summary>
@@ -14,6 +20,7 @@ public class Lockers : MonoBehaviour {
 	/// </summary>
 	private HUDController HUDC;
 	private GameObject containedClue;
+	private bool entered;
 
 	/// <summary>
 	/// Changes the locker sprite when one is opened.
@@ -42,35 +49,45 @@ public class Lockers : MonoBehaviour {
 			HUDC.displayHUDText ("The locker is empty.");
 		}
 	}
+
+	private void resizeDoorColliders(Vector2 spriteSize){
+		Vector3 pos = new Vector3();
+		pos.x = -0.5f;
+		pos.y = 0.6f;
+		gameObject.transform.GetChild(0).GetComponent<BoxCollider2D>().size = spriteSize; //change size of boxcollider to match
+		gameObject.transform.GetChild(0).localPosition = pos;
+		pos.x = 0.55f;
+		pos.y = 0.6f;
+		gameObject.transform.GetChild(1).GetComponent<BoxCollider2D>().size = spriteSize; //change size of boxcollider to match
+		gameObject.transform.GetChild(1).localPosition = pos;
+		pos.x = -0.5f;
+		pos.y = -0.63f;
+		gameObject.transform.GetChild(2).GetComponent<BoxCollider2D>().size = spriteSize; //change size of boxcollider to match
+		gameObject.transform.GetChild(2).localPosition = pos;
+		pos.x = 0.55f;
+		pos.y = -0.63f;
+		gameObject.transform.GetChild(3).GetComponent<BoxCollider2D>().size = spriteSize; //change size of boxcollider to match
+		gameObject.transform.GetChild(3).localPosition = pos;
+
+	}
+
 	/// <summary>
 	/// Initialise this instance.
 	/// </summary>
 	public void Initialise(){
 		gameObject.GetComponent<SpriteRenderer> ().sprite = Resources.Load<Sprite> ("Furniture/lockers");
-		Vector2 S = gameObject.GetComponent<SpriteRenderer>().sprite.bounds.size; //get size of sprite
-		gameObject.GetComponent<BoxCollider2D>().size = S; //change size of boxcollider to match
+		Vector2 spriteSize = gameObject.GetComponent<SpriteRenderer>().sprite.bounds.size; //get size of sprite
+		spriteSize.x *= 0.3f;
+		spriteSize.y *= 0.4f;
+		resizeDoorColliders (spriteSize);
+
 		this.name = "lockers";
 		this.HUDC = GameObject.Find("HUD").GetComponent<HUDController>();
-	}
-
-	void OnMouseDown(){
-		float mousex = Input.mousePosition.x;
-		float mousey = Input.mousePosition.y;
-		if ((mousex > 695f) && (mousex < 755f)) { // column1
-			if ((mousey > 245f) && (mousey < 345f)) {	//column1 row 1
-				openLocker(0);
-			} else if ((mousey > 140f) && (mousey < 245f)) { //column1 row 2
-				openLocker(2);
-			}
-		}else if ((mousex > 780f) && (mousex < 850f)) { // column2
-			if ((mousey > 245f) && (mousey < 345f)) {	//column2 row 1
-				openLocker(1);
-			} else if ((mousey > 140f) && (mousey < 245f)) { //column2 row 2
-				openLocker(3);
-			}
-		} 
-	}
-
+}
+	/// <summary>
+	/// Adds clue to one of the lockers at random.
+	/// </summary>
+	/// <param name="clueObject">Clue object.</param>
 	public void addClue(GameObject clueObject){
 		this.clueIsInLocker = Random.Range (0, 4);
 		switch (this.clueIsInLocker) {
@@ -92,5 +109,35 @@ public class Lockers : MonoBehaviour {
 		clueObject.SetActive (false); // hides clue behind door
 		this.containedClue = clueObject;
 
+	}
+
+
+	/// <summary>
+	/// OnMouseDown of a child (door) collider, the parent method of openLocker is called with the child (door)'s ID.
+	/// </summary>
+	void OnMouseDown(){
+		this.gameObject.transform.parent.GetComponent<Lockers> ().openLocker (this.doorID);
+		Destroy (this.gameObject);
+	}
+
+
+
+
+
+
+
+	void OnMouseEnter(){
+		Cursor.SetCursor (Resources.Load<Texture2D> ("clueCursor"), Vector2.zero, CursorMode.Auto);
+		entered = true;
+	}
+	void OnMouseExit(){
+		Cursor.SetCursor (null, Vector2.zero, CursorMode.Auto);
+		entered = false;
+	}
+
+	void Update(){
+		if (entered) {
+			Cursor.SetCursor (Resources.Load<Texture2D> ("clueCursor"), Vector2.zero, CursorMode.Auto);
+		}
 	}
 }

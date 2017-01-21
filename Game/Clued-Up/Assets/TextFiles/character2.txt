@@ -1,7 +1,7 @@
 LINE 2 = object name; LINE 3 = long name
 Kanye
 Kanye East
-Kanyeeeeee
+Famous American Rapper and entrepreneur, the controversial figure often sees himself in the attention of the media. 
 tape
 money
 microphone

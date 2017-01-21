@@ -17,6 +17,7 @@ public class Cupboard : MonoBehaviour {
 	private HUDController HUDC;
 	private GameObject containedClue;
 	private Vector3 cluePosOffset;
+	private bool entered;
 
 	/// <summary>
 	/// Changes the sprite when opened.
@@ -68,5 +69,23 @@ public class Cupboard : MonoBehaviour {
 		clueObject.SetActive (false); // hides clue behind door
 		this.containedClue = clueObject;
 
+	}
+
+
+
+
+	void OnMouseEnter(){
+		Cursor.SetCursor (Resources.Load<Texture2D> ("clueCursor"), Vector2.zero, CursorMode.Auto);
+		entered = true;
+	}
+	void OnMouseExit(){
+		Cursor.SetCursor (null, Vector2.zero, CursorMode.Auto);
+		entered = false;
+	}
+
+	void Update(){
+		if (entered) {
+			Cursor.SetCursor (Resources.Load<Texture2D> ("clueCursor"), Vector2.zero, CursorMode.Auto);
+		}
 	}
 }

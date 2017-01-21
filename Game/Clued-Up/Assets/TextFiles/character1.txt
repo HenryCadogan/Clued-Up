@@ -1,7 +1,7 @@
 LINE 2 = object name; LINE 3 = long name
 Gordon
 Gordon Lambsey
-Friggin lambs.
+TV chef and successful restaurateur. He’s got a fiery temper and isn’t afraid of confrontation.
 chefHat
 sandwich
 coal

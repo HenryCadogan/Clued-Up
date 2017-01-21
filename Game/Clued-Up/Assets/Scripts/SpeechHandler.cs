@@ -91,6 +91,7 @@ public class SpeechHandler : MonoBehaviour {
 	/// </summary>
 	void Start (){
 		Waiting ();
+		//TODO: REMOVE STUPID CAPITALIZATION
 		// Assign various variables from objects in scene.
 		ActiveDet = FindObjectOfType<Detective> ();
 		ActiveStory = FindObjectOfType<Story> ();

@@ -11,6 +11,9 @@ public class SceneTransitions : MonoBehaviour {
 	/// Will hold the transform position of Detective if the character tries to walk out of bounds
 	/// </summary>
 	private Vector3 pos;
+
+
+
 	/// <summary>
 	/// Fades to black and then loads a scene.
 	/// </summary>
@@ -147,5 +150,12 @@ public class SceneTransitions : MonoBehaviour {
 				break;
 			}
 		}
+	}
+	/// <summary>
+	/// Starts the scene transition coroutine. This is used from outside this class to load a new scene
+	/// </summary>
+	/// <param name="buildIndex">Build index.</param>
+	public void startSceneTransition(int buildIndex){
+		StartCoroutine(fadeLoadScene(buildIndex));
 	}
 }

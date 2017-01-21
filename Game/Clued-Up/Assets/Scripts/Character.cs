@@ -34,6 +34,10 @@ public class Character : MonoBehaviour {
 	/// Makes the object persistant throughout scenes
 	/// </summary>
 	public SpeechHandler SpeechUI;
+	public bool entered;
+
+
+	//TODO NEEDS SUMMARIES.
 	public string CritBranch;
 	public TextAsset SpeechFile;
 	public bool HasBeenTalkedTo = false;
@@ -47,6 +51,8 @@ public class Character : MonoBehaviour {
 	}
 
 	void OnMouseDown(){
+		Inventory inventory = GameObject.Find ("Detective").GetComponent<Inventory> ();
+		inventory.encounter (this);
 		SpeechUI.TurnOnSpeechUI ();
 	}
 
@@ -148,7 +154,7 @@ public class Character : MonoBehaviour {
 		this.description = lines [3];
 		this.isMurderer = false;
 		this.isVictim = false;
-		this.image = Resources.Load<Sprite> ("CharacterImages/" + characterIndex.ToString ());
+		this.image = Resources.Load<Sprite> ("CharacterImages/" + this.gameObject.name);
 
 		gameObject.AddComponent<ImportSpeech> ();
 		ImportSpeech SpeechHandler = GetComponent<ImportSpeech> ();
@@ -160,8 +166,6 @@ public class Character : MonoBehaviour {
 		gameObject.AddComponent<BoxCollider> ();
 		BoxCol = GetComponent<BoxCollider> ();
 		BoxCol.enabled = false;
-
-		//TODO set up character clues
 		this.characterClues = setCharacterClues(characterClues, lines.GetRange(4,lines.Count-4)); //uses all lines from character text file after name/description to get character clues
 }
 
@@ -173,6 +177,25 @@ public class Character : MonoBehaviour {
 		foreach (Transform child in gameObject.transform) {
 			GameObject.Destroy (child.gameObject);
 			BoxCol.enabled = false;
+		}
+	}
+
+
+
+
+
+	void OnMouseEnter(){
+		Cursor.SetCursor (Resources.Load<Texture2D> ("clueCursor"), Vector2.zero, CursorMode.Auto);
+		entered = true;
+	}
+	void OnMouseExit(){
+		Cursor.SetCursor (null, Vector2.zero, CursorMode.Auto);
+		entered = false;
+	}
+
+	void Update(){
+		if (entered) {
+			Cursor.SetCursor (Resources.Load<Texture2D> ("clueCursor"), Vector2.zero, CursorMode.Auto);
 		}
 	}
 }
