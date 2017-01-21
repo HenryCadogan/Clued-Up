@@ -109,6 +109,10 @@ public class ClickHotspot : MonoBehaviour {
 			messages.Add ("Where the magic happens.");
 			messages.Add ("It's not on, don't worry.");
 			break;
+		case "wetFloor":
+			messages.Add ("Ooops! Spillage!");
+			messages.Add ("Thou shalt not pass the sign. (Health and saftey gone mad etc.)");
+			break;
 
 		//room6 bar
 		case "beerTaps":
