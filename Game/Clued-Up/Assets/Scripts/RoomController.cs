@@ -119,6 +119,12 @@ public class RoomController : MonoBehaviour {
 			lockers.GetComponent<Lockers> ().Initialise ();
 			furnitureInRoom.Add (lockers);
 			break;
+		case 2: //train station
+			GameObject bin = Instantiate (Resources.Load ("Bin"), new Vector3 (7f, -3.7f, 2f), Quaternion.Euler (0, 0, 0)) as GameObject;
+			bin.transform.localScale = new Vector3 (0.7f, 0.7f, 1f);
+			bin.GetComponent<Bin> ().Initialise ();
+			furnitureInRoom.Add (bin);
+			break;
 		case 4: //kitchen
 			GameObject cupboardL = Instantiate (Resources.Load ("Cupboard"), new Vector3 (6.11f, -4.88f, 2f), Quaternion.Euler (0, 0, 0)) as GameObject;
 			cupboardL.transform.localScale = new Vector3 (0.95f, 1f, 1f);
@@ -186,6 +192,7 @@ public class RoomController : MonoBehaviour {
 		switch (roomIndex) {
 		case 2: //train station
 			locationList.Add (new Vector3 (-3.6f, -3.8f, 1f)); //on shelf
+			locationList.Add (new Vector3 (4f, -4f, 1f)); //on bench
 			break;
 		case 3: //cafe
 			locationList.Add (new Vector3 (-4.6f, -3f, 1f)); //on shelf
@@ -229,6 +236,8 @@ public class RoomController : MonoBehaviour {
 					furnitureInRoom [locationIndex].GetComponent<Cupboard> ().addClue (clue);
 				} else if (furnitureInRoom [locationIndex].GetComponent<Sofa> () != null) {
 					furnitureInRoom [locationIndex].GetComponent<Sofa> ().addClue (clue);
+				}else if (furnitureInRoom [locationIndex].GetComponent<Bin> () != null) {
+						furnitureInRoom [locationIndex].GetComponent<Bin> ().addClue (clue);
 				}
 			}
 		} else
@@ -246,7 +255,6 @@ public class RoomController : MonoBehaviour {
 
 		story = GameObject.Find("Story").GetComponent<Story>(); // references persistant object story
 		story.addVisitedRoom(roomIndex); //used to update map room availability
-		print("ADDVISITEDROOM("+roomIndex+")");
 
 		//Make detective slightly lower in screen
 		Vector3 pos = detective.transform.position;
