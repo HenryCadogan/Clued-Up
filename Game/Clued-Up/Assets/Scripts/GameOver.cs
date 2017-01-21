@@ -13,7 +13,7 @@ public class GameOver : MonoBehaviour {
 		Text TextObject = GetComponent<Text> ();
 		string GameOverText = "On this day, " + Murderer.longName + " was arrested for the murder of "
 		                      + Victim.longName + " at the Ron Cooke Hub.\r\nThe murder was carried out using a " + GameStory.MurderWeapon
-		                      + ".\r\nDuring the interrogation, it was revealed that the murder had something to do with a "
+			+ ".\r\nDuring the interrogation, it was revealed that the murder had something to do with a " + GameStory.MotiveClue
 		                      + ".\r\nYour work being done, you headed home to your planet.\r\nIt needs you.";
 		TextObject.text = GameOverText;
 	}

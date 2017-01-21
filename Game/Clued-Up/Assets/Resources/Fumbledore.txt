@@ -241,16 +241,19 @@ $You're a wise goose, surely you know about this [?
 #Accuse-NoItems
 $You did it
 £You have no proof
-$fuk
+$...Darn
 #Accuse-WrongChar
 $You did it
 £No
-$fuk
+$...Darn
 #Accuse-Motive
 $You did it
 £Why would I do it
-$fuk
+$...Darn
 #Accuse-Weapon
 $You did it
 £With what
-$fuk
+$...Darn
+#Accuse-Right
+$You did it
+£YOU'LL NEVER TAKE ME ALIVE

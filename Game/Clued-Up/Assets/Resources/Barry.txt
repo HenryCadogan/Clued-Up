@@ -77,7 +77,6 @@ $You're a wise goose, surely you know about this [?
 $Can't I hold on to it for the investigation?
 £Quack! (Absolutely not! I need it!)
 $...
-£...
 $(You keep the monocle.)
 
 #Aggressive-Feather
@@ -230,8 +229,6 @@ $Hey, tell me about this [.
 £Quack. (I do believe that's my money.)
 £Quack. (Sometimes I have so much, it just falls out of my feathers.)
 $...
-£...
-$...
 £Quack. (No, you cannot have any of it.)
 #Manipulative-Money
 $You're a wise goose, surely you know about this [?
@@ -241,16 +238,19 @@ $You're a wise goose, surely you know about this [?
 #Accuse-NoItems
 $You did it
 £You have no proof
-$fuk
+$...Darn
 #Accuse-WrongChar
 $You did it
 £No
-$fuk
+$...Darn
 #Accuse-Motive
 $You did it
 £Why would I do it
-$fuk
+$...Darn
 #Accuse-Weapon
 $You did it
 £With what
-$fuk
+$...Darn
+#Accuse-Right
+$You did it
+£YOU'LL NEVER TAKE ME ALIVE
