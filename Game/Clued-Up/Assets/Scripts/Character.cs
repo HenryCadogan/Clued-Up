@@ -34,6 +34,9 @@ public class Character : MonoBehaviour {
 	/// Makes the object persistant throughout scenes
 	/// </summary>
 	public SpeechHandler SpeechUI;
+
+
+	//TODO NEEDS SUMMARIES.
 	public string CritBranch;
 	public TextAsset SpeechFile;
 	public bool HasBeenTalkedTo = false;
@@ -47,6 +50,8 @@ public class Character : MonoBehaviour {
 	}
 
 	void OnMouseDown(){
+		Inventory inventory = GameObject.Find ("Inventory").GetComponent<Inventory> ();
+		inventory.encounter (this);
 		SpeechUI.TurnOnSpeechUI ();
 	}
 
@@ -148,7 +153,6 @@ public class Character : MonoBehaviour {
 		this.description = lines [3];
 		this.isMurderer = false;
 		this.isVictim = false;
-		print ("CharacterImages/" + this.gameObject.name);
 		this.image = Resources.Load<Sprite> ("CharacterImages/" + this.gameObject.name);
 
 		gameObject.AddComponent<ImportSpeech> ();

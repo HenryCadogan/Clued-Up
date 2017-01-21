@@ -1,10 +1,18 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Story.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Clue.cs">
     <Files>
-      <File FileName="Assets\Scripts\Story.cs" Line="59" Column="2" />
-      <File FileName="Assets\Scripts\SceneTransitions.cs" Line="26" Column="31" />
-      <File FileName="Assets\Scripts\MapController.cs" Line="18" Column="1" />
+      <File FileName="Assets/Scripts/Clue.cs" Line="76" Column="36" />
+      <File FileName="Assets/Scripts/Room1Controller.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Story.cs" Line="305" Column="26" />
+      <File FileName="Assets/Scripts/Character.cs" Line="160" Column="5" />
+      <File FileName="Assets/Scripts/Inventory.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/HUDController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/RoomController.cs" Line="221" Column="74" />
+      <File FileName="Assets/Scripts/Cupboard.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Bar.cs" Line="23" Column="1" />
+      <File FileName="Assets/Scripts/UpdateCluesInfo.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Detective.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

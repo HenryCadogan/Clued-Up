@@ -24,17 +24,26 @@ public class Inventory : MonoBehaviour {
 		return collectedClueNames.Contains (clueName);
 	}
 	/// <summary>
-	/// Collect the specified clue by adding it to the inventory list
+	/// Collect the specified clue by adding it to the inventory list, if not there already.
 	/// </summary>
 	/// <param name="clue">The clue to collect</param>
 	public void collect(Clue clue){
-		Debug.Log (clue.name + " COLLECTED");
-		collectedClueNames.Add (clue.name);
+		if (!this.isCollected (clue.name)) {
+			Debug.Log (clue.name + " COLLECTED");
+			collectedClueNames.Add (clue.name);
+		}else
+			throw new System.ArgumentException ("Clue " + clue.name + " has already been collected. This is strictly not allowed.");
 	}
 
+	/// <summary>
+	/// Encounter the specified character by adding name to encounteredCharacterNames if not there already.
+	/// </summary>
+	/// <param name="character">Character.</param>
 	public void encounter(Character character){
-		Debug.Log (character.name + " ENCOUNTERED");
-		encounteredCharacterNames.Add (character.name);
+		if(!this.encounteredCharacterNames.Contains(character.name)){
+			Debug.Log (character.name + " ENCOUNTERED");
+			encounteredCharacterNames.Add (character.name);
+		}
 	}
 }
 

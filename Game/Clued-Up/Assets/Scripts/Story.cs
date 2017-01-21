@@ -25,9 +25,12 @@ public class Story : MonoBehaviour {
 	/// </summary>
 	public Dictionary<int, List<int>> charactersInRoom = new Dictionary<int,List<int>>();
 	/// <summary>
-	/// The murderer for this instance of the story
+	/// The murder weapon for this instance of the story
 	/// </summary>
 	public string MurderWeapon;
+	/// <summary>
+	/// The motive clue for this instance.
+	/// </summary>
 	public string MotiveClue;
 	public GameObject murderer;
 	/// <summary>
@@ -51,23 +54,40 @@ public class Story : MonoBehaviour {
 	/// </summary>
 	private static int NUMBER_OF_DETECTIVES = 3;
 	/// <summary>
-	/// Makes the object persistant throughout scenes.
+	/// List of all visited rooms to keep track of map.
 	/// </summary>
+	private List<int> visitedRooms = new List<int>();
 
 
-	private List<int> visitedRooms =(null);
 
 
-	public List<int> getVisitedRooms(){
-		return visitedRooms;
+
+
+
+	/// <summary>
+	/// </summary>
+	/// <returns><c>true</c>, if room index has been visited, <c>false</c> otherwise.</returns>
+	/// <param name="roomIndex">Room index.</param>
+	public bool isVisited(int roomIndex){
+		if(visitedRooms.Contains (roomIndex)){
+			return true;
+		}else{
+			return false;
+		}
 	}
-
+	/// <summary>
+	/// Adds the roomIndex to visitedRooms if not there already.
+	/// </summary>
+	/// <param name="roomIndex">Room index.</param>
 	public void addVisitedRoom(int roomIndex){
 		if(!visitedRooms.Contains(roomIndex)) {
+			print ("adding new roomindex");
 			visitedRooms.Add(roomIndex);
 		}
 	}
-
+	/// <summary>
+	/// Keeps only 1 instance ever, therefore it can survive between scenes without having several scenes.
+	/// </summary>
 	void Awake () {
 		if (Instance == null)
 		{
@@ -238,7 +258,11 @@ public class Story : MonoBehaviour {
 		this.victim.GetComponent<Character> ().isVictim = true;
 		this.murderer.GetComponent<Character> ().isMurderer = true;
 	}
-
+	/// <summary>
+	/// Gets information relevent to a character name.
+	/// </summary>
+	/// <returns>The character information in Character for characterName.</returns>
+	/// <param name="name">Name of character object.</param>
 	public Character getCharacterInformation(string name){
 		if (victim.name == name) {
 			return victim.GetComponent<Character> ();
@@ -465,7 +489,10 @@ public class Story : MonoBehaviour {
 		foreach (string clueName in murdererClueNames)
 			cluesList.Add (clueName);
 	}
-
+	/// <summary>
+	/// Selects one of many motive clues.
+	/// </summary>
+	/// <param name="cluesList">Clues list.</param>
 	private void setMotiveClue(List<string> cluesList){
 		List<string> motiveClueNames = new List<string> ();
 		motiveClueNames.Add ("diary");
@@ -475,7 +502,10 @@ public class Story : MonoBehaviour {
 
 		cluesList.Add(motiveClueNames [Random.Range (0, motiveClueNames.Count)]);
 	}
-
+	/// <summary>
+	/// Selects one of many weapons.
+	/// </summary>
+	/// <param name="cluesList">Clues list.</param>
 	private void setWeaponClue(List<string> cluesList){
 		List<string> weaponClueNames = new List<string> ();
 		weaponClueNames.Add ("gun");

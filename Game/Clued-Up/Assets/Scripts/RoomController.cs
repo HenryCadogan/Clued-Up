@@ -245,6 +245,8 @@ public class RoomController : MonoBehaviour {
 		scaleDetective (detective, detectiveSizeByRoom[roomIndex]);
 
 		story = GameObject.Find("Story").GetComponent<Story>(); // references persistant object story
+		story.addVisitedRoom(roomIndex); //used to update map room availability
+		print("ADDVISITEDROOM("+roomIndex+")");
 
 		//Make detective slightly lower in screen
 		Vector3 pos = detective.transform.position;

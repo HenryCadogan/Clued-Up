@@ -23,7 +23,6 @@ public class SceneTransitions : MonoBehaviour {
 		overlayPanel.SetActive (true);
 		overlayPanel.GetComponent<Image> ().CrossFadeAlpha (1f, 1f, false);
 		story = GameObject.Find("Story").GetComponent<Story>();
-		story.addVisitedRoom(scene);
 		yield return new WaitForSeconds (1);
 		SceneManager.LoadScene (scene);
 	}
