@@ -36,7 +36,7 @@ public class UpdateButtons : MonoBehaviour {
 					CharacterButtons.transform.GetChild (0).GetChild (i).GetComponent<Button> ().interactable = true;
 
 				} else {
-					CharacterButtons.transform.GetChild (0).GetChild (i).GetChild (0).GetComponent<Text> ().text = story.getCharacterInformation (inventory.encounteredCharacterNames [i]).longName;
+					CharacterButtons.transform.GetChild (1).GetChild (i - 4).GetChild (0).GetComponent<Text> ().text = story.getCharacterInformation (inventory.encounteredCharacterNames [i]).longName;
 					CharacterButtons.transform.GetChild (1).GetChild (i - 4).GetComponent<Button> ().interactable = true;
 				}
 			} 
