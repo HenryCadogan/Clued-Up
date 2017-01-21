@@ -47,10 +47,4 @@ public class HUDController : MonoBehaviour {
 	public void displayHUDText(string text){
 		StartCoroutine(fadeHUDText(text));
 	}
-	/// <summary>
-	/// Tests the inventory on click of notebook button. TEST TEST TEST REMOVE LATER!!
-	/// </summary>
-	public void testInventoryOnClickOfNotebookButton(){
-		GameObject.Find ("Detective").GetComponent<Inventory> ().collectedClueNames.ForEach(Debug.Log);	//print list of all collected clues
-	}
 }
