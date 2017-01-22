@@ -301,6 +301,7 @@ public class RoomController : MonoBehaviour {
 	/// Then assigns one clue to this location in a room by either changing clue's location, or testing which kind of furniture it is & moving it there.
 	/// </summary>
 	private void assignCluesLocations(GameObject clue){
+		print ("ASSIGNING CLUE LOCATIONS TO " + clue.name);
 		List<Vector3> roomLocations = getRoomClueLocations (); //possible locations that are not furniture
 		int totalLocationsCount = roomLocations.Count + furnitureInRoom.Count;
 
@@ -320,6 +321,7 @@ public class RoomController : MonoBehaviour {
 						furnitureInRoom [locationIndex].GetComponent<Bin> ().addClue (clue);
 				}
 			}
+			print ("FINISHED ASSIGNING CLUE LOCATIONS");
 		} else
 			throw new System.NotSupportedException ("Room " + roomIndex + " does not support clues.");
 		}
@@ -361,7 +363,7 @@ public class RoomController : MonoBehaviour {
 		getCharacters ();
 		fengShui ();  
 		getClues ();
-		if ((cluesInRoom.Count > 0) || (roomIndex != 0) ) {
+		if ((cluesInRoom.Count > 0) && (roomIndex != 0) ) {
 			assignCluesLocations (cluesInRoom [0]);
 		} else {
 			print ("No clues in this room");
