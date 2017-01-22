@@ -351,11 +351,10 @@ public class Story : MonoBehaviour {
 		print ("CALL: getClueInformation("+ clueName+")");
 		GameObject newClue = new GameObject ();
 		newClue.AddComponent<Clue> ();
+		clueName = clueName.Trim ();
 		switch (clueName) {
 		case "chalkOutline":
-			newClue.GetComponent<Clue> ().initialise ("chalkOutline", "Microphone", "Someone wants to make themselves heard");
-
-			//newClue.GetComponent<Clue> ().initialise ("chalkOutline", "ChalkOutline", "A chalk outline of the body of " + this.getVictim ().longName + "!", disappearWhenClicked:true);
+			newClue.GetComponent<Clue> ().initialise ("chalkOutline", "ChalkOutline", "A chalk outline of the body of " + this.getVictim ().longName + "!", disappearWhenClicked:true);
 			break;
 		case "microphone":
 			newClue.GetComponent<Clue> ().initialise ("microphone", "Microphone", "Someone wants to make themselves heard");
