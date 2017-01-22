@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class UpdateButtons : MonoBehaviour {
+public class UpdateNotebookButtons : MonoBehaviour {
     private Inventory inventory;
 	private Story story;
     // Use this for initialization

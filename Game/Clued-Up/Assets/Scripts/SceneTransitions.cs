@@ -71,7 +71,7 @@ public class SceneTransitions : MonoBehaviour {
 				break;
 
 			case "Room1R":
-				if (GameObject.Find ("SceneController").GetComponent<Room1Controller> ().canProgress ()){
+				if (GameObject.Find ("SceneController").GetComponent<RoomController> ().canProgress ()){
 					detective.GetComponent<Detective> ().walkInDirection = 1;
 					StartCoroutine (fadeLoadScene (4));
 				} else {

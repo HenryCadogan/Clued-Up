@@ -77,8 +77,8 @@
      <Compile Include="Assets\Scripts\SpeechHandler.cs" />
      <Compile Include="Assets\Scripts\Story.cs" />
      <Compile Include="Assets\Scripts\Train.cs" />
-     <Compile Include="Assets\Scripts\UpdateButtons.cs" />
-     <Compile Include="Assets\Scripts\UpdateCluesInfo.cs" />
+     <Compile Include="Assets\Scripts\UpdateNotebookButtons.cs" />
+     <Compile Include="Assets\Scripts\UpdateNotebookInfo.cs" />
      <Compile Include="Assets\Scripts\makePersistant.cs" />
      <Compile Include="Assets\UnityTestTools\Assertions\AssertionComponent.cs" />
      <Compile Include="Assets\UnityTestTools\Assertions\AssertionException.cs" />

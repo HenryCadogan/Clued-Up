@@ -313,7 +313,7 @@ public class Story : MonoBehaviour {
 					charactersInCurrentRoom.Add (this.aliveCharacters [characterIndex]);
 				}
 			}
-		} else
+		} else if(room!= 0)
 			throw new System.IndexOutOfRangeException ("Room out of range");
 		return charactersInCurrentRoom;
 	}

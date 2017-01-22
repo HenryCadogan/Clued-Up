@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class UpdateCluesInfo : MonoBehaviour {
+public class UpdateNotebookInfo : MonoBehaviour {
 	private Inventory inventory;
 	private Story story;
 
@@ -31,6 +31,7 @@ public class UpdateCluesInfo : MonoBehaviour {
 		nameText.text = activeClue.longName;
 		descriptionText.text = activeClue.description;
 		notebookImage.sprite = activeClue.sprite;
+		Destroy (activeClue);
 	}
 
 	public void UpdateCharacterInformation(GameObject buttonPressed)
@@ -39,12 +40,11 @@ public class UpdateCluesInfo : MonoBehaviour {
 		int index = buttonPressed.transform.GetSiblingIndex ();
 		int buttonsInColumn = 4;
 		int parent = buttonPressed.transform.parent.GetSiblingIndex ();
-		//The clue buttons are split into two panels on the clue button panels. The LHS (col1) and RHS (col2)
-		//As the top buttons initially would have the same index, we add on the parent index (0 or 1) * (how many buttons in each column)
 		index = index + (parent * buttonsInColumn);
 		Character activeChar = story.getCharacterInformation (inventory.encounteredCharacterNames [index]);
 		nameText.text = activeChar.longName;
 		descriptionText.text = activeChar.description;
 		notebookImage.sprite = activeChar.image; 
+		Destroy (activeChar);
 	}
 }

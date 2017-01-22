@@ -34,7 +34,7 @@ public class Bin : MonoBehaviour {
 			this.showClue ();
 			this.hasClue = false;
 		} else {
-			HUDC.displayHUDText ("There's nothing in the sofa.");
+			HUDC.displayHUDText ("Nothing worth collecting in here. Unless you have a crisp packet collection.");
 		}
 	}
 

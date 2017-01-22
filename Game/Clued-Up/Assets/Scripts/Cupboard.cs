@@ -62,7 +62,10 @@ public class Cupboard : MonoBehaviour {
 			HUDC.displayHUDText ("The " + this.longName + " is empty.");
 		}
 	}
-
+	/// <summary>
+	/// Adds clue to be revealed when furniture clicked.
+	/// </summary>
+	/// <param name="clueObject">Clue object.</param>
 	public void addClue(GameObject clueObject){
 		this.hasClue = true;
 		clueObject.transform.position = this.gameObject.transform.position + cluePosOffset;
