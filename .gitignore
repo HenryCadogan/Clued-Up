@@ -45,3 +45,4 @@ ehthumbs.db
     trustExitCode = false
     cmd = '<path to UnityYAMLMerge>' merge -p "$BASE" "$REMOTE" "$LOCAL" "$MERGED"
 *.csproj
+*.sln
