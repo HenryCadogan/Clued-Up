@@ -351,6 +351,7 @@ public class Story : MonoBehaviour {
 		print ("GET CLUE INFORMATION " + clueName);
 		GameObject newClue = new GameObject ();
 		newClue.AddComponent<Clue> ();
+		print (newClue.name);
 		switch (clueName) {
 		case "chalkOutline":
 			newClue.GetComponent<Clue> ().initialise ("chalkOutline", "Chalk Outline", "A chalk outline of the body of " + this.getVictim ().longName + "!!", disappearWhenClicked:false);
@@ -539,7 +540,7 @@ public class Story : MonoBehaviour {
 	private void setClueInformation(string clueName, GameObject newClue){
 		Clue clueInfo = getClueInformation (clueName).GetComponent<Clue>(); //sets up temp Clue that stores all properties
 		newClue.GetComponent<Clue>().initialise(clueInfo.name,clueInfo.longName, clueInfo.description, clueInfo.isWeapon, clueInfo.isMotive, clueInfo.disappearWhenClicked, clueInfo.transform.localScale.x);
-		GameObject.Destroy (clueInfo.gameObject); //destroys temp Clue GameObject to remove it from scene
+		//GameObject.Destroy (clueInfo.gameObject); //destroys temp Clue GameObject to remove it from scene TODO: removed for debugging - toby
 	}
 	/// <summary>
 	/// Instanciates all the clues in a particular room
