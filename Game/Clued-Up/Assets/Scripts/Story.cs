@@ -352,6 +352,7 @@ public class Story : MonoBehaviour {
 		GameObject newClue = new GameObject ();
 		newClue.AddComponent<Clue> ();
 		print (newClue.name);
+		clueName = clueName.Trim();
 		switch (clueName) {
 		case "chalkOutline":
 			newClue.GetComponent<Clue> ().initialise ("chalkOutline", "Chalk Outline", "A chalk outline of the body of " + this.getVictim ().longName + "!!", disappearWhenClicked:false);
