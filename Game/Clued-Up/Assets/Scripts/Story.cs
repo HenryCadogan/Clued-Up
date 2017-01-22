@@ -495,8 +495,8 @@ public class Story : MonoBehaviour {
 		motiveClueNames.Add ("recorder");
 		motiveClueNames.Add ("polaroid");
 		motiveClueNames.Add ("letter");
-
-		cluesList.Add(motiveClueNames [Random.Range (0, motiveClueNames.Count)]);
+		MotiveClue = motiveClueNames [Random.Range (0, motiveClueNames.Count)];
+		cluesList.Add(MotiveClue);
 	}
 	/// <summary>
 	/// Selects one of many weapons.
@@ -508,8 +508,8 @@ public class Story : MonoBehaviour {
 		weaponClueNames.Add ("salmon");
 		weaponClueNames.Add ("hammer");
 		weaponClueNames.Add ("knife");
-
-		cluesList.Add(weaponClueNames [Random.Range (0, weaponClueNames.Count)]);
+		MurderWeapon = weaponClueNames [Random.Range (0, weaponClueNames.Count)];
+		cluesList.Add(MurderWeapon);
 	}
 
 

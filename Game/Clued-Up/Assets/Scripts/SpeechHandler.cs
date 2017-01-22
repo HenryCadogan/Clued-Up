@@ -200,7 +200,7 @@ public class SpeechHandler : MonoBehaviour {
 		}
 	}
 
-	//Starts a branch from a trait button.
+	///Starts a branch from a trait button.
 	public void QuestionBranch(Button SendingButton){
 		// Set the branch name to be the trait combined with the item dev name.
 		BranchName = SendingButton.name;
@@ -269,7 +269,10 @@ public class SpeechHandler : MonoBehaviour {
 		UpdateClueName (PlayerInv.collectedClueNames [ClueIndex]);
 	}
 
-	// Updates the displayed clue name.
+	/// <summary>
+	/// Updates the name of the clue on the UI
+	/// </summary>
+	/// <param name="ClueName">The dev name of the clue to be shown.</param>
 	void UpdateClueName (string ClueName){
 		ActiveClue = ActiveStory.getClueInformation (ClueName).GetComponent<Clue> ();
 		ClueText.text = ActiveClue.longName;
