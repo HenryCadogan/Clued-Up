@@ -81,7 +81,6 @@ public class Story : MonoBehaviour {
 	/// <param name="roomIndex">Room index.</param>
 	public void addVisitedRoom(int roomIndex){
 		if(!visitedRooms.Contains(roomIndex)) {
-			print ("adding new roomindex");
 			visitedRooms.Add(roomIndex);
 		}
 	}
@@ -348,13 +347,12 @@ public class Story : MonoBehaviour {
 	/// <returns>The clue information as a GameObect with Clue component</returns>
 	/// <param name="clueName">Name of the clue to lookup</param>
 	public GameObject getClueInformation(string clueName){
-		print ("CALL: getClueInformation("+ clueName+")");
 		GameObject newClue = new GameObject ();
 		newClue.AddComponent<Clue> ();
 		clueName = clueName.Trim ();
 		switch (clueName) {
 		case "chalkOutline":
-			newClue.GetComponent<Clue> ().initialise ("chalkOutline", "ChalkOutline", "A chalk outline of the body of " + this.getVictim ().longName + "!", disappearWhenClicked:true);
+			newClue.GetComponent<Clue> ().initialise ("chalkOutline", "ChalkOutline", "A chalk outline of the body of " + this.getVictim ().longName + "!", disappearWhenClicked:false);
 			break;
 		case "microphone":
 			newClue.GetComponent<Clue> ().initialise ("microphone", "Microphone", "Someone wants to make themselves heard");

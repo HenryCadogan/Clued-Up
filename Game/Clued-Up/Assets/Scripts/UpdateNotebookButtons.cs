@@ -13,6 +13,9 @@ public class UpdateNotebookButtons : MonoBehaviour {
     public void updateClueButtonText(GameObject ClueButtons){
 		print ("BEGIN: updateClueButtonText");
         inventory = GameObject.Find("Detective").GetComponent<Inventory>();
+		foreach (string cluename in inventory.collectedClueNames) {
+			print ("INVENTORY: " + cluename);
+		}
 		if (inventory.collectedClueNames.Count > 0) {
 			for (int i = 0; i < inventory.collectedClueNames.Count; i++) {
 				if (i < 4) {

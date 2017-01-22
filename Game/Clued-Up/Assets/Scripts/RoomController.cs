@@ -163,8 +163,6 @@ public class RoomController : MonoBehaviour {
 		List<GameObject> charactersInRoom = new List<GameObject> ();
 		if (story.getCharactersInRoom (roomIndex).Count > 0) {
 			charactersInRoom = story.getCharactersInRoom (roomIndex);
-		} else {
-			Debug.Log ("No characters this time");
 		}
 
 		switch (charactersInRoom.Count) {

@@ -122,7 +122,6 @@ public class Clue : MonoBehaviour {
 	/// <param name="isMotive">If <c>true</c> then this clue is motive.</param>
 	/// <param name="disappearWhenClicked">If set to <c>true</c>, the clue will disappear when clicked.</param>
 	public void initialise(string objectName, string name, string description, bool isWeapon=false, bool isMotive=false, bool disappearWhenClicked=true, float localScale = 0.25f){
-		print("BEGIN: initialise("+objectName +", " + name + "...)");
 		this.hud = GameObject.Find ("HUD");
 
 		this.name = objectName;

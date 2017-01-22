@@ -31,7 +31,7 @@ public class UpdateNotebookInfo : MonoBehaviour {
 		nameText.text = activeClue.longName;
 		descriptionText.text = activeClue.description;
 		notebookImage.sprite = activeClue.sprite;
-		Destroy (activeClue);
+		//Destroy (activeClue);
 	}
 
 	public void UpdateCharacterInformation(GameObject buttonPressed)
@@ -41,10 +41,11 @@ public class UpdateNotebookInfo : MonoBehaviour {
 		int buttonsInColumn = 4;
 		int parent = buttonPressed.transform.parent.GetSiblingIndex ();
 		index = index + (parent * buttonsInColumn);
+		print ("CHARACTER: " + inventory.encounteredCharacterNames [index]);
 		Character activeChar = story.getCharacterInformation (inventory.encounteredCharacterNames [index]);
 		nameText.text = activeChar.longName;
 		descriptionText.text = activeChar.description;
 		notebookImage.sprite = activeChar.image; 
-		Destroy (activeChar);
+		//Destroy (activeChar);
 	}
 }
