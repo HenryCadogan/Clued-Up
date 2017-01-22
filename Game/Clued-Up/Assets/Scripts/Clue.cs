@@ -122,6 +122,7 @@ public class Clue : MonoBehaviour {
 	/// <param name="isMotive">If <c>true</c> then this clue is motive.</param>
 	/// <param name="disappearWhenClicked">If set to <c>true</c>, the clue will disappear when clicked.</param>
 	public void initialise(string objectName, string name, string description, bool isWeapon=false, bool isMotive=false, bool disappearWhenClicked=true, float localScale = 0.25f){
+		print ("INITIALISE " + name);
 		this.hud = GameObject.Find ("HUD");
 
 		this.name = objectName;
@@ -131,8 +132,9 @@ public class Clue : MonoBehaviour {
 		this.isMotive = isMotive;
 		this.disappearWhenClicked = disappearWhenClicked;
 		this.sprite =  Resources.Load<Sprite> ("Clues/" + objectName); //finds image in Resources with the same name as the clue & sets
-
+		print ("SPRITE SET");
 		this.transform.localScale = new Vector3(localScale,localScale,localScale);
+		print ("TRANSFORM SET & RETURN");
 	}
 
 

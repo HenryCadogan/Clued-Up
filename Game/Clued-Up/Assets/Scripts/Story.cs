@@ -348,6 +348,7 @@ public class Story : MonoBehaviour {
 	/// <returns>The clue information as a GameObect with Clue component</returns>
 	/// <param name="clueName">Name of the clue to lookup</param>
 	public GameObject getClueInformation(string clueName){
+		print ("GET CLUE INFORMATION " + clueName);
 		GameObject newClue = new GameObject ();
 		newClue.AddComponent<Clue> ();
 		switch (clueName) {
