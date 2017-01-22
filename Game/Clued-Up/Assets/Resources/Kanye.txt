@@ -1,7 +1,6 @@
 #INTRO
 $Who are you?
 £...
-$...
 £...Oh, you were being serious?
 $What do you mean?
 £Well, everybody knows who I am.
@@ -9,7 +8,6 @@ $What do you mean?
 $...So who are you?
 £Kanye East, the greatest rapper in the world, has no time for people like you.
 $...
-£...
 $...Did you know ]?
 £They sound like one of my fans.
 $How can you tell?
@@ -144,6 +142,37 @@ $No?
 $Hey, tell me about this [.
 £I can't say I know about it.
 #Manipulative-Chain
+$You're a world renowned rapper, surely you know about this [?
+£You're right, but I can't say I know what that [ is.
+
+#Aggressive-Mixtape
+$Tell me what you know about this [.
+£Hey! That's my mixtape!
+£I was looking for that.
+£Where did you find it?
+$I can't say.
+£Do you want to know where you can find it?
+
+#Rude-Mixtape
+$What's this [?
+£What, you think I know what that is?
+#Friendly-Mixtape
+$Hey, do you know anything about this [?
+£Do you want it signed?
+$No?
+£Then why are you showing it to me?
+#Calm-Mixtape
+$Could you tell me about this [?
+£I don't know about it.
+#Comedic-Mixtape
+$You wouldn't happen to know about this [, would you?
+£Do you want me to sign it or something?
+$No?
+£Then why would I care about it?
+#Annoying-Mixtape
+$Hey, tell me about this [.
+£I can't say I know about it.
+#Manipulative-Mixtape
 $You're a world renowned rapper, surely you know about this [?
 £You're right, but I can't say I know what that [ is.
 
