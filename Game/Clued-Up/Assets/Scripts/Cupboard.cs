@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEditor;
 public class Cupboard : MonoBehaviour {
 	/// <summary>
 	/// <c>T<c>/ if cupboard is open

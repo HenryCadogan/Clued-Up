@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.RegularExpressions;
 /// <summary>
 /// Character class
 /// </summary>
@@ -142,12 +143,8 @@ public class Character : MonoBehaviour {
 	/// </summary>
 	///<param name="characterIndex">Index of character to be initialised</param>
 	public void initialise(int characterIndex){
-		StreamReader stream = new StreamReader("Assets/TextFiles/character" + characterIndex.ToString() + ".txt");
-		List<string> lines = new List<string> ();
-		while(!stream.EndOfStream){
-			lines.Add(stream.ReadLine());
-		}
-		stream.Close( );
+		string[] linesArray = Regex.Split(Resources.Load<TextAsset>("TextFiles/character" + characterIndex.ToString()).text, "\n");
+		List<string> lines = new List<string> (linesArray);
 
 		this.gameObject.name = lines[1]; //file contains comment in line 0
 		this.longName = lines [2];
@@ -159,6 +156,7 @@ public class Character : MonoBehaviour {
 		gameObject.AddComponent<ImportSpeech> ();
 		ImportSpeech SpeechHandler = GetComponent<ImportSpeech> ();
 		TextAsset TestAsset =(TextAsset)Resources.Load (lines [1]);
+		print ("Asset = " + lines [1]);
 		SpeechHandler.asset = TestAsset;
 		SpeechHandler.ActualStart ();
 		SpeechRef = GetComponent<ImportSpeech> ();

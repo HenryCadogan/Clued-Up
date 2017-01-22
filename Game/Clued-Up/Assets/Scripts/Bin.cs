@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEditor;
 public class Bin : MonoBehaviour {
 	/// <summary>
 	/// <c>T</c> if clue is in the sofa

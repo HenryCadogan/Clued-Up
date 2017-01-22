@@ -3,7 +3,7 @@ using System.Collections;
 using System.IO;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
-
+using System.Text.RegularExpressions;
 /// <summary>
 /// Persistant story class that stores all game/ global variables and initialises Clues and Character objects
 /// </summary>
@@ -106,13 +106,8 @@ public class Story : MonoBehaviour {
 	/// <returns>A line from the file (string)</returns>
 	/// <param name="filename">Path to file (from root)</param>
 	private string randomLineFrom(string filename){
-		StreamReader stream = new StreamReader(filename);
-		List<string> lines = new List<string> ();
-
-		while(!stream.EndOfStream){
-			lines.Add(stream.ReadLine());
-		}
-		stream.Close( );
+		string[] linesArray = Regex.Split (Resources.Load<TextAsset> (filename).text, "\n");
+		List<string> lines = new List<string> (linesArray);
 		return lines [Random.Range (0, lines.Count)];
 	}
 
@@ -139,7 +134,7 @@ public class Story : MonoBehaviour {
 			throw new System.ArgumentOutOfRangeException ("Weather out of range");
 		}
 
-		string intro1 = "It was a " + weatherString + randomLineFrom("Assets/TextFiles/intro1.txt");
+		string intro1 = "It was a " + weatherString + randomLineFrom("TextFiles/intro1");
 		return intro1;
 	}
 
@@ -149,7 +144,7 @@ public class Story : MonoBehaviour {
 	/// <returns>2nd introductory sentence (string)</returns>
 	/// <param name="introIndex">Index of the intro file to read a line from</param>
 	public string getIntro(int introIndex){
-		return randomLineFrom("Assets/TextFiles/intro"+introIndex.ToString()+".txt");
+		return randomLineFrom("TextFiles/intro"+introIndex.ToString());
 	}
 	/// <summary>
 	/// Sets the weather for the rest of the game

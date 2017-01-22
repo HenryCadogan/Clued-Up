@@ -100,7 +100,7 @@ public class IntroController : MonoBehaviour {
 			snowGenerator.SetActive (true);
 		}
 		backgroundPlane.material = materialArray [weather]; //change background image to be the correct image
-		fadeText(0f,0); //instantaneously fade text out
+		fadeText(0f,0f); //instantaneously fade text out
 
 		story.setStory ();
 
