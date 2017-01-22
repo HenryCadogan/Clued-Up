@@ -80,7 +80,7 @@ public class Character : MonoBehaviour {
 	/// </summary>
 	/// <param name="position">Position.</param>
 	public void display(Vector3 position){
-		string modelName = this.name;
+		string modelName = this.name.Trim();
 		if (modelName == "Kanye")
 			modelName += Random.Range (0, 2).ToString ();
 		
