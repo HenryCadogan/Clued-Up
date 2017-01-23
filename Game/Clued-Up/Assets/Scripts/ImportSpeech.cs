@@ -56,7 +56,7 @@ public class ImportSpeech : MonoBehaviour {
 			string TestString = AssetText;	// Make a copy of it
 			TestString = TestString.Substring (1, TestString.Length - 1);// Ignore the first symbol
 			int LIndex = TestString.IndexOf ("£");
-			int RIndex = TestString.IndexOf ("$");	//Figure out whether a (, ) or # is closest to the start
+			int RIndex = TestString.IndexOf ("$");	//Figure out whether a £, $ or # is closest to the start
 			int HIndex = TestString.IndexOf ("#");
 			if (LIndex == -1 && RIndex == -1 && HIndex == -1) {	// If none of the above could be found
 				string Substring = AssetText;
@@ -68,7 +68,7 @@ public class ImportSpeech : MonoBehaviour {
 				}	// If we couldn't find one of them we still care about the smallest of the others
 				if (RIndex == -1) {
 					RIndex = 9999999;
-				}	// So set them to an arbitrarily larbe value
+				}	// So set them to an arbitrarily large value
 				if (HIndex == -1) {
 					HIndex = 9999999;
 				}	// If you need 9,999,999 characters, maybe consider breaking them up into smaller lines
@@ -117,7 +117,7 @@ public class ImportSpeech : MonoBehaviour {
 	}
 
 
-	// tl;dr: Everytime you call Ping() it will return the next line of the current branch
+	// tl;dr: Everytime you call NextLine() it will return the next line of the current branch
 	/// <summary>
 	/// Gets the next line in the branch
 	/// </summary>

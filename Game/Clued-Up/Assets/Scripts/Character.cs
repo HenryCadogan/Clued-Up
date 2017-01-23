@@ -151,7 +151,7 @@ public class Character : MonoBehaviour {
 		this.description = lines [3];
 		this.isMurderer = false;
 		this.isVictim = false;
-		this.image = Resources.Load<Sprite> ("CharacterImages/" + this.gameObject.name);
+		this.image = Resources.Load<Sprite> ("CharacterImages/" + this.gameObject.name.Trim());
 
 		gameObject.AddComponent<ImportSpeech> ();
 		ImportSpeech SpeechHandler = GetComponent<ImportSpeech> ();
