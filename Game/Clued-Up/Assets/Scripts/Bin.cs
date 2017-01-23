@@ -31,6 +31,7 @@ public class Bin : MonoBehaviour {
 	void OnMouseDown(){
 		if ((this.hasClue)){
 			this.showClue ();
+			this.gameObject.GetComponent<AudioSource> ().Play ();
 			this.hasClue = false;
 		} else {
 			HUDC.displayHUDText ("Nothing worth collecting in here. Unless you have a crisp packet collection.");

@@ -24,11 +24,16 @@ public class Cupboard : MonoBehaviour {
 	private void changeSprite(){
 		gameObject.GetComponent<SpriteRenderer> ().sprite = Resources.Load<Sprite> ("Furniture/" + this.name + "-open");
 	}
+	private void playSound(){
+		gameObject.GetComponent<AudioSource> ().clip = Resources.Load<AudioClip> ("Sounds/" + this.name);
+		gameObject.GetComponent<AudioSource> ().Play ();
+	}
 	/// <summary>
 	/// Opens the cupboard to view contents & output to HUD text.
 	/// </summary>
 	private void open (){
 		this.isOpen = true;
+		playSound ();
 		changeSprite ();
 		if(hasClue){
 			HUDC.displayHUDText ("There is something in the " + this.longName + "...");

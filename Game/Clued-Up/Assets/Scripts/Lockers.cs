@@ -6,7 +6,7 @@ public class Lockers : MonoBehaviour {
 	/// Used in Lockers component of the GameObject children of Locker prefab to distinguish door colliders.
 	/// </summary>
 	public int doorID;
-
+	public AudioSource sfxSource;
 	/// <summary>
 	/// 0 means locker is closed, 1 = locker is open
 	/// </summary>
@@ -37,6 +37,7 @@ public class Lockers : MonoBehaviour {
 		if (openLockers [locker] == 0) { //if locker is not open 
 			this.openLockers [locker] = 1;
 			changeLockerSprite ();
+			sfxSource.Play ();
 			if ((clueIsInLocker == locker) && (!containedClue.GetComponent<Clue> ().isCollected)) {
 				HUDC.displayHUDText ("There is something in the locker...");
 				containedClue.SetActive (true); //make clue visible
