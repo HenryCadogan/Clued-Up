@@ -310,6 +310,15 @@ public class Story : MonoBehaviour {
 	public Character getVictim(){
 		return this.victim.GetComponent<Character>();
 	}
+
+	/// <summary>
+	/// Gets the murderer character game object
+	/// </summary>
+	/// <returns>The murderer object.</returns>
+	public Character getMurderer(){
+		return this.murderer.GetComponent<Character>();
+	}
+
 	/// <summary>
 	/// Sets the location of each of the clues.
 	/// </summary>
