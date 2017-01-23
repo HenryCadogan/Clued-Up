@@ -334,7 +334,7 @@ public class SpeechHandler : MonoBehaviour {
 	/// </summary>
 	public void OnClick (){
 		// Get the next line of the branch.
-		string nextLine = speechRef.NextLine ();
+		string nextLine = speechRef.nextLine ();
 		if (nextLine != null) {
 			// Display it and put it in position.
 			actualText.text = nextLine.Substring(1, nextLine.Length - 1);

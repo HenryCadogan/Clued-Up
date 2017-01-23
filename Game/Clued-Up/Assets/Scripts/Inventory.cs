@@ -31,9 +31,9 @@ public class Inventory : MonoBehaviour {
 		if (!this.isCollected (clue.name)) {
 			Debug.Log (clue.name + " COLLECTED");
 			collectedClueNames.Add (clue.name);
-			Character[] ListOfChars = FindObjectsOfType<Character> ();
-			foreach (Character ForChar in ListOfChars) {
-				ForChar.canBeTalkedTo = true;
+			Character[] listOfChars = FindObjectsOfType<Character> ();
+			foreach (Character forChar in listOfChars) {
+				forChar.canBeTalkedTo = true;
 			}
 		}else
 			throw new System.ArgumentException ("Clue " + clue.name + " has already been collected. This is strictly not allowed.");

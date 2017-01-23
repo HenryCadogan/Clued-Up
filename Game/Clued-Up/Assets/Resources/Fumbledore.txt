@@ -45,6 +45,8 @@ $You're a grand wizard, surely you know about this [?
 £OPEN SEASAME!
 £...My magic has revealed nothing.
 
+
+
 #Accuse-NoItems
 $You did it
 £You have no proof
