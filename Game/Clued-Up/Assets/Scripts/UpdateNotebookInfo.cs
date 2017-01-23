@@ -42,7 +42,7 @@ public class UpdateNotebookInfo : MonoBehaviour {
 		int parent = buttonPressed.transform.parent.GetSiblingIndex ();
 		index = index + (parent * buttonsInColumn);
 		print ("CHARACTER: " + inventory.encounteredCharacterNames [index]);
-		Character activeChar = story.getCharacterInformation (inventory.encounteredCharacterNames [index]);
+		Character activeChar = story.getCharacterInformation (inventory.encounteredCharacterNames [index]).GetComponent<Character>();
 		nameText.text = activeChar.longName;
 		descriptionText.text = activeChar.description;
 		notebookImage.sprite = activeChar.image; 

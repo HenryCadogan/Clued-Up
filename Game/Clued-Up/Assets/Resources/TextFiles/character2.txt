@@ -7,3 +7,4 @@ money
 microphone
 sunglasses
 bling
+pen

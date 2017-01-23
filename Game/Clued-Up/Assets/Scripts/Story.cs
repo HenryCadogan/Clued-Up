@@ -374,7 +374,7 @@ public class Story : MonoBehaviour {
 			newClue.GetComponent<Clue> ().initialise ("money", "Money", "Someone's been careless...or they've got too much money...", localScale:0.15f);
 			break;
 		case "tape":
-			newClue.GetComponent<Clue> ().initialise ("tape", "Tape", "It's sticky.", localScale:0.1f);
+			newClue.GetComponent<Clue> ().initialise ("tape", "Tape", "The hottest mix tape to drop in 2017", localScale:0.1f);
 			break;
 		case "bling":
 			newClue.GetComponent<Clue> ().initialise ("bling", "Bling", "What kind of person would wear this around their neck?");

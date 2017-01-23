@@ -144,35 +144,101 @@ $Hey, tell me about this [.
 $You're a world renowned rapper, surely you know about this [?
 £You're right, but I can't say I know what that [ is.
 
-#Aggressive-mixtape
+#Aggressive-tape
 $Tell me what you know about this [.
 £Hey! That's my mixtape!
 £I was looking for that.
 £Where did you find it?
 $I can't say.
 £Do you want to know where you can find it?
-#Rude-mixtape
+#Rude-tape
 $What's this [?
 £What, you think I know what that is?
-#Friendly-mixtape
+#Friendly-tape
 $Hey, do you know anything about this [?
 £Do you want it signed?
 $No?
 £Then why are you showing it to me?
-#Calm-mixtape
+#Calm-tape
 $Could you tell me about this [?
 £I don't know about it.
-#Comedic-mixtape
+#Comedic-tape
 $You wouldn't happen to know about this [, would you?
 £Do you want me to sign it or something?
 $No?
 £Then why would I care about it?
-#Annoying-mixtape
+#Annoying-tape
 $Hey, tell me about this [.
 £I can't say I know about it.
-#Manipulative-mixtape
+#Manipulative-tape
 $You're a world renowned rapper, surely you know about this [?
 £You're right, but I can't say I know what that [ is.
+
+#Aggressive-microphone
+$Tell me about this [ now!
+£Yeah that's mine, I'm a rapper, move on!
+#Rude-microphone
+$I suppose this [ is yours then?
+£What are you suggesting? Get out of my face
+#Friendly-microphone
+$Hey Kanye, what's this [ about?
+£Yeah that's my microphone, I just recorded a new track! Want to listen?
+#Calm-microphone
+£What can you tell me about this [?
+$Yeah that's a microphone, I have one just like it
+#Comedic-microphone
+$What's this [ for? Are you a comedian?
+£No i'm not a comedian, I'm the greatest rapper of them all!
+#Annoying-microphone
+$So tell me about this [ , come on!
+£It's just a [ , get out of my face
+#Manipulative-microphone
+$So the 'worlds greatest rapper' knows all about this [. then?
+£I know my way around a [ yeah there's no doubt
+$What about this one?
+£It's just a [ , nothing suspicious about that
+
+#Aggressive-sunglasses
+$Are these your [?
+£Hey get off my [, you couldn't afford them!
+#Rude-sunglasses
+$I bet you wear [. like these!
+£Yeah I do, and they're worth more than you are!
+#Friendly-sunglasses
+$Tell me about these [.
+£They're my sunglasses, for when it's sunny...
+#Calm-sunglasses
+$Do these [ belong to you?
+£Yeah they're mine, if you want my autograph too just ask
+#Comedic-sunglasses
+$So, [ eh? Tell me about them
+£They're [, have you never seeen a pair before?
+#Manipulative-sunglasses
+$Flashy [ for the world's best rapper right?
+£Only the best for Kanye!
+
+#Aggressive-pen
+$Is this your [?
+£Yeah it's my [, I sign autographs all of the time
+#Rude-pen
+$Tell me about this [
+£It's a pen, you write things with it, come on man
+#Friendly-pen
+$What do you know about this pen?
+£I use one just like it so sign autographs, do you want one?
+#Calm-pen
+$Is this your [?
+£Yeah it's my [, I must have dropped it!
+#Comedic-pen
+$So Kanye, what is this [ all about?
+£Don't try to be funny with me, it's just a [.
+#Annoying-pen
+$Hey Kanye, you must have a [ like this right?
+£Yeah, many people have a pen like that, what's your point?
+#Manipulative-pen
+$Is this the pen of a world famous rapper?
+£Yeah it is, THE most famous rapper
+
 
 #Accuse-NoItems
 $You did it
