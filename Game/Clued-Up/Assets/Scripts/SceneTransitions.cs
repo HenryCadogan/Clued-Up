@@ -158,4 +158,9 @@ public class SceneTransitions : MonoBehaviour {
 	public void startSceneTransition(int buildIndex){
 		StartCoroutine(fadeLoadScene(buildIndex));
 	}
+
+
+	public void returnToMainMenu(){
+		SceneManager.LoadScene (0);
+	}
 }
