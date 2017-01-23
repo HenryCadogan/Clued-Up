@@ -45,7 +45,269 @@ $You're a grand wizard, surely you know about this [?
 £OPEN SEASAME!
 £...My magic has revealed nothing.
 
+#Aggressive-whiteHair
+$I found this [.
+£How peculiar. A single strand of white hair.
+£One has to wonder where it came from.
+£From who's head was this hair plucked?
+£What path did it travel down to reach it's destination?
+£I wonder.
+#Rude-whiteHair
+$Is this your [?
+£Ah yes, that would appear to be one of my hair.
+£How... peculiar.
+#Friendly-whiteHair
+$Could this be your [?
+£How interesting, I do believe it is.
+£I wonder how you could have come across it.
+£How... interesting.
+#Calm-whiteHair
+$Do you recognise this [?
+£Ah yes! I do believe that belongs to me!
+£A hair from head of my wizardly self.
+£How... peculiar.
+#Comedic-whiteHair
+$I do believe this is your [.
+£Ahh, yes, quite. That is indeed my hair.
+£But where could you have found it?
+£How could hair such as mine come under your possession?
+£How... bizzare.
+#Annoying-whiteHair
+$Hey, is this your [?
+£Why yes, yes it is.
+£But what has caused me to lose hair so vigorously as this?
+£Could it have been ill magic?
+£How... bizzare
+#Manipulative-whiteHair
+$Oh grand wizard, I believe I have found your [.
+£Perhaps. Let me use some magic on it to determine this.
+£JIGGERY POKERY!
+£WALLOBY WANABY!
+£CRUCY MAHGOOSEY!
+£...My magic has revealed nothing.
 
+#Aggressive-wand
+$Is this your [?
+£Ah yes... a wand...
+£A wand is a powerful magical instrument.
+£A wizard would be very foolish to leave this lying around.
+£Tell me, do you have any proof that this belongs to me?
+$Well you are the only wizard here.
+£A well deduced fact.
+£Truly you are a... great... detective.
+#Rude-wand
+$I presume this is your [.
+£A wand you say?
+£Eleven inches, mahogany, phoenix core...
+£Why yes, this is my wand.
+£How good it is to be reuinited again.
+#Friendly-wand
+$Did you drop this [?
+£A wand? Why, I am missing mine. Let me...
+£Mmm hmm... yes... quite....
+£Yes, this does appear to be my wand.
+#Calm-wand
+$Would this be your [?
+£It very well may be. Let me have a closer look...
+£Ahh... yes quite... Indeed...
+£This is, in fact, my wand.
+#Comedic-wand
+$So this would be your [, then?
+£Perhaps. If I may take a... closer look....
+£Eleven inches, mahogany, phoenix core...
+£This is indeed my wand.
+#Annoying-wand
+$This is your [, right?
+£Ah yes, I do believe it is.
+£But how has it come under your possession, I wonder?
+£Truly, a great mystery.
+#Manipulative-wand
+$Oh great wizard, could this be your [?
+£Perhaps. Some magic shall be able to reveal all.
+£BANANA CABANA!
+£APATHY DANETY!
+£OMMLETTE DU FROMAGE!
+£...My magic has revealed nothing.
+
+#Aggressive-cloak
+$Is this your [?
+£Ah, a magic cloak of invisibility!
+£Look at the way it shimmers in your hands.
+£How it tries to hide everything behind it from sight.
+£It is so very... interesting.
+#Rude-cloak
+$Is this your [, old man?
+£Ah yes, this would be my [.
+£But please, do not reffer to me as old.
+£I may be 102 but I still have plenty of life left in me!
+#Friendly-cloak
+$Did you drop this [?
+£Ah yes, that is in fact my [.
+£That is the trouble with [s, you see.
+£If they are misplaced, it is not in their nature to be found.
+#Calm-cloak
+$Could this be your [?
+£A [, you say?
+£As a matter of fact, I do recognise it.
+£I believe this to be mine, handed down from my father.
+£It is a very powerful cloak.
+£Do take care of it, won't you?
+#Comedic-cloak
+$Did you not see that you dropped this [?
+£An amusing play of words, but I must confess I didn't.
+£It must have slipped fromy britches without my knowledge.
+#Annoying-cloak
+$So this is your [, right?
+£Ah yes, I do believe it is.
+£Thank you for locating it.
+#Manipulative-cloak
+$Oh great wizard, I believe I have come in possession of your [.
+£Ah, yes, my [!
+£This reminds me of the tale of the Deadly Hollows.
+£Would you me to tell you this tale?
+$Well, actually I-
+£Wonderful! Let us begin!
+£Three friends were attempting to cross a bridge at dusk.
+£Or was it dawn? I can never remember.
+£Regardless, their names were Simon, Miguel and Tony.
+£Wait... or perhaps it was Toby?
+£They were attempting to cross the river...
+$(You decide to sneak away.)
+
+#Aggressive-wizzardHat
+$This is your [, right?
+£Ah, that would appear to be a hat belonging to a wizard.
+£And I, as a wizard, should have a wizard's hat.
+£Apparently, however, these hats have become something of a fashion accessory.
+£Commonly worn on a November evening with a pumpkin.
+£How very quaint.
+#Rude-wizzardHat
+$Hey, is this your [?
+£Ah, why yes it is!
+£I may have lost it during the night.
+£I appreciate its safe return.
+#Friendly-wizzardHat
+$Did you drop this [?
+£Ah, why yes I did!
+£It must have slipped off my head during the night.
+£I understand you need it for the investigation.
+£But I trust you will keep it safe.
+#Calm-wizzardHat
+$Does this [ belong to you?
+£Ah, I do recognise it.
+£Yes, I do believe it is mine.
+£Do take care of it for me, won't you?
+#Comedic-wizzardHat
+$I think old age is catching up with you, you dropped this [.
+£Ah, so I have.
+£I must have dropped it last night, unfortunately.
+£Time catches up with all of us, unfortunately.
+#Annoying-wizzardHat
+$So this is your [, right?
+£Ah yes, I do belive it is.
+£I must have misplaced it last night.
+£Thank you for locating it for me.
+#Manipulative-wizzardHat
+$Oh great wizard, I have located your [.
+£While that may appear to be the case, I don't believe that hat is mine.
+£You see, that hat is rather crooked, whereas my hat is straight.
+£Perhaps I can straighten it with some magic.
+£SPOOKIUS DOOTIUS!
+£ALAKA ZAMAKA!
+£MAGIC WORDS!
+£...My magic appears to have had no effect.
+
+#Aggressive-ticket
+$Is this your [?
+£What is this you possess? A train ticket?
+£Ah, imagine all of the places one could go with such a ticket!
+£One could concievably go anywhere in the country!
+£It's a shame none of the trains are stopping here today.
+£I do fancy a trip to the beach.
+#Rude-ticket
+$This is your [, then?
+£Ah yes, I did have a ticket for the train.
+£I would have flown in by broom, but I didn't think the weather would allow it.
+£Fortunately, the train was available.
+#Friendly-ticket
+$I think you dropped this [.
+£Ah yes, I did. Thank you.
+£I would have flown in on my pegasus, Griffa.
+£Unfortunately, he currently has a sprained wing.
+£I thought the journey here would have been a bit much for him.
+£Thankfully, I have a very friendly giant taking care of him for me.
+#Calm-ticket
+$Did you happen to drop this [?
+£Ah, yes I did. Thank you for finding it for me.
+£I would have used my Staff of Teleportation to teleport here...
+£But alas, it teleported away and I have yet to relocate it.
+£Thankfully, the trains here are reliable.
+#Comedic-ticket
+$A [? Why would a wizard need a train?
+£Well you see, I had not intended to use the train.
+£Initially, I had wanted to come here on my magical boat.
+£Then I realised that the Ron Cooke Hub had no dock.
+£So I took the train instead.
+#Annoying-ticket
+$This is your [, yes?
+£Ah, I do believe it is.
+£Initially I had wanted to travel here by the Choo network.
+£Then I discovered that there was no real fireplace here.
+£As warm as those newfangled electric fireplaces are...
+£One cannot safely teleport inside of them.
+£So I was forced to take the train isntead.
+#Manipulative-ticket
+$Oh great wizard, I have come in possession of your [.
+£This... could be my ticket.
+£To determine this, I shall have to use a magic spell.
+£WITTY DITTY!
+£COLUMBO DUMBO!
+£SPELL WORDS!
+£...My magic has revealed nothing.
+
+#Aggressive-coal
+$I assume this [ has something to do with you.
+£Ah, a lump of coal.
+£Coal has many uses.
+£For instance, one can use it as a projectile.
+£Many a pane of glass has been shattered by a lump of coal.
+£It also makes a great Yule gift, if memory serves.
+#Rude-coal
+$Why have I found some [?
+£Ah yes, I did have some coal on me.
+£Coal is a great magical component.
+£If you ever consider becoming a wizard, I would purchase some.
+#Friendly-coal
+$Would this happen to be your [?
+£Ah yes, I was wondering where I put my coal.
+£Thank you for finding it for me.
+£Coal has some very useful magical properties.
+£I always try to carry some on me.
+#Calm-coal
+$You wouldn't happen to know what this [ is, would you?
+£Ah yes, that is my lump of coal!
+£It is a requirement for many of my magical spells.
+£Coal is a very useful material to have.
+#Comedic-coal
+$A lump of coal? Someone wasn't good for Santa...
+£Who is this Santa you speak of?
+£That lump of coal is a powerful magical focus.
+£It is crucial in the correct performance of many magical spells.
+£Is this Santa a wizard?
+£Or a witch, perhaps?
+#Annoying-coal
+$Is this your [?
+$Why, yes it is!
+$Every good magician has coal on their person.
+$Sadly, I did appear to have misplaced mine.
+$Perhaps it is best if we do not speak of this further.
+#Manipulative-coal
+$Oh great wizard, I appear to have found... a lump of coal?
+£Well, let us see what magic I can perform on this coal.
+£BAZINGA BAZANGA!
+£BAGPUS CATPUS!
+£ALAKABLAM!
+£...My magic appears to have had no effect.
 
 #Accuse-NoItems
 $You did it
