@@ -93,7 +93,7 @@ public class Character : MonoBehaviour {
 			canBeTalkedTo = false;
 		} else if (branchName == "Accuse-Right") {
 			Story activeStory = FindObjectOfType<Story> ();
-			activeStory.EndGame ();
+			activeStory.endGame ();
 		}
 	}
 	/// <summary>

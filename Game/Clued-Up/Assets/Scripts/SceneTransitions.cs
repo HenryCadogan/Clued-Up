@@ -168,12 +168,18 @@ public class SceneTransitions : MonoBehaviour {
 	public void returnToMainMenu(){
 		Time.timeScale = 1; //so that future coroustines work
 		Cursor.SetCursor (null, Vector2.zero, CursorMode.Auto);
-		Destroy(GameObject.Find ("Detectives"));
-		foreach (GameObject character in GameObject.Find("Story").GetComponent<Story>().getFullCharacterList()) {
-			Destroy (character);
+
+		if (GameObject.Find ("Detectives") != null) {
+			Destroy (GameObject.Find ("Detectives"));
 		}
-		Destroy(GameObject.Find ("Story").GetComponent<Story> ().victim);
-		Destroy(GameObject.Find("Story"));
+
+		if (GameObject.Find ("Story") != null) {
+			foreach (GameObject character in GameObject.Find("Story").GetComponent<Story>().getFullCharacterList()) {
+				Destroy (character);
+			}
+			Destroy (GameObject.Find ("Story").GetComponent<Story> ().victim);
+			Destroy (GameObject.Find ("Story"));
+		}
 		SceneManager.LoadScene (0);
 	}
 }
