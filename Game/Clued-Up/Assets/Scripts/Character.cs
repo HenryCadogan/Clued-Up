@@ -105,15 +105,17 @@ public class Character : MonoBehaviour {
 
 	/// <summary>
 	/// Gets a certain amount of character clues.
+	/// 
 	/// </summary>
 	/// <returns>The random character clue names.</returns>
 	/// <param name="count">Count; number of clues needed.</param>
-	public List<string> getRandomCharacterClueNames(int count){
+	public List<string> getRandomCharacterClueNames(int count, List<string> clueNames){
 		List<string> randomCharacterClues = new List<string>();
 		int randInt;
 		while (count > 0) {
 			randInt = Random.Range (0, this.characterClueNames.Count);
-			if (!randomCharacterClues.Contains (this.characterClueNames [randInt])) {
+			if ((!randomCharacterClues.Contains (this.characterClueNames [randInt])) && (!clueNames.Contains(this.characterClueNames[randInt]))) {
+				//If that index hasnt already been selected, and the clue is not already in the total clues list
 				randomCharacterClues.Add (this.characterClueNames [randInt]);
 				count -= 1;
 			}

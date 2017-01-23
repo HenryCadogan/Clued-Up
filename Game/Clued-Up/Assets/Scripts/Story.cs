@@ -459,14 +459,14 @@ public class Story : MonoBehaviour {
 		return newClue;
 	}
 	/// <summary>
-	/// Decides which character 5 clues to use (2 from victim, 3 from murderer) 
+	/// Decides which character 5 clues to use (2 from victim, 3 from murderer), such that (VictimClues ∩ CharacterClues) = ∅
 	/// </summary>
 	private void setCharacterClues(List<string> cluesList){
-		List<string> victimClueNames = victim.GetComponent<Character>().getRandomCharacterClueNames (2);
-		List<string> murdererClueNames = murderer.GetComponent<Character>().getRandomCharacterClueNames (3);
-		foreach (string clueName in victimClueNames)
-			cluesList.Add (clueName);
+		List<string> murdererClueNames = murderer.GetComponent<Character>().getRandomCharacterClueNames (3, cluesList);
 		foreach (string clueName in murdererClueNames)
+			cluesList.Add (clueName);
+		List<string> victimClueNames = victim.GetComponent<Character>().getRandomCharacterClueNames (2, cluesList);
+		foreach (string clueName in victimClueNames)
 			cluesList.Add (clueName);
 	}
 	/// <summary>
