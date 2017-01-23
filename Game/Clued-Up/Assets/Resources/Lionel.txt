@@ -9,25 +9,27 @@ $...]?
 
 #Aggressive
 $Tell me what you know about this [.
-£Quack. (I don't know anything about it.)
+£What are you trying to say?
+£Do you think I did it?
+£I'm innocent, I swear!
 #Rude
-$What's this [?
-£**disgruntled quacks**
+$Oi, what's this [?
+£I have no idea what that is.
 #Friendly
 $Hey, do you know anything about this [?
-£Quack. (I'm afraid that I don't.)
+£I hate to tell you this, but I don't.
 #Calm
 $Could you tell me about this [?
-£Quack. (I'm afraid I don't know anything about it.)
+£I don't think I can help you with that.
 #Comedic
 $You wouldn't happen to know about this [, would you?
-£Quack. (Quack.)
+£I don't think I do, sorry.
 #Annoying
 $Hey, tell me about this [.
-£Quack. (I don't know anything about it.)
+£I don't know anything about that.
 #Manipulative
-$You're a wise goose, surely you know about this [?
-£Quack. (No.)
+$You're a widely respected artist, surely you know about this [?
+£I appreciate your praise, but I don't think I can help you there.
 
 #Accuse-NoItems
 $You did it

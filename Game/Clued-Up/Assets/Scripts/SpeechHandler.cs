@@ -318,12 +318,12 @@ public class SpeechHandler : MonoBehaviour {
 		// Then select a branch accordingly.
 		if (hasMotiveClue == false && hasMurderWeapon == false) {
 			branchName = "Accuse-NoItems";
-		} else if (isMurderer == false) {
-			branchName = "Accuse-WrongChar";
 		} else if (hasMotiveClue == false) {
 			branchName = "Accuse-Motive";
 		} else if (hasMurderWeapon == false) {
 			branchName = "Accuse-Weapon";
+		} else if (isMurderer == false) {
+			branchName = "Accuse-WrongChar";
 		} else {branchName = "Accuse-Right";}
 		// Whatever branch gets selected, we can then start it.
 		startBranch(branchName);
