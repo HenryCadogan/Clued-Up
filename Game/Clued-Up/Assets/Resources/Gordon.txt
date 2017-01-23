@@ -43,81 +43,81 @@ $Hey, tell me about this [.
 $You're a widely renowned chef, surely you know about this [?
 £Why the bloomin' hell would a chef know about a [?
 
-#Aggressive-Feather
+#Aggressive-feather
 $Tell me what you know about this [.
 £A feather?
 £What the bloomin' hell would I know about a feather?
 £Did someone put you up to this or are you really that dumb?
 £Do me a favour and get bloomin' lost.
-#Rude-Feather
+#Rude-feather
 $What's this [?
 £It's a bloomin' feather you bloomin' idiot!
 £What the bloomin' hell do you think it is!
 £And more importantly, why the hell do you think I care about a bloomin' feather!
 £Get out of my bloomin' face!
-#Friendly-Feather
+#Friendly-feather
 $Hey, do you know anything about this [?
 £It's a goose feather.
 £I was plucking a goose earlier, might have been from there.
 £What does it matter?
-#Calm-Feather
+#Calm-feather
 $Could you tell me about this [?
 £It looks like a goose feather.
 £I was plucking a goose earler, it might have come from that.
 £Why do you care?
-#Comedic-Feather
+#Comedic-feather
 $You wouldn't happen to know about this [, would you?
 £We're in the middle of bloomin' York and you're asking me about a bloomin' feather?
 £Have you tried asking one of the 5000 geese outside first?
 £Bloomin' moron.
-#Annoying-Feather
+#Annoying-feather
 $Hey, tell me about this [.
 £Are you kidding me?
 £What the hell am I meant to tell you about a blood feather?
 £What would I know about a bloomin' feather?!
 £Get out of my face.
-#Manipulative-Feather
+#Manipulative-feather
 $You're a widely renowned chef, surely you know about this [?
 £It's a goose feather.
 £I was plucking a goose earler, so it might have been from there.
 £Is that a problem?
 
-#Aggressive-ChefsHat
+#Aggressive-chefsHat
 $Tell me what you know about this [.
 £So just because I'm a chef you assume I know all about that bloomin' hat?
 £You disgust me.
 £Get out of my sight.
-#Rude-ChefsHat
+#Rude-chefsHat
 $What's this [?
 £Just because I'm a chef it doesn't mean I know about every single chef hat in the world.
 £Do me a favour and get out of my sight.
-#Friendly-ChefsHat
+#Friendly-chefsHat
 $Hey, do you know anything about this [?
 £Yes, that's my hat.
 £Give it back to me and get out of my sight.
 $I can't, I need it for the investigation.
 £Are you kidding me?
 £Bloomin' hell... alright, just make sure I get it back.
-#Calm-ChefsHat
+#Calm-chefsHat
 $Could you tell me about this [?
 £Yes, that's my hat.
 £Give it back to me.
 $I need it for the investigation.
 £Are you kidding me?
 £**sigh** Alright fine, just make sure I get it back.
-#Comedic-ChefsHat
+#Comedic-chefsHat
 $You wouldn't happen to know about this [, would you?
 £Listen here, you bloomin' fruitcake.
 £Just because it's a chef's hat it doesn't mean I know about it.
 £Now stop clowning around and do your bloomin' job.
 £Ideally far away from me.
 £Bloomin' hell.
-#Annoying-ChefsHat
+#Annoying-chefsHat
 $Hey, tell me about this [.
 £...What, do you want me to sign it or something?
 $Uh... no?
 £Then get it and yourself out of my sight.
-#Manipulative-ChefsHat
+#Manipulative-chefsHat
 $You're a widely renowned chef, surely you know about this [?
 £Know about it? That's my bloomin' hat!
 £Give it back to me!
@@ -126,7 +126,7 @@ $I'm afraid I can't?
 $It's part of the investigation.
 £Bloomin' hell....
 
-#Aggressive-BlondeHair
+#Aggressive-blondHair
 $Tell me what you know about this [.
 £Let me get this straight.
 £You found some blonde hair lying around, and not only did you pick it up...
@@ -135,41 +135,38 @@ $Tell me what you know about this [.
 £Could you imagine if you had a hair in your soup?
 £You'd send it back immediately!
 £Bloomin' idiot.
-#Rude-BlondeHair
+#Rude-blondHair
 $What's this [?
 £Why are you carrying hair around with you?
 £Do you know how unhygenic that is?
 £If I did that at my restaurant I'd get shut down on the spot!
 £Get out of my sight and learn some bloomin' hygene!
-#Friendly-BlondeHair
+#Friendly-blondHair
 $Hey, do you know anything about this [?
 £It's... some blonde hair?
 $Is it yours?
 £...How am I supposed to tell?
-#Calm-BlondeHair
+#Calm-blondHair
 $Could you tell me about this [?
 £It... could be mine?
 $Do you know who else it could be?
 £I don't know, maybe it could be one of the diners at my restaurant?
-#Comedic-BlondeHair
+#Comedic-blondHair
 $You wouldn't happen to know about this [, would you?
 £What the hell would I know about some blonde hair?
 £I'm not a bloomin' pathologist!
 £I'm not even a bloomin' hairdresser!
 $So that's a no?
 £Of course it's a bloomin' no!
-#Annoying-BlondeHair
+#Annoying-blondHair
 $Hey, tell me about this [.
 £It's some hair? Why do I care about hair?!
 $It looks like it's yours.
 £I'm not the only person with blonde hair on the planet!
 £Bloomin' idiot.
-#Manipulative-BlondeHair
+#Manipulative-blondHair
 $You're a widely renowned chef, surely you know about this [?
 £...
-$...
-£...
-$...
 £Listen here.
 £I'm a chef.
 £I cook good food.
@@ -179,37 +176,37 @@ $...
 $...Do you at least recognise it?
 £...Well... it could be mine?
 
-#Aggressive-Sandwich
+#Aggressive-sandwich
 $Tell me what you know about this [.
 £It's a sandwich. What else is there to say?
 £It's not exactly hard to make a sandwich.
 £Anyone could have made it.
 £Even you, and we both know how incompetent you are.
 $...
-#Rude-Sandwich
+#Rude-sandwich
 $What's this [?
 £It's a boring sandwich.
 £Ham and cheese? Hah.
 £If I tried to serve this in my restaurant I'd lose a Michelin star on the spot.
-#Friendly-Sandwich
+#Friendly-sandwich
 $Hey, do you know anything about this [?
 £I think that's the sandwich I made earlier.
 $Ham and cheese? I would have expected something a bit more interesting.
 £Yes, but unfortunately there wasn't much in the pantry of the kitchen here.
 £At least, nothing that would go in a sandwich.
 £They had whole bloomin' salmon in there, I can't use that in a sandwich!
-#Calm-Sandwich
+#Calm-sandwich
 $Could you tell me about this [?
 £I think that's the sandwich I made earlier.
 $Only ham and cheese?
 £The kitchen was pretty much cleaned out in the party.
 £Except for salmon. There's plenty of salmon left.
-#Comedic-Sandwich
+#Comedic-sandwich
 $You wouldn't happen to know about this [, would you?
 £It's a ham and cheese sandwich.
 $Is it yours?
 £It's a ham and cheese sandwich. Of course not.
-#Annoying-Sandwich
+#Annoying-sandwich
 $Hey, tell me about this [.
 £It's a ham and cheese sandwich, why do you care?
 $Is it yours?
@@ -218,7 +215,7 @@ $Is it yours?
 £That cheese looks like it's made out of plastic for god's sake!
 $...So it's not yours?
 £Get out of my sight.
-#Manipulative-Sandwich
+#Manipulative-sandwich
 $You're a widely renowned chef, surely you know about this [?
 £Listen here, you bloomin' moron.
 £It's a ham and cheese sandwich.
@@ -229,71 +226,71 @@ $I just wanted a second opinion.
 £YOU DON'T NEED A SECOND OPINION TO IDENTIFY A HAM AND CHEESE SANDWICH!
 £GET THE HELL OUT OF MY SIGHT!
 
-#Aggressive-Stapler
+#Aggressive-stapler
 $Tell me what you know about this [.
 £Why the bloomin' hell would I know about a stapler?
-#Rude-Stapler
+#Rude-stapler
 $What's this [?
 £It's a stapler! What the bloomin' hell did you think it was?
 $Do you know about it?
 £Of course I don't bloomin' know about it! I'm a chef! I don't use staplers!
-#Friendly-Stapler
+#Friendly-stapler
 $Hey, do you know anything about this [?
 £That stapler? I was using it earler.
 $Can I ask why?
 £You could, but the answer would be something along the lines of "Get lost."
-#Calm-Stapler
+#Calm-stapler
 $Could you tell me about this [?
 £Yeah, I was using it earlier.
 $What for?
 £For stapling, what the hell do you think?
 $Yes, but stapling what.
 £I... don't want to say.
-#Comedic-Stapler
+#Comedic-stapler
 $You wouldn't happen to know about this [, would you?
 £What makes you think I know about bloomin' staplers?
-#Annoying-Stapler
+#Annoying-stapler
 $Hey, tell me about this [.
 £Why the bloomin' hell would I know about staplers?
 £Get your act together and get out of my sight.
-#Manipulative-Stapler
+#Manipulative-stapler
 $You're a widely renowned chef, surely you know about this [?
 £I'm a chef, not a bloomin' office worker!
 $Don't you use staples in cuisine at all?
 £I don't know what kind of back of the woods places you've been to...
 £But any reasonable place that serves food will not serve you staples with it.
 
-#Aggressive-Plunger
+#Aggressive-plunger
 $Tell me what you know about this [.
 £...A bloomin' plunger?
 £Who the bloomin' hell do you think I am, a bloomin' toilet cleaner?
 £Who the bloomin' hell do you think you are?
 £Get the hell out of my sight! 
-#Rude-Plunger
+#Rude-plunger
 $What's this [?
 £Why the bloomin' hell would I know about a bloomin' plunger?
 £I'm a chef, not a bloomin' toilet cleaner!
 £Get the hell out of my face!
-#Friendly-Plunger
+#Friendly-plunger
 $Hey, do you know anything about this [?
 £I think that's the plunger I was using earlier...
 $You were cleaning toilets?
 $Well... no, but I can't say what I was doing.
-#Calm-Plunger
+#Calm-plunger
 $Could you tell me about this [?
 £I was using that plunger earlier.
 $Why were you cleaning a toilet?
 £I... wasn't cleaning a toilet.
 $What were you doing then?
 £That's none of your business.
-#Comedic-Plunger
+#Comedic-plunger
 $You wouldn't happen to know about this [, would you?
 £Yeah, I was using that plunger earlier.
 $I didn't know you were a plumber.
 £That's because I'm not. I wasn't using it for cleaning toilets.
 $Then what were you doing with a plunger?
 £That's none of your business.
-#Annoying-Plunger
+#Annoying-plunger
 $Hey, tell me about this [.
 £Why the bloomin' hell would I know about a plunger?
 £I'm a chef, not a bloomin' toilet cleaner!

@@ -40,139 +40,137 @@ $Hey, tell me about this [.
 $You're a world renowned rapper, surely you know about this [?
 £You're right, but I can't say I know what that [ is.
 
-#Aggressive-Feather
+#Aggressive-feather
 $Tell me what you know about this [.
 £A feather? I don't know.
 £Maybe it came from one of my coats or something.
-#Rude-Feather
+#Rude-feather
 $What's this [?
 £What, you find a feather and immediately assume it was the guy with the nice coat?
 $I wasn't saying-
 £Then what were you saying? Get outta here.
-#Friendly-Feather
+#Friendly-feather
 $Hey, do you know anything about this [?
 £What, you think I know about feathers?
-#Calm-Feather
+#Calm-feather
 $Could you tell me about this [?
 £A... feather?
 £I dunno, it could be from one of my coats?
-#Comedic-Feather
+#Comedic-feather
 $You wouldn't happen to know about this [, would you?
 £Is that from one of my coats?
 $It could be, is one of your coats missing a feather?
 £How am I supposed to tell?
-#Annoying-Feather
+#Annoying-feather
 $Hey, tell me about this [.
 £It looks like a goose feather.
 £Might be from one of my coats.
-#Manipulative-Feather
+#Manipulative-feather
 $You're a world renowned rapper, surely you know about this [?
 £Well, as a world famous rapper, I like expensive clothes.
 £You ever worn a goose-feather coat?
 $I can't say I have.
 £You're missing out, man.
 
-#Aggressive-BlackHair
+#Aggressive-blackHair
 $Tell me what you know about this [.
 £Yeah, looks like it could be mine.
 £Why?
-#Rude-BlackHair
+#Rude-blackHair
 $What's this [?
 £What, you find some black hair and think it was me?
 $I didn't say-
 £Yeah, well you were thinking it!
-#Friendly-BlackHair
+#Friendly-blackHair
 $Hey, do you know anything about this [?
 £Are you a fan now?
 $...No?
 £Then why are you collecting my hair?
-#Calm-BlackHair
+#Calm-blackHair
 $Could you tell me about this [?
 £Yeah, looks like it could be mine.
 £You should put it on eSell, you'd make a fortune.
 £...I should sell my own hair on eSell.
-#Comedic-BlackHair
+#Comedic-blackHair
 $You wouldn't happen to know about this [, would you?
 £What, do you think it's my hair or something?
 $Well it does match your colour.
 £...
-$...
 £...Get out of here.
-#Annoying-BlackHair
+#Annoying-blackHair
 $Hey, tell me about this [.
 £It looks like it could be mine.
 £Does it matter?
-#Manipulative-BlackHair
+#Manipulative-blackHair
 $You're a world renowned rapper, surely you know about this [?
 £When you're a world famous rapper, you make sure you have the freshest fade.
 £Obviously my fade was too fresh, and some of it decided to leave.
 £You should talk to my stylist.
 
-#Aggressive-Chain
+#Aggressive-chain
 $Tell me what you know about this [.
 £Hey, that's my chain.
 £Give it back.
 $I can't, I need it for the investigation.
 £...
-#Rude-Chain
+#Rude-chain
 $What's this [?
 £Hey! That's my chain!
 £Give it back you thief!
 $I need it for the investigation.
 £Investigaition? Investigaition my ass!
 £You just stole my chain!
-#Friendly-Chain
+#Friendly-chain
 $Hey, do you know anything about this [?
 £That's my chain!
 £You steal my chain and expect me to help you?
 £Give it back!
 $I'm afraid I need it for the investigation.
 £If I don't get it back, you will regret it.
-#Calm-Chain
+#Calm-chain
 $Could you tell me about this [?
 £Hey, that's my chain!
 £Give it back to me!
 $I need it for the investigation.
-#Comedic-Chain
+#Comedic-chain
 $You wouldn't happen to know about this [, would you?
 £Do you want me to sign it or something?
 $No?
 £Then why would I care about it?
-#Annoying-Chain
+#Annoying-chain
 $Hey, tell me about this [.
 £I can't say I know about it.
-#Manipulative-Chain
+#Manipulative-chain
 $You're a world renowned rapper, surely you know about this [?
 £You're right, but I can't say I know what that [ is.
 
-#Aggressive-Mixtape
+#Aggressive-mixtape
 $Tell me what you know about this [.
 £Hey! That's my mixtape!
 £I was looking for that.
 £Where did you find it?
 $I can't say.
 £Do you want to know where you can find it?
-
-#Rude-Mixtape
+#Rude-mixtape
 $What's this [?
 £What, you think I know what that is?
-#Friendly-Mixtape
+#Friendly-mixtape
 $Hey, do you know anything about this [?
 £Do you want it signed?
 $No?
 £Then why are you showing it to me?
-#Calm-Mixtape
+#Calm-mixtape
 $Could you tell me about this [?
 £I don't know about it.
-#Comedic-Mixtape
+#Comedic-mixtape
 $You wouldn't happen to know about this [, would you?
 £Do you want me to sign it or something?
 $No?
 £Then why would I care about it?
-#Annoying-Mixtape
+#Annoying-mixtape
 $Hey, tell me about this [.
 £I can't say I know about it.
-#Manipulative-Mixtape
+#Manipulative-mixtape
 $You're a world renowned rapper, surely you know about this [?
 £You're right, but I can't say I know what that [ is.
 

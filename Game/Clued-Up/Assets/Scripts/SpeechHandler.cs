@@ -44,6 +44,10 @@ public class SpeechHandler : MonoBehaviour {
 	/// </summary>
 	public GameObject[] OtherUIElements;
 	/// <summary>
+	/// The panel object that holds the
+	/// </summary>
+	public GameObject SpeechPanel;
+	/// <summary>
 	/// The text object that shows the currently selected clue.
 	/// </summary>
 	public Text ClueText;
@@ -220,6 +224,7 @@ public class SpeechHandler : MonoBehaviour {
 		// Turn on the text and continue button...
 		gameObject.SetActive(true);
 		TextObject.SetActive(true);
+		SpeechPanel.SetActive (true);
 		// And turn off everything else.
 		foreach (Button ForButton in TraitButtonArray) {
 			ForButton.gameObject.SetActive (false);
@@ -238,6 +243,7 @@ public class SpeechHandler : MonoBehaviour {
 		CharInScene.PreSpeech (BranchName);
 		gameObject.SetActive(true);
 		TextObject.SetActive(true);
+		SpeechPanel.SetActive (true);
 		foreach (Button ForButton in TraitButtonArray) {
 			ForButton.gameObject.SetActive (false);
 		}
@@ -308,15 +314,16 @@ public class SpeechHandler : MonoBehaviour {
 		if (NextLine != null) {
 			ActualText.text = NextLine.Substring(1, NextLine.Length - 1);
 			if (NextLine [0].ToString () == "$") {
-				TextObject.transform.localPosition = DetectivePos;
+				SpeechPanel.transform.localPosition = DetectivePos;
 			} else {
-				TextObject.transform.localPosition = SuspectPos;
+				SpeechPanel.transform.localPosition = SuspectPos;
 			}
 		} else {
 			Character CharInScene = FindObjectOfType<Character> ();
 			CharInScene.PostSpeech (BranchName);
 			gameObject.SetActive(false);
 			TextObject.SetActive(false);
+			SpeechPanel.SetActive (false);
 			foreach (Button ForButton in TraitButtonArray) {
 				ForButton.gameObject.SetActive (true);
 			}

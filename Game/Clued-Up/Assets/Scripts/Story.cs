@@ -329,7 +329,7 @@ public class Story : MonoBehaviour {
 		clueName = clueName.Trim ();
 		switch (clueName) {
 		case "chalkOutline":
-			newClue.GetComponent<Clue> ().initialise ("chalkOutline", "ChalkOutline", "A chalk outline of the body of " + this.getVictim ().longName + "!", disappearWhenClicked:false);
+			newClue.GetComponent<Clue> ().initialise ("chalkOutline", "Chalk Outline", "A chalk outline of the body of " + this.getVictim ().longName + "!", disappearWhenClicked:false);
 			break;
 		case "microphone":
 			newClue.GetComponent<Clue> ().initialise ("microphone", "Microphone", "Someone wants to make themselves heard");
