@@ -36,7 +36,6 @@ public class GameOver : MonoBehaviour {
 		fadeText (textPanel.transform.GetChild (4).gameObject,1f, 2f);
 
 		yield return new WaitForSeconds(3f); // wait three secs for fade, and one second after the fade ends
-		print("FADEOUT");
 		fadeOutAllText (0f,2f);
 
 		yield return new WaitForSeconds(3f); // wait three secs for fade, and one second after the fade ends
@@ -52,7 +51,6 @@ public class GameOver : MonoBehaviour {
 		fadeText (textPanel.transform.GetChild (2).gameObject, alpha, time);
 		fadeText (textPanel.transform.GetChild (3).gameObject, alpha, time);
 		fadeText (textPanel.transform.GetChild (4).gameObject, alpha, time);
-		print ("DONE");
 	}
 
 	// Use this for initialization

@@ -161,7 +161,6 @@ public class Character : MonoBehaviour {
 		gameObject.AddComponent<ImportSpeech> ();
 		ImportSpeech speechHandler = GetComponent<ImportSpeech> ();
 		TextAsset testAsset =(TextAsset)Resources.Load (lines [1].Trim());
-		print("Asset = " + lines [1].Trim());
 		speechHandler.asset = testAsset;
 		speechHandler.actualStart ();
 		speechRef = GetComponent<ImportSpeech> ();
