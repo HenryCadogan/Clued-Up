@@ -10,8 +10,8 @@ public class ImportSpeech : MonoBehaviour {
 
 		// QUICK BIT ON THE TEXT FILE FORMATTING
 		// Any line prefaced by a # is a branch title and will split branches
-		// Anything after a ( is said by the detective
-		// Anything after a ) is said by the suspect
+		// Anything after a $ is said by the detective
+		// Anything after a £ is said by the suspect
 		// [ and ] are replaced by the name of the incoming Item and Character respectively
 		// Set those by changing ItemName and OtherChar as appropriate.
 	/// <summary>

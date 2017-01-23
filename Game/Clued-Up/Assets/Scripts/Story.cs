@@ -343,10 +343,10 @@ public class Story : MonoBehaviour {
 			newClue.GetComponent<Clue> ().initialise ("microphone", "Microphone", "Someone wants to make themselves heard");
 			break;
 		case "wizzardHat":
-			newClue.GetComponent<Clue> ().initialise ("wizzardHat", "Wizzard's Hat", "Looks like part of a Halloween costume");
+			newClue.GetComponent<Clue> ().initialise ("wizzardHat", "Wizard's Hat", "Looks like part of a Halloween costume");
 			break;
 		case "moustache":
-			newClue.GetComponent<Clue> ().initialise ("moustache", "Moustache", "Is someone trying to disguise themselves?");
+			newClue.GetComponent<Clue> ().initialise ("moustache", "Fake Moustache", "Is someone trying to disguise themselves?");
 			break;
 		case "pen":
 			newClue.GetComponent<Clue> ().initialise ("pen", "Pen", "A fancy fountain pen. This could belong to " + randomAliveCharacter().longName + " or maybe it is " + this.murderer.GetComponent<Character>().longName + "\'s");
@@ -397,7 +397,7 @@ public class Story : MonoBehaviour {
 			newClue.GetComponent<Clue> ().initialise ("coal", "Coal", "A lump of coal.");
 			break;
 		case "cloak":
-			newClue.GetComponent<Clue> ().initialise ("cloak", "Cloak", "Someone is trying to conceal themselves...");
+			newClue.GetComponent<Clue> ().initialise ("cloak", "Invisibility Cloak", "Someone is trying to conceal themselves...");
 			break;
 		case "blondHair":
 			newClue.GetComponent<Clue> ().initialise ("blondHair", "Blond Hair", "Whose hair is this colour?");

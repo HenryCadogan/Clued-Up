@@ -34,6 +34,43 @@ $You're a well-traveled comedian, surely you know about this [?
 £Unfortunately, I don't think I've ever seen that before.
 £Sorry.
 
+#Aggressive-brownHair
+$Is this one of your hairs?
+£Oh, that is one of my hairs.
+£Where did you find that?
+#Rude-brownHair
+$This is one of your hairs, right?
+£It looks like one of mine at any rate.
+£Where did you find it?
+#Friendly-brownHair
+$I think I've found one of your hairs.
+£Oh, that's definitely one of mine.
+£Must've fallen out somewhere.
+£Where did you find it?
+#Calm-brownHair
+$This looks like one of your hairs, what do you think?
+£Yeah, that does look like one of mine, doesn't it?
+£No clue where you would have found it.
+#Comedic-brownHair
+$I think you need a hair net, I just found this lying around.
+£Yeah, I would stick to being a detective.
+£Leave the comedy to the professionals.
+£But that does look like one of my hairs, doesn't it?
+£This entire murder business has left me hanging on by a thread!
+$...
+£...Oh come on, that was funny.
+#Annoying-brownHair
+$This is your hair, right?
+£Listen, I don't know who brought you up...
+£But you can't just go around asking people if you have their hair.
+£It's really rude.
+#Manipulative-brownHair
+$Surely a comedian as great as yourself isn't losing his hair?
+£Aye, it happens to all of us eventually I'm afraid.
+£And that is definitely one of mine, no denying it.
+£Hopefully I keep what I have left.
+£Otherwise I'll look really odd in a nightclub.
+
 #Accuse-NoItems
 $You did it
 £You have no proof
