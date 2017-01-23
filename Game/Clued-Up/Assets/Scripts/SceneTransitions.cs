@@ -24,6 +24,7 @@ public class SceneTransitions : MonoBehaviour {
 		overlayPanel.SetActive (true);
 		overlayPanel.GetComponent<Image> ().CrossFadeAlpha (1f, 1f, false);
 		yield return new WaitForSeconds (1);
+		Cursor.SetCursor (null, Vector2.zero, CursorMode.Auto); //resets curser if stuck on magnifying glass
 		SceneManager.LoadScene (scene);
 	}
 
