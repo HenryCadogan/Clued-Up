@@ -364,7 +364,7 @@ public class RoomController : MonoBehaviour {
 		if ((cluesInRoom.Count > 0) && (roomIndex != 0) ) {
 			assignCluesLocations (cluesInRoom [0]);
 		} else {
-			print ("No clues in this room");
+			print ("No clues in this room (or this is room 0)");
 		}
 	}
 

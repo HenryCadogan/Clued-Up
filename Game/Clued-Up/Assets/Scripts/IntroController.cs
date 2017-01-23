@@ -30,10 +30,6 @@ public class IntroController : MonoBehaviour {
 	/// The background plane GameObject used for displaying a background material.
 	/// </summary>
 	public Renderer backgroundPlane;
-	/// <summary>
-	/// The main story GameObject.
-	/// </summary>
-	public Story story;
 
 	/// <summary>
 	/// Fades the introduction text in/out for specified time.
@@ -51,6 +47,7 @@ public class IntroController : MonoBehaviour {
 		introTextObject.text = introText;
 		fadeText (1f, 3f);
 	}
+	private Story story;
 
 	/// <summary>
 	/// Plays the main intro sequence cutscene for the game
@@ -59,8 +56,8 @@ public class IntroController : MonoBehaviour {
 	/// <param name="story">Main game story</param>
 	IEnumerator IntroCutscene(Story story){
 		audioSource.Play (); //play scream
+	
 		yield return new WaitForSeconds(1f); //wait 1 second after scream begins
-
 		displayText (story.getIntro1()); //gets text and fades in (in background)
 		yield return new WaitForSeconds(4f); // wait three secs for fade, and one second after the fade ends
 		overlayPanel.CrossFadeAlpha (0f, 3f, false); // fade out black overlay
@@ -80,10 +77,13 @@ public class IntroController : MonoBehaviour {
 		yield return new WaitForSeconds(4f); //wait for the overlay to fade in entirely
 
 		SceneManager.LoadScene (2);	//loads character selection scene
+		yield return null;
+
 	}
 		
 	/// <summary>
 	/// Initialises weather & background for scene, sets story, and loads cutscene
+	/// Instantiates ew Story gameobject so that the object can safely be destroyed and reloaded when the game is played multiple times.
 	/// </summary>
 	void Start () {
 		Material[] materialArray = new Material[4];
@@ -91,6 +91,10 @@ public class IntroController : MonoBehaviour {
 		materialArray[1] = (Material)Resources.Load("RonCookeHubMurderRain", typeof(Material));
 		materialArray[2] = (Material)Resources.Load("RonCookeHubMurderSunset", typeof(Material));
 		materialArray[3] = (Material)Resources.Load("RonCookeHubMurderSnow", typeof(Material));
+		GameObject StoryObject = new GameObject("Story");
+		StoryObject.AddComponent<Story> ();
+
+		this.story = StoryObject.GetComponent<Story> ();
 
 		int weather = story.setWeather (materialArray); // get weather from story; 0=sunny 1=rainy 2=sunset 3=snow
 
@@ -103,7 +107,6 @@ public class IntroController : MonoBehaviour {
 		fadeText(0f,0f); //instantaneously fade text out
 
 		story.setStory ();
-
 		//initialisation done, now pass to a coroutine so that time delays can be done
 		StartCoroutine(IntroCutscene(story));
 	}
