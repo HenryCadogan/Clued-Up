@@ -11,6 +11,7 @@ public class Bar : MonoBehaviour {
 	public int song;
 	private bool hasBeenPoured = false;
 	private bool pouring = false;
+	private bool entered = false;
 
 
 	/// <summary>
@@ -54,9 +55,12 @@ public class Bar : MonoBehaviour {
 		}
 	}
 	/// <summary>
-	/// If beer is pouring, raise its posiion
+	/// If beer is pouring, raise its posiion. Also if cursor is within the pump & it hasnt been poured, change the cursor
 	/// </summary>
 	void Update(){
+		if (entered && !hasBeenPoured) {
+			Cursor.SetCursor (Resources.Load<Texture2D> ("clueCursor"), Vector2.zero, CursorMode.Auto);
+		}
 		if (pouring) {
 			if (fullPint.transform.localPosition.y >= 0) {
 				pouring = false;
@@ -73,5 +77,13 @@ public class Bar : MonoBehaviour {
 		}
 	}
 
+	void OnMouseEnter(){
+		Cursor.SetCursor (Resources.Load<Texture2D> ("clueCursor"), Vector2.zero, CursorMode.Auto);
+		entered = true;
+	}
+	void OnMouseExit(){
+		Cursor.SetCursor (null, Vector2.zero, CursorMode.Auto);
+		entered = false;
+	}
 
 }

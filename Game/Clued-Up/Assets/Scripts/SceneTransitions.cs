@@ -20,12 +20,16 @@ public class SceneTransitions : MonoBehaviour {
 	/// <returns>Yield WaitForSeconds</returns>
 	/// <param name="scene">Scene index to load</param>
 	IEnumerator fadeLoadScene(int scene){
+		print ("FADE LOAD SCENE");
 		GameObject overlayPanel = GameObject.Find ("OverlayPanel");
 		overlayPanel.SetActive (true);
 		overlayPanel.GetComponent<Image> ().CrossFadeAlpha (1f, 1f, false);
+		print ("NO BREAK");
 		yield return new WaitForSeconds (1);
+		print ("BREAK");
 		Cursor.SetCursor (null, Vector2.zero, CursorMode.Auto); //resets curser if stuck on magnifying glass
 		SceneManager.LoadScene (scene);
+		yield return null;
 	}
 
 	private void stopDetective(bool directionIsRight, Collider detective){
@@ -162,6 +166,14 @@ public class SceneTransitions : MonoBehaviour {
 
 
 	public void returnToMainMenu(){
+		Time.timeScale = 1; //so that future coroustines work
+		Cursor.SetCursor (null, Vector2.zero, CursorMode.Auto);
+		Destroy(GameObject.Find ("Detectives"));
+		foreach (GameObject character in GameObject.Find("Story").GetComponent<Story>().getFullCharacterList()) {
+			Destroy (character);
+		}
+		Destroy(GameObject.Find ("Story").GetComponent<Story> ().victim);
+		Destroy(GameObject.Find("Story"));
 		SceneManager.LoadScene (0);
 	}
 }

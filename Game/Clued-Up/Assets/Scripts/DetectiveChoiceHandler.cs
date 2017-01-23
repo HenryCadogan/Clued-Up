@@ -10,25 +10,26 @@ public class DetectiveChoiceHandler : MonoBehaviour {
 	/// The panel containing the character descriptions.
 	/// </summary>
 	public GameObject characterDescriptionsObject;
+	/// <summary>
+	/// Panel GameObject that contains the detective buttons
+	/// </summary>
 	public GameObject detectiveButtons;
+	/// <summary>
+	/// Parent GameObject whose children are Detectives.
+	/// </summary>
 	public GameObject detectives;
 	/// <summary>
 	/// The main story object.
 	/// </summary>
 	private Story story;
-
-
 	/// <summary>
 	/// Stores which description/ detective is currently visible
 	/// </summary>
 	public int currentlyActive;
-
-
 	/// <summary>
 	/// // Sets detective in the main story to the one the user confirmed after viewing their description.
 	/// </summary>
 	public void chooseDetective(){
-		Debug.Log (currentlyActive);
 		story.setDetective(currentlyActive);
 		detectives.transform.GetChild(story.getDetective()).gameObject.SetActive(true); //only activates the chosen detective by using the detective int as an index of children of the Detectives object
 		SceneManager.LoadScene (3); //loads room1/ lakeside
@@ -59,7 +60,6 @@ public class DetectiveChoiceHandler : MonoBehaviour {
 			button.transform.FindChild ("Icon").GetComponent<Image> ().sprite = Resources.Load<Sprite> ("detectiveIconSmall" + currentlySettingDetectiveButton.ToString ());
 			currentlySettingDetectiveButton ++;
 		}
-		//TODO READ CHARACTERS FROM FILE
 	}
 
 }
