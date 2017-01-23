@@ -30,7 +30,7 @@ public class Character : MonoBehaviour {
 	/// <summary>
 	/// List of Clues attatched to this character instance
 	/// </summary>
-	public List<Clue> characterClues;
+	public List<string> characterClueNames;
 	/// <summary>
 	/// Makes the object persistant throughout scenes
 	/// </summary>
@@ -112,32 +112,14 @@ public class Character : MonoBehaviour {
 		List<string> randomCharacterClues = new List<string>();
 		int randInt;
 		while (count > 0) {
-			randInt = Random.Range (0, this.characterClues.Count);
-			if (!randomCharacterClues.Contains (this.characterClues [randInt].name)) {
-				randomCharacterClues.Add (this.characterClues [randInt].name);
+			randInt = Random.Range (0, this.characterClueNames.Count);
+			if (!randomCharacterClues.Contains (this.characterClueNames [randInt])) {
+				randomCharacterClues.Add (this.characterClueNames [randInt]);
 				count -= 1;
 			}
 		}
 		return randomCharacterClues;
 	}
-
-	/// <summary>
-	/// Uses character text file clueNames to validate clue, and then returns a list of all clues for the character. 
-	/// </summary>
-	/// <returns>The character clues.</returns>
-	/// <param name="characterClues">Character clues.</param>
-	/// <param name="lines">Lines from character file (after name and description) </param>
-	private List<Clue> setCharacterClues(List<Clue> characterClues, List<string> lines){
-		Story story = GameObject.Find ("Story").GetComponent<Story> ();
-		List<Clue> characterClueList = new List<Clue> ();
-		foreach (string clueName in lines) {
-			characterClueList.Add (story.getClueInformation (clueName).GetComponent<Clue> ());
-		}
-
-		return characterClueList;
-	}
-
-
 	/// <summary>
 	/// Initialise the specified Character with properties and CharacterClues
 	/// </summary>
@@ -164,8 +146,8 @@ public class Character : MonoBehaviour {
 		gameObject.AddComponent<BoxCollider> ();
 		BoxCol = GetComponent<BoxCollider> ();
 		BoxCol.enabled = false;
-		this.characterClues = setCharacterClues(characterClues, lines.GetRange(4,lines.Count-4)); //uses all lines from character text file after name/description to get character clues
-}
+		this.characterClueNames = lines.GetRange(4,lines.Count-4); //all lines after the initial properties are the names of character clues.
+	}
 
 	/// <summary>
 	/// Destroys the model of the character if there is one, each time a new room is loaded

@@ -557,8 +557,11 @@ public class Story : MonoBehaviour {
 
 	public Character randomAliveCharacter(){
 		Character tempCharacter;
+		foreach (GameObject character in  aliveCharacters){
+			print(character.name);
+		}
 		do {
-			tempCharacter = aliveCharacters [Random.Range [0, aliveCharacters.Count]].GetComponent<Character> ();
+			tempCharacter = aliveCharacters [Random.Range (0, aliveCharacters.Count)].GetComponent<Character> ();
 		
 		} while(tempCharacter.isMurderer == true);
 		return tempCharacter;
