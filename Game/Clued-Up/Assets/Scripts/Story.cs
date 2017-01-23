@@ -152,7 +152,7 @@ public class Story : MonoBehaviour {
 	public void setDetective(int detectiveInt){
 		if ((detectiveInt < NUMBER_OF_DETECTIVES) || (detectiveInt >= 0)){
 			detective = detectiveInt;
-			Debug.Log ("You have chosen dectective " + detective.ToString ());
+			//Debug.Log ("You have chosen dectective " + detective.ToString ());
 		} else
 			throw new System.ArgumentOutOfRangeException ("Not enough detectives");
 	}
@@ -283,7 +283,7 @@ public class Story : MonoBehaviour {
 	/// <returns>List of character GameObjects that are within room index</returns>
 	/// <param name="room">Index of the room of choice</param>
 	public List<GameObject> getCharactersInRoom(int room){
-		print ("Get characters in room " + room);
+		//print ("Get characters in room " + room);
 		List<GameObject> charactersInCurrentRoom = new List<GameObject> (); 
 		if (this.charactersInRoom.ContainsKey (room)) {
 			foreach (int characterIndex in this.charactersInRoom[room]) {
