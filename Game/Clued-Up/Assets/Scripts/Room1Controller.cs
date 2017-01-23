@@ -137,7 +137,7 @@ public class Room1Controller : MonoBehaviour {
 		story = GameObject.Find("Story").GetComponent<Story>(); // references persistant object story
 		inventory = GameObject.Find("Detective").GetComponent<Inventory>();
 
-		story.addVisitedRoom (0);
+		GameObject.Find("Detective").GetComponent<Detective>().addVisitedRoom (0);
 		setOverlay ();
 		setBackground ();
 		setLights ();

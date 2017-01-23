@@ -32,6 +32,9 @@ public class Story : MonoBehaviour {
 	/// The motive clue for this instance.
 	/// </summary>
 	public string MotiveClue;
+	/// <summary>
+	/// The murderer in this instance..
+	/// </summary>
 	public GameObject murderer;
 	/// <summary>
 	/// The victim for this instance of the story
@@ -53,37 +56,11 @@ public class Story : MonoBehaviour {
 	/// The number of detectives that will be in the game
 	/// </summary>
 	private static int NUMBER_OF_DETECTIVES = 3;
-	/// <summary>
-	/// List of all visited rooms to keep track of map.
-	/// </summary>
-	private List<int> visitedRooms = new List<int>();
 
 
 
 
 
-
-
-	/// <summary>
-	/// </summary>
-	/// <returns><c>true</c>, if room index has been visited, <c>false</c> otherwise.</returns>
-	/// <param name="roomIndex">Room index.</param>
-	public bool isVisited(int roomIndex){
-		if(visitedRooms.Contains (roomIndex)){
-			return true;
-		}else{
-			return false;
-		}
-	}
-	/// <summary>
-	/// Adds the roomIndex to visitedRooms if not there already.
-	/// </summary>
-	/// <param name="roomIndex">Room index.</param>
-	public void addVisitedRoom(int roomIndex){
-		if(!visitedRooms.Contains(roomIndex)) {
-			visitedRooms.Add(roomIndex);
-		}
-	}
 	/// <summary>
 	/// Keeps only 1 instance ever, therefore it can survive between scenes without having several scenes.
 	/// </summary>

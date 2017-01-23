@@ -43,7 +43,10 @@ public class Detective : MonoBehaviour {
 	/// Breif description of detective.
 	/// </summary>
 	public string description;
-
+	/// <summary>
+	/// List of all visited rooms to keep track of map.
+	/// </summary>
+	private List<int> visitedRooms = new List<int>();
 	/// <summary>
 	/// The main story.
 	/// </summary>
@@ -53,6 +56,28 @@ public class Detective : MonoBehaviour {
 	/// </summary>
 	private string direction = "right";
 
+
+
+	/// <summary>
+	/// </summary>
+	/// <returns><c>true</c>, if room index has been visited, <c>false</c> otherwise.</returns>
+	/// <param name="roomIndex">Room index.</param>
+	public bool isVisited(int roomIndex){
+		if(visitedRooms.Contains (roomIndex)){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	/// <summary>
+	/// Adds the roomIndex to visitedRooms if not there already.
+	/// </summary>
+	/// <param name="roomIndex">Room index.</param>
+	public void addVisitedRoom(int roomIndex){
+		if(!visitedRooms.Contains(roomIndex)) {
+			visitedRooms.Add(roomIndex);
+		}
+	}
 	/// <summary>
 	/// Starts or stops the detective walking animations, movement and footsteps
 	/// </summary>

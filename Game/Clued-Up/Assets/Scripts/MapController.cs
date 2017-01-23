@@ -13,9 +13,9 @@ public class MapController : MonoBehaviour {
 	/// </summary>
 	public void updateMapButtons(){
 		Time.timeScale = 0;
-		Story story = GameObject.Find ("Story").GetComponent<Story>();
+		Detective detective = GameObject.Find ("Detective").GetComponent<Detective>();
 		foreach (GameObject button in GameObject.FindGameObjectsWithTag("MapButtons")) {
-			if (story.isVisited (button.GetComponent<MapController> ().buttonIsForRoomIndex)) {
+			if (detective.isVisited (button.GetComponent<MapController> ().buttonIsForRoomIndex)) {
 				button.GetComponent<Button> ().interactable = true;
 			}
 		}
