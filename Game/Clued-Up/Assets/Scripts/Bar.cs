@@ -16,7 +16,7 @@ public class Bar : MonoBehaviour {
 	/// <summary>
 	/// When Pump is clicked begin pouring
 	/// </summary>
-	void OnMouseDown(){
+	public void OnMouseDown(){
 		if (song != -1) {	//if there is a song property, play song
 			switch (song) {
 			case 0: 
