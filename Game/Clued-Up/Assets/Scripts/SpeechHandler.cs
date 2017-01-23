@@ -308,10 +308,10 @@ public class SpeechHandler : MonoBehaviour {
 		string branchName = "";
 		// Go through each clue to see if it's the murder weapon or motive clue.
 		foreach (string testClue in playerInv.collectedClueNames) {
-			if (testClue == activeStory.MurderWeapon) {
+			if (testClue == activeStory.murderWeapon) {
 				hasMurderWeapon = true;
 			}
-			if (testClue == activeStory.MotiveClue) {
+			if (testClue == activeStory.motiveClue) {
 				hasMotiveClue = true;
 			}
 		}

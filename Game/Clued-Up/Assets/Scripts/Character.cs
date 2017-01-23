@@ -93,7 +93,7 @@ public class Character : MonoBehaviour {
 			canBeTalkedTo = false;
 		} else if (branchName == "Accuse-Right") {
 			Story activeStory = FindObjectOfType<Story> ();
-			activeStory.EndGame ();
+			activeStory.endGame ();
 		}
 	}
 	/// <summary>
@@ -161,7 +161,6 @@ public class Character : MonoBehaviour {
 		gameObject.AddComponent<ImportSpeech> ();
 		ImportSpeech speechHandler = GetComponent<ImportSpeech> ();
 		TextAsset testAsset =(TextAsset)Resources.Load (lines [1].Trim());
-		print("Asset = " + lines [1].Trim());
 		speechHandler.asset = testAsset;
 		speechHandler.actualStart ();
 		speechRef = GetComponent<ImportSpeech> ();

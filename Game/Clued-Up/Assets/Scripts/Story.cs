@@ -27,11 +27,11 @@ public class Story : MonoBehaviour {
 	/// <summary>
 	/// The murder weapon for this instance of the story
 	/// </summary>
-	public string MurderWeapon;
+	public string murderWeapon;
 	/// <summary>
 	/// The motive clue for this instance.
 	/// </summary>
-	public string MotiveClue;
+	public string motiveClue;
 	/// <summary>
 	/// The murderer in this instance..
 	/// </summary>
@@ -164,10 +164,9 @@ public class Story : MonoBehaviour {
 		return this.detective;
 	}
 
-	public void EndGame(){
+	public void endGame(){
 		Debug.Log ("Congratulations! You have beaten the game!");
 		SceneManager.LoadScene (11);
-		//TODO: End cutscene.
 	}
 		
 
@@ -488,8 +487,8 @@ public class Story : MonoBehaviour {
 		motiveClueNames.Add ("recorder");
 		motiveClueNames.Add ("polaroid");
 		motiveClueNames.Add ("letter");
-		MotiveClue = motiveClueNames [Random.Range (0, motiveClueNames.Count)];
-		cluesList.Add(MotiveClue);
+		motiveClue = motiveClueNames [Random.Range (0, motiveClueNames.Count)];
+		cluesList.Add(motiveClue);
 	}
 	/// <summary>
 	/// Selects one of many weapons.
@@ -501,8 +500,8 @@ public class Story : MonoBehaviour {
 		weaponClueNames.Add ("salmon");
 		weaponClueNames.Add ("hammer");
 		weaponClueNames.Add ("knife");
-		MurderWeapon = weaponClueNames [Random.Range (0, weaponClueNames.Count)];
-		cluesList.Add(MurderWeapon);
+		murderWeapon = weaponClueNames [Random.Range (0, weaponClueNames.Count)];
+		cluesList.Add(murderWeapon);
 	}
 
 
