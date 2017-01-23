@@ -1,4 +1,4 @@
-#INTRO
+﻿#INTRO
 $Who are you?
 £...
 £...Oh, you were being serious?
@@ -238,6 +238,29 @@ $Hey Kanye, you must have a [ like this right?
 #Manipulative-pen
 $Is this the pen of a world famous rapper?
 £Yeah it is, THE most famous rapper
+
+#Aggressive-money
+$So this is your [?
+£Yeah it's my money, I always carry enough cash with me incase I need to buy a house.
+#Rude-money
+$Hmm a wad of cash, must be yours?
+£Kanye has all of the cash he needs
+#Friendly-money
+$I found some money on my search, could it be yours?
+£Yeah could be, I have too much money to keep track of!
+#Calm-money
+$Don't suppose this is your [?
+£I don't know, could be, I've got money everywhere
+#Comedic-money
+$So Kanye, you must have seen a lot of [ in your lifetime? What about this lot?
+£Yeah I have, more than you ever will!
+#Annoying-money
+$So Kanye, does this [ belong to you? 
+£I dont know, could be, can I have it?
+$That's not how it works Kanye...
+#Manipulative-money
+$What would the world's most famous rapper be doing with all this [?
+£Kanye has plenty of spare money, I earn more than everyone here put together!
 
 
 #Accuse-NoItems
