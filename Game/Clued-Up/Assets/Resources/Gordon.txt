@@ -307,15 +307,15 @@ $You did it
 $...Darn
 #Accuse-WrongChar
 $You did it
-£No
+£You've definitely got the wrong person, you're mad!
 $...Darn
 #Accuse-Motive
 $You did it
-£Why would I do it
+£Why would I do it?
 $...Darn
 #Accuse-Weapon
 $You did it
-£With what
+£How on earth would I do that?
 $...Darn
 #Accuse-Right
 $You did it
