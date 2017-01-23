@@ -56,6 +56,10 @@ public class Story : MonoBehaviour {
 	/// The number of detectives that will be in the game
 	/// </summary>
 	private static int NUMBER_OF_DETECTIVES = 3;
+	/// <summary>
+	/// The full list of characters for the game.
+	/// </summary>
+	private List<GameObject> characters = new List<GameObject> ();
 
 
 
@@ -83,6 +87,10 @@ public class Story : MonoBehaviour {
 	/// <param name="filename">Path to file (from root)</param>
 	private string randomLineFrom(string filename){
 		string[] linesArray = Regex.Split (Resources.Load<TextAsset> (filename).text, "\n");
+		//testing to ensure filename is correct
+		if (linesArray.Length == 0) {
+			throw new FileLoadException ("FileName \'" + filename + "\' is not a valid file to read from");
+		}
 		List<string> lines = new List<string> (linesArray);
 		return lines [Random.Range (0, lines.Count)];
 	}
@@ -109,7 +117,6 @@ public class Story : MonoBehaviour {
 		default:
 			throw new System.ArgumentOutOfRangeException ("Weather out of range");
 		}
-
 		string intro1 = "It was a " + weatherString + randomLineFrom("TextFiles/intro1");
 		return intro1;
 	}
@@ -193,7 +200,7 @@ public class Story : MonoBehaviour {
 	/// Initial definitions for all characters and selection of victim/murderer
 	/// </summary>
 	private void setCharacters(){
-		List<GameObject> characters = new List<GameObject> ();
+		
 
 		//Set up characters
 		GameObject character0 = Instantiate (Resources.Load ("Character"), new Vector3(1.5f,-5.99f,-1.2f), Quaternion.Euler(90,0,0)) as GameObject;
@@ -327,6 +334,7 @@ public class Story : MonoBehaviour {
 		GameObject newClue = new GameObject ();
 		newClue.AddComponent<Clue> ();
 		clueName = clueName.Trim ();
+
 		switch (clueName) {
 		case "chalkOutline":
 			newClue.GetComponent<Clue> ().initialise ("chalkOutline", "Chalk Outline", "A chalk outline of the body of " + this.getVictim ().longName + "!", disappearWhenClicked:false);
@@ -341,7 +349,7 @@ public class Story : MonoBehaviour {
 			newClue.GetComponent<Clue> ().initialise ("moustache", "Moustache", "Is someone trying to disguise themselves?");
 			break;
 		case "pen":
-			newClue.GetComponent<Clue> ().initialise ("pen", "Pen", "A fancy fountain pen.");
+			newClue.GetComponent<Clue> ().initialise ("pen", "Pen", "A fancy fountain pen. This could belong to " + randomAliveCharacter().longName + " or maybe it is " + this.murderer.GetComponent<Character>().longName + "\'s");
 			break;
 		case "plunger":
 			newClue.GetComponent<Clue> ().initialise ("plunger", "Plunger", "Oh wow. A plunger!");
@@ -431,16 +439,16 @@ public class Story : MonoBehaviour {
 
 
 		case "polaroid":
-			newClue.GetComponent<Clue> ().initialise ("polaroid", "Polaroid", "A dirty, crumpled polaroid. In the frame are " + this.murderer.GetComponent<Character>().longName + " and " +this.victim.GetComponent<Character>().longName+". They have their arms around one another, and they’re laughing. You remember seeing them both at the party, but they didn’t seem to talk to one another at all. In fact, they seemed to be at opposite sides of the room for the entirety of the evening. You can’t help but feel like something must have happened between them...but what?", isMotive:true);
+			newClue.GetComponent<Clue> ().initialise ("polaroid", "Polaroid", "A dirty, crumpled polaroid. You can vaguely make out " + this.victim.GetComponent<Character>().longName + " and someone else. They have their arms around one another, and they’re laughing. You can see written on the back of the photo : " + "\'" + this.victim.GetComponent<Character>().longName[0] + " & " + this.murderer.GetComponent<Character>().longName[0] + ". You realise that these must be the initials of the people in the photo. One of which is our victim..." , isMotive:true);
 			break;
 		case "recorder":
-			newClue.GetComponent<Clue> ().initialise ("recorder", "Recorder", "The quality is terrible, but you can just about make out the voices. It appears to be two people having a conversation. You recognise both of them. One of them is " +this.victim.GetComponent<Character>().longName + " the other is " + this.murderer.GetComponent<Character>().longName +". At first they are calm, and you can’t quite hear what they’re saying. But gradually it gets louder, their voices rising as their anger bubbles up. Someone starts shouting. There’s a loud bang. Everything goes quiet. There seems to be some muffled shuffling in the background. The recording cuts off. Everything is starting to make sense...", isMotive:true);
+			newClue.GetComponent<Clue> ().initialise ("recorder", "Recorder", "The quality is terrible, but you can just about make out the voices. It appears to be two people having a conversation. You think you recognise one of the voices as being " +this.victim.GetComponent<Character>().longName + ". The other voice sounds similar to "+ this.murderer.GetComponent<Character>().longName +" but you are very unsure if it is really them. At first they are calm, and you can’t quite hear what they’re saying. But gradually it gets louder, their voices rising as their anger bubbles up. Everything goes quiet. There seems to be some muffled shuffling in the background. The recording cuts off. Everything is starting to make sense...", isMotive:true);
 			break;
 		case "diary":
-			newClue.GetComponent<Clue> ().initialise ("diary", "Diary", this.victim.GetComponent<Character>().longName + "’s diary. You know you shouldn’t be reading it, but you find yourself flicking through the pages anyway. After all, it could be used for evidence, right? You turn to the most recent entry. The day before the party. You can’t help noticing how many times" + this.murderer.GetComponent<Character>().longName + "'s name has been mentioned. You read the entire page before slamming the book shut. Everything is starting to make sense...", isMotive:true, localScale:0.15f);
+			newClue.GetComponent<Clue> ().initialise ("diary", "Diary", this.victim.GetComponent<Character>().longName + "’s diary. You know you shouldn’t be reading it, but you find yourself flicking through the pages anyway. After all, it could be used for evidence, right? You turn to the most recent entry. The day before the party. You can’t help noticing how many times" + this.murderer.GetComponent<Character>().longName[0] + " has been etched into the page with vigor. You read the entire page before slamming the book shut.", isMotive:true, localScale:0.15f);
 			break;
 		case "letter":
-			newClue.GetComponent<Clue> ().initialise ("letter", "Letter", "A crumpled letter. The writing is small and scrawling, but if you squint you can just make it out. It appears to have been written by " + this.murderer.GetComponent<Character>().longName + ", and it’s addressed to " + this.victim.GetComponent<Character>().longName + ". It’s messy and smudged, so you don’t attempt to read the entire thing, but you can’t help but notice the very last sentence... ‘Your days are numbered.’ Everything is starting to make sense...", isMotive:true, localScale:0.2f);
+			newClue.GetComponent<Clue> ().initialise ("letter", "Letter", "A crumpled letter. The writing is small and scrawling, but if you squint you can just make it out. It appears to be addressed to " + this.victim.GetComponent<Character>().longName + ". It’s messy and smudged, so you don’t attempt to read the entire thing, but you can make out the names " + randomAliveCharacter().longName+ " and " + this.murderer.GetComponent<Character>().longName+ ". How very suspicious..." , isMotive:true, localScale:0.2f);
 			break;
 
 
@@ -541,4 +549,21 @@ public class Story : MonoBehaviour {
 		setCharacterRooms();
 		setClues();
 	}
+
+
+	public List<GameObject> getFullCharacterList(){
+		return characters;
+	}
+
+	public Character randomAliveCharacter(){
+		Character tempCharacter;
+		do {
+			tempCharacter = aliveCharacters [Random.Range [0, aliveCharacters.Count]].GetComponent<Character> ();
+		
+		} while(tempCharacter.isMurderer == true);
+		return tempCharacter;
+	}
+					
+
+
 }
