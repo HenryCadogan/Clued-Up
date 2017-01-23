@@ -22,11 +22,11 @@ public class ImportSpeech : MonoBehaviour {
 	/// <summary>
 	/// The item in.
 	/// </summary>
-	public Clue ItemIn;		// TODO: Update these to be object pointers
+	public Clue itemIn;		// TODO: Update these to be object pointers
 	/// <summary>
 	/// The char in.
 	/// </summary>
-	public Character CharIn;
+	public Character charIn;
 	/// <summary>
 	/// Pos is the current position in the Branch
 	/// </summary>
@@ -47,7 +47,7 @@ public class ImportSpeech : MonoBehaviour {
 	/// <summary>
 	/// Runs initialisation, but after everything else is initialised for safety.
 	/// </summary>
-	public void ActualStart(){
+	public void actualStart(){
 		SpeechDict = new Dictionary<string, ArrayList> ();	//Set up the dictionary and the list for input
 		SpeechList = new ArrayList ();
 		string AssetText = asset.text; 		// Read the file
@@ -108,7 +108,7 @@ public class ImportSpeech : MonoBehaviour {
 	/// Sets the branch.
 	/// </summary>
 	/// <param name="BranchName">Branch name.</param>
-	public void SetBranch (string BranchName) {	// This subroutine, suprisingly, sets the branch to read from
+	public void setBranch (string BranchName) {	// This subroutine, suprisingly, sets the branch to read from
 		if (Pos != 0) {		// If the Pos isn't 0 when you do this, that means you were in the middle of the branch when you did it...
 			Debug.LogWarning ("SetBranch called in middle of branch? Resetting branch position...");
 			Pos = 0;		// Which is odd, but Pos will be reset for safety.
@@ -127,11 +127,11 @@ public class ImportSpeech : MonoBehaviour {
 			string ReturnString = BranchList [Pos].ToString();	// Get the current line
 			string ItemName = "ERR_NO_ITEM";
 			string CharName = "ERR_NO_CHAR";
-			if (ItemIn != null) {
-				ItemName = ItemIn.longName;
+			if (itemIn != null) {
+				ItemName = itemIn.longName;
 			}
-			if (CharIn != null) {
-				CharName = CharIn.longName;
+			if (charIn != null) {
+				CharName = charIn.longName;
 			}
 			ReturnString = ReturnString.Replace("[",ItemName);	// Replace token characters
 			ReturnString = ReturnString.Replace("]",CharName);

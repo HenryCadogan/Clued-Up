@@ -32,20 +32,41 @@ public class Character : MonoBehaviour {
 	/// </summary>
 	public List<string> characterClueNames;
 	/// <summary>
-	/// Makes the object persistant throughout scenes
+	/// The Speech UI handler in the current scene.
 	/// </summary>
-	public SpeechHandler SpeechUI;
+	public SpeechHandler speechUI;
 	public bool entered;
 
 
 	//TODO NEEDS SUMMARIES.
-	public string CritBranch;
-	public TextAsset SpeechFile;
-	public bool HasBeenTalkedTo = false;
-	public bool CanBeTalkedTo = true;
-	private ImportSpeech SpeechRef;
-	private BoxCollider BoxCol;
+	/// <summary>
+	/// The name of the branch that the will result in the detective recieveing an item.
+	/// </summary>
+	public string critBranch;
+	/// <summary>
+	/// The text asset that contains the speech of the character
+	/// </summary>
+	public TextAsset speechFile;
+	/// <summary>
+	/// A flag that triggers when the character has been talked to.
+	/// </summary>
+	public bool hasBeenTalkedTo = false;
+	/// <summary>
+	/// The state of whether the character can be talked to or not.
+	/// </summary>
+	public bool canBeTalkedTo = true;
+	/// <summary>
+	/// A reference to the ImportSpeech component of the character.
+	/// </summary>
+	private ImportSpeech speechRef;
+	/// <summary>
+	/// A reference to the BoxCollider component of the character.
+	/// </summary>
+	private BoxCollider boxCol;
 
+	/// <summary>
+	/// Makes the object persistant throughout scenes
+	/// </summary>
 	void Awake ()
 	{
 		DontDestroyOnLoad(gameObject);
@@ -54,25 +75,25 @@ public class Character : MonoBehaviour {
 	void OnMouseDown(){
 		Inventory inventory = GameObject.Find ("Detective").GetComponent<Inventory> ();
 		inventory.encounter (this);
-		SpeechUI.TurnOnSpeechUI ();
+		speechUI.turnOnSpeechUI ();
 	}
 
-	public void PreSpeech (string BranchName){
-		Story ActiveStory = FindObjectOfType<Story> ();
-		if (BranchName == "INTRO") {
-			SpeechRef.CharIn = ActiveStory.getVictim ();
+	public void preSpeech (string branchName){
+		Story activeStory = FindObjectOfType<Story> ();
+		if (branchName == "INTRO") {
+			speechRef.charIn = activeStory.getVictim ();
 		}
 	}
 
-	public void PostSpeech (string BranchName){
-		if (BranchName == CritBranch) {
+	public void postSpeech (string branchName){
+		if (branchName == critBranch) {
 			//TODO: Give item
-		} else if (BranchName == "Accuse-NoItems" || BranchName == "Accuse-WrongChar"
-		           || BranchName == "Accuse-Motive" || BranchName == "Accuse-Weapon") {
-			CanBeTalkedTo = false;
-		} else if (BranchName == "Accuse-Right") {
-			Story ActiveStory = FindObjectOfType<Story> ();
-			ActiveStory.EndGame ();
+		} else if (branchName == "Accuse-NoItems" || branchName == "Accuse-WrongChar"
+		           || branchName == "Accuse-Motive" || branchName == "Accuse-Weapon") {
+			canBeTalkedTo = false;
+		} else if (branchName == "Accuse-Right") {
+			Story activeStory = FindObjectOfType<Story> ();
+			activeStory.EndGame ();
 		}
 	}
 	/// <summary>
@@ -93,10 +114,10 @@ public class Character : MonoBehaviour {
 		model.transform.position = pos;
 		model.transform.Rotate (new Vector3 (0f, 180f, 0f)); //rotate to face camera
 
-		BoxCollider BoxCol = GetComponent<BoxCollider> ();
-		BoxCol.center = model.transform.localPosition + new Vector3 (0, 0, -3);
-		BoxCol.size = new Vector3 (3, 1, 6);
-		BoxCol.enabled = true;
+		BoxCollider boxCol = GetComponent<BoxCollider> ();
+		boxCol.center = model.transform.localPosition + new Vector3 (0, 0, -3);
+		boxCol.size = new Vector3 (3, 1, 6);
+		boxCol.enabled = true;
 
 
 		if (modelName != "Reginald")
@@ -138,16 +159,16 @@ public class Character : MonoBehaviour {
 		this.image = Resources.Load<Sprite> ("CharacterImages/" + this.gameObject.name.Trim());
 
 		gameObject.AddComponent<ImportSpeech> ();
-		ImportSpeech SpeechHandler = GetComponent<ImportSpeech> ();
-		TextAsset TestAsset =(TextAsset)Resources.Load (lines [1].Trim());
+		ImportSpeech speechHandler = GetComponent<ImportSpeech> ();
+		TextAsset testAsset =(TextAsset)Resources.Load (lines [1].Trim());
 		print("Asset = " + lines [1].Trim());
-		SpeechHandler.asset = TestAsset;
-		SpeechHandler.ActualStart ();
-		SpeechRef = GetComponent<ImportSpeech> ();
+		speechHandler.asset = testAsset;
+		speechHandler.actualStart ();
+		speechRef = GetComponent<ImportSpeech> ();
 
 		gameObject.AddComponent<BoxCollider> ();
-		BoxCol = GetComponent<BoxCollider> ();
-		BoxCol.enabled = false;
+		boxCol = GetComponent<BoxCollider> ();
+		boxCol.enabled = false;
 		this.characterClueNames = lines.GetRange(4,lines.Count-4); //all lines after the initial properties are the names of character clues.
 	}
 
@@ -158,7 +179,7 @@ public class Character : MonoBehaviour {
 	void OnLevelWasLoaded(){
 		foreach (Transform child in gameObject.transform) {
 			GameObject.Destroy (child.gameObject);
-			BoxCol.enabled = false;
+			boxCol.enabled = false;
 		}
 	}
 

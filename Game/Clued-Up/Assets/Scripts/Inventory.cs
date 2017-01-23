@@ -33,7 +33,7 @@ public class Inventory : MonoBehaviour {
 			collectedClueNames.Add (clue.name);
 			Character[] ListOfChars = FindObjectsOfType<Character> ();
 			foreach (Character ForChar in ListOfChars) {
-				ForChar.CanBeTalkedTo = true;
+				ForChar.canBeTalkedTo = true;
 			}
 		}else
 			throw new System.ArgumentException ("Clue " + clue.name + " has already been collected. This is strictly not allowed.");
