@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
+/// <summary>
+/// A class for any interactable object that doesn't modify at runtime.
+/// </summary>
 public class ClickHotspot : MonoBehaviour {
 	/// <summary>
 	/// Message to appear when hotspot is clicked

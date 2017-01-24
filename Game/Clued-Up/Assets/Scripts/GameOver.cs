@@ -3,16 +3,40 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
+/// <summary>
+/// A class that creates the end game screen and exits it.
+/// </summary>
 public class GameOver : MonoBehaviour {
+	/// <summary>
+	/// The text object in the Game Over scene.
+	/// </summary>
 	public GameObject textPanel;
+	/// <summary>
+	/// The AudioSource component in the Game Over scene.
+	/// </summary>
 	public AudioSource audioSource;
+	/// <summary>
+	/// The scene controller.
+	/// </summary>
 	public SceneTransitions sceneController;
+	/// <summary>
+	/// The story used in the game.
+	/// </summary>
 	private Story story;
-
+	/// <summary>
+	/// Provides an easy to use handler to fade the text.
+	/// </summary>
+	/// <param name="textObject">The text object to be faded.</param>
+	/// <param name="alpha">The target alpha value for the object.</param>
+	/// <param name="time">The amount of time over which the crossfade should elapse.</param>
 	private void fadeText(GameObject textObject, float alpha, float time){ 
 		textObject.GetComponent<Text>().CrossFadeAlpha(alpha,time,false);
 	}
-
+	/// <summary>
+	/// Runs the end game cutscene.
+	/// </summary>
+	/// <returns>While the Enumerator may return a value, I would not trust it to be usable.</returns>
+	/// <param name="story">The story of the game that just ended.</param>
 	IEnumerator endGameCutscene(Story story){
 		audioSource.Play (); //play scream
 		yield return new WaitForSeconds(1f); //wait 1 second after scream begins
@@ -43,7 +67,7 @@ public class GameOver : MonoBehaviour {
 		SceneManager.LoadScene (12); //load credits
 	}
 	/// <summary>
-	/// Simultaneously fades out all text boxes
+	/// Simultaneously fades out all text boxes.
 	/// </summary>
 	private void fadeOutAllText(float alpha, float time){
 		fadeText (textPanel.transform.GetChild (0).gameObject, alpha, time);

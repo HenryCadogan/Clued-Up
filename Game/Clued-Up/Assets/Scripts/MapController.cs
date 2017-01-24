@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-
+/// <summary>
+/// A class which enables the enabling of buttons if the detective has been to their rooms.
+/// </summary>
 public class MapController : MonoBehaviour {
 	/// <summary>
 	/// Property used in Button component to indicate which room it will load.

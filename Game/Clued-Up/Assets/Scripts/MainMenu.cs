@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// A class that displays a random detective in the main menu of the game.
+/// </summary>
 public class MainMenu : MonoBehaviour {
 	public GameObject detective1;
 	public GameObject detective2;

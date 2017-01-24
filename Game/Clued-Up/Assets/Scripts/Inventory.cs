@@ -29,8 +29,10 @@ public class Inventory : MonoBehaviour {
 	/// <param name="clue">The clue to collect</param>
 	public void collect(Clue clue){
 		if (!this.isCollected (clue.name)) {
+			// Add the clue to the inventory...
 			Debug.Log (clue.name + " COLLECTED");
 			collectedClueNames.Add (clue.name);
+			// And set all characters so we can talk to them again.
 			Character[] listOfChars = FindObjectsOfType<Character> ();
 			foreach (Character forChar in listOfChars) {
 				forChar.canBeTalkedTo = true;

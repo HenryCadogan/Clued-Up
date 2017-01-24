@@ -1,16 +1,47 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+
+/// <summary>
+/// A class dedicated to various details in the Bar.
+/// </summary>
 public class Bar : MonoBehaviour {
 
+	/// <summary>
+	/// An image file of the full pint.
+	/// </summary>
 	public Image fullPint;
+	/// <summary>
+	/// An image file of the stream of beer.
+	/// </summary>
 	public Image stream;
+	/// <summary>
+	/// The AudioSource component of the beer pump.
+	/// </summary>
 	public AudioSource source;
+	/// <summary>
+	/// The AudioSource component of the jukebox.
+	/// </summary>
 	public AudioSource jukeboxSource;
+	/// <summary>
+	/// The rate at which the pint fills.
+	/// </summary>
 	public float speed;
+	/// <summary>
+	/// An index of the current song playing in the jukebox
+	/// </summary>
 	public int song;
+	/// <summary>
+	/// A flag storing whether the pint has been poured or not.
+	/// </summary>
 	private bool hasBeenPoured = false;
+	/// <summary>
+	/// A state storing whether or not the beer is being poured.
+	/// </summary>
 	private bool pouring = false;
+	/// <summary>
+	/// A state storing whether or not the mouse cursor is placed over the beer pump or not.
+	/// </summary>
 	private bool entered = false;
 
 
