@@ -72,19 +72,29 @@ public class Character : MonoBehaviour {
 		DontDestroyOnLoad(gameObject);
 	}
 
+	/// <summary>
+	/// Adds the character to the detective's inventory, then enables the speech UI.
+	/// </summary>
 	void OnMouseDown(){
 		Inventory inventory = GameObject.Find ("Detective").GetComponent<Inventory> ();
 		inventory.encounter (this);
 		speechUI.turnOnSpeechUI ();
 	}
 
+	/// <summary>
+	/// Allows the character a chance to update variables before running speech.
+	/// </summary>
+	/// <param name="branchName">The name of the speech branch about to be run.</param>
 	public void preSpeech (string branchName){
 		Story activeStory = FindObjectOfType<Story> ();
 		if (branchName == "INTRO") {
 			speechRef.charIn = activeStory.getVictim ();
 		}
 	}
-
+	/// <summary>
+	/// Allows the character to modify variables post speech, also triggers end game on a successful accusation.
+	/// </summary>
+	/// <param name="branchName">The name of the speech branch that just ended.</param>
 	public void postSpeech (string branchName){
 		if (branchName == critBranch) {
 			//TODO: Give item
@@ -101,10 +111,11 @@ public class Character : MonoBehaviour {
 	/// </summary>
 	/// <param name="position">Position.</param>
 	public void display(Vector3 position){
+		// Get the name of the model to be used.
 		string modelName = this.name.Trim();
 		if (modelName == "Kanye")
 			modelName += Random.Range (0, 2).ToString ();
-		
+		// Load it into the game orld and position it.
 		GameObject model = Instantiate (Resources.Load<GameObject> ("Models/" + modelName));
 		model.transform.parent = gameObject.transform;
 		Vector3 pos = new Vector3();
@@ -113,13 +124,13 @@ public class Character : MonoBehaviour {
 		pos.z = position.z; //moves onto ground
 		model.transform.position = pos;
 		model.transform.Rotate (new Vector3 (0f, 180f, 0f)); //rotate to face camera
-
+		// Position the BoxCollider component.
 		BoxCollider boxCol = GetComponent<BoxCollider> ();
 		boxCol.center = model.transform.localPosition + new Vector3 (0, 0, -3);
 		boxCol.size = new Vector3 (3, 1, 6);
 		boxCol.enabled = true;
 
-
+		// Special case handling for Reginald.
 		if (modelName != "Reginald")
 			model.GetComponent<Animator>().runtimeAnimatorController = (Resources.Load<RuntimeAnimatorController> ("Models/" + modelName + "Anim"));
 	}
@@ -148,23 +159,24 @@ public class Character : MonoBehaviour {
 	/// </summary>
 	///<param name="characterIndex">Index of character to be initialised</param>
 	public void initialise(int characterIndex){
+		// Create a list of lines from the the file in the Resources TextFiles folder.
 		string[] linesArray = Regex.Split(Resources.Load<TextAsset>("TextFiles/character" + characterIndex.ToString()).text, "\n");
 		List<string> lines = new List<string> (linesArray);
-
+		// Assign variables from the lines as appropriate.
 		this.gameObject.name = lines[1]; //file contains comment in line 0
 		this.longName = lines [2];
 		this.description = lines [3];
 		this.isMurderer = false;
 		this.isVictim = false;
 		this.image = Resources.Load<Sprite> ("CharacterImages/" + this.gameObject.name.Trim());
-
+		// Give the character an ImportSpeech component
 		gameObject.AddComponent<ImportSpeech> ();
 		ImportSpeech speechHandler = GetComponent<ImportSpeech> ();
 		TextAsset testAsset =(TextAsset)Resources.Load (lines [1].Trim());
 		speechHandler.asset = testAsset;
 		speechHandler.actualStart ();
 		speechRef = GetComponent<ImportSpeech> ();
-
+		// Give the character a BoxCollider component and disable it.
 		gameObject.AddComponent<BoxCollider> ();
 		boxCol = GetComponent<BoxCollider> ();
 		boxCol.enabled = false;

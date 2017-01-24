@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+/// <summary>
+/// A class for the cupboard object in the kitchen.
+/// </summary>
 public class Cupboard : MonoBehaviour {
 	/// <summary>
 	/// <c>T<c>/ if cupboard is open
@@ -13,9 +16,21 @@ public class Cupboard : MonoBehaviour {
 	/// For example "oven"; name of the cupboard
 	/// </summary>
 	private string longName;
+	/// <summary>
+	/// A reference to the main HUD of the scene of the cupboard.
+	/// </summary>
 	private HUDController HUDC;
+	/// <summary>
+	/// The GameObject of the clue held inside the cupboard.
+	/// </summary>
 	private GameObject containedClue;
+	/// <summary>
+	/// The offset from which the clue should spawn in from.
+	/// </summary>
 	private Vector3 cluePosOffset;
+	/// <summary>
+	/// A state storing whether or not the mouse cursor is placed over the cupboard or not.
+	/// </summary>
 	private bool entered;
 
 	/// <summary>
@@ -24,6 +39,9 @@ public class Cupboard : MonoBehaviour {
 	private void changeSprite(){
 		gameObject.GetComponent<SpriteRenderer> ().sprite = Resources.Load<Sprite> ("Furniture/" + this.name + "-open");
 	}
+	/// <summary>
+	/// Plays the sound of the AudioSource component of the cupboard.
+	/// </summary>
 	private void playSound(){
 		gameObject.GetComponent<AudioSource> ().clip = Resources.Load<AudioClip> ("Sounds/" + this.name);
 		gameObject.GetComponent<AudioSource> ().Play ();

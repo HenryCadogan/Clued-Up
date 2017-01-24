@@ -1,11 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
+/// <summary>
+/// A class for the lockers that are used in the lobby of the RCH.
+/// </summary>
 public class Lockers : MonoBehaviour {
 
 	/// <summary>
 	/// Used in Lockers component of the GameObject children of Locker prefab to distinguish door colliders.
 	/// </summary>
 	public int doorID;
+	/// <summary>
+	/// The AudioSource component of the lockers.
+	/// </summary>
 	public AudioSource sfxSource;
 	/// <summary>
 	/// 0 means locker is closed, 1 = locker is open
@@ -19,7 +25,13 @@ public class Lockers : MonoBehaviour {
 	/// For outputting to the hud text
 	/// </summary>
 	private HUDController HUDC;
+	/// <summary>
+	/// The clue contained in the lockers.
+	/// </summary>
 	private GameObject containedClue;
+	/// <summary>
+	/// A state storing whether or not the mouse cursor is placed over the beer pump or not.
+	/// </summary>
 	private bool entered;
 
 	/// <summary>
@@ -50,7 +62,10 @@ public class Lockers : MonoBehaviour {
 			HUDC.displayHUDText ("The locker is empty.");
 		}
 	}
-
+	/// <summary>
+	/// Resizes the door colliders.
+	/// </summary>
+	/// <param name="spriteSize">Sprite size.</param>
 	private void resizeDoorColliders(Vector2 spriteSize){
 		Vector3 pos = new Vector3();
 		pos.x = -0.5f;

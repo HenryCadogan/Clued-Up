@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
 /// <summary>
-/// Handles the movement and propertiesof the character
+/// Handles the movement and properties of the detective.
 /// </summary>
 public class Detective : MonoBehaviour {
 	/// <summary>
@@ -92,6 +92,9 @@ public class Detective : MonoBehaviour {
 			}
 		}
 	}
+	/// <summary>
+	/// Sets the sound of the AudioSource component based on the room and weather.
+	/// </summary>
 	private void setWalkSound(){
 		switch (SceneManager.GetActiveScene().buildIndex){
 		case 3: //room0 crime scene

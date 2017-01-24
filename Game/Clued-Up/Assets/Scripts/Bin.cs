@@ -1,12 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
+/// <summary>
+/// A class for the Bin object in the train station.
+/// </summary>
 public class Bin : MonoBehaviour {
 	/// <summary>
 	/// <c>T</c> if clue is in the sofa
 	/// </summary>
 	private bool hasClue = false;
+	/// <summary>
+	/// A reference to the main HUD in the scene.
+	/// </summary>
 	private HUDController HUDC;
+	/// <summary>
+	/// The GameObject of the clue contained in the bin.
+	/// </summary>
 	private GameObject containedClue;
+	/// <summary>
+	/// A state storing whether or not the mouse cursor is placed over the beer pump or not.
+	/// </summary>
 	private bool entered;
 
 	/// <summary>
@@ -38,13 +50,16 @@ public class Bin : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Adds a clue to be stored inside the bin.
+	/// </summary>
+	/// <param name="clueObject">The Clue to be stored inside the bin..</param>
 	public void addClue(GameObject clueObject){
 		this.hasClue = true;
 		clueObject.transform.position = this.gameObject.transform.position + new Vector3(0f, 1.2f, 0f);
 		clueObject.SetActive (false);
 		this.containedClue = clueObject;
 	}
-
 
 
 
@@ -56,7 +71,6 @@ public class Bin : MonoBehaviour {
 		Cursor.SetCursor (null, Vector2.zero, CursorMode.Auto);
 		entered = false;
 	}
-
 	void Update(){
 		if (entered) {
 			Cursor.SetCursor (Resources.Load<Texture2D> ("clueCursor"), Vector2.zero, CursorMode.Auto);

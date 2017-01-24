@@ -74,12 +74,13 @@ public class Clue : MonoBehaviour {
 	/// Populates and displays the clue information on screen.
 	/// </summary>
 	public void displayClueInformation(){
+		//Locate various UI elements
 		this.cluePanel = GameObject.Find ("CluePanel");
 		this.cluePanelDescription = GameObject.Find ("Description").GetComponent<Text> ();
 		this.cluePanelName = GameObject.Find ("ClueName").GetComponent<Text> ();
 		this.cluePanelImage = GameObject.Find ("ClueImage").GetComponent<Image> ();
 		this.overlayPanel = GameObject.Find ("OverlayPanel");
-
+		//Assign text to some of the UI components.
 		this.cluePanelName.text = this.longName;
 		this.cluePanelImage.sprite = this.sprite;
 		this.cluePanelDescription.text = this.description;
