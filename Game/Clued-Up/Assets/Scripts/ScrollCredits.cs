@@ -24,7 +24,8 @@ public class ScrollCredits : MonoBehaviour {
 	/// Moves credits up.
 	/// </summary>
 	void Update () {
-		if (Input.GetKeyDown ("space") || creditsText.transform.position.y > 960) {
+		print (creditsText.transform.position.y);
+		if (Input.GetKeyDown ("space") || creditsText.transform.position.y > 580) {
 			sceneController.returnToMainMenu ();
 		} else{
 			creditsText.rectTransform.offsetMax += new Vector2 (0, speed*Time.deltaTime);
