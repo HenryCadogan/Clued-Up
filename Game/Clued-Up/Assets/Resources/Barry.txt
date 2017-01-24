@@ -71,6 +71,123 @@ $Surely a comedian as great as yourself isn't losing his hair?
 £Hopefully I keep what I have left.
 £Otherwise I'll look really odd in a nightclub.
 
+#Aggressive-moustache
+$I think you dropped this [.
+£Oh yeah, I did. Thanks.
+£It's for a comedy routine.
+£Do you want to see?
+$....No.
+#Rude-moustache
+$Can you not leave your moustaches lying around?
+£Oh, sorry. I must have dropped it in rehearsal.
+£Thanks for finding it, by the way.
+£If I'd lost it the new routine would be ruined!
+#Friendly-moustache
+$Did you drop this [?
+£Oh yes, this is mine.
+£I thought I was missing something.
+£Must've fallen out when I was rehearsing the new comedy routine.
+£Thanks for finding it, the routine would have been ruined without it.
+#Calm-moustache
+$Did you happen to drop a [?
+£I... oh yes, I did!
+£Thank you, I didn't even realise I had dropped it!
+£It's part of a new comedy routine, you see.
+£I'm trying to get back onto TV.
+£As fun as Chirper is, I do miss the old days.
+#Comedic-moustache
+$I didn't know you were growing a moustache!
+£Ah, well that's the trick, you see.
+£You just need somebody else to grow the moustache for you.
+£Then you can just shave it off and use it in stand up comedy!
+#Annoying-moustache
+$This is what constitutes comedy? Fake moustaches?
+£Listen, if you want to heckle me you can do it on Chirper.
+£Right now there's a murderer on the loose.
+£And you're stood here complaining about my new comedy routine!
+#Manipulative-moustache
+$This moustache must be for a new routine, right?
+£Ah, you catch on quickly!
+£Yeah, I'm working on some new material right now.
+£I'm trying to get back on TV with this one.
+£Hopefully it goes well.
+
+#Aggressive-ladder
+$Is this your ladder?
+£Ah... yeah, that's my ladder.
+£I was using it for... ehrm... climing.
+£I was wondering where I'd left it.
+£Thanks for finding it for me.
+#Rude-ladder
+$Why did I find your ladder just lying around?
+£My ladder? Oh yeah, my ladder!
+£I had forgotten where I had left it.
+$Yeah, but why do you have a ladder in the Ron Cooke Hub?
+£I was using it to uh... climb. Yeah....
+#Friendly-ladder
+$Would this happen to be your ladder?
+£Ah, yes it would! Thank you!
+$Why do you have a ladder in the Ron Cooke Hub?
+£I needed it to... climb something.
+£I'd rather not say.
+#Calm-ladder
+$Does this ladder belong to you?
+£Yeah, that's my ladder alright.
+£I was climbing it earlier, must have forgot to put it away.
+$Why were you climbing a ladder in the Ron Cooke Hub?
+£I... uh... nevermind.
+#Comedic-ladder
+$How many Chortle brothers does it take to change a lightbulb?
+£Two. You get the bulb and you spin it to me to you to me to you.
+$Is there a ladder in this scenario?
+£...Oh, you found my ladder!
+£Yeah, I was using it earlier, not for changing a lightbulb though.
+$What were you using it for?
+£I... can't say.
+#Annoying-ladder
+$So does modern comedy involve stepladders now?
+£You wouldn't know comedy if it slapped you in the face with a salmon.
+£Now do me a favour and go away.
+#Manipulative-ladder
+$What would a great comedian need with a ladder?
+£Well, physical comedy comes in many forms.
+£This ladder isn't physical comedy, though.
+£I was using it because I needed to get to... well...
+£I'd rather not say.
+
+#Aggressive-ticket
+$This is your ticket?
+£Oh, you found my train ticket!
+£I need that to get home! Thanks!
+#Rude-ticket
+$Did you lose your train ticket?
+£Hm? Oh, you found my ticket!
+£Thanks, I need that to get home!
+#Friendly-ticket
+$I think I've found your train ticket.
+£Ah, yeah that's definitely my ticket.
+£I wouldn't be able to get home without it. Thanks!
+#Calm-ticket
+$I do believe this is your ticket.
+£Oh yeah, thank you! I thought I had lost it!
+£If I didn't find it I don't think I'd have been able to get home.
+#Comedic-ticket
+$So this is your... ticket to ride?
+£Listen, you're a good detective.
+£I'd stick with that, not comedy.
+£But yeah, that is my train ticket.
+£I'm glad you found it, I need it to get home.
+#Annoying-ticket
+$A train ticket? Is comedy in that much of a dire state?
+£Listen, the train is a great mode of transport.
+£It's quick, easy, and gets you there in one piece.
+£Which is what you won't be in if you don't stop bugging me.
+#Manipulative-ticket
+$Hey, I think I have your train ticket...
+£Oh, yes, that is my ticket!
+£Thanks for finding it, I thought I had lost it!
+£I didn't know how I was going to get home without it.
+
 #Accuse-NoItems
 $You did it
 £You have no proof
