@@ -31,22 +31,164 @@ $Hey, tell me about this [.
 $You're a widely respected artist, surely you know about this [?
 £I appreciate your praise, but I don't think I can help you there.
 
+#Aggressive-blackHair
+$Is this your hair?
+£It might be mine.
+£Why do you want to know?
+£Do you think I'm the culprit?
+£I'm innocent, I swear!
+#Rude-blackHair
+$Hey, I think this is your hair.
+£Really? I... don't know.
+#Friendly-blackHair
+$Would this happen to be your hair?
+£What are you implying?
+£Do you think I did it?
+£I swear, I didn't do it!
+#Calm-blackHair
+$Do you recognise this hair?
+£What is this? My hair?
+£Are you saying I had something to do with this?
+£Because I didn't, honest!
+#Comedic-blackHair
+$I think your afro is running low. On hair. I found this.
+£What do you mean?
+£Do you think I was involved with this?
+£I wasn't, I swear!
+#Annoying-blackHair
+$What do you think of this [?
+£What do you mean by this [?
+#Manipulative-blackHair
+$Surely a man with such amazing hair as yourself knows about this hair.
+£What are you implying?
+£Do you think I am the murderer?
+£I'm not, you have to believe me!
+
+#Aggressive-comb
+$Is this your comb?
+£Oh yeah... this is mine.
+£Wait, where did you find this?
+£You're not saying I'm behind all this, are you?
+#Rude-comb
+$This is your comb, right?
+£I don't know what you're talking about.
+#Friendly-comb
+$I think this comb belongs to you.
+£Oh... yeah, this is my comb.
+£Wait... where did you find it?
+£I was wondering where it had gone.
+#Calm-comb
+$Does this comb belong to you?
+£I think it does.
+£Where did you find it?
+£I thought I had lost it forever.
+#Comedic-comb
+$Do you need a comb for that afro?
+£Hm? Oh, my comb! Thank you.
+£Can I ask where you found it?
+£I've been looking everywhere for it!
+#Annoying-comb
+$Oi, I think you dropped this [.
+£I have no idea what you're on about.
+#Manipulative-comb
+$I believe a man with hair such as yourself would be in possession of a comb such as this.
+£...Oh yes, this is my comb.
+£Wait... can I ask where you found it?
+£I had lost it last night and couldn't find it anywhere!
+
+#Aggressive-microphone
+$Is this your microphone?
+£You think this is mine just because I'm a singer?
+£Well... it might be.
+£Why does it matter?
+£Do you think I'm the culprit?
+#Rude-microphone
+$So this is your microphone, right?
+£This is just a microphone?
+£What would it have to do with me?
+#Friendly-microphone
+$I think this microphone belongs to you.
+£Ah... maybe.
+£I used one similar to it to record one of my new tracks.
+£I could've just put it in my pocket and dropped it later.
+#Calm-microphone
+$Does this microphone belong to you?
+£Perhaps.
+£I was recording one of my new tracks earlier.
+£I might have just pocketed one of the microphones on the way out.
+#Comedic-microphone
+$A singer such as yourself must recognise this microphone.
+£Well, I know that's the kind they have in the studio.
+£I was recording a new track earlier...
+£I might have just left the microphone in my pocket.
+#Annoying-microphone
+$Hello.... is it this microphone you're looking for?
+£What do I have to do with a random microphone?
+#Manipulative-microphone
+$A great musician such as yourself must know about this great microphone.
+£Well, that's the kind of microphones they have in the studio.
+£Good quality wireless ones that are rather light.
+£Great to just put in your pocket and play guitar with.
+
+#Aggressive-sunglasses
+$Are these your sunglasses?
+£Oh yes, these must be mine.
+$Why do you have sunglasses?
+£Uh, well, I just thought I might need them.
+£You know how sunny it is in York...
+#Rude-sunglasses
+$These are your sunglasses, right?
+£Why would I need sunglasses?
+£We're in the middle of York!
+#Friendly-sunglasses
+$I think these are your sunglasses.
+£Oh... yes, those must be mine.
+£Thanks for returning them!
+£I mean, it can get pretty sunny here in York, right?
+#Calm-sunglasses
+$Would these happen to be your sunglasses?
+£Ah... yes, those are mine!
+£Thank you, I thought I had lost them.
+£Obviously, it can get pretty sunny here in York.
+#Jokingly
+$These are your sunglasses, right? Why would you need them?
+£What do you mean?
+$We're in the middle of York!
+£Yes, well, you can never be too prepared.
+£It can get really sunny here, apparently.
+#Annoying-sunglasses
+$So these have to be your sunglasses, right?
+£Why would I need sunglasses?
+£We're in the middle of York!
+#Manipulative-sunglasses
+$Obviously a star as bright as yourself needs sunglasses.
+£Ah, yes, thank you!
+£I thought I had lost these last night.
+£You know how sunny York can get, these are pretty useful.
+
 #Accuse-NoItems
-$You did it
-£You have no proof
-$...Darn
+$You did it!
+£Ah! But wait... do you have any proof?
+£Anything? Anything at all?
 #Accuse-WrongChar
-$You did it
-£No
-$...Darn
+$You did it!
+£...Hello.
+£It's not me you're looking for.
+£I can see it in your eyes.
+£You got the wrong guy.
 #Accuse-Motive
-$You did it
-£Why would I do it
-$...Darn
+$You did it!
+£Ah! But wait... why would I do it?
+£Surely if you're accusing me you know why I did it?
 #Accuse-Weapon
-$You did it
-£With what
-$...Darn
+$You did it!
+£Ah! But wait... what would I have done it with?
+£Surely if you're accusing me you know what I did it with?
+£Right?
 #Accuse-Right
-$You did it
-£YOU'LL NEVER TAKE ME ALIVE
+$You did it!
+£...
+£...Hello.
+£It was me you're looking for.
+£I can see it in your eyes.
+£I'll be going to jail for a while.

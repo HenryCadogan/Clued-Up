@@ -264,21 +264,26 @@ $What would the world's most famous rapper be doing with all this [?
 
 
 #Accuse-NoItems
-$You did it
-£You have no proof
-$...Darn
+$You did it!
+£What's your proof?
+$...
+£Yeah, exactly.
 #Accuse-WrongChar
-$You did it
-£No
-$...Darn
+$You did it!
+£That's rich. Almost as rich as me.
+£I didn't do it though.
 #Accuse-Motive
-$You did it
-£Why would I do it
-$...Darn
+$You did it!
+£I'm a millionaire rapper, why would I kill someone?
+$...
+£Yeah, exactly.
 #Accuse-Weapon
-$You did it
-£With what
-$...Darn
+$You did it!
+£What, you think I'd just beat a man over the head with my bear hands?
+£I may be swole, but I'm not gonna just bash a man down.
 #Accuse-Right
-$You did it
-£YOU'LL NEVER TAKE ME ALIVE
+$You did it!
+£...
+£I miss the old Kanye, the not going to jail Kanye.
+£The solid gold Kanye, the... the...
+£Yeah I can't rhyme anymore.

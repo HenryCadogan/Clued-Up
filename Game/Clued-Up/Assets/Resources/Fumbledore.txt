@@ -310,21 +310,33 @@ $Oh great wizard, I appear to have found... a lump of coal?
 £...My magic appears to have had no effect.
 
 #Accuse-NoItems
-$You did it
-£You have no proof
-$...Darn
+$You did it!
+£What a... bold premonition.
+£Truly you are a grand wizard.
+£Else, why would you make such bold claims with no proof?
 #Accuse-WrongChar
-$You did it
-£No
-$...Darn
+$You did it!
+£What an interesting accusation!
+£But alas, I must inform you that it is wholely false.
+£Perhaps if you reexamine your possessions you can come to...
+£...A more... reasonable conclusion.
 #Accuse-Motive
-$You did it
-£Why would I do it
-$...Darn
+$You did it!
+£I did? Well, this is certainly a development.
+£But if you would be so kind as to inform me as to why I did it...
+£That would be most kind.
 #Accuse-Weapon
-$You did it
-£With what
-$...Darn
+$You did it!
+£I did? Well, that is certainly an interesting hypothesis.
+£Tell me, what did I commit this attrocious sin with?
+£After all, I cannot kill a man with my beard!
+£I have tried, unfortunately.
 #Accuse-Right
-$You did it
-£YOU'LL NEVER TAKE ME ALIVE
+$You did it!
+£Well, this is certainly an unfortunate predicament.
+£But alas, I believe you are under the assumption that I will...
+£...How you say... come quietly.
+£ESCAPUS MAXIMUS!
+£ABORTUS CAPORTUS!
+£GETMEOUTTAHEREIDONTWANTTOGOTOJAIL!
+£...My magic appears to have had no effect.

@@ -108,7 +108,6 @@
      <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\BackgroundAndCharacters\AngryInclude.cginc" />
      <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\Fx\ParticleAdditive.shader" />
      <None Include="Assets\Resources\TextFiles\character4.txt" />
-     <None Include="Assets\Resources\test2.txt" />
      <None Include="Assets\UnityTestTools\changelog.txt" />
      <None Include="Assets\Resources\TextFiles\character0.txt" />
      <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\Fx\LaserScope.shader" />
@@ -119,7 +118,6 @@
      <None Include="Assets\Resources\Barry.txt" />
      <None Include="Assets\Resources\Fumbledore.txt" />
      <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\Fx\ParticleBlend.shader" />
-     <None Include="Assets\Resources\test.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

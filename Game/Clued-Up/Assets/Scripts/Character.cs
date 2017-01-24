@@ -172,8 +172,8 @@ public class Character : MonoBehaviour {
 		// Give the character an ImportSpeech component
 		gameObject.AddComponent<ImportSpeech> ();
 		ImportSpeech speechHandler = GetComponent<ImportSpeech> ();
-		TextAsset testAsset =(TextAsset)Resources.Load (lines [1].Trim());
-		speechHandler.asset = testAsset;
+		TextAsset AssetIn =(TextAsset)Resources.Load (lines [1].Trim());
+		speechHandler.asset = AssetIn;
 		speechHandler.actualStart ();
 		speechRef = GetComponent<ImportSpeech> ();
 		// Give the character a BoxCollider component and disable it.
