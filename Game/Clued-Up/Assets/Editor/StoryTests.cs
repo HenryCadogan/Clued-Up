@@ -6,74 +6,104 @@ using System;
 
 
 public class StoryTests {
-	Story testStory = new Story();
+	Story testStory ;
+
+	[TestFixtureSetUp]
+	public void TestSetup(){
+		testStory = new Story();
+		testStory.setStory();
+	}
 
 	[Test]
-	public void testStoryElements(){
-		//initialise a new story
-		testStory.setStory();
+	public void TestStoryCreation(){
 		//now perform all the checks to see if it has been initialised correctly
+		Assert.IsNotNull(testStory);
+	}
 
-
+	[Test]
+	public void WeatherInitTest(){
 		//has weather been initialised?
 		Assert.NotNull(testStory.getWeather());
-		Debug.Log("Weather getter passed");
+	}
+
+	[Test]
+	public void GetTraitStringTest(){
 		//are all values accepted for the traits
-		for (int x = 0; x <=6 ; x ++){
-			Assert.IsNotEmpty (testStory.getTraitString(x));
+		for(int x = 0; x <= 6; x++) {
+			Assert.IsNotEmpty(testStory.getTraitString(x));
 		}
-		Debug.Log("Trait string getter passed for all values");
 		//getTraitString should throw an error with an invalid index E.G: -1
 		try {
 			testStory.getTraitString(-1);
 			Assert.Fail();
-		}catch (Exception e){
+		} catch(Exception e) {
 		}
-		Debug.Log("Trait string error throw passed");
+	}
 
+	[Test]
+	public void GetDetectiveTest(){
 		//has the detective been initialised
 		Assert.NotNull(testStory.getDetective());
-		Debug.Log("Get detective passed");
-
+	}
+	[Test]
+	public void CharactersLoadedTest(){
 		//have the characters been initialised
 		Assert.IsNotEmpty(testStory.getFullCharacterList());
-		Debug.Log("Character list not empty passed");
+	}
 
+	[Test]
+	public void VictimLoadedTest(){
 		//is there a victim
 		Assert.NotNull(testStory.getVictim());
-		Debug.Log("Victim created passed");
+	}
+
+	[Test]
+	public void MurdererLoadedTest(){
 		//is there a murderer
 		Assert.NotNull(testStory.getMurderer());
-		Debug.Log("Murderer created passed");
+	}
+	[Test]
+	public void GetRandomAliveCharacter(){
 		//can get a random character
 		Assert.NotNull(testStory.randomAliveCharacter());
-		Debug.Log("Get random character passed");
+	}
+	[Test]
+	public void IntroLoadingTest(){
 		//intro and intro1 text isnt empty for all values
-		for (int x = 2; x <=4; x++ ){
+		for(int x = 2; x < 3; x++) {
 			Assert.IsNotEmpty(testStory.getIntro(x));				
 		}
-		Debug.Log("Numbered Intro's loaded passed");
-		Assert.IsNotEmpty(testStory.getIntro1());
-		Debug.Log("Intro 1 loaded passed");
 
+	}
+	[Test]
+	public void Intro1LoadingTest(){
+		Assert.IsNotEmpty(testStory.getIntro1());
+	}
+
+	[Test]
+	public void FullCharacterListTest(){
 		//getting character information
-		foreach (GameObject character in testStory.getFullCharacterList()){
+		foreach(GameObject character in testStory.getFullCharacterList()) {
 			Assert.NotNull(testStory.getCharacterInformation(character.GetComponent<Character>().name));
 		}
-		Debug.Log("Character information loaded passed");
+	}
 
+	[Test]
+	public void CharacterInfoErrorTest(){
 		try {
 			testStory.getCharacterInformation("");
 			Assert.Fail();
-		}catch (Exception e){
+		} catch(Exception e) {
 		}
-		Debug.Log("Character infor error throw passed");
-
-
-
-		Debug.Log("All tests Passed in StoryTests");
-
 	}
 
+	[Test]
+	public void CharacterInRoomTest(){
+		try {
+			testStory.getCharactersInRoom(-1);
+			Assert.Fail();
+		}catch (Exception e){
+		}
+	}
 
 }
