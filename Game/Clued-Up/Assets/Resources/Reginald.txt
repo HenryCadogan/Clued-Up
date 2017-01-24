@@ -236,21 +236,26 @@ $You're a wise goose, surely you know about this [?
 £Quack?! (Do you think I would be so careless as to leave money strewn around?!)
 
 #Accuse-NoItems
-$You did it
-£You have no proof
-$...Darn
+$You did it!
+£Quack! (How dare you insult the good name of Ellsworth with your slander!)
+£Quack! (At least collect something of a case before insulting me so!)
 #Accuse-WrongChar
-$You did it
-£No
-$...Darn
+$You did it!
+£Quack... (I am not one for racial stereotypes...)
+£Quack. (But you have to be completely quackers if you think it was me.)
 #Accuse-Motive
-$You did it
-£Why would I do it
-$...Darn
+$You did it!
+£Quack! (How very dare you! I have no reason to commit such a crime!)
+£Quack! (If you are going to challenge a man, at least have evidence to do so!)
 #Accuse-Weapon
-$You did it
-£With what
-$...Darn
+$You did it!
+£Quack? (You're insinuating I merely pecked him to death?)
+£Quack. (Not only is that incorrect, that's also extremely racist.)
+£Quack. (Good day to you sir.)
 #Accuse-Right
-$You did it
-£YOU'LL NEVER TAKE ME ALIVE
+$You did it!
+£...
+£Quack. (Well, it would appear that my goose is cooked.)
+£Quack. (There's only one thing for it.)
+£QUACK! (ESCAPE!)
+£QUACKQUACKQUACKQUACKQUACKQUACKQUACKQUACKQUACKQUACKQUACKQUACKQUACKQUACK

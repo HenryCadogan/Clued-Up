@@ -189,21 +189,36 @@ $Hey, I think I have your train ticket...
 £I didn't know how I was going to get home without it.
 
 #Accuse-NoItems
-$You did it
-£You have no proof
-$...Darn
+$You did it!
+£...
+£...Oh, I get it, you're trying to be a comedian!
+£Yeah, sorry mate, that wasn't very good.
+£Usually jokes have a punchline.
 #Accuse-WrongChar
-$You did it
-£No
-$...Darn
+$You did it!
+£...Alright, I admit it!
+£Yes, I did rig that charity race last month!
+£I just wanted to get one over on Paul, that's it!
+$...
+£...Oh, you thought I did the murder.
+£No, that wasn't me, I'm afraid.
 #Accuse-Motive
-$You did it
-£Why would I do it
-$...Darn
+$You did it!
+£Well, that's certainly something.
+£Surely you have some reason as to why I would do such a thing?
+£...No? Ok then.
 #Accuse-Weapon
-$You did it
-£With what
-$...Darn
+$You did it!
+£Really? I did?
+£What did I do it with?
+$....
+£...Ok then, never mind.
 #Accuse-Right
-$You did it
-£YOU'LL NEVER TAKE ME ALIVE
+$You did it!
+£...Well then.
+£This is a bit of a sticky wicket.
+£But unfortunately for you, I have an escape plan!
+£Activate the EMERGENCY LADDER!
+£TO ME!
+£...
+£...This worked a lot better when I had Paul.

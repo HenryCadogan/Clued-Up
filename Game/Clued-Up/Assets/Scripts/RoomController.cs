@@ -369,17 +369,17 @@ public class RoomController : MonoBehaviour {
 	/// <summary>
 	/// If number is pressed during this scene, then skip to appropriate room
 	/// </summary>
-	void Update() {
-		if (Input.GetKeyDown ("2")) {
-			SceneManager.LoadScene (4);	//train station
-		} else if (Input.GetKeyDown ("4")) {
-			SceneManager.LoadScene (7);	//loads kitchen
-		} else if (Input.GetKeyDown ("5")) {
-			SceneManager.LoadScene (8);	//load bar
-		} else if (Input.GetKeyDown ("6")) {
-			SceneManager.LoadScene (8);	//loads studio
-		} else if (Input.GetKeyDown ("7")) {
-			SceneManager.LoadScene (9);	//loads toilets
-		}
-	}
+//	void Update() {
+//		if (Input.GetKeyDown ("2")) {
+//			SceneManager.LoadScene (4);	//train station
+//		} else if (Input.GetKeyDown ("4")) {
+//			SceneManager.LoadScene (7);	//loads kitchen
+//		} else if (Input.GetKeyDown ("5")) {
+//			SceneManager.LoadScene (8);	//load bar
+//		} else if (Input.GetKeyDown ("6")) {
+//			SceneManager.LoadScene (8);	//loads studio
+//		} else if (Input.GetKeyDown ("7")) {
+//			SceneManager.LoadScene (9);	//loads toilets
+//		}
+//	}
 }

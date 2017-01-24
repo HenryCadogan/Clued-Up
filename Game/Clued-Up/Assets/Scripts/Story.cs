@@ -402,7 +402,7 @@ public class Story : MonoBehaviour {
 			newClue.GetComponent<Clue> ().initialise ("ticket", "Ticket", "A train ticket for use on the train.", localScale:0.1f);
 			break;
 		case "coal":
-			newClue.GetComponent<Clue> ().initialise ("coal", "Coal", "A lump of coal.");
+			newClue.GetComponent<Clue> ().initialise ("coal", "Coal", "A singular lump of coal. Truly the greatest stocking stuffer.");
 			break;
 		case "cloak":
 			newClue.GetComponent<Clue> ().initialise ("cloak", "Invisibility Cloak", "Someone is trying to conceal themselves...");
@@ -435,7 +435,7 @@ public class Story : MonoBehaviour {
 			newClue.GetComponent<Clue> ().initialise ("hammer", "Hammer", "A bloody hammer.", true);
 			break;
 		case "gun":
-			newClue.GetComponent<Clue> ().initialise ("gun", "Gun", "A bloody gun.", true);
+			newClue.GetComponent<Clue> ().initialise ("gun", "Gun", "A smoking gun.", true);
 			break;
 		case "knife":
 			newClue.GetComponent<Clue> ().initialise ("knife", "Knife", "A bloody knife.", true);
@@ -453,7 +453,7 @@ public class Story : MonoBehaviour {
 			newClue.GetComponent<Clue> ().initialise ("recorder", "Recorder", "The quality is terrible, but you can just about make out the voices. It appears to be two people having a conversation. You think you recognise one of the voices as being " +this.victim.GetComponent<Character>().longName + ". The other voice sounds similar to "+ this.murderer.GetComponent<Character>().longName +" but you are very unsure if it is really them. At first they are calm, and you can’t quite hear what they’re saying. But gradually it gets louder, their voices rising as their anger bubbles up. Everything goes quiet. There seems to be some muffled shuffling in the background. The recording cuts off. Everything is starting to make sense...", isMotive:true);
 			break;
 		case "diary":
-			newClue.GetComponent<Clue> ().initialise ("diary", "Diary", this.victim.GetComponent<Character>().longName + "’s diary. You know you shouldn’t be reading it, but you find yourself flicking through the pages anyway. After all, it could be used for evidence, right? You turn to the most recent entry. The day before the party. You can’t help noticing how many times" + this.murderer.GetComponent<Character>().longName[0] + " has been etched into the page with vigor. You read the entire page before slamming the book shut.", isMotive:true, localScale:0.15f);
+			newClue.GetComponent<Clue> ().initialise ("diary", "Diary", this.victim.GetComponent<Character>().longName + "’s diary. You know you shouldn’t be reading it, but you find yourself flicking through the pages anyway. After all, it could be used for evidence, right? You turn to the most recent entry. The day before the party. You can’t help noticing how many times " + this.murderer.GetComponent<Character>().longName[0] + " has been etched into the page with vigor. You read the entire page before slamming the book shut.", isMotive:true, localScale:0.15f);
 			break;
 		case "letter":
 			newClue.GetComponent<Clue> ().initialise ("letter", "Letter", "A crumpled letter. The writing is small and scrawling, but if you squint you can just make it out. It appears to be addressed to " + this.victim.GetComponent<Character>().longName + ". It’s messy and smudged, so you don’t attempt to read the entire thing, but you can make out the names " + randomAliveCharacter().longName+ " and " + this.murderer.GetComponent<Character>().longName+ ". How very suspicious..." , isMotive:true, localScale:0.2f);

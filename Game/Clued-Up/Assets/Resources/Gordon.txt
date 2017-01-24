@@ -302,21 +302,34 @@ $Don't you use a plunger in the kitchen?
 £Of course you don't! What kind of question is that!
 
 #Accuse-NoItems
-$You did it
-£You have no proof
-$...Darn
+$You did it!
+£Really? Well then, where's your proof?
+£Bloomin' idiot.
+£Come back to me when you've done some actual investigation.
 #Accuse-WrongChar
-$You did it
-£You've definitely got the wrong person, you're mad!
-$...Darn
+$You did it!
+£You've definitely got the wrong person, you're bloomin' mad!
 #Accuse-Motive
-$You did it
-£Why would I do it?
-$...Darn
+$You did it!
+£...Alright, let's say for a moment I did it.
+£Tell me, why would I commit a murder in the blooomin' Ron Cooke Hub?
+$...
+£Exactly.
+£Come back to me when you've done some actual investigation.
 #Accuse-Weapon
-$You did it
-£How on earth would I do that?
-$...Darn
+$You did it!
+£Alright, if you're accusing me of murder then you should be able to tell me...
+£What did I do the deed with?
+$...
+£Exactly.
+£Come back to me when you've done some actual investigation.
 #Accuse-Right
-$You did it
-£YOU'LL NEVER TAKE ME ALIVE
+$You did it!
+£...
+£Well then.
+£It appears you've outsmarted me, Detective.
+£But were you prepared... FOR A FIGHT?!
+£COME ON YOU BLOOMIN' GIT I'LL BASH YOUR BLOOMIN' HEAD OFF!
+£I'LL KICK YOUR BLOOMIN' TEETH DOWN YOUR BLOOMIN' THROAT!
+£THEN I'LL BLOOMIN' BLOOMIN' YOUR BLOOMIN' BLOOMIN' WITH A BLOOMIN' BLOOMIN'!
+£BLOOMIN'BLOOMIN'BLOOMIN'BLOOMIN'BLOOMIN'BLOOMIN'BLOOMIN'BLOOMIN'BLOOMIN'BLOOMIN'BLOOMIN'BLOOMIN'BLOOMIN'BLOOMIN'BLOOMIN'
