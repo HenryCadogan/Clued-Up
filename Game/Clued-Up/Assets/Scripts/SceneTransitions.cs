@@ -20,13 +20,10 @@ public class SceneTransitions : MonoBehaviour {
 	/// <returns>Yield WaitForSeconds</returns>
 	/// <param name="scene">Scene index to load</param>
 	IEnumerator fadeLoadScene(int scene){
-		print ("FADE LOAD SCENE");
 		GameObject overlayPanel = GameObject.Find ("OverlayPanel");
 		overlayPanel.SetActive (true);
 		overlayPanel.GetComponent<Image> ().CrossFadeAlpha (1f, 1f, false);
-		print ("NO BREAK");
 		yield return new WaitForSeconds (1);
-		print ("BREAK");
 		Cursor.SetCursor (null, Vector2.zero, CursorMode.Auto); //resets curser if stuck on magnifying glass
 		SceneManager.LoadScene (scene);
 		yield return null;
