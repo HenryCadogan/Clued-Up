@@ -32,7 +32,7 @@ public class DetectiveChoiceHandler : MonoBehaviour {
 	public void chooseDetective(){
 		story.setDetective(currentlyActive);
 		detectives.transform.GetChild(story.getDetective()).gameObject.SetActive(true); //only activates the chosen detective by using the detective int as an index of children of the Detectives object
-		SceneManager.LoadScene (3); //loads room1/ lakeside
+		SceneManager.LoadScene (3); //loads room0/ lakeside
 	}
 	/// <summary>
 	/// // Sets information in description panel and makes the panel visible
