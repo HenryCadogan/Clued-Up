@@ -187,7 +187,8 @@ html{background-color:#414141;}
 	  font-size:50px;
   }
 }
-@media (max-width:1000px){
+/* was 1000*/
+@media (max-width:1400px){
   #header h1, #header h4{
 	  display:none;
   }
@@ -217,6 +218,15 @@ html{background-color:#414141;}
 #logo{
   height:110px;
   margin-left:20px;
+}
+#devButton{
+	background:url(DevButton.png);
+	background-size:200px 68px;
+	width:160px;
+}
+#devButton:hover{
+	background:url(DevButtonOver.png);
+	background-size:200px 68px;
 }
 .quarter{
   height:100%;
@@ -273,6 +283,15 @@ h2{
 	z-index:2;
 }
 
+.gameDownload img{
+	height:100px;
+}
+
+.gameDownload div{
+	display: inline;
+	vertical-align:top;
+}
+
 table{
 	border:1px solid black;
 	display:block;
@@ -308,131 +327,41 @@ table{
  
  
  
-/* SMOKE AND SCROLLING/ SVG MASKS (COULDNT GET IT TO WORK)*/
-.smokeDiv {
-  height: 50%;
-  pointer-events:none;
-  position:absolute;
-  bottom:0;
-  width:100%;
-  overflow: hidden;
-  -webkit-transform: translate3d(0, 0, 0);
-  -moz-transform: translate3d(0, 0, 0);
-  -o-transform: translate3d(0, 0, 0);
-  
-}
-.clouds_one {
-  background: url("http://montanaflynn.me/lab/css-clouds/images/cloud_one.png");
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 300%;
-  width: 100%;
-  -webkit-animation: cloud_one 50s linear infinite;
-  -moz-animation: cloud_one 50s linear infinite;
-  -o-animation: cloud_one 50s linear infinite;
-  -webkit-transform: translate3d(0, 0, 0);
-  -moz-transform: translate3d(0, 0, 0);
-  -o-transform: translate3d(0, 0, 0)
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 13; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-.clouds_two {
-  background: url("http://montanaflynn.me/lab/css-clouds/images/cloud_two.png");
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 300%;
-  width: 100%;
-  -webkit-animation: cloud_two 75s linear infinite;
-  -moz-animation: cloud_two 75s linear infinite;
-  -o-animation: cloud_two 75s linear infinite;
-  -webkit-transform: translate3d(0, 0, 0);
-  -moz-transform: translate3d(0, 0, 0);
-  -o-transform: translate3d(0, 0, 0)
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%; 
+	z-index:13;
 }
 
-.clouds_three {
-  background: url("http://montanaflynn.me/lab/css-clouds/images/cloud_three.png");
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 300%;
-  width: 100%;
-  -webkit-animation: cloud_three 100s linear infinite;
-  -moz-animation: cloud_three 100s linear infinite;
-  -o-animation: cloud_three 100s linear infinite;
-  -webkit-transform: translate3d(0, 0, 0);
-  -moz-transform: translate3d(0, 0, 0);
-  -o-transform: translate3d(0, 0, 0)
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
 }
 
-
-@-webkit-keyframes cloud_one {
-  0% {
-    top: 0
-  }
-  100% {
-    top: -200%
-  }
-}
-
-@-webkit-keyframes cloud_two {
-  0% {
-    top: 0
-  }
-  100% {
-    top: -200%
-  }
-}
-
-@-webkit-keyframes cloud_three {
-  0% {
-    top: 0
-  }
-  100% {
-    top: -200%
-  }
-}
-
-@-moz-keyframes sky_background {
-  0% {
-    background: #007fd5;
-    color: #007fd5
-  }
-  50% {
-    background: #000;
-    color: #a3d9ff
-  }
-  100% {
-    background: #007fd5;
-    color: #007fd5
-  }
-}
-
-
-@-moz-keyframes cloud_one {
-  0% {
-    top: 0
-  }
-  100% {
-    top: -200%
-  }
-}
-
-@-moz-keyframes cloud_two {
-  0% {
-    top: 0
-  }
-  100% {
-    top: -200%
-  }
-}
-
-@-moz-keyframes cloud_three {
-  0% {
-    top: 0
-  }
-  100% {
-    top: -200%
-  }
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
