@@ -1,7 +1,7 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
+using UnityEngine.UI;
 
 /// <summary>
 /// A class that creates the end game screen and exits it.
@@ -59,17 +59,65 @@ public class GameOver : MonoBehaviour {
 		textPanel.transform.GetChild(4).GetComponent<Text>().text = "It needs you.";
 		fadeText (textPanel.transform.GetChild (4).gameObject,1f, 2f);
 
-		yield return new WaitForSeconds(3f); // wait three secs for fade, and one second after the fade ends
+        yield return new WaitForSeconds(3f); //wait 1 second after last fade ends
+	    textPanel.transform.GetChild(5).GetComponent<Text>().text = "Your Score is ";
+        CreateStars();
+        fadeText(textPanel.transform.GetChild(5).gameObject, 1f, 2f);
+
+        yield return new WaitForSeconds(3f); // wait three secs for fade, and one second after the fade ends
 		fadeOutAllText (0f,2f);
 
 		yield return new WaitForSeconds(3f); // wait three secs for fade, and one second after the fade ends
 
 		SceneManager.LoadScene (12); //load credits
 	}
-	/// <summary>
-	/// Simultaneously fades out all text boxes.
-	/// </summary>
-	private void fadeOutAllText(float alpha, float time){
+
+    /// <summary>
+    /// Get the star rating from your score
+    /// </summary>
+    private int RateScore()
+    {
+        int i = Story.Instance.Score;
+        if (i < 10)
+        {
+            return 1;
+        }
+        if (10 <= i && i < 25)
+        {
+            return 2;
+        }
+        if (25 <= i && i < 40)
+        {
+            return 3;
+        }
+        if (40 <= i && i < 55)
+        {
+            return 4;
+        }
+        if (i > 55)
+        {
+            return 5;
+        }
+        return 0;
+    }
+
+    /// <summary>
+    /// Instantiates the stars
+    /// </summary>
+    private void CreateStars()
+    {
+        var g = Resources.Load("Star");
+        int i = RateScore();
+        for(int j =0 ; j <i; j++)
+        {
+            GameObject star = Instantiate(g, textPanel.transform.parent.GetChild(1), false) as GameObject;
+        }
+    }
+
+    /// <summary>
+    /// Simultaneously fades out all text boxes.
+    /// </summary>
+    private void fadeOutAllText(float alpha, float time){
 		fadeText (textPanel.transform.GetChild (0).gameObject, alpha, time);
 		fadeText (textPanel.transform.GetChild (1).gameObject, alpha, time);
 		fadeText (textPanel.transform.GetChild (2).gameObject, alpha, time);

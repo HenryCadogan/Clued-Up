@@ -9,6 +9,10 @@ public class HUDController : MonoBehaviour {
 	/// Text GameObject from within the HUD prefab
 	/// </summary>
 	public GameObject HUDText;
+    /// <summary>
+    /// Text GameObject from within the HUD prefab displaying the Score
+    /// </summary>
+    public Text Scoretext;
 
 	/// <summary>
 	/// Makes a panel active and pauses game time.

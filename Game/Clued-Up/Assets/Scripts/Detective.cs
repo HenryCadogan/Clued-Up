@@ -18,7 +18,7 @@ public class Detective : MonoBehaviour {
 	/// <summary>
 	/// The footsteps audio source.
 	/// </summary>
-	public AudioSource footstepsAudioSource;
+	public AudioSource footstepsAudioSource;   
 	/// <summary>
 	/// //The next walk in direction to be used when switching between scenes
 	/// </summary>

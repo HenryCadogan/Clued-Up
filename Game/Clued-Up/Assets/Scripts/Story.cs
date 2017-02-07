@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.IO;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using System.Text.RegularExpressions;
+using UnityEngine.UI;
+
 /// <summary>
 /// Persistant story class that stores all game/ global variables and initialises Clues and Character objects
 /// </summary>
@@ -59,20 +60,36 @@ public class Story : MonoBehaviour {
 	/// <summary>
 	/// The full list of characters for the game.
 	/// </summary>
-	private List<GameObject> characters = new List<GameObject> ();
+	private List<GameObject> characters = new List<GameObject> (); 
+    /// <summary>
+    /// The private variablr score for the detective. Increases for every conversation and by more 
+    /// if you get information from them or find out where a clue is
+    /// </summary>
+    private int score;
+    /// <summary>
+    /// The public setter and getter for the score of the player
+    /// </summary>
+    public int Score
+    {
+        get { return score; }
+        set
+        {
+            score = value;
+            GameObject.Find("HUD").GetComponent<HUDController>().Scoretext.text = "Score: " + value;
+        }
+    }
 
 
 
-
-
-	/// <summary>
-	/// Keeps only 1 instance ever, therefore it can survive between scenes without having several scenes.
-	/// </summary>
-	void Awake () {
+    /// <summary>
+    /// Keeps only 1 instance ever, therefore it can survive between scenes without having several scenes.
+    /// </summary>
+    void Awake () {
 		if (Instance == null)
 		{
 			DontDestroyOnLoad(gameObject);
 			Instance = this;
+		
 		}
 		else if (Instance != this)
 		{
@@ -127,7 +144,7 @@ public class Story : MonoBehaviour {
 	/// <returns>2nd introductory sentence (string)</returns>
 	/// <param name="introIndex">Index of the intro file to read a line from</param>
 	public string getIntro(int introIndex){
-		return randomLineFrom("TextFiles/intro"+introIndex.ToString());
+		return randomLineFrom("TextFiles/intro" + introIndex.ToString());
 	}
 	/// <summary>
 	/// Sets the weather for the rest of the game
@@ -556,7 +573,7 @@ public class Story : MonoBehaviour {
 		setCharacters ();
 		setCharacterRooms();
 		setClues();
-	}
+    }
 
 
 	public List<GameObject> getFullCharacterList(){
