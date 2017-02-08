@@ -143,6 +143,11 @@ public class SpeechHandler : MonoBehaviour {
 	/// Turns on the Speech UI, pauses the game.
 	/// </summary>
 	public void turnOnSpeechUI(){
+        if (!isIgnored()) {
+            GameObject.FindObjectOfType<HUDController>().displayHUDText("They seem to be ignoring you, maybe you should try again later...");
+            return;
+        }
+
 		if (parentCanvas.gameObject.activeSelf == false) {
 			// If the character is in a state where he can be talked to...
 			if (charInScene.canBeTalkedTo == true) {
@@ -172,6 +177,15 @@ public class SpeechHandler : MonoBehaviour {
 			Debug.Log ("Tried to turn on speech UI, but was already on");
 		}
 	}
+
+    private bool isIgnored()
+    {
+        if (Random.Range(0, 1) > 0.1)
+        {
+            return true;
+        }
+        return false;
+    }
 
 	/// <summary>
 	/// Turns off the speech UI, unpauses the game.
