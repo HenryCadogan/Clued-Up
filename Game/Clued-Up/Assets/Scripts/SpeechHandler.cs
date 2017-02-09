@@ -144,7 +144,7 @@ public class SpeechHandler : MonoBehaviour {
 	/// </summary>
 	public void turnOnSpeechUI(){
         if (!isIgnored()) {
-            GameObject.FindObjectOfType<HUDController>().displayHUDText("They seem to be ignoring you, maybe you should try again later...");
+            FindObjectOfType<HUDController>().displayHUDText("They seem to be ignoring you, maybe you should try again later...");
             return;
         }
 
@@ -180,7 +180,7 @@ public class SpeechHandler : MonoBehaviour {
 
     private bool isIgnored()
     {
-        if (Random.Range(0, 1) > 0.1)
+        if (Random.Range(0, 5) > 0.1)
         {
             return true;
         }

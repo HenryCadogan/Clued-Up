@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -78,6 +79,17 @@ public class GameOver : MonoBehaviour {
     private int RateScore()
     {
         int i = Story.Instance.Score;
+        if (PlayerPrefs.HasKey("ScoreString"))
+        {
+            string str = PlayerPrefs.GetString("ScoreString");
+            str = string.Concat(str, "£", i.ToString());
+            PlayerPrefs.SetString("ScoreString", str);
+        }
+        else
+        {
+            PlayerPrefs.SetString("ScoreString", i.ToString());
+        }
+        
         if (i < 10)
         {
             return 1;

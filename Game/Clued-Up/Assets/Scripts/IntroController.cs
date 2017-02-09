@@ -37,7 +37,7 @@ public class IntroController : MonoBehaviour {
 	/// <param name="alpha">Alpha component where 0f is transparent and 1f is all black</param>
 	/// <param name="time">time for fade, in seconds</param>
 	private void fadeText(float alpha, float time){ 
-		introTextObject.CrossFadeAlpha(alpha,time,false);
+		introTextObject.CrossFadeAlpha(alpha,time*5,false);
 	}
 	/// <summary>
 	/// Displays specified string as the intro text.
@@ -45,7 +45,7 @@ public class IntroController : MonoBehaviour {
 	/// <param name="introText">Text string to set the intro textbox</param>
 	private void displayText(string introText){	
 		introTextObject.text = introText;
-		fadeText (1f, 3f);
+		fadeText (1f, 0.1f);
 	}
 	private Story story;
 
@@ -57,24 +57,24 @@ public class IntroController : MonoBehaviour {
 	IEnumerator IntroCutscene(Story story){
 		audioSource.Play (); //play scream
 	
-		yield return new WaitForSeconds(1f); //wait 1 second after scream begins
+		//yield return new WaitForSeconds(1f); //wait 1 second after scream begins
 		displayText (story.getIntro1()); //gets text and fades in (in background)
-		yield return new WaitForSeconds(4f); // wait three secs for fade, and one second after the fade ends
-		overlayPanel.CrossFadeAlpha (0f, 3f, false); // fade out black overlay
-		fadeText (0f, 3.5f); //fade text out
-		yield return new WaitForSeconds(4f);
+		yield return new WaitForSeconds(2f); // wait three secs for fade, and one second after the fade ends
+		overlayPanel.CrossFadeAlpha (0f, 0.5f, false); // fade out black overlay
+		fadeText (0f, 2f); //fade text out
+		yield return new WaitForSeconds(1f);
 
 
 		displayText (story.getIntro(2));
-		yield return new WaitForSeconds(4f);
-		fadeText (0f, 3.5f);
-		yield return new WaitForSeconds(4f);
+		yield return new WaitForSeconds(1f);
+		fadeText (0f, 0.5f);
+		yield return new WaitForSeconds(1f);
 
 		displayText (story.getIntro(3));
-		yield return new WaitForSeconds(4f);
-		fadeText (0f, 3.5f);
-		overlayPanel.CrossFadeAlpha (1f, 4f, false);
-		yield return new WaitForSeconds(4f); //wait for the overlay to fade in entirely
+		yield return new WaitForSeconds(1f);
+		fadeText (0f, 0.5f);
+		overlayPanel.CrossFadeAlpha (1f, 0.5f, false);
+		yield return new WaitForSeconds(1f); //wait for the overlay to fade in entirely
 
 		SceneManager.LoadScene (2);	//loads character selection scene
 		yield return null;
