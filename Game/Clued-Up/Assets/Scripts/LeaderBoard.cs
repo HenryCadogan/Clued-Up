@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -7,7 +8,7 @@ using UnityEngine.UI;
 /// <summary>
 /// A class that creates the end game screen and exits it.
 /// </summary>
-public class GameOver : MonoBehaviour
+public class LeaderBoard : MonoBehaviour
 {
     /// <summary>
     /// The text object in the Game Over scene.
@@ -39,33 +40,33 @@ public class GameOver : MonoBehaviour
     /// Runs the end game cutscene.
     /// </summary>
     /// <returns>While the Enumerator may return a value, I would not trust it to be usable.</returns>
-    IEnumerator LeaderBoard()
+    IEnumerator MakeLeaderBoard()
     {
         List<int> ScoreList = GetScores();
         yield return new WaitForSeconds(1f); //wait 1 second after scream begins
-        textPanel.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = "1." = ScoreList[0];
+        textPanel.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = "1." + ScoreList[0];
         CreateStars(ScoreList[0], textPanel.transform.GetChild(0).GetChild(1));
-        fadeText(textPanel.transform.GetChild(0).gameObject, 1f, 2f);
+        fadeText(textPanel.transform.GetChild(0).GetChild(0).gameObject, 1f, 2f);
 
         yield return new WaitForSeconds(3f); //wait 1 second after last fade ends
-        textPanel.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = "2." = ScoreList[1];
+        textPanel.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = "2." + ScoreList[1];
         CreateStars(ScoreList[0], textPanel.transform.GetChild(1).GetChild(1));
-        fadeText(textPanel.transform.GetChild(1).gameObject, 1f, 2f);
+        fadeText(textPanel.transform.GetChild(1).GetChild(0).gameObject, 1f, 2f);
 
         yield return new WaitForSeconds(3f); //wait 1 second after last fade ends
-        textPanel.transform.GetChild(2).GetChild(0).GetComponent<Text>().text = "3." = ScoreList[2];
+        textPanel.transform.GetChild(2).GetChild(0).GetComponent<Text>().text = "3." + ScoreList[2];
         CreateStars(ScoreList[0], textPanel.transform.GetChild(2).GetChild(1));
-        fadeText(textPanel.transform.GetChild(2).gameObject, 1f, 2f);
+        fadeText(textPanel.transform.GetChild(2).GetChild(0).gameObject, 1f, 2f);
 
         yield return new WaitForSeconds(3f); //wait 1 second after last fade ends
-        textPanel.transform.GetChild(3).GetChild(0).GetComponent<Text>().text = "4." = ScoreList[3];
+        textPanel.transform.GetChild(3).GetChild(0).GetComponent<Text>().text = "4." + ScoreList[3];
         CreateStars(ScoreList[0], textPanel.transform.GetChild(3).GetChild(1));
-        fadeText(textPanel.transform.GetChild(3).gameObject, 1f, 2f);
+        fadeText(textPanel.transform.GetChild(3).GetChild(0).gameObject, 1f, 2f);
 
         yield return new WaitForSeconds(3f); //wait 1 second after last fade ends
-        textPanel.transform.GetChild(4).GetChild(0).GetComponent<Text>().text = "5." = ScoreList[4];
+        textPanel.transform.GetChild(4).GetChild(0).GetComponent<Text>().text = "5." + ScoreList[4];
         CreateStars(ScoreList[0], textPanel.transform.GetChild(4).GetChild(1));
-        fadeText(textPanel.transform.GetChild(4).gameObject, 1f, 2f);
+        fadeText(textPanel.transform.GetChild(4).GetChild(0).gameObject, 1f, 2f);
 
         yield return new WaitForSeconds(3f); // wait three secs for fade, and one second after the fade ends
         fadeOutAllText(0f, 2f);
@@ -76,21 +77,22 @@ public class GameOver : MonoBehaviour
     }
 
     public List<int> GetScores()
-    { 
-        list<int> IntList = new list<int>();
+    {
+        List<int> IntList = new List<int>();
         string str = PlayerPrefs.GetString("ScoreString");
-        string[] strArray = str.Split("£");
+        string[] strArray = str.Split('£');
         foreach (string s in strArray)
         {
             IntList.Add(int.Parse(s));
         }
         IntList.Sort();
+        return IntList;
     }
 
     /// <summary>
     /// Get the star rating from your score
     /// </summary>
-    private int RateScore(int i = Story.Instance.Score)
+    private int RateScore(int i)
     {
         //int i = Story.Instance.Score;
         if (PlayerPrefs.HasKey("ScoreString"))
@@ -130,10 +132,20 @@ public class GameOver : MonoBehaviour
     /// <summary>
     /// Instantiates the stars
     /// </summary>
-    private void CreateStars(int j = Story.Instance.Score, Transform t)
+    private void CreateStars(Transform t)
     {
         var g = Resources.Load("Star");
-        int i = RateScore(j);
+        int i = RateScore(Story.Instance.Score);
+        for (int j = 0; j < i; j++)
+        {
+            GameObject star = Instantiate(g, t.GetChild(1), false) as GameObject;
+        }
+    }
+
+    private void CreateStars(int a, Transform t)
+    {
+        var g = Resources.Load("Star");
+        int i = RateScore(a);
         for (int j = 0; j < i; j++)
         {
             GameObject star = Instantiate(g, t.GetChild(1), false) as GameObject;
@@ -155,8 +167,7 @@ public class GameOver : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Story story = FindObjectOfType<Story>();
         fadeOutAllText(0f, 0f); //instantaneously fades out all text boxes
-        StartCoroutine(LeaderBoard(story));
+        StartCoroutine(MakeLeaderBoard());
     }
 }
