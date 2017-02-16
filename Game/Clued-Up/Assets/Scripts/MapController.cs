@@ -27,9 +27,9 @@ public class MapController : MonoBehaviour {
 	/// Hides map panel & loads the next scene (buildIndex = roomIndex + 3).
 	/// </summary>
 	/// <param name="roomIndex">Room index given by component.</param>
-	public void loadScene(int roomIndex){
+	public void loadScene(string sceneName){
 		gameObject.GetComponent<CanvasGroup>().alpha = 0;
 		Time.timeScale = 1;
-		gameObject.GetComponent<SceneTransitions>().startSceneTransition(roomIndex + 3);
+		gameObject.GetComponent<SceneTransitions>().startSceneTransition(sceneName);
 	}
 }

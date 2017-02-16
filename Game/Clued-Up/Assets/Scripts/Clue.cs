@@ -98,7 +98,7 @@ public class Clue : MonoBehaviour {
 		Inventory inventory = GameObject.Find ("Detective").GetComponent<Inventory> ();
 		if (Time.timeScale != 0) {	//if game isn't paused
 			if (!(inventory.isCollected (this.name))) {
-				inventory.collect (this);
+				inventory.collect (this.name);
 				this.gameObject.GetComponent<AudioSource> ().Play ();
 				hud.GetComponent<HUDController> ().displayHUDText (this.longName + " added to inventory.");
 				this.isCollected = true;

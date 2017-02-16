@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.IO;
 using System.Collections.Generic;
@@ -8,14 +9,18 @@ using System.Text.RegularExpressions;
 /// Persistant story class that stores all game/ global variables and initialises Clues and Character objects
 /// </summary>
 public class Story : MonoBehaviour {
-	/// <summary>
-	/// Variable to make sure there is only one instance of this object
-	/// </summary>
-	public static Story Instance;
+    /// <summary>
+    /// Variable to make sure there is only one instance of this object
+    /// </summary>
+    public static Story Instance;
+    /// <summary>
+    /// Whether the story has been loaded yet.
+    /// </summary>
+    public static bool loaded = false;
 	/// <summary>
 	/// Index of weather conditions where 0 = sunny, 1 = rainy, 2 = sunset, 3 = snowy. Preset for debugging different condtitions
 	/// </summary>
-	private int weather = 1;
+	private WeatherOption weather;
 	/// <summary>
 	/// The detective int set by user in character selection
 	/// </summary>
@@ -56,6 +61,13 @@ public class Story : MonoBehaviour {
 	/// The number of detectives that will be in the game
 	/// </summary>
 	private static int NUMBER_OF_DETECTIVES = 3;
+    /// <summary>
+    /// The number of possible weather options (currently sunny, rainy, sunset, snow)
+    /// </summary>
+    public enum WeatherOption
+    {
+        SUN, RAIN, SUNSET, SNOW
+    };
 	/// <summary>
 	/// The full list of characters for the game.
 	/// </summary>
@@ -69,6 +81,7 @@ public class Story : MonoBehaviour {
 	/// Keeps only 1 instance ever, therefore it can survive between scenes without having several scenes.
 	/// </summary>
 	void Awake () {
+        Debug.Log("Story Awake called");
 		if (Instance == null)
 		{
 			DontDestroyOnLoad(gameObject);
@@ -76,9 +89,19 @@ public class Story : MonoBehaviour {
 		}
 		else if (Instance != this)
 		{
-			Destroy (gameObject);
+            return;
 		}
 	}
+
+    /// <summary>
+    /// Is the story loaded or not?
+    /// </summary>
+    /// <returns>true or false</returns>
+    public static bool isLoaded()
+    {
+        Debug.Log("Story#isLoaded returning " + loaded);
+        return loaded;
+    }
 
 	/// <summary>
 	/// Gets a random line from a file
@@ -92,7 +115,7 @@ public class Story : MonoBehaviour {
 			throw new FileLoadException ("FileName \'" + filename + "\' is not a valid file to read from");
 		}
 		List<string> lines = new List<string> (linesArray);
-		return lines [Random.Range (0, lines.Count)];
+		return lines [UnityEngine.Random.Range (0, lines.Count)];
 	}
 
 	/// <summary>
@@ -102,16 +125,16 @@ public class Story : MonoBehaviour {
 	public string getIntro1(){
 		string weatherString;
 		switch (weather) {
-		case 0:
+		case WeatherOption.SUN:
 			weatherString = "beautiful, sunny afternoon";
 			break;
-		case 1:
+		case WeatherOption.RAIN:
 			weatherString = "wet stormy night";
 			break;
-		case 2:
+		case WeatherOption.SUNSET:
 			weatherString = "warm autumn's sunset";
 			break;
-		case 3:
+		case WeatherOption.SNOW:
 			weatherString = "cold, snowy evening";
 			break;
 		default:
@@ -134,15 +157,16 @@ public class Story : MonoBehaviour {
 	/// </summary>
 	/// <returns>Weather index</returns>
 	/// <param name="materialArray">array of background materials; one each weather condition</param>
-	public int setWeather(Material[] materialArray){
-		weather = Random.Range (0, materialArray.Length);
+	public WeatherOption setWeather(){
+        Array values = Enum.GetValues(typeof(WeatherOption));
+        weather = (WeatherOption)values.GetValue(UnityEngine.Random.Range(0, values.Length));
 		return weather;
 	}
 	/// <summary>
-	/// Gets weather index
+	/// Gets weather type
 	/// </summary>
-	/// <returns>The weather index</returns>
-	public int getWeather(){
+	/// <returns>The weather type</returns>
+	public WeatherOption getWeather(){
 		return weather;
 	}
 	/// <summary>
@@ -166,7 +190,7 @@ public class Story : MonoBehaviour {
 
 	public void endGame(){
 		Debug.Log ("Congratulations! You have beaten the game!");
-		SceneManager.LoadScene (11);
+		SceneManager.LoadScene ("GameOver");
 	}
 		
 
@@ -227,9 +251,9 @@ public class Story : MonoBehaviour {
 		characters.Add (character4);
 		characters.Add (character5);
 
-		this.victim = characters[Random.Range(0,characters.Count)];
+		this.victim = characters[UnityEngine.Random.Range(0,characters.Count)];
 		characters.Remove(this.victim);
-		this.murderer = characters[Random.Range(0,characters.Count)];
+		this.murderer = characters[UnityEngine.Random.Range(0,characters.Count)];
 		this.aliveCharacters = characters;
 
 		this.victim.GetComponent<Character> ().isVictim = true;
@@ -266,7 +290,7 @@ public class Story : MonoBehaviour {
 
 		//for each character, assign a random room that isnt the crime scene & provided there isnt anyone in it, add it to characters in room
 		for(int characterIndex = 0; characterIndex < this.aliveCharacters.Count; characterIndex ++) {	
-			randomRoom = emptyRooms[Random.Range (0, emptyRooms.Count)];
+			randomRoom = emptyRooms[UnityEngine.Random.Range (0, emptyRooms.Count)];
 			emptyRooms.Remove (randomRoom);
 			charactersInRoom[randomRoom] = new List<int>{characterIndex}; //CharactersInRoom[1] = 2 | char 2 is in room 1 //using lists so it is adaptable to multiple characters being in one room
 		}
@@ -324,12 +348,14 @@ public class Story : MonoBehaviour {
 	/// <param name="clueNames">List of names of all clues in game</param>
 	private void setClueLocations(List<string> clueNames){
 		cluesInRoom [0] = new List<string>{ clueNames [0] }; //body clue always in room 0
+        Debug.LogFormat("Spawning clue {0} in room {1}", clueNames[0], 0);
 		int randomRoom;
 		for(int clueIndex = 1; clueIndex < clueNames.Count; clueIndex ++) {	
-			randomRoom = Random.Range (1, NUMBER_OF_ROOMS); //rooms 1-7 (i.e. all, not including the crime scene 
+			randomRoom = UnityEngine.Random.Range (1, NUMBER_OF_ROOMS); //rooms 1-7 (i.e. all, not including the crime scene 
 			while(cluesInRoom.ContainsKey(randomRoom)){	//while there is already a character here, keep finsing new room
-				randomRoom = Random.Range (1, NUMBER_OF_ROOMS);
+				randomRoom = UnityEngine.Random.Range (1, NUMBER_OF_ROOMS);
 			}
+            Debug.LogFormat("Spawning clue {0} in room {1}", clueNames[clueIndex], randomRoom);
 			cluesInRoom.Add (randomRoom, new List<string>{clueNames[clueIndex]}); //cluesInRoom[0] = ["chalkOutline"] | using lists so it is adaptable to multiople chars in one room
 		}
 	}
@@ -487,7 +513,7 @@ public class Story : MonoBehaviour {
 		motiveClueNames.Add ("recorder");
 		motiveClueNames.Add ("polaroid");
 		motiveClueNames.Add ("letter");
-		motiveClue = motiveClueNames [Random.Range (0, motiveClueNames.Count)];
+		motiveClue = motiveClueNames [UnityEngine.Random.Range (0, motiveClueNames.Count)];
 		cluesList.Add(motiveClue);
 	}
 	/// <summary>
@@ -500,7 +526,7 @@ public class Story : MonoBehaviour {
 		weaponClueNames.Add ("salmon");
 		weaponClueNames.Add ("hammer");
 		weaponClueNames.Add ("knife");
-		murderWeapon = weaponClueNames [Random.Range (0, weaponClueNames.Count)];
+		murderWeapon = weaponClueNames [UnityEngine.Random.Range (0, weaponClueNames.Count)];
 		cluesList.Add(murderWeapon);
 	}
 
@@ -513,6 +539,7 @@ public class Story : MonoBehaviour {
 	/// Clue 7 = setWeapon
 	/// </summary>
 	private void setClues(){
+        Debug.Log("setClues called");
 		List<string> cluesList = new List<string> (); 
 		cluesList.Add("chalkOutline"); //Clue 0 will ALWAYS be the chalk outline.
 		setCharacterClues (cluesList);
@@ -539,8 +566,17 @@ public class Story : MonoBehaviour {
 	/// <returns>The clue GameObjects in the room</returns>
 	/// <param name="roomIndex">Index of the room to find clues for</param>
 	public List<GameObject> getCluesInRoom(int roomIndex){
+        Debug.LogFormat("getCluesInRoom called for room {0}", roomIndex);
+        if (!this.cluesInRoom.ContainsKey(roomIndex))
+        {
+            throw new Exception(String.Format("cluesInRoom does not contain key for room: {0}, there are {1} rooms in cluesInRoom",
+                                              roomIndex, cluesInRoom.Count));
+        }
+        Debug.LogFormat("There are {0} clues in this room", this.cluesInRoom[roomIndex].Count);
+
 		List<GameObject> clues = new List<GameObject> ();
 		foreach (string clueName in this.cluesInRoom[roomIndex]) {	//for each clueName in room
+            Debug.LogFormat("Instantiating clue: {0}", clueName);
 			GameObject newClue = Instantiate (Resources.Load ("Clue"), new Vector3 (1f, 1f, 1f), Quaternion.Euler (0, 0, 0)) as GameObject;
 			setClueInformation (clueName, newClue); // calls the initialisation method with the relevent details
 			newClue.GetComponent<SpriteRenderer> ().sprite = newClue.GetComponent<Clue> ().sprite;	// Add Clue's sprite to the Clue's GameObject sprite renderer
@@ -553,9 +589,11 @@ public class Story : MonoBehaviour {
 	/// Initialises story characters and clues
 	/// </summary>
 	public void setStory(){
+        setWeather();
 		setCharacters ();
 		setCharacterRooms();
 		setClues();
+        loaded = true;
 	}
 
 
@@ -569,7 +607,7 @@ public class Story : MonoBehaviour {
 			print(character.name);
 		}
 		do {
-			tempCharacter = aliveCharacters [Random.Range (0, aliveCharacters.Count)].GetComponent<Character> ();
+			tempCharacter = aliveCharacters [UnityEngine.Random.Range (0, aliveCharacters.Count)].GetComponent<Character> ();
 		
 		} while(tempCharacter.isMurderer == true);
 		return tempCharacter;

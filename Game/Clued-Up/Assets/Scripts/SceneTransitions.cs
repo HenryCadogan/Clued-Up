@@ -5,6 +5,15 @@ using UnityEngine.UI;
 
 /// <summary>
 /// Controlling the scene transitions as the detective moves around the Ron Cooke Hub
+/// Info:
+///     Room1 = Lakehouse
+///     Room2 = Lobby
+///     Room3 = TrainStation
+///     Room4 = Cafe
+///     Room5 = Kitchen
+///     Room6 = Bar
+///     Room7 = Studio
+///     Room8 = Toilets
 /// </summary>
 public class SceneTransitions : MonoBehaviour {
 	/// <summary>
@@ -19,7 +28,7 @@ public class SceneTransitions : MonoBehaviour {
 	/// </summary>
 	/// <returns>Yield WaitForSeconds</returns>
 	/// <param name="scene">Scene index to load</param>
-	IEnumerator fadeLoadScene(int scene){
+	IEnumerator fadeLoadScene(string scene){
 		GameObject overlayPanel = GameObject.Find ("OverlayPanel");
 		overlayPanel.SetActive (true);
 		overlayPanel.GetComponent<Image> ().CrossFadeAlpha (1f, 1f, false);
@@ -49,16 +58,16 @@ public class SceneTransitions : MonoBehaviour {
 	public void OnMouseDown(){
 		if (gameObject.name == "LobbyDoorQuad") {
 			GameObject.Find ("Detective").GetComponent<Detective> ().walkInDirection = 2;
-			StartCoroutine (fadeLoadScene (3));
+			StartCoroutine (fadeLoadScene ("Room1"));
 		} else if (gameObject.name == "KitchenDoorQuad") {
 			GameObject.Find ("Detective").GetComponent<Detective> ().walkInDirection = 2;
-			StartCoroutine (fadeLoadScene (7));
+			StartCoroutine (fadeLoadScene ("Room5"));
 		} else if (gameObject.name == "StudioDoorQuad") {
 			GameObject.Find ("Detective").GetComponent<Detective> ().walkInDirection = 2;
-			StartCoroutine (fadeLoadScene (9));
+			StartCoroutine (fadeLoadScene ("Room7"));
 		} else if (gameObject.name == "StudioExitDoorQuad") {
 			GameObject.Find ("Detective").GetComponent<Detective> ().walkInDirection = 0;
-			StartCoroutine (fadeLoadScene (8));
+			StartCoroutine (fadeLoadScene ("Room6"));
 		}
 	}
 	/// <summary>
@@ -75,7 +84,7 @@ public class SceneTransitions : MonoBehaviour {
 			case "Room1R":
 				if (GameObject.Find ("SceneController").GetComponent<RoomController> ().canProgress ()){
 					detective.GetComponent<Detective> ().walkInDirection = 1;
-					StartCoroutine (fadeLoadScene (4));
+					StartCoroutine (fadeLoadScene ("Room2"));
 				} else {
 					stopDetective(true,detective);
 				}
@@ -83,32 +92,32 @@ public class SceneTransitions : MonoBehaviour {
 
 			case "Room2L": //room2 is lobby
 				detective.GetComponent<Detective>().walkInDirection = 2;
-				StartCoroutine(fadeLoadScene(6)); // load cafe
+				StartCoroutine(fadeLoadScene("Room4")); // load cafe
 				break;
 
 			case "Room2R":
 				detective.GetComponent<Detective>().walkInDirection = 0;
-				StartCoroutine(fadeLoadScene(5)); // load train station
+				StartCoroutine(fadeLoadScene("Room3")); // load train station
 				break;
 
 			case "Room3L": //room3 is train station
 				detective.GetComponent<Detective>().walkInDirection = 2;
-				StartCoroutine(fadeLoadScene(4)); // load lobby
+				StartCoroutine(fadeLoadScene("Room2")); // load lobby
 				break;
 
 			case "Room3R":
 				detective.GetComponent<Detective>().walkInDirection = 0;
-				StartCoroutine(fadeLoadScene(10)); // load toilets
+				StartCoroutine(fadeLoadScene("Room8")); // load toilets
 				break;
 
 			case "Room4L": //room4 is cafe
 				detective.GetComponent<Detective>().walkInDirection = 2;
-				StartCoroutine(fadeLoadScene(8)); // load bar
+				StartCoroutine(fadeLoadScene("Room6")); // load bar
 				break;
 
 			case "Room4R":
 				detective.GetComponent<Detective>().walkInDirection = 0;
-				StartCoroutine(fadeLoadScene(4)); // load lobby
+				StartCoroutine(fadeLoadScene("Room2")); // load lobby
 				break;
 
 			case "Room5L": //room 5 is kitchen
@@ -117,17 +126,17 @@ public class SceneTransitions : MonoBehaviour {
 
 			case "Room5R":
 				detective.GetComponent<Detective>().walkInDirection = 0;
-				StartCoroutine(fadeLoadScene(6)); // load cafe
+				StartCoroutine(fadeLoadScene("Room4")); // load cafe
 				break;
 
 			case "Room6L": //room 6 is bar
 				detective.GetComponent<Detective>().walkInDirection = 2;
-				StartCoroutine(fadeLoadScene(10)); // load toilets
+				StartCoroutine(fadeLoadScene("Room8")); // load toilets
 				break;
 
 			case "Room6R":
 				detective.GetComponent<Detective>().walkInDirection = 0;
-				StartCoroutine(fadeLoadScene(6)); // load cafe
+				StartCoroutine(fadeLoadScene("Room4")); // load cafe
 				break;
 
 			case "Room7L": //room 7 is studio
@@ -140,12 +149,12 @@ public class SceneTransitions : MonoBehaviour {
 
 			case "Room8L": //room 8 is toilets
 				detective.GetComponent<Detective>().walkInDirection = 2;
-				StartCoroutine(fadeLoadScene(5)); // load station
+				StartCoroutine(fadeLoadScene("Room3")); // load station
 				break;
 
 			case "Room8R":
 				detective.GetComponent<Detective>().walkInDirection = 0;
-				StartCoroutine(fadeLoadScene(8)); // load bar
+				StartCoroutine(fadeLoadScene("Room6")); // load bar
 				break;
 
 			default:
@@ -157,8 +166,8 @@ public class SceneTransitions : MonoBehaviour {
 	/// Starts the scene transition coroutine. This is used from outside this class to load a new scene
 	/// </summary>
 	/// <param name="buildIndex">Build index.</param>
-	public void startSceneTransition(int buildIndex){
-		StartCoroutine(fadeLoadScene(buildIndex));
+	public void startSceneTransition(string sceneName){
+		StartCoroutine(fadeLoadScene(sceneName));
 	}
 
 
@@ -177,6 +186,6 @@ public class SceneTransitions : MonoBehaviour {
 			Destroy (GameObject.Find ("Story").GetComponent<Story> ().victim);
 			Destroy (GameObject.Find ("Story"));
 		}
-		SceneManager.LoadScene (0);
+		SceneManager.LoadScene ("MainMenu");
 	}
 }
