@@ -178,9 +178,14 @@ public class SpeechHandler : MonoBehaviour {
 		}
 	}
 
+    /// <summary>
+    /// Assessment 3
+    /// Returns a bool to say whether the conversation will proceed or whether the NPC has ignored the player 
+    /// This is done by a simple probabilty function
+    /// </summary>
     private bool isIgnored()
     {
-        if (Random.Range(0, 5) > 0.1)
+        if (Random.Range(0, 10) > 1) // Generate random number between 0 and 10 and if it is smaller than 1 then the NPC will ignore the player
         {
             return true;
         }
@@ -332,22 +337,22 @@ public class SpeechHandler : MonoBehaviour {
 		// Then select a branch accordingly.
 		if (hasMotiveClue == false && hasMurderWeapon == false) {
 			branchName = "Accuse-NoItems";
-		    Story.Instance.Score -= 20;
+		    Story.Instance.Score -= 20; // Reduces the score by 20
 		} else if (hasMotiveClue == false) {
 			branchName = "Accuse-Motive";
-            Story.Instance.Score -= 15;
+            Story.Instance.Score -= 15; // Reduces the score by 15
         } else if (hasMurderWeapon == false) {
 			branchName = "Accuse-Weapon";
-            Story.Instance.Score -= 15;
+            Story.Instance.Score -= 15; // Reduces the score by 15
         } else if (isMurderer == false)
 		{
 		    branchName = "Accuse-WrongChar";
-		    Story.Instance.Score -= 15;
-		}
+		    Story.Instance.Score -= 15; // Reduces the score by 15
+        }
 		else
 		{
 		    branchName = "Accuse-Right";
-            Story.Instance.Score += 30;
+            Story.Instance.Score += 30; // Increases the score by 30
         }
 		// Whatever branch gets selected, we can then start it.
 		startBranch(branchName);

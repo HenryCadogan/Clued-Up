@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using DigitalRuby.RainMaker;
 
 /// <summary>
 /// Controlling the scene transitions as the detective moves around the Ron Cooke Hub
@@ -20,6 +21,7 @@ public class SceneTransitions : MonoBehaviour {
 	/// Will hold the transform position of Detective if the character tries to walk out of bounds
 	/// </summary>
 	private Vector3 pos;
+    public bool isMuted = false;
 
 
 
@@ -35,7 +37,8 @@ public class SceneTransitions : MonoBehaviour {
 		yield return new WaitForSeconds (1);
 		Cursor.SetCursor (null, Vector2.zero, CursorMode.Auto); //resets curser if stuck on magnifying glass
 		SceneManager.LoadScene (scene);
-		yield return null;
+        SetIfMute();
+        yield return null;
 	}
 
 	private void stopDetective(bool directionIsRight, Collider detective){
@@ -69,7 +72,7 @@ public class SceneTransitions : MonoBehaviour {
 			GameObject.Find ("Detective").GetComponent<Detective> ().walkInDirection = 0;
 			StartCoroutine (fadeLoadScene ("Room6"));
 		}
-	}
+    }
 	/// <summary>
 	/// Handles what happens when player walks into a transparent collider at the edge of either side of the scene.
 	/// </summary>
@@ -160,18 +163,21 @@ public class SceneTransitions : MonoBehaviour {
 			default:
 				break;
 			}
-		}
+        }
 	}
 	/// <summary>
 	/// Starts the scene transition coroutine. This is used from outside this class to load a new scene
 	/// </summary>
-	/// <param name="buildIndex">Build index.</param>
+	/// <param name="sceneName">Name of scene</param>
 	public void startSceneTransition(string sceneName){
 		StartCoroutine(fadeLoadScene(sceneName));
 	}
 
-
-	public void returnToMainMenu(){
+    /// <summary>
+    /// Re starts the game from the beginning. Sets up the cursor and the game so all future operations work
+    /// Destroys all the current characters and gets new ones and new story
+    /// </summary>
+    public void returnToMainMenu(){
 		Time.timeScale = 1; //so that future coroustines work
 		Cursor.SetCursor (null, Vector2.zero, CursorMode.Auto);
 
@@ -188,4 +194,66 @@ public class SceneTransitions : MonoBehaviour {
 		}
 		SceneManager.LoadScene ("MainMenu");
 	}
+
+    /// <summary>
+    /// Assessment 3
+    /// Mutes all audioSources in the scene
+    /// </summary>
+    void Mute()
+    {
+        AudioSource[] audioSources = FindObjectsOfType<AudioSource>(); // Finds all the audioSources 
+        foreach(AudioSource a in audioSources)
+        {
+            a.mute = true; // Sets the mute boolean to true
+        }
+    }
+
+    /// <summary>
+    /// Assessment 3
+    /// Unmutes all audioSources in the scene
+    /// </summary>
+    void UnMute()
+    {
+        AudioSource[] audioSources = FindObjectsOfType<AudioSource>();// Finds all the audioSources 
+        foreach (AudioSource a in audioSources)
+        {
+            a.mute = false; // Sets the mute boolean to true
+        }
+    }
+
+    /// <summary>
+    /// Assessment 3
+    /// This is called when the Toggle Sound button is clicked. Checks to see if it muted already or not and flips it to the opposite
+    /// </summary>
+    public void ToggleMute(GameObject button)
+    {
+        if (isMuted)
+        {
+            isMuted = false; // sets boolean to false 
+            UnMute(); // Calls unmute function
+            button.GetComponent<Image>().CrossFadeAlpha(1f, 0.5f, true); // Makes the button brighter (People think brighter means sound on generally)
+        }
+        else
+        {
+            isMuted = true; // sets boolean to true 
+            Mute(); // Calls mute function
+            button.GetComponent<Image>().CrossFadeAlpha(0.5f, 0.5f, true);// Makes the button faded (People think faded means sound off generally)
+        }
+    }
+
+    /// <summary>
+    /// Assessment 3
+    /// Is called on the scene transition so that it mutes/unmutes all the sounds in the next scene.
+    /// </summary>
+    public void SetIfMute()
+    {
+        if (isMuted)
+        {
+            Mute();
+        }
+        else
+        {
+            UnMute();
+        }
+    }
 }
