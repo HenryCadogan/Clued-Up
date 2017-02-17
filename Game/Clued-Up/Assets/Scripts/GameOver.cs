@@ -70,7 +70,7 @@ public class GameOver : MonoBehaviour {
 
 		yield return new WaitForSeconds(3f); // wait three secs for fade, and one second after the fade ends
 
-		SceneManager.LoadScene (12); //load credits
+		SceneManager.LoadScene ("Credits"); //load credits
 	}
 
     /// <summary>

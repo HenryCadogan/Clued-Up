@@ -26,7 +26,7 @@ public class SceneTransitionsTests {
 	public void StartSceneTransitionTest(){
 		for(int x = 0; x < 9; x++) {
 			try {
-				testST.startSceneTransition(x);
+				testST.startSceneTransition("Room" + x);
 				Assert.Pass();
 			} catch(Exception e) {
 			}

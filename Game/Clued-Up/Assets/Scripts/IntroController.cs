@@ -47,7 +47,6 @@ public class IntroController : MonoBehaviour {
 		introTextObject.text = introText;
 		fadeText (1f, 0.1f);
 	}
-	private Story story;
 
 	/// <summary>
 	/// Plays the main intro sequence cutscene for the game
@@ -76,7 +75,7 @@ public class IntroController : MonoBehaviour {
 		overlayPanel.CrossFadeAlpha (1f, 0.5f, false);
 		yield return new WaitForSeconds(1f); //wait for the overlay to fade in entirely
 
-		SceneManager.LoadScene (2);	//loads character selection scene
+		SceneManager.LoadScene ("CharacterSelection");	//loads character selection scene
 		yield return null;
 
 	}
@@ -86,28 +85,37 @@ public class IntroController : MonoBehaviour {
 	/// Instantiates ew Story gameobject so that the object can safely be destroyed and reloaded when the game is played multiple times.
 	/// </summary>
 	void Start () {
+		Story story = GameObject.Find("Story").GetComponent<Story>(); // references persistant object story
+
+        // Set RCH background material based on weather
 		Material[] materialArray = new Material[4];
 		materialArray[0] = (Material)Resources.Load("RonCookeHubMurderSunny", typeof(Material)); //finds material located in the resources folder
 		materialArray[1] = (Material)Resources.Load("RonCookeHubMurderRain", typeof(Material));
 		materialArray[2] = (Material)Resources.Load("RonCookeHubMurderSunset", typeof(Material));
 		materialArray[3] = (Material)Resources.Load("RonCookeHubMurderSnow", typeof(Material));
-		GameObject StoryObject = new GameObject("Story");
-		StoryObject.AddComponent<Story> ();
 
-		this.story = StoryObject.GetComponent<Story> ();
+        Material backgroundMaterial = materialArray[0];
+        switch (story.getWeather())
+        {
+            case Story.WeatherOption.SUN:
+                backgroundMaterial = materialArray[0];
+                break;
+            case Story.WeatherOption.RAIN:
+                rainGenerator.SetActive (true);
+                backgroundMaterial = materialArray[1];
+                break;
+            case Story.WeatherOption.SUNSET:
+                backgroundMaterial = materialArray[2];
+                break;
+            case Story.WeatherOption.SNOW:
+                snowGenerator.SetActive (true);
+                backgroundMaterial = materialArray[2];
+                break;
+        }
 
-		int weather = story.setWeather (materialArray); // get weather from story; 0=sunny 1=rainy 2=sunset 3=snow
-
-		if (weather == 1) {	//set generators depending on weather
-			rainGenerator.SetActive (true);
-		} else if (weather == 3) {
-			snowGenerator.SetActive (true);
-		}
-		backgroundPlane.material = materialArray [weather]; //change background image to be the correct image
+        backgroundPlane.material = backgroundMaterial;
 		fadeText(0f,0f); //instantaneously fade text out
 
-		story.setStory ();
-		//initialisation done, now pass to a coroutine so that time delays can be done
 		StartCoroutine(IntroCutscene(story));
 	}
 
@@ -116,8 +124,9 @@ public class IntroController : MonoBehaviour {
 	/// </summary>
 	void Update() {
 		if (Input.GetKeyDown ("space")){
+            Story story = GameObject.Find("Story").GetComponent<Story>(); // references persistant object story
 			story.setDetective (0);
-			SceneManager.LoadScene (2);	//loads character selection scene
+			SceneManager.LoadScene ("CharacterSelection");	//loads character selection scene
 		}
 	}
 }

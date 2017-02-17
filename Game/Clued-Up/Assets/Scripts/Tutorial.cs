@@ -15,7 +15,7 @@ public class Tutorial : MonoBehaviour {
 				currentTutorial++;
 				tutorials.transform.GetChild (currentTutorial).gameObject.SetActive (true);
 			} else {
-				sceneTransitions.startSceneTransition (0);
+				sceneTransitions.startSceneTransition ("MainMenu");
 			}
 		}
 		
