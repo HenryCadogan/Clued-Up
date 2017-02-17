@@ -61,8 +61,8 @@ public class GameOver : MonoBehaviour {
 		fadeText (textPanel.transform.GetChild (4).gameObject,1f, 2f);
 
         yield return new WaitForSeconds(3f); //wait 1 second after last fade ends
-	    textPanel.transform.GetChild(5).GetComponent<Text>().text = "Your Score is ";
-        CreateStars();
+	    textPanel.transform.GetChild(5).GetComponent<Text>().text = "Your Score is "; // (Assessment 3) Thiis displays the "Your score is" in a text box and it then prints
+        CreateStars();                                                                // prins the number of stars that the player ended up with depending on the "CreateStars" function below
         fadeText(textPanel.transform.GetChild(5).gameObject, 1f, 2f);
 
         yield return new WaitForSeconds(3f); // wait three secs for fade, and one second after the fade ends
@@ -116,9 +116,9 @@ public class GameOver : MonoBehaviour {
     /// <summary>
     /// Instantiates the stars
     /// </summary>
-    private void CreateStars()
+    private void CreateStars() // (Assessment 3) This function creates the number of stars the player is awarded when they finish the game.
     {
-        var g = Resources.Load("Star");
+        var g = Resources.Load("Star"); // Loads in the 
         int i = RateScore();
         for(int j =0 ; j <i; j++)
         {
