@@ -613,12 +613,17 @@ public class Story : MonoBehaviour {
         loaded = true;
 	}
 
-
-	public List<GameObject> getFullCharacterList(){
+    /// <summary>
+    /// Return s a list of gameobjects that are characters
+    /// </summary>
+    public List<GameObject> getFullCharacterList(){
 		return characters;
 	}
 
-	public Character randomAliveCharacter(){
+    /// <summary>
+    /// Random alive characters
+    /// </summary>
+    public Character randomAliveCharacter(){
 		Character tempCharacter;
 		foreach (GameObject character in  aliveCharacters){
 			print(character.name);
