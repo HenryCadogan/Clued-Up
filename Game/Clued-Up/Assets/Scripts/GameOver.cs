@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -30,10 +31,22 @@ public class GameOver : MonoBehaviour {
 	/// <param name="textObject">The text object to be faded.</param>
 	/// <param name="alpha">The target alpha value for the object.</param>
 	/// <param name="time">The amount of time over which the crossfade should elapse.</param>
-	private void fadeText(GameObject textObject, float alpha, float time){ 
-		textObject.GetComponent<Text>().CrossFadeAlpha(alpha,time,false);
+	private void fadeText(GameObject textObject, float alpha, float time){
+	    if (textObject.GetComponent<Text>() != null)
+	    {
+	        textObject.GetComponent<Text>().CrossFadeAlpha(alpha, time, false);
+	    }
+	    else
+	    {
+            textObject.transform.GetChild(0).GetComponent<Text>().CrossFadeAlpha(alpha, time, false);
+	        Image[] i = textObject.transform.GetChild(1).GetComponentsInChildren<Image>();
+	        foreach (Image img in i)
+	        {
+	            img.CrossFadeAlpha(alpha, time, false);
+	        }
+	    }
 	}
-	/// <summary>
+    /// <summary>
 	/// Runs the end game cutscene.
 	/// </summary>
 	/// <returns>While the Enumerator may return a value, I would not trust it to be usable.</returns>
@@ -61,8 +74,8 @@ public class GameOver : MonoBehaviour {
 		fadeText (textPanel.transform.GetChild (4).gameObject,1f, 2f);
 
         yield return new WaitForSeconds(3f); //wait 1 second after last fade ends
-	    textPanel.transform.GetChild(5).GetComponent<Text>().text = "Your Score is "; // (Assessment 3) Thiis displays the "Your score is" in a text box and it then prints
-        CreateStars();                                                                // prins the number of stars that the player ended up with depending on the "CreateStars" function below
+	    textPanel.transform.GetChild(5).GetChild(0).GetComponent<Text>().text = "Your Score is: " + Story.Instance.Score; // (Assessment 3) Thiis displays the "Your score is" in a text box and it then prints
+        CreateStars(textPanel.transform.GetChild(5).GetChild(1).gameObject);                                                                // prins the number of stars that the player ended up with depending on the "CreateStars" function below
         fadeText(textPanel.transform.GetChild(5).gameObject, 1f, 2f);
 
         yield return new WaitForSeconds(3f); // wait three secs for fade, and one second after the fade ends
@@ -116,13 +129,14 @@ public class GameOver : MonoBehaviour {
     /// <summary>
     /// Instantiates the stars
     /// </summary>
-    private void CreateStars() // (Assessment 3) This function creates the number of stars the player is awarded when they finish the game.
+    private void CreateStars(GameObject StarPanel) // (Assessment 3) This function creates the number of stars the player is awarded when they finish the game.
     {
         var g = Resources.Load("Star"); // Loads in the 
         int i = RateScore();
         for(int j =0 ; j <i; j++)
         {
-            GameObject star = Instantiate(g, textPanel.transform.parent.GetChild(1), false) as GameObject;
+            GameObject star = Instantiate(g, StarPanel.transform, false) as GameObject;
+            star.GetComponent<Image>().CrossFadeAlpha(1, 0.5f, false);
         }
     }
 
@@ -135,7 +149,8 @@ public class GameOver : MonoBehaviour {
 		fadeText (textPanel.transform.GetChild (2).gameObject, alpha, time);
 		fadeText (textPanel.transform.GetChild (3).gameObject, alpha, time);
 		fadeText (textPanel.transform.GetChild (4).gameObject, alpha, time);
-	}
+        fadeText(textPanel.transform.GetChild(5).gameObject, alpha, time);
+    }
 
 	// Use this for initialization
 	void Start () {

@@ -58,7 +58,6 @@ public class SceneTransitions : MonoBehaviour {
 	/// Raises the mouse down event for use when DoorQuads are clicked.
 	/// </summary>
 	public void OnMouseDown(){
-        FindObjectOfType<SpeechHandler>().SetIsIgnored(false);
         if (gameObject.name == "LobbyDoorQuad") {
 			GameObject.Find ("Detective").GetComponent<Detective> ().walkInDirection = 2;
 			StartCoroutine (fadeLoadScene ("Room1"));
@@ -79,17 +78,17 @@ public class SceneTransitions : MonoBehaviour {
 	/// </summary>
 	/// <param name="detective">Passed by the colliderm; the GameObject that has caused the collision.</param>
 	void OnTriggerEnter(Collider detective){
-		if (Time.timeSinceLevelLoad > 0.2){	//enough time for them to walk on screen
+        if (Time.timeSinceLevelLoad > 0.2){	//enough time for them to walk on screen
 			switch (this.gameObject.name) {
 			case "Room1L":
 				stopDetective(false,detective);
-				break;
+                    break;
 
 			case "Room1R":
 				if (GameObject.Find ("SceneController").GetComponent<RoomController> ().canProgress ()){
 					detective.GetComponent<Detective> ().walkInDirection = 1;
 					StartCoroutine (fadeLoadScene ("Room2"));
-				} else {
+                    } else {
 					stopDetective(true,detective);
 				}
 				break;
@@ -97,32 +96,32 @@ public class SceneTransitions : MonoBehaviour {
 			case "Room2L": //room2 is lobby
 				detective.GetComponent<Detective>().walkInDirection = 2;
 				StartCoroutine(fadeLoadScene("Room4")); // load cafe
-				break;
+                    break;
 
 			case "Room2R":
 				detective.GetComponent<Detective>().walkInDirection = 0;
 				StartCoroutine(fadeLoadScene("Room3")); // load train station
-				break;
+                    break;
 
 			case "Room3L": //room3 is train station
 				detective.GetComponent<Detective>().walkInDirection = 2;
 				StartCoroutine(fadeLoadScene("Room2")); // load lobby
-				break;
+                    break;
 
 			case "Room3R":
 				detective.GetComponent<Detective>().walkInDirection = 0;
 				StartCoroutine(fadeLoadScene("Room8")); // load toilets
-				break;
+                    break;
 
 			case "Room4L": //room4 is cafe
 				detective.GetComponent<Detective>().walkInDirection = 2;
 				StartCoroutine(fadeLoadScene("Room6")); // load bar
-				break;
+                    break;
 
 			case "Room4R":
 				detective.GetComponent<Detective>().walkInDirection = 0;
 				StartCoroutine(fadeLoadScene("Room2")); // load lobby
-				break;
+                    break;
 
 			case "Room5L": //room 5 is kitchen
 				stopDetective(false,detective);
@@ -131,21 +130,21 @@ public class SceneTransitions : MonoBehaviour {
 			case "Room5R":
 				detective.GetComponent<Detective>().walkInDirection = 0;
 				StartCoroutine(fadeLoadScene("Room4")); // load cafe
-				break;
+                    break;
 
 			case "Room6L": //room 6 is bar
 				detective.GetComponent<Detective>().walkInDirection = 2;
 				StartCoroutine(fadeLoadScene("Room8")); // load toilets
-				break;
+                    break;
 
 			case "Room6R":
 				detective.GetComponent<Detective>().walkInDirection = 0;
 				StartCoroutine(fadeLoadScene("Room4")); // load cafe
-				break;
+                    break;
 
 			case "Room7L": //room 7 is studio
 				stopDetective(false, detective);
-				break;
+                    break;
 
 			case "Room7R":
 				stopDetective (true, detective);
@@ -154,17 +153,16 @@ public class SceneTransitions : MonoBehaviour {
 			case "Room8L": //room 8 is toilets
 				detective.GetComponent<Detective>().walkInDirection = 2;
 				StartCoroutine(fadeLoadScene("Room3")); // load station
-				break;
+                    break;
 
 			case "Room8R":
 				detective.GetComponent<Detective>().walkInDirection = 0;
 				StartCoroutine(fadeLoadScene("Room6")); // load bar
-				break;
+                    break;
 
 			default:
 				break;
 			}
-            FindObjectOfType<SpeechHandler>().SetIsIgnored(false);
             SetSoundOnSceneChange();
         }
     }

@@ -27,6 +27,10 @@ public class LeaderBoard : MonoBehaviour
     /// </summary>
     private Story story;
     /// <summary>
+    /// The list of scores got from PlayerPrefs
+    /// </summary>
+    private List<int> ScoreList = new List<int>();
+    /// <summary>
     /// Provides an easy to use handler to fade the text.
     /// </summary>
     /// <param name="textObject">The text object to be faded.</param>
@@ -34,7 +38,12 @@ public class LeaderBoard : MonoBehaviour
     /// <param name="time">The amount of time over which the crossfade should elapse.</param>
     private void fadeText(GameObject textObject, float alpha, float time)
     {
-        textObject.GetComponent<Text>().CrossFadeAlpha(alpha, time, false);
+        textObject.transform.GetChild(0).GetComponent<Text>().CrossFadeAlpha(alpha, time, false);
+        Image[] i = textObject.transform.GetChild(1).GetComponentsInChildren<Image>();
+        foreach (Image img in i)
+        {
+            img.CrossFadeAlpha(alpha, time, false);
+        }
     }
     /// <summary>
     /// Runs the end game cutscene.
@@ -42,31 +51,30 @@ public class LeaderBoard : MonoBehaviour
     /// <returns>While the Enumerator may return a value, I would not trust it to be usable.</returns>
     IEnumerator MakeLeaderBoard()
     {
-        List<int> ScoreList = GetScores();
         yield return new WaitForSeconds(1f); //wait 1 second after scream begins
-        textPanel.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = "1." + ScoreList[0];
+        textPanel.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = "1. Score: " + ScoreList[0];
         CreateStars(ScoreList[0], textPanel.transform.GetChild(0).GetChild(1));
-        fadeText(textPanel.transform.GetChild(0).GetChild(0).gameObject, 1f, 2f);
+        fadeText(textPanel.transform.GetChild(0).gameObject, 1f, 2f);
 
         yield return new WaitForSeconds(3f); //wait 1 second after last fade ends
-        textPanel.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = "2." + ScoreList[1];
+        textPanel.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = "2. Score: " + ScoreList[1];
         CreateStars(ScoreList[0], textPanel.transform.GetChild(1).GetChild(1));
-        fadeText(textPanel.transform.GetChild(1).GetChild(0).gameObject, 1f, 2f);
+        fadeText(textPanel.transform.GetChild(1).gameObject, 1f, 2f);
 
         yield return new WaitForSeconds(3f); //wait 1 second after last fade ends
-        textPanel.transform.GetChild(2).GetChild(0).GetComponent<Text>().text = "3." + ScoreList[2];
+        textPanel.transform.GetChild(2).GetChild(0).GetComponent<Text>().text = "3. Score: " + ScoreList[2];
         CreateStars(ScoreList[0], textPanel.transform.GetChild(2).GetChild(1));
-        fadeText(textPanel.transform.GetChild(2).GetChild(0).gameObject, 1f, 2f);
+        fadeText(textPanel.transform.GetChild(2).gameObject, 1f, 2f);
 
         yield return new WaitForSeconds(3f); //wait 1 second after last fade ends
-        textPanel.transform.GetChild(3).GetChild(0).GetComponent<Text>().text = "4." + ScoreList[3];
+        textPanel.transform.GetChild(3).GetChild(0).GetComponent<Text>().text = "4. Score: " + ScoreList[3];
         CreateStars(ScoreList[0], textPanel.transform.GetChild(3).GetChild(1));
-        fadeText(textPanel.transform.GetChild(3).GetChild(0).gameObject, 1f, 2f);
+        fadeText(textPanel.transform.GetChild(3).gameObject, 1f, 2f);
 
         yield return new WaitForSeconds(3f); //wait 1 second after last fade ends
-        textPanel.transform.GetChild(4).GetChild(0).GetComponent<Text>().text = "5." + ScoreList[4];
+        textPanel.transform.GetChild(4).GetChild(0).GetComponent<Text>().text = "5. Score: " + ScoreList[4];
         CreateStars(ScoreList[0], textPanel.transform.GetChild(4).GetChild(1));
-        fadeText(textPanel.transform.GetChild(4).GetChild(0).gameObject, 1f, 2f);
+        fadeText(textPanel.transform.GetChild(4).gameObject, 1f, 2f);
 
         yield return new WaitForSeconds(3f); // wait three secs for fade, and one second after the fade ends
         fadeOutAllText(0f, 2f);
@@ -76,17 +84,16 @@ public class LeaderBoard : MonoBehaviour
         SceneManager.LoadScene(12); //load credits
     }
 
-    public List<int> GetScores()
+    public void GetScores()
     {
-        List<int> IntList = new List<int>();
         string str = PlayerPrefs.GetString("ScoreString");
         string[] strArray = str.Split('£');
         foreach (string s in strArray)
         {
-            IntList.Add(int.Parse(s));
+            if (s != "")
+                ScoreList.Add(int.Parse(s));
         }
-        IntList.Sort();
-        return IntList;
+        ScoreList.Sort();
     }
 
     /// <summary>
@@ -148,7 +155,7 @@ public class LeaderBoard : MonoBehaviour
         int i = RateScore(a);
         for (int j = 0; j < i; j++)
         {
-            GameObject star = Instantiate(g, t.GetChild(1), false) as GameObject;
+            GameObject star = Instantiate(g, t, false) as GameObject;
         }
     }
 
@@ -168,6 +175,7 @@ public class LeaderBoard : MonoBehaviour
     void Start()
     {
         fadeOutAllText(0f, 0f); //instantaneously fades out all text boxes
+        GetScores();
         StartCoroutine(MakeLeaderBoard());
     }
 }
