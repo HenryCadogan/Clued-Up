@@ -10,7 +10,7 @@ using UnityEngine.UI;
 /// <summary>
 /// Persistant story class that stores all game/ global variables and initialises Clues and Character objects
 /// </summary>
-public class Story : MonoBehaviour {
+public class Story :  MonoBehaviour{
     /// <summary>
     /// Variable to make sure there is only one instance of this object
     /// </summary>
@@ -64,17 +64,16 @@ public class Story : MonoBehaviour {
 	/// </summary>
 	private static int NUMBER_OF_DETECTIVES = 3;
     /// <summary>
+    /// The full list of characters for the game.
+    /// </summary>
+    private List<GameObject> characters = new List<GameObject> (); 
+    /// <summary>
     /// The number of possible weather options (currently sunny, rainy, sunset, snow)
     /// </summary>
     public enum WeatherOption
     {
         SUN, RAIN, SUNSET, SNOW
     };
-	/// <summary>
-	/// The full list of characters for the game.
-	/// </summary>
-
-	private List<GameObject> characters = new List<GameObject> (); 
     /// <summary>
     /// The private variablr score for the detective. Increases for every conversation and by more 
     /// if you get information from them or find out where a clue is

@@ -37,7 +37,6 @@ public class SceneTransitions : MonoBehaviour {
 		yield return new WaitForSeconds (1);
 		Cursor.SetCursor (null, Vector2.zero, CursorMode.Auto); //resets curser if stuck on magnifying glass
 		SceneManager.LoadScene (scene);
-        SetIfMute();
         yield return null;
 	}
 
@@ -59,7 +58,8 @@ public class SceneTransitions : MonoBehaviour {
 	/// Raises the mouse down event for use when DoorQuads are clicked.
 	/// </summary>
 	public void OnMouseDown(){
-		if (gameObject.name == "LobbyDoorQuad") {
+        FindObjectOfType<SpeechHandler>().SetIsIgnored(false);
+        if (gameObject.name == "LobbyDoorQuad") {
 			GameObject.Find ("Detective").GetComponent<Detective> ().walkInDirection = 2;
 			StartCoroutine (fadeLoadScene ("Room1"));
 		} else if (gameObject.name == "KitchenDoorQuad") {
@@ -72,6 +72,7 @@ public class SceneTransitions : MonoBehaviour {
 			GameObject.Find ("Detective").GetComponent<Detective> ().walkInDirection = 0;
 			StartCoroutine (fadeLoadScene ("Room6"));
 		}
+        SetSoundOnSceneChange();
     }
 	/// <summary>
 	/// Handles what happens when player walks into a transparent collider at the edge of either side of the scene.
@@ -163,8 +164,10 @@ public class SceneTransitions : MonoBehaviour {
 			default:
 				break;
 			}
+            FindObjectOfType<SpeechHandler>().SetIsIgnored(false);
+            SetSoundOnSceneChange();
         }
-	}
+    }
 	/// <summary>
 	/// Starts the scene transition coroutine. This is used from outside this class to load a new scene
 	/// </summary>
@@ -178,7 +181,8 @@ public class SceneTransitions : MonoBehaviour {
     /// Destroys all the current characters and gets new ones and new story
     /// </summary>
     public void returnToMainMenu(){
-		Time.timeScale = 1; //so that future coroustines work
+        FindObjectOfType<SpeechHandler>().SetIsIgnored(false);
+        Time.timeScale = 1; //so that future coroustines work
 		Cursor.SetCursor (null, Vector2.zero, CursorMode.Auto);
 
 		if (GameObject.Find ("Detectives") != null) {
@@ -193,32 +197,35 @@ public class SceneTransitions : MonoBehaviour {
 			Destroy (GameObject.Find ("Story"));
 		}
 		SceneManager.LoadScene ("MainMenu");
+        SetSoundOnSceneChange();
 	}
 
     /// <summary>
     /// Assessment 3
     /// Mutes all audioSources in the scene
     /// </summary>
-    void Mute()
+    void Mute(GameObject button)
     {
         AudioSource[] audioSources = FindObjectsOfType<AudioSource>(); // Finds all the audioSources 
         foreach(AudioSource a in audioSources)
         {
             a.mute = true; // Sets the mute boolean to true
         }
+        button.GetComponent<Image>().CrossFadeAlpha(0.5f, 0.5f, true);// Makes the button faded (People think faded means sound off generally)
     }
 
     /// <summary>
     /// Assessment 3
     /// Unmutes all audioSources in the scene
     /// </summary>
-    void UnMute()
+    void UnMute(GameObject button)
     {
         AudioSource[] audioSources = FindObjectsOfType<AudioSource>();// Finds all the audioSources 
         foreach (AudioSource a in audioSources)
         {
             a.mute = false; // Sets the mute boolean to true
         }
+        button.GetComponent<Image>().CrossFadeAlpha(1f, 0.5f, true); // Makes the button brighter (People think brighter means sound on generally)
     }
 
     /// <summary>
@@ -230,14 +237,12 @@ public class SceneTransitions : MonoBehaviour {
         if (isMuted)
         {
             isMuted = false; // sets boolean to false 
-            UnMute(); // Calls unmute function
-            button.GetComponent<Image>().CrossFadeAlpha(1f, 0.5f, true); // Makes the button brighter (People think brighter means sound on generally)
+            UnMute(button); // Calls unmute function
         }
         else
         {
             isMuted = true; // sets boolean to true 
-            Mute(); // Calls mute function
-            button.GetComponent<Image>().CrossFadeAlpha(0.5f, 0.5f, true);// Makes the button faded (People think faded means sound off generally)
+            Mute(button); // Calls mute function
         }
     }
 
@@ -245,15 +250,16 @@ public class SceneTransitions : MonoBehaviour {
     /// Assessment 3
     /// Is called on the scene transition so that it mutes/unmutes all the sounds in the next scene.
     /// </summary>
-    public void SetIfMute()
+    public void SetSoundOnSceneChange()
     {
+        GameObject g = GameObject.FindGameObjectWithTag("SoundICON");
         if (isMuted)
         {
-            Mute();
+            Mute(g);
         }
         else
         {
-            UnMute();
+            UnMute(g);
         }
     }
 }

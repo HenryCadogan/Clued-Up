@@ -93,12 +93,23 @@ public class SpeechHandler : MonoBehaviour {
 	/// The inventory index of the currently selected item.
 	/// </summary>
 	private int clueIndex = 0;
-	private Clue activeClue;
+    /// <summary>
+    /// The Clue Script that is currently active
+    /// </summary>
+    private Clue activeClue;
+    /// <summary>
+    /// The probability that  an NPC will be ignored
+    /// </summary>
+    public const float IgnoreProbability = 0.1f;
+    /// <summary>
+    /// isIgnored
+    /// </summary>
+    public bool isBeingIgnored = false;
 
-	/// <summary>
-	/// Start this instance.
-	/// </summary>
-	void Start (){
+    /// <summary>
+    /// Start this instance.
+    /// </summary>
+    void Start (){
 		waiting ();
 		//TODO: REMOVE STUPID CAPITALIZATION
 		// Assign various variables from objects in scene.
@@ -148,12 +159,19 @@ public class SpeechHandler : MonoBehaviour {
 	/// Turns on the Speech UI, pauses the game.
 	/// </summary>
 	public void turnOnSpeechUI(){
-        if (!isIgnored()) {
+        if (isIgnored())
+        {
             FindObjectOfType<HUDController>().displayHUDText("They seem to be ignoring you, maybe you should try again later...");
             return;
         }
+        if (isBeingIgnored)
+	    {
+	        FindObjectOfType<HUDController>()
+	            .displayHUDText("The player is still ignoring you, maybe you should leave the room and give them some space");
+	        return;
+	    }
 
-		if (parentCanvas.gameObject.activeSelf == false) {
+	    if (parentCanvas.gameObject.activeSelf == false) {
 			// If the character is in a state where he can be talked to...
 			if (charInScene.canBeTalkedTo == true) {
 				// Turn off all of the non-speech UI elements...
@@ -190,11 +208,18 @@ public class SpeechHandler : MonoBehaviour {
     /// </summary>
     private bool isIgnored()
     {
-        if (Random.Range(0, 10) > 1) // Generate random number between 0 and 10 and if it is smaller than 1 then the NPC will ignore the player
+        if (Random.value > IgnoreProbability) // Generate random float between 0 and 1 and if it is smaller than 0.1 then the NPC will ignore the player
         {
-            return true;
+            SetIsIgnored(false);
+            return false;
         }
-        return false;
+        SetIsIgnored(true);
+        return true;
+    }
+
+    public void SetIsIgnored(bool b)
+    {
+        isBeingIgnored = b;
     }
 
 	/// <summary>
@@ -317,9 +342,9 @@ public class SpeechHandler : MonoBehaviour {
 	/// </summary>
 	/// <param name="ClueName">The dev name of the clue to be shown.</param>
 	void updateClueName (string ClueName){
-		activeClue = activeStory.getClueInformation (ClueName).GetComponent<Clue> ();
-		clueText.text = activeClue.longName;
-	    clueImage.sprite = activeClue.sprite;
+		activeClue = activeStory.getClueInformation (ClueName).GetComponent<Clue> (); // Gets the clue component from the name
+		clueText.text = activeClue.longName; // Displays name of clue
+	    clueImage.sprite = activeClue.sprite; // Assessment 3 This displays the image of the clue along with the name for the player
 	}
 	/// <summary>
 	/// Accuse the character in the scene of being a murderer.
