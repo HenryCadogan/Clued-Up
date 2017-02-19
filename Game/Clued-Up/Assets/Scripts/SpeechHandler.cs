@@ -51,10 +51,15 @@ public class SpeechHandler : MonoBehaviour {
 	/// The text object that shows the currently selected clue.
 	/// </summary>
 	public Text clueText;
-	/// <summary>
-	/// Any speech UI elements that should be hidden during the actual conversatsion.
-	/// </summary>
-	public GameObject[] speechUIElements;
+    /// <summary>
+    /// Assessment 3
+    /// This is the image of the clue that is displayed during the speech
+    /// </summary>
+    public Image clueImage;
+    /// <summary>
+    /// Any speech UI elements that should be hidden during the actual conversatsion.
+    /// </summary>
+    public GameObject[] speechUIElements;
 
 	/// <summary>
 	/// The button that this script is attatched to.
@@ -314,6 +319,7 @@ public class SpeechHandler : MonoBehaviour {
 	void updateClueName (string ClueName){
 		activeClue = activeStory.getClueInformation (ClueName).GetComponent<Clue> ();
 		clueText.text = activeClue.longName;
+	    clueImage.sprite = activeClue.sprite;
 	}
 	/// <summary>
 	/// Accuse the character in the scene of being a murderer.
