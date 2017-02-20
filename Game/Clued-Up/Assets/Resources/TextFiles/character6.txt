@@ -1,0 +1,11 @@
+LINE 2 = object name; LINE 3 = long name
+Amy
+Amy Adams
+American actress and singer. Always graceful and occassionally funny. 
+microphone
+comb
+moustache
+feather
+ticket
+tape
+pen

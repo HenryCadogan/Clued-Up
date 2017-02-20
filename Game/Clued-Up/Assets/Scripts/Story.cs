@@ -244,12 +244,20 @@ public class Story : MonoBehaviour {
 		GameObject character5 = Instantiate (Resources.Load ("Character"), new Vector3(1.5f,-5.99f,-1.2f), Quaternion.Euler(90,0,0)) as GameObject;
 		character5.GetComponent<Character>().initialise(5);
 
+		GameObject character6 = Instantiate (Resources.Load ("Character"), new Vector3(1.5f,-5.99f,-1.2f), Quaternion.Euler(90,0,0)) as GameObject;
+		character6.GetComponent<Character>().initialise(6);
+
+		GameObject character7 = Instantiate (Resources.Load ("Character"), new Vector3(1.5f,-5.99f,-1.2f), Quaternion.Euler(90,0,0)) as GameObject;
+		character7.GetComponent<Character>().initialise(7);
+
 		characters.Add (character0);
 		characters.Add (character1);
 		characters.Add (character2);
 		characters.Add (character3);
 		characters.Add (character4);
 		characters.Add (character5);
+		characters.Add (character6);
+		characters.Add (character7);
 
 		this.victim = characters[UnityEngine.Random.Range(0,characters.Count)];
 		characters.Remove(this.victim);
@@ -280,6 +288,7 @@ public class Story : MonoBehaviour {
 	/// Decides which of the alive characters occupy each room, excluding the initial crime scene room.
 	/// </summary>
 	public void setCharacterRooms(){
+        Debug.LogFormat("setCharacterRooms called. There are {0} alive characters.", aliveCharacters.Count);
 		int randomRoom;
 		List<int> emptyRooms = new List<int>();
 
@@ -289,8 +298,9 @@ public class Story : MonoBehaviour {
 		}
 
 		//for each character, assign a random room that isnt the crime scene & provided there isnt anyone in it, add it to characters in room
-		for(int characterIndex = 0; characterIndex < this.aliveCharacters.Count; characterIndex ++) {	
+		for(int characterIndex = 0; characterIndex < this.aliveCharacters.Count; characterIndex ++) {
 			randomRoom = emptyRooms[UnityEngine.Random.Range (0, emptyRooms.Count)];
+            Debug.LogFormat("setCharacterRooms: Placing character {0} in room {1}", characterIndex, randomRoom);
 			emptyRooms.Remove (randomRoom);
 			charactersInRoom[randomRoom] = new List<int>{characterIndex}; //CharactersInRoom[1] = 2 | char 2 is in room 1 //using lists so it is adaptable to multiple characters being in one room
 		}
@@ -308,14 +318,19 @@ public class Story : MonoBehaviour {
 	public List<GameObject> getCharactersInRoom(int room){
 		//print ("Get characters in room " + room);
 		List<GameObject> charactersInCurrentRoom = new List<GameObject> (); 
+        List<string> namesInCurrentRoom = new List<string>();
 		if (this.charactersInRoom.ContainsKey (room)) {
 			foreach (int characterIndex in this.charactersInRoom[room]) {
 				if (characterIndex != -1) {	//where -1 is default
-					charactersInCurrentRoom.Add (this.aliveCharacters [characterIndex]);
+                    GameObject character = this.aliveCharacters[characterIndex];
+					charactersInCurrentRoom.Add (character);
+                    namesInCurrentRoom.Add(character.name);
 				}
 			}
 		} else if(room!= 0)
 			throw new System.IndexOutOfRangeException ("Room out of range");
+
+        Debug.LogFormat("getCharactersInRoom({0}) returning: {1}", room, string.Join(",", namesInCurrentRoom.ToArray()));
 		return charactersInCurrentRoom;
 	}
 	/// <summary>

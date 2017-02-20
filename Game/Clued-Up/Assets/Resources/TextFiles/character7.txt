@@ -1,0 +1,11 @@
+LINE 2 = object name; LINE 3 = long name
+Surgeon
+The Surgeon
+Not really sure if he is a real surgeon. He’s performing surgery at scarily low prices. 
+microphone
+sunglasses
+blackHair
+stapler
+ticket
+tape
+pen

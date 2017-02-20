@@ -1,0 +1,198 @@
+#INTRO
+$Who are you?
+£Hi! My name's Amy Adams.
+£It is so nice to meet you!
+$Did you know ]?
+£]? No, I've not heard that name before...
+£Sorry I don't think I can help.
+
+#Aggressive
+$Tell me what you know about this [.
+£I'm sorry, I don't know anything.
+#Rude
+$What's this [?
+£I have no idea! There's no need to talk like that!
+#Friendly
+$Hey, do you know anything about this [?
+£I'm so sorry, I don't know anything about that.
+£Sorry I can't be of more help.
+#Calm
+$Could you tell me about this [?
+£I don't think I've ever seen it before. Sorry.
+#Comedic
+$You wouldn't happen to know about this [, would you?
+£I... don't recognise it.
+£Sorry I can't be of more use.
+#Annoying
+$Hey, tell me about this [.
+£I don't think I can help you.
+#Manipulative
+$You're an incredibly experienced and well respected actress, surely you know about this [?
+£You would think that I've seen everything by now, wouldn't you?
+£Though I don't think I've ever seen that before.
+£Sorry.
+
+#Aggressive-comb
+$Is this your comb?
+£I think so.
+£I don't usually forget it.
+#Rude-comb
+$This is your comb, right?
+£It sure looks like mine.
+£Where did you find it?
+#Friendly-comb
+$I think I've found your comb.
+£Oh, that's definitely mine.
+£It must've fallen out somewhere.
+£Where was it?
+#Calm-comb
+$This looks like your comb, what do you think?
+£Oh yes, it does!
+£No clue where you would have found it.
+#Comedic-comb
+$I think you need a bigger bag, I just found this lying around.
+£Haha, very funny.
+£It fits just fine.
+#Annoying-comb
+$This is your comb, right?
+£Yes, that is mine.
+£I will be sure not to leave it lying around.
+#Manipulative-comb
+$Surely an actress like yourself wouldn't just leave your comb anywhere?
+£I tend to keep better track of things.
+£I have just been having so much fun.
+£I am sometimes forgetful.
+
+#Aggressive-moustache
+$I think you dropped this [.
+£Oh yeah, I did. Thanks.
+£I'm trying to be a better actress.
+£I'll get better roles if I widen my scope!
+$...Err, sure!
+#Rude-moustache
+$Can you not leave your moustaches lying around?
+$It is weird!
+£Oh, sorry. I must have dropped it in rehearsal.
+£Thanks for finding it, by the way.
+£If I'd lost it, my new acting ventures would be ruined!
+#Friendly-moustache
+$Did you drop this [?
+£Oh yes, this is mine.
+£I thought I was missing something.
+£How silly of me.
+£Thanks for finding it, my audition would be ruined without it!
+#Calm-moustache
+$Did you happen to drop a [?
+£I... oh yes, I did!
+£Thank you, I didn't even realise I had dropped it!
+£It's for a new role I'm trying for.
+£I want to become a more experienced actress.
+£I'm sure it could only be a good thing!
+#Comedic-moustache
+$I didn't know you were growing a moustache!
+£That's no way to talk to a lady.
+£I can't grow one myself, so I need this for my method acting.
+£It'll be a hit, I am sure!
+#Annoying-moustache
+$This is what constitutes to good acting? Fake moustaches?
+£Listen, you don't need to be like that.
+£I just want to try some different roles in my acting career.
+£There's nothing wrong with trying something new!
+#Manipulative-moustache
+$This moustache must be for a new role, right?
+£How did you know?
+£I'm giving a few... different roles a try.
+£Hopefully it goes well.
+
+#Aggressive-feather
+$Tell me what you know about this [.
+£A feather?
+£Oh wow, it's beautiful!
+£I wonder what that came from...
+#Rude-feather
+$What's this [?
+£It's a feather, right?
+£Is this a trick question?
+£I don't want to play, thanks.
+£I want to go home.
+#Friendly-feather
+$Hey, do you know anything about this [?
+£It's a goose feather.
+£It looks like the ones outside.
+#Calm-feather
+$Could you tell me about this [?
+£It looks like a goose feather.
+£It's gorgeous, isn't it?
+#Comedic-feather
+$You wouldn't happen to know about this [, would you?
+£Err, not really?
+£It's a feather from...
+£A big bird?
+#Annoying-feather
+$Hey, tell me about this [.
+£What would I know about that?
+#Manipulative-feather
+$You're a widely respected actress, surely you know about this [?
+£It's a goose feather.
+£Not sure how my occupation helps with that...
+£But sure, I'll play along.
+
+#Aggressive-ticket
+$This is your ticket?
+£Oh, you found my train ticket!
+£I need that to get back to the hotel! Thanks!
+#Rude-ticket
+$Did you lose your train ticket?
+£Hm? Oh, you found my ticket!
+£Thanks, I need that to get to my hotel!
+#Friendly-ticket
+$I think I've found your train ticket.
+£Oh, that's definitely my ticket.
+£I wouldn't be able to get back without it. Thanks!
+#Calm-ticket
+$I do believe this is your ticket.
+£Oh wow, thank you! I thought I had lost it!
+£If I didn't find it I don't think I'd have been able to get back today.
+#Comedic-ticket
+$So i think you will need this, right?
+£Oh yes, I will!
+£I thought it was gone!
+£You are my hero!
+£What would I do without you here?
+#Annoying-ticket
+$A train ticket? Are you that keen to go?
+£I don't want to stay long.
+£Someone died, you know?
+#Manipulative-ticket
+$Hey, I think I have your train ticket...
+£Oh, yes, that is my ticket!
+£Thanks for finding it, I thought I had lost it!
+£I didn't know how I was going to get back without it.
+
+#Accuse-NoItems
+$You did it!
+£...
+£...I did what?
+£The murder?
+£No way!
+#Accuse-WrongChar
+$You did it!
+£I didn't do anything!
+#Accuse-Motive
+$You did it!
+£Well, that's certainly something.
+£Surely you have some reason as to why I would do such a thing?
+£...No? I thought not.
+#Accuse-Weapon
+$You did it!
+£I did?
+£What did I do it with?
+$....
+£...Okay then, never mind.
+#Accuse-Right
+$You did it!
+£...Well.
+£I guess you got me.
+£I just didn't want to be the damsel in distress forever!
+£I wanted to be an independent woman!
+£With lots of Academy Awards!
