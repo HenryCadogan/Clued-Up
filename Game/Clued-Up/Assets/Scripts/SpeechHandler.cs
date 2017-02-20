@@ -342,7 +342,7 @@ public class SpeechHandler : MonoBehaviour {
 	/// </summary>
 	/// <param name="ClueName">The dev name of the clue to be shown.</param>
 	void updateClueName (string ClueName){
-		activeClue = activeStory.getClueInformation (ClueName).GetComponent<Clue> (); // Gets the clue component from the name
+		activeClue = activeStory.SetClueInformation (ClueName).GetComponent<Clue> (); // Gets the clue component from the name
 		clueText.text = activeClue.longName; // Displays name of clue
 	    clueImage.sprite = activeClue.sprite; // Assessment 3 This displays the image of the clue along with the name for the player
 	}

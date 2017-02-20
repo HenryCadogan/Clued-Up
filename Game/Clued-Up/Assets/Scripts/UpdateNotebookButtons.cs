@@ -19,11 +19,11 @@ public class UpdateNotebookButtons : MonoBehaviour {
 		if (inventory.collectedClueNames.Count > 0) {
 			for (int i = 0; i < inventory.collectedClueNames.Count; i++) {
 				if (i < 4) {
-					ClueButtons.transform.GetChild (0).GetChild (i).GetChild (0).GetComponent<Text> ().text = story.getClueInformation (inventory.collectedClueNames [i]).GetComponent<Clue> ().longName;
+					ClueButtons.transform.GetChild (0).GetChild (i).GetChild (0).GetComponent<Text> ().text = story.SetClueInformation (inventory.collectedClueNames [i]).GetComponent<Clue> ().longName;
 					ClueButtons.transform.GetChild (0).GetChild (i).GetComponent<Button> ().interactable = true;
 
 				} else {
-					ClueButtons.transform.GetChild (1).GetChild (i - 4).GetChild (0).GetComponent<Text> ().text = story.getClueInformation (inventory.collectedClueNames [i]).GetComponent<Clue> ().longName;
+					ClueButtons.transform.GetChild (1).GetChild (i - 4).GetChild (0).GetComponent<Text> ().text = story.SetClueInformation (inventory.collectedClueNames [i]).GetComponent<Clue> ().longName;
 					ClueButtons.transform.GetChild (1).GetChild (i - 4).GetComponent<Button> ().interactable = true;
 				}
 			}

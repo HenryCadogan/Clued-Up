@@ -27,7 +27,7 @@ public class UpdateNotebookInfo : MonoBehaviour {
 		//The clue buttons are split into two panels on the clue button panels. The LHS (col1) and RHS (col2)
 		//As the top buttons initially would have the same index, we add on the parent index (0 or 1) * (how many buttons in each column)
 		index = index + (parent * buttonsInColumn);
-		Clue activeClue = story.getClueInformation (inventory.collectedClueNames [index]).GetComponent<Clue> ();
+		Clue activeClue = story.SetClueInformation (inventory.collectedClueNames [index]).GetComponent<Clue> ();
 		nameText.text = activeClue.longName;
 		descriptionText.text = activeClue.description;
 		notebookImage.sprite = activeClue.sprite;

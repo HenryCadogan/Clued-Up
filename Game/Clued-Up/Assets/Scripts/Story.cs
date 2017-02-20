@@ -375,19 +375,20 @@ public class Story :  MonoBehaviour{
 			cluesInRoom.Add (randomRoom, new List<string>{clueNames[clueIndex]}); //cluesInRoom[0] = ["chalkOutline"] | using lists so it is adaptable to multiople chars in one room
 		}
 	}
+
 	/// <summary>
 	/// Gets the information associated with a Clue, and where all Clues are initially defined
 	/// </summary>
 	/// <returns>The clue information as a GameObect with Clue component</returns>
 	/// <param name="clueName">Name of the clue to lookup</param>
-	public GameObject getClueInformation(string clueName){
-		GameObject newClue = new GameObject ();
-		newClue.AddComponent<Clue> ();
+	public GameObject SetClueInformation(string clueName)
+	{
+	    GameObject newClue = FindObjectOfType<Clue>().gameObject;
 		clueName = clueName.Trim ();
 
 		switch (clueName) {
 		case "chalkOutline":
-			newClue.GetComponent<Clue> ().initialise ("chalkOutline", "Chalk Outline", "A chalk outline of the body of " + this.getVictim ().longName + "!", disappearWhenClicked:false);
+			newClue.GetComponent<Clue> ().initialise ("chalkOutline", "Chalk Outline", "A chalk outline of the body of " + this.getVictim ().longName + "!", disappearWhenClicked:false, localScale: 1f);
 			break;
 		case "microphone":
 			newClue.GetComponent<Clue> ().initialise ("microphone", "Microphone", "Someone wants to make themselves heard");
@@ -572,7 +573,7 @@ public class Story :  MonoBehaviour{
 	/// <param name="clueName">Name of clue to get information for.</param>
 	/// <param name="newClue">Clue GameObject to initialise</param>
 	private void setClueInformation(string clueName, GameObject newClue){
-		Clue clueInfo = getClueInformation (clueName).GetComponent<Clue>(); //sets up temp Clue that stores all properties
+		Clue clueInfo = SetClueInformation (clueName).GetComponent<Clue>(); //sets up temp Clue that stores all properties
 		newClue.GetComponent<Clue>().initialise(clueInfo.name,clueInfo.longName, clueInfo.description, clueInfo.isWeapon, clueInfo.isMotive, clueInfo.disappearWhenClicked, clueInfo.transform.localScale.x);
 		//GameObject.Destroy (clueInfo.gameObject); //destroys temp Clue GameObject to remove it from scene TODO: removed for debugging - toby
 	}
