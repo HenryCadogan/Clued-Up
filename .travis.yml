@@ -8,7 +8,7 @@ branches:
 env:
   global:
     - GH_REPO_NAME: Clued-up
-    - DOXYFILE: $TRAVIS_BUILD_DIR/Scripts/doxygen.config
+    - DOXYFILE: $TRAVIS_BUILD_DIR/Scripts/doxygen.cfg
     - PROJECT_FILE: "$TRAVIS_BUILD_DIR/Game/Clued-Up"
     - GH_REPO_REF: github.com/AndrewSkea/Clued-up.git
 before_install:
