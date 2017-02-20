@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 /// <summary>
@@ -136,22 +137,24 @@ public class Clue : MonoBehaviour {
 		this.transform.localScale = new Vector3(localScale,localScale,localScale);
 	}
 
-
-
-
-
-
-
-	void OnMouseEnter(){
+    /// <summary>
+    /// On mouse enter, when the mouse enters the trigger zone, shows magnifyiing glass
+    /// </summary>
+    void OnMouseEnter(){
 		Cursor.SetCursor (Resources.Load<Texture2D> ("clueCursor"), Vector2.zero, CursorMode.Auto);
 		entered = true;
 	}
-	void OnMouseExit(){
+    /// <summary>
+    /// On mouse exit, when the mouse leaves the trigger zone, shows normal cursor
+    /// </summary>
+    void OnMouseExit(){
 		Cursor.SetCursor (null, Vector2.zero, CursorMode.Auto);
 		entered = false;
 	}
-
-	void Update(){
+    /// <summary>
+    ///  Called every frame, Sets cursor
+    /// </summary>
+    void Update(){
 		if (entered) {
 			Cursor.SetCursor (Resources.Load<Texture2D> ("clueCursor"), Vector2.zero, CursorMode.Auto);
 		}

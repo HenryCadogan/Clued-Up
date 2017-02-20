@@ -5,10 +5,12 @@ using System.IO;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using System.Text.RegularExpressions;
+using UnityEngine.UI;
+
 /// <summary>
 /// Persistant story class that stores all game/ global variables and initialises Clues and Character objects
 /// </summary>
-public class Story : MonoBehaviour {
+public class Story :  MonoBehaviour{
     /// <summary>
     /// Variable to make sure there is only one instance of this object
     /// </summary>
@@ -62,20 +64,33 @@ public class Story : MonoBehaviour {
 	/// </summary>
 	private static int NUMBER_OF_DETECTIVES = 3;
     /// <summary>
+    /// The full list of characters for the game.
+    /// </summary>
+    private List<GameObject> characters = new List<GameObject> (); 
+    /// <summary>
     /// The number of possible weather options (currently sunny, rainy, sunset, snow)
     /// </summary>
     public enum WeatherOption
     {
         SUN, RAIN, SUNSET, SNOW
     };
-	/// <summary>
-	/// The full list of characters for the game.
-	/// </summary>
-	private List<GameObject> characters = new List<GameObject> ();
-
-
-
-
+    /// <summary>
+    /// The private variablr score for the detective. Increases for every conversation and by more 
+    /// if you get information from them or find out where a clue is
+    /// </summary>
+    private int score;
+    /// <summary>
+    /// The public setter and getter for the score of the player
+    /// </summary>
+    public int Score
+    {
+        get { return score; }
+        set
+        {
+            score = value;
+            GameObject.Find("HUD").GetComponent<HUDController>().Scoretext.text = "Score: " + value;
+        }
+    }
 
 	/// <summary>
 	/// Keeps only 1 instance ever, therefore it can survive between scenes without having several scenes.
@@ -86,6 +101,7 @@ public class Story : MonoBehaviour {
 		{
 			DontDestroyOnLoad(gameObject);
 			Instance = this;
+		
 		}
 		else if (Instance != this)
 		{
@@ -150,7 +166,7 @@ public class Story : MonoBehaviour {
 	/// <returns>2nd introductory sentence (string)</returns>
 	/// <param name="introIndex">Index of the intro file to read a line from</param>
 	public string getIntro(int introIndex){
-		return randomLineFrom("TextFiles/intro"+introIndex.ToString());
+		return randomLineFrom("TextFiles/intro" + introIndex.ToString());
 	}
 	/// <summary>
 	/// Sets the weather for the rest of the game
@@ -374,19 +390,20 @@ public class Story : MonoBehaviour {
 			cluesInRoom.Add (randomRoom, new List<string>{clueNames[clueIndex]}); //cluesInRoom[0] = ["chalkOutline"] | using lists so it is adaptable to multiople chars in one room
 		}
 	}
+
 	/// <summary>
 	/// Gets the information associated with a Clue, and where all Clues are initially defined
 	/// </summary>
 	/// <returns>The clue information as a GameObect with Clue component</returns>
 	/// <param name="clueName">Name of the clue to lookup</param>
-	public GameObject getClueInformation(string clueName){
-		GameObject newClue = new GameObject ();
-		newClue.AddComponent<Clue> ();
+	public GameObject SetClueInformation(string clueName)
+	{
+	    GameObject newClue = FindObjectOfType<Clue>().gameObject;
 		clueName = clueName.Trim ();
 
 		switch (clueName) {
 		case "chalkOutline":
-			newClue.GetComponent<Clue> ().initialise ("chalkOutline", "Chalk Outline", "A chalk outline of the body of " + this.getVictim ().longName + "!", disappearWhenClicked:false);
+			newClue.GetComponent<Clue> ().initialise ("chalkOutline", "Chalk Outline", "A chalk outline of the body of " + this.getVictim ().longName + "!", disappearWhenClicked:false, localScale: 1f);
 			break;
 		case "microphone":
 			newClue.GetComponent<Clue> ().initialise ("microphone", "Microphone", "Someone wants to make themselves heard");
@@ -571,7 +588,7 @@ public class Story : MonoBehaviour {
 	/// <param name="clueName">Name of clue to get information for.</param>
 	/// <param name="newClue">Clue GameObject to initialise</param>
 	private void setClueInformation(string clueName, GameObject newClue){
-		Clue clueInfo = getClueInformation (clueName).GetComponent<Clue>(); //sets up temp Clue that stores all properties
+		Clue clueInfo = SetClueInformation (clueName).GetComponent<Clue>(); //sets up temp Clue that stores all properties
 		newClue.GetComponent<Clue>().initialise(clueInfo.name,clueInfo.longName, clueInfo.description, clueInfo.isWeapon, clueInfo.isMotive, clueInfo.disappearWhenClicked, clueInfo.transform.localScale.x);
 		//GameObject.Destroy (clueInfo.gameObject); //destroys temp Clue GameObject to remove it from scene TODO: removed for debugging - toby
 	}
@@ -611,12 +628,17 @@ public class Story : MonoBehaviour {
         loaded = true;
 	}
 
-
-	public List<GameObject> getFullCharacterList(){
+    /// <summary>
+    /// Return s a list of gameobjects that are characters
+    /// </summary>
+    public List<GameObject> getFullCharacterList(){
 		return characters;
 	}
 
-	public Character randomAliveCharacter(){
+    /// <summary>
+    /// Random alive characters
+    /// </summary>
+    public Character randomAliveCharacter(){
 		Character tempCharacter;
 		foreach (GameObject character in  aliveCharacters){
 			print(character.name);

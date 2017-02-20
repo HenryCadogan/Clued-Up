@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SocialPlatforms.Impl;
+
 /// <summary>
 /// The Inventory class
 /// </summary>
@@ -37,6 +39,7 @@ public class Inventory : MonoBehaviour {
 			foreach (Character forChar in listOfChars) {
 				forChar.canBeTalkedTo = true;
 			}
+		    Story.Instance.Score += 5; // Adding 5 to the score for ever time they pick up a clue
 		}else
 			throw new System.ArgumentException ("Clue " + clueName + " has already been collected. This is strictly not allowed.");
 	}

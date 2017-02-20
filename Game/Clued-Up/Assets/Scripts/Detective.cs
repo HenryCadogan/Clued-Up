@@ -18,7 +18,7 @@ public class Detective : MonoBehaviour {
 	/// <summary>
 	/// The footsteps audio source.
 	/// </summary>
-	public AudioSource footstepsAudioSource;
+	public AudioSource footstepsAudioSource;   
 	/// <summary>
 	/// //The next walk in direction to be used when switching between scenes
 	/// </summary>
@@ -176,19 +176,19 @@ public class Detective : MonoBehaviour {
 	/// Handles player walking toggle, direction & fixes Z position of detective GameObject to stop him walking forwards
 	/// </summary>
 	void Update () {
-		if (Input.GetKey ("right") && (Time.timeSinceLevelLoad > 1f)) {
+		if ((Input.GetKey ("right")| Input.GetKey(KeyCode.D))  && (Time.timeSinceLevelLoad > 1f)) {
 			if (direction != "right") {	//if previous direction is left or down, then turn the player
 				turnPlayer ("right");
 				this.canWalkRight = true;
 			}
 			setWalk (this.canWalkRight); //false if the player cannot move, true otherwise
-		} else if (Input.GetKey ("left") && (Time.timeSinceLevelLoad > 1f)) {
+		} else if ((Input.GetKey ("left") | Input.GetKey(KeyCode.A) ) && (Time.timeSinceLevelLoad > 1f)) {
 			if (direction != "left") {	//if previous direction is right or down, then turn the player
 				turnPlayer ("left");
 				this.canWalkLeft = true;
 			}
 			setWalk (this.canWalkLeft);
-		} else if (Input.GetKey ("down")  && (Time.timeSinceLevelLoad > 1f)) {
+		} else if ((Input.GetKey ("down") | Input.GetKey(KeyCode.S)) && (Time.timeSinceLevelLoad > 1f)) {
 			turnPlayer ("down");
 			setWalk (false);
 		} else if (Time.timeSinceLevelLoad > 1f) { 
