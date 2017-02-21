@@ -180,7 +180,7 @@ public class SpeechHandler : MonoBehaviour {
 				}
 				speechPanel.SetActive (false);
 				// Then turn on all the speech UI stuff.
-				updateClueName (playerInv.collectedClueNames [clueIndex]);
+				updateClueNameInGUI (playerInv.collectedClueNames [clueIndex]);
 				parentCanvas.SetActive (true);
 				hudCanvas.loadPanelAndPause (parentCanvas);
 				if (charInScene.hasBeenTalkedTo == false) {
@@ -323,7 +323,7 @@ public class SpeechHandler : MonoBehaviour {
 		if (clueIndex >= playerInv.collectedClueNames.Count) {
 			clueIndex = 0;
 		}
-		updateClueName (playerInv.collectedClueNames [clueIndex]);
+		updateClueNameInGUI (playerInv.collectedClueNames [clueIndex]);
 	}
 
 	/// <summary>
@@ -334,18 +334,19 @@ public class SpeechHandler : MonoBehaviour {
 		if (clueIndex < 0) {
 			clueIndex = playerInv.collectedClueNames.Count - 1;
 		}
-		updateClueName (playerInv.collectedClueNames [clueIndex]);
+		updateClueNameInGUI (playerInv.collectedClueNames [clueIndex]);
 	}
 
 	/// <summary>
 	/// Updates the name of the clue on the UI
 	/// </summary>
-	/// <param name="ClueName">The dev name of the clue to be shown.</param>
-	void updateClueName (string ClueName){
-		activeClue = activeStory.SetClueInformation (ClueName).GetComponent<Clue> (); // Gets the clue component from the name
-		clueText.text = activeClue.longName; // Displays name of clue
-	    clueImage.sprite = activeClue.sprite; // Assessment 3 This displays the image of the clue along with the name for the player
+	/// <param name="clueShortName">The dev name of the clue to be shown.</param>
+	void updateClueNameInGUI (string clueShortName){
+        Debug.Log("updateClueNameInGUI called for " + clueShortName);
+        clueText.text = Clue.getClueLongName(clueShortName);
+        clueImage.sprite = Clue.getClueSprite(clueShortName);
 	}
+
 	/// <summary>
 	/// Accuse the character in the scene of being a murderer.
 	/// </summary>

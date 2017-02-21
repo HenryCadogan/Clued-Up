@@ -23,11 +23,6 @@ public class ClueTests {
 
 
 	[Test]
-	public void NotWeaponAndMotive(){
-		Assert.False(testClue.isMotive && testClue.isWeapon);
-	}
-
-	[Test]
 	public void DisplaysClueInfoTest(){
 		try{
 			testClue.displayClueInformation();

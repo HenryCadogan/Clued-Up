@@ -251,6 +251,7 @@ public class SceneTransitions : MonoBehaviour {
     public void SetSoundOnSceneChange()
     {
         GameObject g = GameObject.FindGameObjectWithTag("SoundICON");
+        if (g == null) return;
         if (isMuted)
         {
             Mute(g);

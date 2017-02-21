@@ -55,7 +55,8 @@ public class Cupboard : MonoBehaviour {
 		changeSprite ();
 		if(hasClue){
 			HUDC.displayHUDText ("There is something in the " + this.longName + "...");
-			containedClue.SetActive (true); //make clue visible
+            containedClue.GetComponent<SpriteRenderer>().enabled = true;
+            containedClue.GetComponent<BoxCollider>().enabled = true;
 		} else {
 			HUDC.displayHUDText ("The " + this.longName + " is empty.");
 		}
@@ -91,7 +92,8 @@ public class Cupboard : MonoBehaviour {
 	public void addClue(GameObject clueObject){
 		this.hasClue = true;
 		clueObject.transform.position = this.gameObject.transform.position + cluePosOffset;
-		clueObject.SetActive (false); // hides clue behind door
+        clueObject.GetComponent<SpriteRenderer>().enabled = false; // hides clue behind door
+        clueObject.GetComponent<BoxCollider>().enabled = false; // so you can't click it
 		this.containedClue = clueObject;
 
 	}

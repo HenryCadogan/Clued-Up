@@ -391,139 +391,24 @@ public class Story :  MonoBehaviour{
 		}
 	}
 
-	/// <summary>
-	/// Gets the information associated with a Clue, and where all Clues are initially defined
-	/// </summary>
-	/// <returns>The clue information as a GameObect with Clue component</returns>
-	/// <param name="clueName">Name of the clue to lookup</param>
-	public GameObject SetClueInformation(string clueName)
-	{
-	    GameObject newClue = FindObjectOfType<Clue>().gameObject;
-		clueName = clueName.Trim ();
+    public Clue getClueByName(string name)
+    {
+        Debug.Log("getClueByName called for " + name);
+        GameObject go = GameObject.Find(name);
+        if (go == null)
+        {
+            throw new Exception("getClueByName: couldn't find game object with name: " + name);
+        }
 
-		switch (clueName) {
-		case "chalkOutline":
-			newClue.GetComponent<Clue> ().initialise ("chalkOutline", "Chalk Outline", "A chalk outline of the body of " + this.getVictim ().longName + "!", disappearWhenClicked:false, localScale: 1f);
-			break;
-		case "microphone":
-			newClue.GetComponent<Clue> ().initialise ("microphone", "Microphone", "Someone wants to make themselves heard");
-			break;
-		case "wizzardHat":
-			newClue.GetComponent<Clue> ().initialise ("wizzardHat", "Wizard's Hat", "Looks like part of a Halloween costume");
-			break;
-		case "moustache":
-			newClue.GetComponent<Clue> ().initialise ("moustache", "Fake Moustache", "Is someone trying to disguise themselves?");
-			break;
-		case "pen":
-			newClue.GetComponent<Clue> ().initialise ("pen", "Pen", "A fancy fountain pen. This could belong to " + randomAliveCharacter().longName + " or maybe it is " + this.murderer.GetComponent<Character>().longName + "\'s");
-			break;
-		case "plunger":
-			newClue.GetComponent<Clue> ().initialise ("plunger", "Plunger", "Oh wow. A plunger!");
-			break;
-		case "brownHair":
-			newClue.GetComponent<Clue> ().initialise ("brownHair", "Brown Hair", "Whose hair is this colour?");
-			break;
-		case "sandwich":
-			newClue.GetComponent<Clue> ().initialise ("sandwich", "Sandwich", " A cheese sandwich. It’s half eaten. Delicious.");
-			break;
-		case "stapler":
-			newClue.GetComponent<Clue> ().initialise ("stapler", "Stapler", "Staples things.");
-			break;
-		case "suitcase":
-			newClue.GetComponent<Clue> ().initialise ("suitcase", "Suitcase", "Looks like someone’s forgot their suitcase. Oh no.");
-			break;
-		case "wand":
-			newClue.GetComponent<Clue> ().initialise ("wand", "Wand", "Casts spells and things.");
-			break;
-		case "sunglasses":
-			newClue.GetComponent<Clue> ().initialise ("sunglasses", "Sunglasses", "Why would you need sunglasses in York? Unless someone is trying to conceal their identity...");
-			break;
-		case "whistle":
-			newClue.GetComponent<Clue> ().initialise ("whistle", "Whistle", "It must belong to the train conductor...I wonder why it's here...");
-			break;
-		case "whiteHair":
-				newClue.GetComponent<Clue> ().initialise ("whiteHair", "White Hair", "Whose hair is this colour?");
-			break;
-		case "money":
-			newClue.GetComponent<Clue> ().initialise ("money", "Money", "Someone's been careless...or they've got too much money...", localScale:0.15f);
-			break;
-		case "tape":
-			newClue.GetComponent<Clue> ().initialise ("tape", "Tape", "The hottest mix tape to drop in 2017", localScale:0.1f);
-			break;
-		case "bling":
-			newClue.GetComponent<Clue> ().initialise ("bling", "Bling", "What kind of person would wear this around their neck?");
-			break;
-		case "ladder":
-			newClue.GetComponent<Clue> ().initialise ("ladder", "Ladder", "Oops. Someone dropped their ladder.");
-			break;
-		case "ticket":
-			newClue.GetComponent<Clue> ().initialise ("ticket", "Ticket", "A train ticket for use on the train.", localScale:0.1f);
-			break;
-		case "coal":
-			newClue.GetComponent<Clue> ().initialise ("coal", "Coal", "A singular lump of coal. Truly the greatest stocking stuffer.");
-			break;
-		case "cloak":
-			newClue.GetComponent<Clue> ().initialise ("cloak", "Invisibility Cloak", "Someone is trying to conceal themselves...");
-			break;
-		case "blondHair":
-			newClue.GetComponent<Clue> ().initialise ("blondHair", "Blond Hair", "Whose hair is this colour?");
-			break;
-		case "chefHat":
-			newClue.GetComponent<Clue> ().initialise ("chefHat", "Chef's Hat", "I wonder who this belongs to...");
-			break;
-		case "comb":
-			newClue.GetComponent<Clue> ().initialise ("comb", "Comb", "I wonder who would carry a comb with them...");
-			break;
-		case "monocle":
-			newClue.GetComponent<Clue> ().initialise ("monocle", "Monocle", "This must belong to someone important.");
-			break;
-		case "feather":
-			newClue.GetComponent<Clue> ().initialise ("feather", "Feather", "Where could this feather have come from?");
-			break;
-		case "lighter":
-			newClue.GetComponent<Clue> ().initialise ("lighter", "Lighter", "Somoeone dropped their lighter. Oops.");
-			break;
-		case "blackHair":
-			newClue.GetComponent<Clue> ().initialise ("blackHair", "Black Hair", "Whose hair is this colour?");
-			break;
-		
-		
-		
-		case "hammer":
-			newClue.GetComponent<Clue> ().initialise ("hammer", "Hammer", "A bloody hammer.", true);
-			break;
-		case "gun":
-			newClue.GetComponent<Clue> ().initialise ("gun", "Gun", "A smoking gun.", true);
-			break;
-		case "knife":
-			newClue.GetComponent<Clue> ().initialise ("knife", "Knife", "A bloody knife.", true);
-			break;
-		case "salmon":
-			newClue.GetComponent<Clue> ().initialise ("salmon", "Salmon", "A bloody salmon that has been handled under suspicious circumstances.", true);
-			break;
+        Clue clue = go.GetComponent<Clue>();
+        if (clue == null)
+        {
+            throw new Exception("getClueByName: found gameobject but it doesn't have a clue component.");
+        }
 
+        return clue;
+    }
 
-
-		case "polaroid":
-			newClue.GetComponent<Clue> ().initialise ("polaroid", "Polaroid", "A dirty, crumpled polaroid. You can vaguely make out " + this.victim.GetComponent<Character>().longName + " and someone else. They have their arms around one another, and they’re laughing. You can see written on the back of the photo : " + "\'" + this.victim.GetComponent<Character>().longName[0] + " & " + this.murderer.GetComponent<Character>().longName[0] + ". You realise that these must be the initials of the people in the photo. One of which is our victim..." , isMotive:true);
-			break;
-		case "recorder":
-			newClue.GetComponent<Clue> ().initialise ("recorder", "Recorder", "The quality is terrible, but you can just about make out the voices. It appears to be two people having a conversation. You think you recognise one of the voices as being " +this.victim.GetComponent<Character>().longName + ". The other voice sounds similar to "+ this.murderer.GetComponent<Character>().longName +" but you are very unsure if it is really them. At first they are calm, and you can’t quite hear what they’re saying. But gradually it gets louder, their voices rising as their anger bubbles up. Everything goes quiet. There seems to be some muffled shuffling in the background. The recording cuts off. Everything is starting to make sense...", isMotive:true);
-			break;
-		case "diary":
-			newClue.GetComponent<Clue> ().initialise ("diary", "Diary", this.victim.GetComponent<Character>().longName + "’s diary. You know you shouldn’t be reading it, but you find yourself flicking through the pages anyway. After all, it could be used for evidence, right? You turn to the most recent entry. The day before the party. You can’t help noticing how many times " + this.murderer.GetComponent<Character>().longName[0] + " has been etched into the page with vigor. You read the entire page before slamming the book shut.", isMotive:true, localScale:0.15f);
-			break;
-		case "letter":
-			newClue.GetComponent<Clue> ().initialise ("letter", "Letter", "A crumpled letter. The writing is small and scrawling, but if you squint you can just make it out. It appears to be addressed to " + this.victim.GetComponent<Character>().longName + ". It’s messy and smudged, so you don’t attempt to read the entire thing, but you can make out the names " + randomAliveCharacter().longName+ " and " + this.murderer.GetComponent<Character>().longName+ ". How very suspicious..." , isMotive:true, localScale:0.2f);
-			break;
-
-
-
-		default:
-			throw new System.ArgumentException ("'"+ clueName + "' is not a valid Clue Name");
-		}
-		return newClue;
-	}
 	/// <summary>
 	/// Decides which character 5 clues to use (2 from victim, 3 from murderer), such that (VictimClues ∩ CharacterClues) = ∅
 	/// </summary>
@@ -583,16 +468,6 @@ public class Story :  MonoBehaviour{
 			print (clueName);
 	}
 	/// <summary>
-	/// Sets the clue initialisation parameters for newClue, based on clueName.
-	/// </summary>
-	/// <param name="clueName">Name of clue to get information for.</param>
-	/// <param name="newClue">Clue GameObject to initialise</param>
-	private void setClueInformation(string clueName, GameObject newClue){
-		Clue clueInfo = SetClueInformation (clueName).GetComponent<Clue>(); //sets up temp Clue that stores all properties
-		newClue.GetComponent<Clue>().initialise(clueInfo.name,clueInfo.longName, clueInfo.description, clueInfo.isWeapon, clueInfo.isMotive, clueInfo.disappearWhenClicked, clueInfo.transform.localScale.x);
-		//GameObject.Destroy (clueInfo.gameObject); //destroys temp Clue GameObject to remove it from scene TODO: removed for debugging - toby
-	}
-	/// <summary>
 	/// Instanciates all the clues in a particular room
 	/// </summary>
 	/// <returns>The clue GameObjects in the room</returns>
@@ -604,14 +479,19 @@ public class Story :  MonoBehaviour{
             throw new Exception(String.Format("cluesInRoom does not contain key for room: {0}, there are {1} rooms in cluesInRoom",
                                               roomIndex, cluesInRoom.Count));
         }
+
         Debug.LogFormat("There are {0} clues in this room", this.cluesInRoom[roomIndex].Count);
 
 		List<GameObject> clues = new List<GameObject> ();
 		foreach (string clueName in this.cluesInRoom[roomIndex]) {	//for each clueName in room
             Debug.LogFormat("Instantiating clue: {0}", clueName);
+
 			GameObject newClue = Instantiate (Resources.Load ("Clue"), new Vector3 (1f, 1f, 1f), Quaternion.Euler (0, 0, 0)) as GameObject;
-			setClueInformation (clueName, newClue); // calls the initialisation method with the relevent details
-			newClue.GetComponent<SpriteRenderer> ().sprite = newClue.GetComponent<Clue> ().sprite;	// Add Clue's sprite to the Clue's GameObject sprite renderer
+            Clue clueInfo = newClue.GetComponent<Clue>(); //sets up temp Clue that stores all properties
+            clueInfo.initialise(clueName);
+
+            // Add Clue's sprite to the Clue's GameObject sprite renderer
+			newClue.GetComponent<SpriteRenderer> ().sprite = newClue.GetComponent<Clue> ().sprite;	
 			clues.Add (newClue);
 		}
 		return clues;
