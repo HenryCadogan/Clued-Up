@@ -263,10 +263,10 @@ h2{
   display:inline-block;
 }
 
-.active{width:55%;}
+.active{width:70%;}
 .active div div{display:inline-block;}
 
-.minimised{width:15%;}
+.minimised{width:10%;}
 .minimised div div{display:none;}
 .minimised h2{
   margin:60px 0 0 5px;
