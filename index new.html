@@ -10,8 +10,8 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="webfiles/assets/css/main.css" />
-        <link rel="stylesheet" href="webfiles/ass4/TemplateData/style.css">
-        <script src="webfiles/ass4/TemplateData/UnityProgress.js"></script>
+        <link rel="stylesheet" href="webfiles/ass4/HITH-WEB-4_01/TemplateData/style.css">
+        <script src="webfiles/ass4/HITH-WEB-4_01/TemplateData/UnityProgress.js"></script>
         
 	</head>
 	<body>
@@ -78,6 +78,14 @@
 
 
 		<!-- Scripts -->
+            <script>
+                $(document).load(function(){
+                    alert("yo");
+                    var images = ["webfiles/johnny.png","adam.png","chase.png"];
+                    var num = Math.floor(Math.random() * 4);
+                    $("randomImg").attr('src',images[num]);
+                });
+            </script>
 			<script src="webfiles/assets/js/jquery.min.js"></script>
 			<script src="webfiles/assets/js/jquery.scrolly.min.js"></script>
 			<script src="webfiles/assets/js/jquery.scrollex.min.js"></script>
