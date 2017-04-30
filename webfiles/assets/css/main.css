@@ -3916,3 +3916,20 @@
 			}
 
 		}
+
+
+#header{
+    display: inline;
+    vertical-align: middle;
+    margin-left: -50px;
+}
+
+#header p{
+    color: white;
+    display: inline;
+    font-size: 60px;
+}
+
+#header img{
+    height:100px;
+}
