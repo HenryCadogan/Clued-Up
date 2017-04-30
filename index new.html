@@ -53,7 +53,6 @@
 									<div class="col col1">
 										<div>
 											<img class="randomImg" src="" alt="Here's johnny!!" height="400px"/>
-                                            
 										</div>
 									</div>
 									<div class="col col2">
@@ -81,6 +80,13 @@
 			<script src="webfiles/assets/js/skel.min.js"></script>
 			<script src="webfiles/assets/js/util.js"></script>
 			<script src="webfiles/assets/js/main.js"></script>
+            <script>
+                $(document).ready(function(){
+                    var images = ["webfiles/johnny.png","adam.png","chase.png"];
+                    var num = Math.floor(Math.random() * 4);
+                    $("randomImg").attr('src',images[num]);
+                });
+            </script>
 
 	</body>
 </html>
