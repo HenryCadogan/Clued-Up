@@ -1641,7 +1641,7 @@
 		-webkit-transition: color 0.2s ease-in-out;
 		-ms-transition: color 0.2s ease-in-out;
 		transition: color 0.2s ease-in-out;
-		text-decoration: none;
+		text-decoration: underline;
 	}
 
 	strong, b {
@@ -3401,7 +3401,7 @@
 	}
 
 	#header {
-		background: rgba(0, 0, 0, 0.75);
+		background: rgba(0, 0, 0, 0);
 		color: #aed6f1;
 		cursor: default;
 		height: 3.25em;
@@ -3928,8 +3928,25 @@
     color: white;
     display: inline;
     font-size: 60px;
+    text-shadow: 4px 2px 3px #000;
 }
 
 #header img{
     height:100px;
+}
+
+#downloads figure{
+    display: inline-block;
+    width:200px;
+    text-align: center;
+    margin-bottom:10px;
+}
+
+#downloads img{
+    height:100px;
+}
+
+#footerText{
+    color:black;
+    text-align: center;
 }
