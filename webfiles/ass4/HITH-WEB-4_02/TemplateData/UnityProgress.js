@@ -26,13 +26,13 @@ function UnityProgress (dom) {
 
 	var logoImage = document.createElement("img");
 	var splashStyle = Module["splashStyle"] ? Module["splashStyle"] : "Light";
-	logoImage.src = "TemplateData/Logo." + splashStyle + ".png"; 
+	logoImage.src = "webfiles/ass4/HITH-WEB-4_02/TemplateData/Logo." + splashStyle + ".png"; 
 	logoImage.style.position = "absolute";
 	parent.appendChild(logoImage);
 	this.logoImage = logoImage;
 
 	var progressFrame = document.createElement("img");
-	progressFrame.src = "TemplateData/ProgressFrame." + splashStyle + ".png"; 
+	progressFrame.src = "webfiles/ass4/HITH-WEB-4_02/TemplateData/ProgressFrame." + splashStyle + ".png"; 
 	progressFrame.style.position = "absolute";
 	parent.appendChild(progressFrame);
 	this.progressFrame = progressFrame;
@@ -44,7 +44,7 @@ function UnityProgress (dom) {
 	this.progressBar = progressBar;
 
 	var progressBarImg = document.createElement("img");
-	progressBarImg.src = "TemplateData/ProgressBar." + splashStyle + ".png"; 
+	progressBarImg.src = "webfiles/ass4/HITH-WEB-4_02/TemplateData/ProgressBar." + splashStyle + ".png"; 
 	progressBarImg.style.position = "absolute";
 	progressBar.appendChild(progressBarImg);
 	this.progressBarImg = progressBarImg;
