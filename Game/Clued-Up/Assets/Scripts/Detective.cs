@@ -57,12 +57,16 @@ public class Detective : MonoBehaviour {
 	private string direction = "right";
 
 
+    public void Start() {
+        //AudioSource footstepsAudioSource = Instantiate(Resources.Load("Detectives/FootstepsAudioSource")) as AudioSource;
+        walkIn();
+    }
 
-	/// <summary>
-	/// </summary>
-	/// <returns><c>true</c>, if room index has been visited, <c>false</c> otherwise.</returns>
-	/// <param name="roomIndex">Room index.</param>
-	public bool isVisited(int roomIndex){
+    /// <summary>
+    /// </summary>
+    /// <returns><c>true</c>, if room index has been visited, <c>false</c> otherwise.</returns>
+    /// <param name="roomIndex">Room index.</param>
+    public bool isVisited(int roomIndex){
 		if(visitedRooms.Contains (roomIndex)){
 			return true;
 		}else{
@@ -85,11 +89,15 @@ public class Detective : MonoBehaviour {
 	private void setWalk(bool walking){
 		if (anim.GetBool ("walking") != walking) { // if not already walking... need this to keep the footsteps from restarting  every frame
 			anim.SetBool ("walking", walking);
-			if (walking) {
-				footstepsAudioSource.Play ();
-			} else {
-				footstepsAudioSource.Stop ();
-			}
+
+            if (footstepsAudioSource.isActiveAndEnabled)
+            {
+                if (walking) {
+                    footstepsAudioSource.Play ();
+                } else {
+                    footstepsAudioSource.Stop ();
+                }
+            }
 		}
 	}
 	/// <summary>
@@ -98,21 +106,15 @@ public class Detective : MonoBehaviour {
 	private void setWalkSound(){
 		switch (SceneManager.GetActiveScene().buildIndex){
 		case 3: //room0 crime scene
-			if (story.getWeather () == 1) { 	//rainy
+			if (story.getWeather () == Story.WeatherOption.RAIN) { 	//rainy
 				footstepsAudioSource.clip = (AudioClip)Resources.Load ("Sounds/footsteps-wet");
-			} else if (story.getWeather () == 3) { //snow
+			} else if (story.getWeather () == Story.WeatherOption.SNOW) { //snow
 				footstepsAudioSource.clip = (AudioClip)Resources.Load ("Sounds/footsteps-snow");
 			} else {
 				footstepsAudioSource.clip = (AudioClip)Resources.Load ("Sounds/footsteps-concrete");
 			}
 			break;
-		case 4: //room1 lobby
-			footstepsAudioSource.clip = (AudioClip)Resources.Load ("Sounds/footsteps-concrete");
-			break;
-		case 5: //room2 train station
-			footstepsAudioSource.clip = (AudioClip)Resources.Load ("Sounds/footsteps-concrete");
-			break;
-		case 6: //room3 cafe
+		case 4: case 5: case 6: //room1 lobby, room2 train station, room3 cafe
 			footstepsAudioSource.clip = (AudioClip)Resources.Load ("Sounds/footsteps-concrete");
 			break;
 		default:
@@ -167,6 +169,7 @@ public class Detective : MonoBehaviour {
 	/// </summary>
 	void Awake(){
 		story = GameObject.Find ("Story").GetComponent<Story> ();
+        DontDestroyOnLoad(gameObject);
 	}
 						
 	/// <summary>

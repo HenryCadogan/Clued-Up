@@ -87,7 +87,19 @@ public class RoomController : MonoBehaviour {
 		materialArray [2] = (Material)Resources.Load ("Room2DSunset", typeof(Material));
 		materialArray [3] = (Material)Resources.Load ("Room2DSnow", typeof(Material));
 
-		doorQuad.GetComponent<Renderer> ().material = materialArray [story.getWeather ()];
+        // Choose the doorMaterial based on the weather
+        Material doorMaterial;
+        switch (story.getWeather())
+        {
+            case Story.WeatherOption.SUN:       doorMaterial = materialArray[0]; break;
+            case Story.WeatherOption.RAIN:      doorMaterial = materialArray[1]; break;
+            case Story.WeatherOption.SUNSET:    doorMaterial = materialArray[2]; break;
+            case Story.WeatherOption.SNOW:      doorMaterial = materialArray[3]; break;
+            default:
+                throw new System.ArgumentOutOfRangeException("Weather option is invalid.");
+        }
+
+        doorQuad.GetComponent<Renderer>().material = doorMaterial;
 	}
 	private void setLobbyMusic(){
 		string filepath = "Sounds/Ambience-Lobby" + UnityEngine.Random.Range (0, 2).ToString ();
@@ -112,49 +124,69 @@ public class RoomController : MonoBehaviour {
 	/// Sets the lights of scene 0 depending on weather condition
 	/// </summary>
 	private void setLights(){
-		int weather = story.getWeather ();
+		Story.WeatherOption weather = story.getWeather ();
 		switch (weather) {
-		case 0:
-			mainLight.GetComponent<Light> ().color = new Color(0.65f,0.65f,0.65f); //sunny
+		case Story.WeatherOption.SUN:
+			mainLight.GetComponent<Light> ().color = new Color(0.65f,0.65f,0.65f);
 			break;
-		case 1:
-			mainLight.SetActive (false); //rain
+		case Story.WeatherOption.RAIN:
+			mainLight.SetActive (false);
 			ronCookeLights.SetActive(true);
 			break;
-		case 2:
-			mainLight.GetComponent<Light> ().color = new Color (0.65f, 0.5f, 0.4f); //sunset
+		case Story.WeatherOption.SUNSET:
+			mainLight.GetComponent<Light> ().color = new Color (0.65f, 0.5f, 0.4f);
 			break;
-		case 3:
-			mainLight.GetComponent<Light> ().color = Color.white; //snow
+		case Story.WeatherOption.SNOW:
+			mainLight.GetComponent<Light> ().color = Color.white;
 			mainLight.GetComponent<Light>().shadowStrength = 0.05f;
 			break;
 		}
 	}
 
-	/// <summary>
-	/// Sets the background pane & floor GameObject images in scene 0depending on weather condition. Also sets rain or snow.
-	/// </summary>
-	private void setBackground(){
-		Material[] materialArray = new Material[8];
-		materialArray[0] = (Material)Resources.Load("Room1Sunny", typeof(Material)); //finds material located in the resources folder
-		materialArray[1] = (Material)Resources.Load("Room1Rain", typeof(Material));
-		materialArray[2] = (Material)Resources.Load("Room1Sunset", typeof(Material));
-		materialArray[3] = (Material)Resources.Load("Room1Snow", typeof(Material));
-		//floor materials start
-		materialArray[4] = (Material)Resources.Load("Room1FSunny", typeof(Material));
-		materialArray[5] = (Material)Resources.Load("Room1FRain", typeof(Material));
-		materialArray[6] = (Material)Resources.Load("Room1FSunset", typeof(Material));
-		materialArray[7] = (Material)Resources.Load("Room1FSnow", typeof(Material));
+    /// <summary>
+    /// Sets the background pane & floor GameObject images in scene 0depending on weather condition. Also sets rain or snow.
+    /// </summary>
+    private void setBackground()
+    {
+        Material[] materialArray = new Material[8];
+        materialArray[0] = (Material)Resources.Load("Room1Sunny", typeof(Material)); //finds material located in the resources folder
+        materialArray[1] = (Material)Resources.Load("Room1Rain", typeof(Material));
+        materialArray[2] = (Material)Resources.Load("Room1Sunset", typeof(Material));
+        materialArray[3] = (Material)Resources.Load("Room1Snow", typeof(Material));
+        //floor materials start
+        materialArray[4] = (Material)Resources.Load("Room1FSunny", typeof(Material));
+        materialArray[5] = (Material)Resources.Load("Room1FRain", typeof(Material));
+        materialArray[6] = (Material)Resources.Load("Room1FSunset", typeof(Material));
+        materialArray[7] = (Material)Resources.Load("Room1FSnow", typeof(Material));
 
-		int weather = story.getWeather ();
-		backgroundPane.GetComponent<Renderer> ().material = materialArray [weather];
-		floor.GetComponent<Renderer> ().material = materialArray [weather + 4];
-		if (weather == 1) {
-			rainGenerator.SetActive (true);
-		} else if (weather == 3) {
-			snowGenerator.SetActive (true);
-		}
-	}
+        Story.WeatherOption weather = story.getWeather();
+        Material backgroundMaterial = materialArray[0]; // assign some default value to these to prevent compiler warning
+        Material floorMaterial = materialArray[4];
+        switch (weather)
+        {
+            case Story.WeatherOption.SUN:
+                backgroundMaterial = materialArray[0];
+                floorMaterial = materialArray[4];
+                break;
+            case Story.WeatherOption.RAIN:
+                rainGenerator.SetActive(true);
+                backgroundMaterial = materialArray[1];
+                floorMaterial = materialArray[5];
+                break;
+            case Story.WeatherOption.SUNSET:
+                backgroundMaterial = materialArray[2];
+                floorMaterial = materialArray[6];
+                break;
+            case Story.WeatherOption.SNOW:
+                snowGenerator.SetActive(true);
+                backgroundMaterial = materialArray[3];
+                floorMaterial = materialArray[7];
+                break;
+
+        }
+        backgroundPane.GetComponent<Renderer>().material = backgroundMaterial;
+        floor.GetComponent<Renderer>().material = floorMaterial;
+    }
 
 	/// <summary>
 	/// Gets the characters present in this room from story.
@@ -320,7 +352,7 @@ public class RoomController : MonoBehaviour {
 			}
 		} else
 			throw new System.NotSupportedException ("Room " + roomIndex + " does not support clues.");
-		}
+    }
 
 	/// <summary>
 	/// Walk character in, get reference to story and do initialisation for scene
@@ -359,10 +391,13 @@ public class RoomController : MonoBehaviour {
 		getCharacters ();
 		fengShui ();  
 		getClues ();
-		if ((cluesInRoom.Count > 0) && (roomIndex != 0) ) {
-			assignCluesLocations (cluesInRoom [0]);
+		if (cluesInRoom.Count > 0) {
+            if (roomIndex != 0)
+            {
+                assignCluesLocations (cluesInRoom [0]);
+            }
 		} else {
-			print ("No clues in this room (or this is room 0)");
+			print ("No clues in this room");
 		}
 	}
 

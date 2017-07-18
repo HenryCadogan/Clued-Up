@@ -26,7 +26,7 @@ public class MapControllerTests {
 		for (int x = 0; x < 7; x ++){
 			try{
 				Debug.Log(x);
-				testMapController.loadScene(x);
+				testMapController.loadScene("Room"+x);
 				Assert.Pass();
 			}catch(Exception e){}
 		}
