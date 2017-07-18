@@ -113,10 +113,12 @@ public class Character : MonoBehaviour {
 	public void display(Vector3 position){
 		// Get the name of the model to be used.
 		string modelName = this.name.Trim();
+        Debug.Log("modelName is " + modelName);
 		if (modelName == "Kanye")
 			modelName += Random.Range (0, 2).ToString ();
 		// Load it into the game orld and position it.
 		GameObject model = Instantiate (Resources.Load<GameObject> ("Models/" + modelName));
+
 		model.transform.parent = gameObject.transform;
 		Vector3 pos = new Vector3();
 		pos.x = position.x;
@@ -159,8 +161,10 @@ public class Character : MonoBehaviour {
 	/// </summary>
 	///<param name="characterIndex">Index of character to be initialised</param>
 	public void initialise(int characterIndex){
-		// Create a list of lines from the the file in the Resources TextFiles folder.
-		string[] linesArray = Regex.Split(Resources.Load<TextAsset>("TextFiles/character" + characterIndex.ToString()).text, "\n");
+        string textPath = "TextFiles/character" + characterIndex.ToString();
+        Debug.LogFormat("Character#initialize called for index {0}. textPath = {1}", characterIndex, textPath);
+        // Create a list of lines from the the file in the Resources TextFiles folder.
+		string[] linesArray = Regex.Split(Resources.Load<TextAsset>(textPath).text, "\n");
 		List<string> lines = new List<string> (linesArray);
 		// Assign variables from the lines as appropriate.
 		this.gameObject.name = lines[1]; //file contains comment in line 0
@@ -168,14 +172,19 @@ public class Character : MonoBehaviour {
 		this.description = lines [3];
 		this.isMurderer = false;
 		this.isVictim = false;
-		this.image = Resources.Load<Sprite> ("CharacterImages/" + this.gameObject.name.Trim());
+
+        string imagePath = "CharacterImages/" + this.gameObject.name.Trim();
+        Debug.LogFormat("Character#initialize gameObject.name = {0}, imagePath = {1}", gameObject.name, imagePath);
+		this.image = Resources.Load<Sprite> (imagePath);
+
 		// Give the character an ImportSpeech component
 		gameObject.AddComponent<ImportSpeech> ();
 		ImportSpeech speechHandler = GetComponent<ImportSpeech> ();
-		TextAsset AssetIn =(TextAsset)Resources.Load (lines [1].Trim());
+		TextAsset AssetIn =(TextAsset)Resources.Load (this.gameObject.name.Trim());
 		speechHandler.asset = AssetIn;
 		speechHandler.actualStart ();
 		speechRef = GetComponent<ImportSpeech> ();
+
 		// Give the character a BoxCollider component and disable it.
 		gameObject.AddComponent<BoxCollider> ();
 		boxCol = GetComponent<BoxCollider> ();
@@ -186,7 +195,6 @@ public class Character : MonoBehaviour {
 	/// <summary>
 	/// Destroys the model of the character if there is one, each time a new room is loaded
 	/// </summary>
-	///<param name="characterIndex">Index of character to be initialised</param>
 	void OnLevelWasLoaded(){
 		foreach (Transform child in gameObject.transform) {
 			GameObject.Destroy (child.gameObject);

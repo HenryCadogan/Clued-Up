@@ -51,10 +51,15 @@ public class SpeechHandler : MonoBehaviour {
 	/// The text object that shows the currently selected clue.
 	/// </summary>
 	public Text clueText;
-	/// <summary>
-	/// Any speech UI elements that should be hidden during the actual conversatsion.
-	/// </summary>
-	public GameObject[] speechUIElements;
+    /// <summary>
+    /// Assessment 3
+    /// This is the image of the clue that is displayed during the speech
+    /// </summary>
+    public Image clueImage;
+    /// <summary>
+    /// Any speech UI elements that should be hidden during the actual conversatsion.
+    /// </summary>
+    public GameObject[] speechUIElements;
 
 	/// <summary>
 	/// The button that this script is attatched to.
@@ -88,12 +93,23 @@ public class SpeechHandler : MonoBehaviour {
 	/// The inventory index of the currently selected item.
 	/// </summary>
 	private int clueIndex = 0;
-	private Clue activeClue;
+    /// <summary>
+    /// The Clue Script that is currently active
+    /// </summary>
+    private Clue activeClue;
+    /// <summary>
+    /// The probability that  an NPC will be ignored
+    /// </summary>
+    public const float IgnoreProbability = 0.1f;
+    /// <summary>
+    /// isIgnored
+    /// </summary>
+    public bool isBeingIgnored = false;
 
-	/// <summary>
-	/// Start this instance.
-	/// </summary>
-	void Start (){
+    /// <summary>
+    /// Start this instance.
+    /// </summary>
+    void Start (){
 		waiting ();
 		//TODO: REMOVE STUPID CAPITALIZATION
 		// Assign various variables from objects in scene.
@@ -143,7 +159,19 @@ public class SpeechHandler : MonoBehaviour {
 	/// Turns on the Speech UI, pauses the game.
 	/// </summary>
 	public void turnOnSpeechUI(){
-		if (parentCanvas.gameObject.activeSelf == false) {
+        if (isIgnored())
+        {
+            FindObjectOfType<HUDController>().displayHUDText("They seem to be ignoring you, maybe you should try again later...");
+            return;
+        }
+        if (isBeingIgnored)
+	    {
+	        FindObjectOfType<HUDController>()
+	            .displayHUDText("The player is still ignoring you, maybe you should leave the room and give them some space");
+	        return;
+	    }
+
+	    if (parentCanvas.gameObject.activeSelf == false) {
 			// If the character is in a state where he can be talked to...
 			if (charInScene.canBeTalkedTo == true) {
 				// Turn off all of the non-speech UI elements...
@@ -152,7 +180,7 @@ public class SpeechHandler : MonoBehaviour {
 				}
 				speechPanel.SetActive (false);
 				// Then turn on all the speech UI stuff.
-				updateClueName (playerInv.collectedClueNames [clueIndex]);
+				updateClueNameInGUI (playerInv.collectedClueNames [clueIndex]);
 				parentCanvas.SetActive (true);
 				hudCanvas.loadPanelAndPause (parentCanvas);
 				if (charInScene.hasBeenTalkedTo == false) {
@@ -172,6 +200,27 @@ public class SpeechHandler : MonoBehaviour {
 			Debug.Log ("Tried to turn on speech UI, but was already on");
 		}
 	}
+
+    /// <summary>
+    /// Assessment 3
+    /// Returns a bool to say whether the conversation will proceed or whether the NPC has ignored the player 
+    /// This is done by a simple probabilty function
+    /// </summary>
+    private bool isIgnored()
+    {
+        if (Random.value > IgnoreProbability) // Generate random float between 0 and 1 and if it is smaller than 0.1 then the NPC will ignore the player
+        {
+            SetIsIgnored(false);
+            return false;
+        }
+        SetIsIgnored(true);
+        return true;
+    }
+
+    public void SetIsIgnored(bool b)
+    {
+        isBeingIgnored = b;
+    }
 
 	/// <summary>
 	/// Turns off the speech UI, unpauses the game.
@@ -274,7 +323,7 @@ public class SpeechHandler : MonoBehaviour {
 		if (clueIndex >= playerInv.collectedClueNames.Count) {
 			clueIndex = 0;
 		}
-		updateClueName (playerInv.collectedClueNames [clueIndex]);
+		updateClueNameInGUI (playerInv.collectedClueNames [clueIndex]);
 	}
 
 	/// <summary>
@@ -285,17 +334,19 @@ public class SpeechHandler : MonoBehaviour {
 		if (clueIndex < 0) {
 			clueIndex = playerInv.collectedClueNames.Count - 1;
 		}
-		updateClueName (playerInv.collectedClueNames [clueIndex]);
+		updateClueNameInGUI (playerInv.collectedClueNames [clueIndex]);
 	}
 
 	/// <summary>
 	/// Updates the name of the clue on the UI
 	/// </summary>
-	/// <param name="ClueName">The dev name of the clue to be shown.</param>
-	void updateClueName (string ClueName){
-		activeClue = activeStory.getClueInformation (ClueName).GetComponent<Clue> ();
-		clueText.text = activeClue.longName;
+	/// <param name="clueShortName">The dev name of the clue to be shown.</param>
+	void updateClueNameInGUI (string clueShortName){
+        Debug.Log("updateClueNameInGUI called for " + clueShortName);
+        clueText.text = Clue.getClueLongName(clueShortName);
+        clueImage.sprite = Clue.getClueSprite(clueShortName);
 	}
+
 	/// <summary>
 	/// Accuse the character in the scene of being a murderer.
 	/// </summary>
@@ -318,13 +369,23 @@ public class SpeechHandler : MonoBehaviour {
 		// Then select a branch accordingly.
 		if (hasMotiveClue == false && hasMurderWeapon == false) {
 			branchName = "Accuse-NoItems";
+		    Story.Instance.Score -= 20; // Reduces the score by 20
 		} else if (hasMotiveClue == false) {
 			branchName = "Accuse-Motive";
-		} else if (hasMurderWeapon == false) {
+            Story.Instance.Score -= 15; // Reduces the score by 15
+        } else if (hasMurderWeapon == false) {
 			branchName = "Accuse-Weapon";
-		} else if (isMurderer == false) {
-			branchName = "Accuse-WrongChar";
-		} else {branchName = "Accuse-Right";}
+            Story.Instance.Score -= 15; // Reduces the score by 15
+        } else if (isMurderer == false)
+		{
+		    branchName = "Accuse-WrongChar";
+		    Story.Instance.Score -= 15; // Reduces the score by 15
+        }
+		else
+		{
+		    branchName = "Accuse-Right";
+            Story.Instance.Score += 30; // Increases the score by 30
+        }
 		// Whatever branch gets selected, we can then start it.
 		startBranch(branchName);
 	}

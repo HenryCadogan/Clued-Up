@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SocialPlatforms.Impl;
+
 /// <summary>
 /// The Inventory class
 /// </summary>
@@ -27,18 +29,19 @@ public class Inventory : MonoBehaviour {
 	/// Collect the specified clue by adding it to the inventory list, if not there already.
 	/// </summary>
 	/// <param name="clue">The clue to collect</param>
-	public void collect(Clue clue){
-		if (!this.isCollected (clue.name)) {
+	public void collect(string clueName){
+		if (!this.isCollected (clueName)) {
 			// Add the clue to the inventory...
-			Debug.Log (clue.name + " COLLECTED");
-			collectedClueNames.Add (clue.name);
+			Debug.Log (clueName + " COLLECTED");
+			collectedClueNames.Add (clueName);
 			// And set all characters so we can talk to them again.
 			Character[] listOfChars = FindObjectsOfType<Character> ();
 			foreach (Character forChar in listOfChars) {
 				forChar.canBeTalkedTo = true;
 			}
+		    Story.Instance.Score += 5; // Adding 5 to the score for ever time they pick up a clue
 		}else
-			throw new System.ArgumentException ("Clue " + clue.name + " has already been collected. This is strictly not allowed.");
+			throw new System.ArgumentException ("Clue " + clueName + " has already been collected. This is strictly not allowed.");
 	}
 
 	/// <summary>

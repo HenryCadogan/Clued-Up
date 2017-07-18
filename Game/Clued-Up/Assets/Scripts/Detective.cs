@@ -18,7 +18,7 @@ public class Detective : MonoBehaviour {
 	/// <summary>
 	/// The footsteps audio source.
 	/// </summary>
-	public AudioSource footstepsAudioSource;
+	public AudioSource footstepsAudioSource;   
 	/// <summary>
 	/// //The next walk in direction to be used when switching between scenes
 	/// </summary>
@@ -57,12 +57,16 @@ public class Detective : MonoBehaviour {
 	private string direction = "right";
 
 
+    public void Start() {
+        //AudioSource footstepsAudioSource = Instantiate(Resources.Load("Detectives/FootstepsAudioSource")) as AudioSource;
+        walkIn();
+    }
 
-	/// <summary>
-	/// </summary>
-	/// <returns><c>true</c>, if room index has been visited, <c>false</c> otherwise.</returns>
-	/// <param name="roomIndex">Room index.</param>
-	public bool isVisited(int roomIndex){
+    /// <summary>
+    /// </summary>
+    /// <returns><c>true</c>, if room index has been visited, <c>false</c> otherwise.</returns>
+    /// <param name="roomIndex">Room index.</param>
+    public bool isVisited(int roomIndex){
 		if(visitedRooms.Contains (roomIndex)){
 			return true;
 		}else{
@@ -85,11 +89,15 @@ public class Detective : MonoBehaviour {
 	private void setWalk(bool walking){
 		if (anim.GetBool ("walking") != walking) { // if not already walking... need this to keep the footsteps from restarting  every frame
 			anim.SetBool ("walking", walking);
-			if (walking) {
-				footstepsAudioSource.Play ();
-			} else {
-				footstepsAudioSource.Stop ();
-			}
+
+            if (footstepsAudioSource.isActiveAndEnabled)
+            {
+                if (walking) {
+                    footstepsAudioSource.Play ();
+                } else {
+                    footstepsAudioSource.Stop ();
+                }
+            }
 		}
 	}
 	/// <summary>
@@ -98,21 +106,15 @@ public class Detective : MonoBehaviour {
 	private void setWalkSound(){
 		switch (SceneManager.GetActiveScene().buildIndex){
 		case 3: //room0 crime scene
-			if (story.getWeather () == 1) { 	//rainy
+			if (story.getWeather () == Story.WeatherOption.RAIN) { 	//rainy
 				footstepsAudioSource.clip = (AudioClip)Resources.Load ("Sounds/footsteps-wet");
-			} else if (story.getWeather () == 3) { //snow
+			} else if (story.getWeather () == Story.WeatherOption.SNOW) { //snow
 				footstepsAudioSource.clip = (AudioClip)Resources.Load ("Sounds/footsteps-snow");
 			} else {
 				footstepsAudioSource.clip = (AudioClip)Resources.Load ("Sounds/footsteps-concrete");
 			}
 			break;
-		case 4: //room1 lobby
-			footstepsAudioSource.clip = (AudioClip)Resources.Load ("Sounds/footsteps-concrete");
-			break;
-		case 5: //room2 train station
-			footstepsAudioSource.clip = (AudioClip)Resources.Load ("Sounds/footsteps-concrete");
-			break;
-		case 6: //room3 cafe
+		case 4: case 5: case 6: //room1 lobby, room2 train station, room3 cafe
 			footstepsAudioSource.clip = (AudioClip)Resources.Load ("Sounds/footsteps-concrete");
 			break;
 		default:
@@ -167,25 +169,26 @@ public class Detective : MonoBehaviour {
 	/// </summary>
 	void Awake(){
 		story = GameObject.Find ("Story").GetComponent<Story> ();
+        DontDestroyOnLoad(gameObject);
 	}
 						
 	/// <summary>
 	/// Handles player walking toggle, direction & fixes Z position of detective GameObject to stop him walking forwards
 	/// </summary>
 	void Update () {
-		if (Input.GetKey ("right") && (Time.timeSinceLevelLoad > 1f)) {
+		if ((Input.GetKey ("right")| Input.GetKey(KeyCode.D))  && (Time.timeSinceLevelLoad > 1f)) {
 			if (direction != "right") {	//if previous direction is left or down, then turn the player
 				turnPlayer ("right");
 				this.canWalkRight = true;
 			}
 			setWalk (this.canWalkRight); //false if the player cannot move, true otherwise
-		} else if (Input.GetKey ("left") && (Time.timeSinceLevelLoad > 1f)) {
+		} else if ((Input.GetKey ("left") | Input.GetKey(KeyCode.A) ) && (Time.timeSinceLevelLoad > 1f)) {
 			if (direction != "left") {	//if previous direction is right or down, then turn the player
 				turnPlayer ("left");
 				this.canWalkLeft = true;
 			}
 			setWalk (this.canWalkLeft);
-		} else if (Input.GetKey ("down")  && (Time.timeSinceLevelLoad > 1f)) {
+		} else if ((Input.GetKey ("down") | Input.GetKey(KeyCode.S)) && (Time.timeSinceLevelLoad > 1f)) {
 			turnPlayer ("down");
 			setWalk (false);
 		} else if (Time.timeSinceLevelLoad > 1f) { 

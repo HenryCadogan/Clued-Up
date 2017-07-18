@@ -21,14 +21,14 @@ public class InventoryTests {
 	[Test]
 	public void CollectClueTest(){
 		try{
-			testInventory.collect(testClue);
+			testInventory.collect(testClue.name);
 			Assert.Pass();
 		} catch (Exception e ){}
 		Assert.True(testInventory.isCollected(testClue.name));
 
 		//now try and add clue again
 		try{
-			testInventory.collect(testClue);
+			testInventory.collect(testClue.name);
 			Assert.Fail();
 		} catch (Exception e ){}
 

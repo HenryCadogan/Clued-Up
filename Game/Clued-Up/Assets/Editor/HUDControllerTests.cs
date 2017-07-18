@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEditor;
 using NUnit.Framework;
 using System;
 
@@ -7,6 +6,7 @@ public class HUDControllerTests {
 	GameObject TestPanel;
 	GameObject TestHUDtext;
 	HUDController testHUDC;
+
 	[TestFixtureSetUp]
 	public void testSetup(){
 		TestPanel = new GameObject();

@@ -9,48 +9,49 @@ using UnityEngine.SceneManagement;
 /// Room Controller
 /// </summary>
 
-public class RoomController : MonoBehaviour {
-	/// <summary>
-	/// The index of the room.
-	/// </summary>
-	public int roomIndex;
-	/// <summary>
-	/// The overlay panel GameObject.
-	/// </summary>
-	public GameObject overlayPanel;
-	/// <summary>
-	/// The door quad GameObject.
-	/// </summary>
-	public GameObject doorQuad;
-	public GameObject ronCookeLights;
-	public GameObject mainLight;
-	public GameObject floor;
-	public GameObject backgroundPane;
-	public GameObject rainGenerator;
-	public GameObject snowGenerator;
+public class RoomController : MonoBehaviour
+{
+    /// <summary>
+    /// The index of the room.
+    /// </summary>
+    public int roomIndex;
+    /// <summary>
+    /// The overlay panel GameObject.
+    /// </summary>
+    public GameObject overlayPanel;
+    /// <summary>
+    /// The door quad GameObject.
+    /// </summary>
+    public GameObject doorQuad;
+    public GameObject ronCookeLights;
+    public GameObject mainLight;
+    public GameObject floor;
+    public GameObject backgroundPane;
+    public GameObject rainGenerator;
+    public GameObject snowGenerator;
 
-	private Inventory inventory;
-	/// <summary>
-	/// List of furniture gameobjects in the room
-	/// </summary>
-	private List<GameObject> furnitureInRoom = new List<GameObject>();
-	/// <summary>
-	/// List of Clue GameObjects in the room used to assign locations to them.
-	/// </summary>
-	private List<GameObject> cluesInRoom = new List<GameObject>();
-	/// <summary>
-	/// The main story.
-	/// </summary>
-	private Story story;
-	/// <summary>
-	/// Size of detective in each room so it can be adjusted for realistic scaling
-	/// </summary>
-	private float[] detectiveSizeByRoom = {1f,1f,1.2f,1f,1.2f,1.2f,1.2f,1f};
-	/// <summary>
-	/// Character pos for each room (characterPositionByRoom[roomIndex]).
-	/// </summary>
-	private Vector3[] characterPositionsByRoom = {new Vector3 (), 
-		new Vector3 (-3.3f, -7.2f, 4.2f), //lobby
+    private Inventory inventory;
+    /// <summary>
+    /// List of furniture gameobjects in the room
+    /// </summary>
+    private List<GameObject> furnitureInRoom = new List<GameObject>();
+    /// <summary>
+    /// List of Clue GameObjects in the room used to assign locations to them.
+    /// </summary>
+    private List<GameObject> cluesInRoom = new List<GameObject>();
+    /// <summary>
+    /// The main story.
+    /// </summary>
+    private Story story;
+    /// <summary>
+    /// Size of detective in each room so it can be adjusted for realistic scaling
+    /// </summary>
+    private float[] detectiveSizeByRoom = { 1f, 1f, 1.2f, 1f, 1.2f, 1.2f, 1.2f, 1f };
+    /// <summary>
+    /// Character pos for each room (characterPositionByRoom[roomIndex]).
+    /// </summary>
+    private Vector3[] characterPositionsByRoom = {new Vector3 (),
+        new Vector3 (-3.3f, -7.2f, 4.2f), //lobby
 		new Vector3 (-2.2f, -6.5f, 4.2f), //train
 		new Vector3 (0, -6.7f, 4.2f), //cafe
 		new Vector3 (3.55f, -7.2f, 4.2f), //kitchen
@@ -59,102 +60,144 @@ public class RoomController : MonoBehaviour {
 		new Vector3 (5.2f, -7.3f, 4.2f) //toilets
 	};
 
-	/// <summary>
-	/// Scales the detective.
-	/// </summary>
-	/// <param name="detective">Detective GameObject.</param>
-	/// <param name="scaler">Scaler (can be negative).</param>
-	private void scaleDetective(GameObject detective, float scaler){
-		detective.transform.localScale = new Vector3 (scaler, scaler, scaler);
-	}
+    /// <summary>
+    /// Scales the detective.
+    /// </summary>
+    /// <param name="detective">Detective GameObject.</param>
+    /// <param name="scaler">Scaler (can be negative).</param>
+    private void scaleDetective(GameObject detective, float scaler)
+    {
+        detective.transform.localScale = new Vector3(scaler, scaler, scaler);
+    }
 
 
-	/// <summary>
-	/// Prepares the overlay by turning on and immediately fading out, giving a fade from black effect.
-	/// </summary>
-	private void setOverlay(){
-		overlayPanel.SetActive (true);
-		overlayPanel.GetComponent<Image> ().CrossFadeAlpha (0f, 3f, false);
-	}
-	/// <summary>
-	/// Sets the door quad GameObjects image depending on weather condition of story.
-	/// </summary>
-	private void setDoor(){
-		Material[] materialArray = new Material[8];
-		//maretialArray for DoorQuad materials
-		materialArray [0] = (Material)Resources.Load ("Room2DSunny", typeof(Material)); //finds material located in the resources folder
-		materialArray [1] = (Material)Resources.Load ("Room2DRain", typeof(Material));
-		materialArray [2] = (Material)Resources.Load ("Room2DSunset", typeof(Material));
-		materialArray [3] = (Material)Resources.Load ("Room2DSnow", typeof(Material));
+    /// <summary>
+    /// Prepares the overlay by turning on and immediately fading out, giving a fade from black effect.
+    /// </summary>
+    private void setOverlay()
+    {
+        overlayPanel.SetActive(true);
+        overlayPanel.GetComponent<Image>().CrossFadeAlpha(0f, 3f, false);
+    }
+    /// <summary>
+    /// Sets the door quad GameObjects image depending on weather condition of story.
+    /// </summary>
+    private void setDoor()
+    {
+        Material[] materialArray = new Material[8];
+        //maretialArray for DoorQuad materials
+        materialArray[0] = (Material)Resources.Load("Room2DSunny", typeof(Material)); //finds material located in the resources folder
+        materialArray[1] = (Material)Resources.Load("Room2DRain", typeof(Material));
+        materialArray[2] = (Material)Resources.Load("Room2DSunset", typeof(Material));
+        materialArray[3] = (Material)Resources.Load("Room2DSnow", typeof(Material));
 
-		doorQuad.GetComponent<Renderer> ().material = materialArray [story.getWeather ()];
-	}
-	private void setLobbyMusic(){
-		string filepath = "Sounds/Ambience-Lobby" + UnityEngine.Random.Range (0, 2).ToString ();
-		GameObject.Find ("Audio Source").GetComponent<AudioSource> ().clip = Resources.Load<AudioClip> (filepath);
-		GameObject.Find ("Audio Source").GetComponent<AudioSource> ().Play ();
-	}
+        // Choose the doorMaterial based on the weather
+        Material doorMaterial;
+        switch (story.getWeather())
+        {
+            case Story.WeatherOption.SUN: doorMaterial = materialArray[0]; break;
+            case Story.WeatherOption.RAIN: doorMaterial = materialArray[1]; break;
+            case Story.WeatherOption.SUNSET: doorMaterial = materialArray[2]; break;
+            case Story.WeatherOption.SNOW: doorMaterial = materialArray[3]; break;
+            default:
+                throw new System.ArgumentOutOfRangeException("Weather option is invalid.");
+        }
 
-	/// <summary>
-	/// Can the player progress from outside scene to another? 
-	/// </summary>
-	/// <returns><c>true</c>, if criteria is met (namely they have collected the body clue), <c>false</c> otherwise.</returns>
-	public bool canProgress(){
-		if (inventory.isCollected("chalkOutline")){
-			return true;
-		}else{
-			GameObject.Find("HUD").GetComponent<HUDController> ().displayHUDText ("Try inspecting the scene of the murder");
-			return false;
-		}
-	}
+        doorQuad.GetComponent<Renderer>().material = doorMaterial;
+    }
+    private void setLobbyMusic()
+    {
+        string filepath = "Sounds/Ambience-Lobby" + UnityEngine.Random.Range(0, 2).ToString();
+        GameObject.Find("Audio Source").GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(filepath);
+        GameObject.Find("Audio Source").GetComponent<AudioSource>().Play();
+    }
 
-	/// <summary>
-	/// Sets the lights of scene 0 depending on weather condition
-	/// </summary>
-	private void setLights(){
-		int weather = story.getWeather ();
-		switch (weather) {
-		case 0:
-			mainLight.GetComponent<Light> ().color = new Color(0.65f,0.65f,0.65f); //sunny
-			break;
-		case 1:
-			mainLight.SetActive (false); //rain
-			ronCookeLights.SetActive(true);
-			break;
-		case 2:
-			mainLight.GetComponent<Light> ().color = new Color (0.65f, 0.5f, 0.4f); //sunset
-			break;
-		case 3:
-			mainLight.GetComponent<Light> ().color = Color.white; //snow
-			mainLight.GetComponent<Light>().shadowStrength = 0.05f;
-			break;
-		}
-	}
+    /// <summary>
+    /// Can the player progress from outside scene to another? 
+    /// </summary>
+    /// <returns><c>true</c>, if criteria is met (namely they have collected the body clue), <c>false</c> otherwise.</returns>
+    public bool canProgress()
+    {
+        if (inventory.isCollected("chalkOutline"))
+        {
+            return true;
+        }
+        else
+        {
+            GameObject.Find("HUD").GetComponent<HUDController>().displayHUDText("Try inspecting the scene of the murder");
+            return false;
+        }
+    }
 
-	/// <summary>
-	/// Sets the background pane & floor GameObject images in scene 0depending on weather condition. Also sets rain or snow.
-	/// </summary>
-	private void setBackground(){
-		Material[] materialArray = new Material[8];
-		materialArray[0] = (Material)Resources.Load("Room1Sunny", typeof(Material)); //finds material located in the resources folder
-		materialArray[1] = (Material)Resources.Load("Room1Rain", typeof(Material));
-		materialArray[2] = (Material)Resources.Load("Room1Sunset", typeof(Material));
-		materialArray[3] = (Material)Resources.Load("Room1Snow", typeof(Material));
-		//floor materials start
-		materialArray[4] = (Material)Resources.Load("Room1FSunny", typeof(Material));
-		materialArray[5] = (Material)Resources.Load("Room1FRain", typeof(Material));
-		materialArray[6] = (Material)Resources.Load("Room1FSunset", typeof(Material));
-		materialArray[7] = (Material)Resources.Load("Room1FSnow", typeof(Material));
+    /// <summary>
+    /// Sets the lights of scene 0 depending on weather condition
+    /// </summary>
+    private void setLights()
+    {
+        Story.WeatherOption weather = story.getWeather();
+        switch (weather)
+        {
+            case Story.WeatherOption.SUN:
+                mainLight.GetComponent<Light>().color = new Color(0.65f, 0.65f, 0.65f);
+                break;
+            case Story.WeatherOption.RAIN:
+                mainLight.SetActive(false);
+                ronCookeLights.SetActive(true);
+                break;
+            case Story.WeatherOption.SUNSET:
+                mainLight.GetComponent<Light>().color = new Color(0.65f, 0.5f, 0.4f);
+                break;
+            case Story.WeatherOption.SNOW:
+                mainLight.GetComponent<Light>().color = Color.white;
+                mainLight.GetComponent<Light>().shadowStrength = 0.05f;
+                break;
+        }
+    }
 
-		int weather = story.getWeather ();
-		backgroundPane.GetComponent<Renderer> ().material = materialArray [weather];
-		floor.GetComponent<Renderer> ().material = materialArray [weather + 4];
-		if (weather == 1) {
-			rainGenerator.SetActive (true);
-		} else if (weather == 3) {
-			snowGenerator.SetActive (true);
-		}
-	}
+    /// <summary>
+    /// Sets the background pane & floor GameObject images in scene 0depending on weather condition. Also sets rain or snow.
+    /// </summary>
+    private void setBackground()
+    {
+        Material[] materialArray = new Material[8];
+        materialArray[0] = (Material)Resources.Load("Room1Sunny", typeof(Material)); //finds material located in the resources folder
+        materialArray[1] = (Material)Resources.Load("Room1Rain", typeof(Material));
+        materialArray[2] = (Material)Resources.Load("Room1Sunset", typeof(Material));
+        materialArray[3] = (Material)Resources.Load("Room1Snow", typeof(Material));
+        //floor materials start
+        materialArray[4] = (Material)Resources.Load("Room1FSunny", typeof(Material));
+        materialArray[5] = (Material)Resources.Load("Room1FRain", typeof(Material));
+        materialArray[6] = (Material)Resources.Load("Room1FSunset", typeof(Material));
+        materialArray[7] = (Material)Resources.Load("Room1FSnow", typeof(Material));
+
+        Story.WeatherOption weather = story.getWeather();
+        Material backgroundMaterial = materialArray[0]; // assign some default value to these to prevent compiler warning
+        Material floorMaterial = materialArray[4];
+        switch (weather)
+        {
+            case Story.WeatherOption.SUN:
+                backgroundMaterial = materialArray[0];
+                floorMaterial = materialArray[4];
+                break;
+            case Story.WeatherOption.RAIN:
+                rainGenerator.SetActive(true);
+                backgroundMaterial = materialArray[1];
+                floorMaterial = materialArray[5];
+                break;
+            case Story.WeatherOption.SUNSET:
+                backgroundMaterial = materialArray[2];
+                floorMaterial = materialArray[6];
+                break;
+            case Story.WeatherOption.SNOW:
+                snowGenerator.SetActive(true);
+                backgroundMaterial = materialArray[3];
+                floorMaterial = materialArray[7];
+                break;
+
+        }
+        backgroundPane.GetComponent<Renderer>().material = backgroundMaterial;
+        floor.GetComponent<Renderer>().material = floorMaterial;
+    }
 
 	/// <summary>
 	/// Gets the characters present in this room from story.
@@ -168,7 +211,7 @@ public class RoomController : MonoBehaviour {
 		switch (charactersInRoom.Count) {
 		case 1:
 			//do stuff to make one character active
-			//Debug.Log (charactersInRoom [0].GetComponent<Character> ().longName + " is in the room!");
+			Debug.Log (charactersInRoom [0].GetComponent<Character> ().longName + " is in the room!");
 			charactersInRoom [0].GetComponent<Character> ().display (characterPositionsByRoom[roomIndex]);
 			break;
 		case 2:
@@ -294,92 +337,97 @@ public class RoomController : MonoBehaviour {
 		return locationList;
 	}
 
-	/// <summary>
-	/// First decides which location to put the clue by summing all possible locations and deciding which to use (either room location or furniture)
-	/// Then assigns one clue to this location in a room by either changing clue's location, or testing which kind of furniture it is & moving it there.
-	/// </summary>
-	private void assignCluesLocations(GameObject clue){
-		List<Vector3> roomLocations = getRoomClueLocations (); //possible locations that are not furniture
-		int totalLocationsCount = roomLocations.Count + furnitureInRoom.Count;
+    /// <summary>
+    /// First decides which location to put the clue by summing all possible locations and deciding which to use (either room location or furniture)
+    /// Then assigns one clue to this location in a room by either changing clue's location, or testing which kind of furniture it is & moving it there.
+    /// </summary>
+    private void assignCluesLocations(GameObject clue)
+    {
+        List<Vector3> roomLocations = getRoomClueLocations(); //possible locations that are not furniture
+        int totalLocationsCount = roomLocations.Count + furnitureInRoom.Count;
 
-		if (totalLocationsCount != 0) {
-			int locationIndex = UnityEngine.Random.Range (0, totalLocationsCount);
-			if (locationIndex < roomLocations.Count) {	//If clue is in room locations
-				clue.gameObject.GetComponent<Transform> ().position = roomLocations [locationIndex];
-			} else {
-				locationIndex = locationIndex - roomLocations.Count; //change to only include furniture clues
-				if (furnitureInRoom [locationIndex].GetComponent<Lockers> () != null) {
-					furnitureInRoom [locationIndex].GetComponent<Lockers> ().addClue (clue);
-				} else if (furnitureInRoom [locationIndex].GetComponent<Cupboard> () != null) {
-					furnitureInRoom [locationIndex].GetComponent<Cupboard> ().addClue (clue);
-				} else if (furnitureInRoom [locationIndex].GetComponent<Sofa> () != null) {
-					furnitureInRoom [locationIndex].GetComponent<Sofa> ().addClue (clue);
-				}else if (furnitureInRoom [locationIndex].GetComponent<Bin> () != null) {
-						furnitureInRoom [locationIndex].GetComponent<Bin> ().addClue (clue);
-				}
-			}
-		} else
-			throw new System.NotSupportedException ("Room " + roomIndex + " does not support clues.");
-		}
+        if (totalLocationsCount != 0)
+        {
+            int locationIndex = UnityEngine.Random.Range(0, totalLocationsCount);
+            if (locationIndex < roomLocations.Count)
+            {   //If clue is in room locations
+                clue.gameObject.GetComponent<Transform>().position = roomLocations[locationIndex];
+            }
+            else
+            {
+                locationIndex = locationIndex - roomLocations.Count; //change to only include furniture clues
+                if (furnitureInRoom[locationIndex].GetComponent<Lockers>() != null)
+                {
+                    furnitureInRoom[locationIndex].GetComponent<Lockers>().addClue(clue);
+                }
+                else if (furnitureInRoom[locationIndex].GetComponent<Cupboard>() != null)
+                {
+                    furnitureInRoom[locationIndex].GetComponent<Cupboard>().addClue(clue);
+                }
+                else if (furnitureInRoom[locationIndex].GetComponent<Sofa>() != null)
+                {
+                    furnitureInRoom[locationIndex].GetComponent<Sofa>().addClue(clue);
+                }
+                else if (furnitureInRoom[locationIndex].GetComponent<Bin>() != null)
+                {
+                    furnitureInRoom[locationIndex].GetComponent<Bin>().addClue(clue);
+                }
+            }
+        }
+        else
+            throw new System.NotSupportedException("Room " + roomIndex + " does not support clues.");
+    }
 
-	/// <summary>
-	/// Walk character in, get reference to story and do initialisation for scene
-	/// </summary>
-	void Start () {
-		setOverlay ();
-		GameObject detective = GameObject.Find ("Detective");
-		inventory = GameObject.Find ("Detective").GetComponent<Inventory> ();
-		detective.GetComponent<Detective> ().walkIn();
-		scaleDetective (detective, detectiveSizeByRoom[roomIndex]);
+    /// <summary>
+    /// Walk character in, get reference to story and do initialisation for scene
+    /// </summary>
+    void Start()
+    {
+        setOverlay();
+        GameObject detective = GameObject.Find("Detective");
+        inventory = GameObject.Find("Detective").GetComponent<Inventory>();
+        detective.GetComponent<Detective>().walkIn();
+        scaleDetective(detective, detectiveSizeByRoom[roomIndex]);
 
-		story = GameObject.Find("Story").GetComponent<Story>(); // references persistant object story
-		GameObject.Find("Detective").GetComponent<Detective>().addVisitedRoom(roomIndex); //used to update map room availability
+        story = GameObject.Find("Story").GetComponent<Story>(); // references persistant object story
+        GameObject.Find("Detective").GetComponent<Detective>().addVisitedRoom(roomIndex); //used to update map room availability
 
-		//Make detective slightly lower in screen
-		Vector3 pos = detective.transform.position;
-		if(roomIndex ==0)
-			pos.y = -5.9f;
-		else 
-			pos.y = -6.5f;
-		detective.transform.position = pos;
+        //Make detective slightly lower in screen
+        Vector3 pos = detective.transform.position;
+        if (roomIndex == 0)
+            pos.y = -5.9f;
+        else
+            pos.y = -6.5f;
+        detective.transform.position = pos;
 
-		switch (roomIndex) {
-		case 0: //outside
-			setBackground ();
-			setLights ();
-			break;
-		case 1: //lobby
-			setDoor ();
-			setLobbyMusic ();
-			break;
-		default:
-			break;
-		}
+        switch (roomIndex)
+        {
+            case 0: //outside
+                setBackground();
+                setLights();
+                break;
+            case 1: //lobby
+                setDoor();
+                setLobbyMusic();
+                break;
+            default:
+                break;
+        }
 
-		getCharacters ();
-		fengShui ();  
-		getClues ();
-		if ((cluesInRoom.Count > 0) && (roomIndex != 0) ) {
-			assignCluesLocations (cluesInRoom [0]);
-		} else {
-			print ("No clues in this room (or this is room 0)");
-		}
-	}
+        getCharacters();
+        fengShui();
+        getClues();
 
-	/// <summary>
-	/// If number is pressed during this scene, then skip to appropriate room
-	/// </summary>
-//	void Update() {
-//		if (Input.GetKeyDown ("2")) {
-//			SceneManager.LoadScene (4);	//train station
-//		} else if (Input.GetKeyDown ("4")) {
-//			SceneManager.LoadScene (7);	//loads kitchen
-//		} else if (Input.GetKeyDown ("5")) {
-//			SceneManager.LoadScene (8);	//load bar
-//		} else if (Input.GetKeyDown ("6")) {
-//			SceneManager.LoadScene (8);	//loads studio
-//		} else if (Input.GetKeyDown ("7")) {
-//			SceneManager.LoadScene (9);	//loads toilets
-//		}
-//	}
+        if ((cluesInRoom.Count > 0) && (roomIndex != 0))
+        {
+            assignCluesLocations(cluesInRoom[0]);
+            Story.Instance.Score = Story.Instance.Score;
+            assignCluesLocations(cluesInRoom[0]);
+        }
+        else
+        {
+           print("No clues in this room");
+        }
+
+    }
 }

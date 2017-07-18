@@ -1,0 +1,178 @@
+#INTRO
+$Who are you?
+£I'm... the Doctor?
+$Like Doctor who?
+£Err... no.
+£Just a Doctor.
+$Did you know ]?
+£Who is it you're looking for?
+$...]?
+£I'm sorry, I can't say I knew them.
+
+#Aggressive
+$Tell me what you know about this [.
+£What are you trying to say?
+£Do you think I did it?
+£I don't often kill people...
+£If I did, they had a pre-existing medical condition!
+#Rude
+$Oi, what's this [?
+£I have no idea what that is.
+#Friendly
+$Hey, do you know anything about this [?
+£I hate to tell you this, but I don't.
+#Calm
+$Could you tell me about this [?
+£I don't think I can help you with that.
+#Comedic
+$You wouldn't happen to know about this [, would you?
+£I don't think I do, sorry.
+#Annoying
+$Hey, tell me about this [.
+£I don't know anything about that.
+#Manipulative
+$You're a... doctor? 
+$Surely you know about this [?
+£I appreciate your praise, but I don't think I can help you there.
+
+#Aggressive-blackHair
+$Is this your hair?
+£It might be mine.
+£Why do you want to know?
+£Do you think I'm the culprit?
+£I'm innocent, I swear!
+#Rude-blackHair
+$Hey, I think this is your hair.
+£Really? I... don't know.
+#Friendly-blackHair
+$Would this happen to be your hair?
+£What are you implying?
+£Do you think I did it?
+£I swear, I didn't do it!
+#Calm-blackHair
+$Do you recognise this hair?
+£What is this? My hair?
+£Are you saying I had something to do with this?
+£Because I didn't, honest!
+#Comedic-blackHair
+$I think your surgical ca[ is slipping. I found this.
+£What do you mean?
+£Do you think I was involved with this?
+£I wasn't, I swear!
+#Annoying-blackHair
+$What do you think of this [?
+£What do you mean by this [?
+#Manipulative-blackHair
+$Surely a man educated like yourself knows about this hair.
+£What are you implying?
+£Do you think I am the murderer?
+£I'm not, you have to believe me!
+
+#Aggressive-sunglasses
+$Are these your [?
+£Hey, get off my [, you will mark them!
+#Rude-sunglasses
+$I bet you wear [. like these!
+£Yes, I need them to protect my eyes!
+£Otherwise, no more surgery for me!
+#Friendly-sunglasses
+$Tell me about these [.
+£They're my sunglasses, for when it's sunny...
+£Surely I don't need to explain how important these are.
+#Calm-sunglasses
+$Do these [ belong to you?
+£Yeah they're mine, they're very good, too!
+#Comedic-sunglasses
+$So, [ eh? Tell me about them
+£They're [, have you never seen a pair before?
+#Manipulative-sunglasses
+$Flashy [ for the a surgeon, right?
+£What can I say, I make good money!
+
+#Aggressive-microphone
+$Is this your microphone?
+£Yes, I did.
+£I need people to hear about my great surgical procedures.
+£I'm performing them at a dicount right now
+#Rude-microphone
+$So this is your microphone, right?
+£This is just a microphone?
+£What would it have to do with me?
+#Friendly-microphone
+$I think this microphone belongs to you.
+£Ah... maybe.
+£I used one earlier to tell people about my offers.
+£I'm doing my surgery at a good discount!
+#Calm-microphone
+$Does this microphone belong to you?
+£Perhaps.
+£I was using one earlier.
+£These guys are big business for me!
+#Comedic-microphone
+$So, are you any good with it?
+£No, I don't sing.
+£It's judt to get the message out there.
+£Though I may have some musical talent...
+#Annoying-microphone
+$Hello.... is it this microphone you're looking for?
+£What do I have to do with a random microphone?
+#Manipulative-microphone
+$Surely you saw someone using this.
+£Oh, I was.
+£I was letting guests know early that I do cheap surgical procedures.
+
+#Aggressive-stapler
+$Tell me what you know about this [.
+£I use it to seal big wounds.
+$Eww.
+#Rude-stapler
+$What's this [?
+£It's a stapler! Can't you tell?
+$Do you know about it?
+£Yup, I use them all of the time.
+#Friendly-stapler
+$Hey, do you know anything about this [?
+£That stapler? I was using it earler.
+$Can I ask why?
+£You could, but the answer would gross you out.
+#Calm-stapler
+$Could you tell me about this [?
+£Yeah, I was using it earlier.
+$What for?
+£For stapling, what the hell do you think?
+$Yes, but stapling what.
+£I... don't want to say.
+#Comedic-stapler
+$You wouldn't happen to know about this [, would you?
+£What makes you think I know about staplers?
+#Annoying-stapler
+$Hey, tell me about this [.
+£Why would I know about staplers?
+#Manipulative-stapler
+$You're a good surgeon, surely you know about this [?
+£I sometimes use those for surgery.
+£I can be very resourceful.
+
+#Accuse-NoItems
+$You did it!
+£Ah! But wait... do you have any proof?
+£Anything? Anything at all?
+#Accuse-WrongChar
+$You did it!
+£Not this time.
+£The last one was an accident.
+£Please don't sue.
+#Accuse-Motive
+$You did it!
+£Ah! But wait... why would I do it?
+£Surely I wouldn't kill a possible customer?
+#Accuse-Weapon
+$You did it!
+£Ah! But wait... what would I have done it with?
+£Surely if you're accusing me you know what I did it with?
+£Right?
+#Accuse-Right
+$You did it!
+£Oh dear.
+£I don't mean to kill people.
+£Sometimes my hand just slips.

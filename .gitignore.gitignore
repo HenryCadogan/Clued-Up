@@ -1,0 +1,51 @@
+# =============== #
+# Unity generated #
+# =============== #
+[Tt]emp/
+[Oo]bj/
+[Bb]uild
+<<<<<<< Updated upstream
+Game/Clued-Up/[Ll]ibrary/
+=======
+/Game folder/Clued-Up/[Ll]ibrary/
+>>>>>>> Stashed changes
+sysinfo.txt
+*.stackdump
+ 
+# ============================================= #
+# Visual Studio / MonoDevelop / Rider generated #
+# ============================================= #
+[Ee]xported[Oo]bj/
+.vs/
+/*.userprefs
+/*.csproj
+/*.pidb
+/*.suo
+/*.sln*
+/*.user
+/*.unityproj
+/*.booproj
+.idea/
+ 
+# ============ #
+# OS generated #
+# ============ #
+.DS_Store*
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+[Tt]humbs.db
+[Dd]esktop.ini
+
+[merge]
+    tool = unityyamlmerge
+
+    [mergetool "unityyamlmerge"]
+    trustExitCode = false
+    cmd = 'C:\Program Files\Unity\Editor\Data\Tools\UnityYAMLMerge.exe' merge -p "$BASE" "$REMOTE" "$LOCAL" "$MERGED"
+
+
+*.csproj
+*.sln
+
